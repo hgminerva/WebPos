@@ -172,6 +172,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Models\MstAccount.cs" />
     <Compile Include="Models\MstCustomer.cs" />
     <Compile Include="data\webpos.designer.cs">
       <AutoGen>True</AutoGen>
@@ -184,6 +185,19 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MstDiscount.cs" />
+    <Compile Include="Models\MstDiscountItem.cs" />
+    <Compile Include="Models\MstItem.cs" />
+    <Compile Include="Models\MstItemComponent.cs" />
+    <Compile Include="Models\MstItemGroup.cs" />
+    <Compile Include="Models\MstItemGroupItem.cs" />
+    <Compile Include="Models\MstItemInventory.cs" />
+    <Compile Include="Models\MstItemPackage.cs" />
+    <Compile Include="Models\MstItemPrice.cs" />
+    <Compile Include="Models\MstPayType.cs" />
+    <Compile Include="Models\MstPeriod.cs" />
+    <Compile Include="Models\MstSupplier.cs" />
+    <Compile Include="Models\MstTable.cs" />
     <Compile Include="Models\MstTableGroup.cs" />
     <Compile Include="Models\MstTax.cs" />
     <Compile Include="Models\MstTerm.cs" />
