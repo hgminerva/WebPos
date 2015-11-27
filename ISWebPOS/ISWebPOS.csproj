@@ -184,6 +184,13 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MstTableGroup.cs" />
+    <Compile Include="Models\MstTax.cs" />
+    <Compile Include="Models\MstTerm.cs" />
+    <Compile Include="Models\MstTerminal.cs" />
+    <Compile Include="Models\MstUnit.cs" />
+    <Compile Include="Models\MstUser.cs" />
+    <Compile Include="Models\MstUserForm.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
