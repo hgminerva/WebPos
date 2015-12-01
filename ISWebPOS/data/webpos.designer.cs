@@ -9,7 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ISWebPOS.data
+namespace ISWebPOS.Data
 {
 	using System.Data.Linq;
 	using System.Data.Linq.Mapping;
@@ -180,7 +180,7 @@ namespace ISWebPOS.data
     #endregion
 		
 		public webposDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["pos13ConnectionString"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}

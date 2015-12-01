@@ -23,12 +23,12 @@ namespace ISWebPOS.Models
         public Int32 OutTaxId { get; set; }
         public Int32 UnitId { get; set; }
         public Int32 DefaultSupplierId { get; set; }
-        public Double Cost { get; set; }
-        public Double MarkUp { get; set; }
-        public Double Price { get; set; }
+        public Decimal Cost { get; set; }
+        public Decimal MarkUp { get; set; }
+        public Decimal Price { get; set; }
         public String ImagePath { get; set; }
-        public Double ReorderQuantity { get; set; }
-        public Double OnhandQuantity { get; set; }
+        public Decimal ReorderQuantity { get; set; }
+        public Decimal OnhandQuantity { get; set; }
         public Boolean IsInventory { get; set; }
         public DateTime ExpiryDate { get; set; }
         public String LotNumber { get; set; }

@@ -12,6 +12,6 @@ namespace ISWebPOS.Models
         public Int32 Id { get; set; }
         public Int32 ItemId { get; set; }
         public DateTime InventoryDate { get; set; }
-        public Double Quantity { get; set; }
+        public Decimal Quantity { get; set; }
     }
 }

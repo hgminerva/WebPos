@@ -11,7 +11,7 @@ namespace ISWebPOS.Models
         [Key]
         public Int32 Id { get; set; }
         public String Discount { get; set; }
-        public Double DiscountRate { get; set; }
+        public Decimal DiscountRate { get; set; }
         public Boolean IsVatExempt { get; set; }
         public Boolean IsDateScheduled { get; set; }
         public DateTime DateStart { get; set; }

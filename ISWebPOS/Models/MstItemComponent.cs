@@ -13,9 +13,9 @@ namespace ISWebPOS.Models
         public Int32 ItemId { get; set; }
         public Int32 ComponentItemId { get; set; }
         public Int32 UnitId { get; set; }
-        public Double Quantity { get; set; }
-        public Double Cost { get; set; }
-        public Double Amount { get; set; }
+        public Decimal Quantity { get; set; }
+        public Decimal Cost { get; set; }
+        public Decimal Amount { get; set; }
         public Boolean IsPrinted { get; set; }
     }
 }

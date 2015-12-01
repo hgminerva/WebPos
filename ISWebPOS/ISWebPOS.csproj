@@ -28,7 +28,7 @@
     <OutputPath>bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <WarningLevel>0</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -170,11 +170,13 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ApiCustomerController.cs" />
+    <Compile Include="Controllers\ApiAccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Models\MstAccount.cs" />
     <Compile Include="Models\MstCustomer.cs" />
-    <Compile Include="data\webpos.designer.cs">
+    <Compile Include="Data\webpos.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>webpos.dbml</DependentUpon>
@@ -217,7 +219,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="data\webpos.dbml">
+    <Content Include="Data\webpos.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>webpos.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
@@ -284,7 +286,7 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="data\webpos.dbml.layout">
+    <None Include="Data\webpos.dbml.layout">
       <DependentUpon>webpos.dbml</DependentUpon>
     </None>
   </ItemGroup>

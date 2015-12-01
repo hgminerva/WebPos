@@ -11,6 +11,6 @@ namespace ISWebPOS.Models
         [Key]
         public Int32 Id { get; set; }
         public String Term { get; set; }
-        public Double NumberOfDays { get; set; }
+        public Decimal NumberOfDays { get; set; }
     }
 }
