@@ -8,14 +8,14 @@ using Microsoft.AspNet.Identity;
 
 namespace ISWebPOS.Controllers
 {
-    public class ApiCustomerController : ApiController
+    public class ApiItemController : ApiController
     {
         private Data.webposDataContext db = new Data.webposDataContext();
 
         // ===========
-        // LIST Customer
+        // LIST Item
         // ===========
-        [Route("api/customer/list")]
+        [Route("api/item/list")]
         public List<Models.MstCustomer> Get()
         {
             var isLocked = true;
@@ -46,9 +46,9 @@ namespace ISWebPOS.Controllers
         }
 
         // ===========
-        // ADD Customer
+        // ADD Item
         // ===========
-        [Route("api/customer/add")]
+        [Route("api/item/add")]
         public int Post(Models.MstCustomer customer)
         {
             try
@@ -91,9 +91,9 @@ namespace ISWebPOS.Controllers
         }
 
         // ==============
-        // UPDATE Customer
+        // UPDATE Item
         // ==============
-        [Route("api/customer/update/{id}")]
+        [Route("api/item/update/{id}")]
         public HttpResponseMessage Put(String id, Models.MstCustomer customer)
         {
             try
@@ -144,9 +144,9 @@ namespace ISWebPOS.Controllers
         }
 
         // ==============
-        // DELETE Customer
+        // DELETE Item
         // ==============
-        [Route("api/customer/delete/{id}")]
+        [Route("api/item/delete/{id}")]
         public HttpResponseMessage Delete(String id)
         {
             try

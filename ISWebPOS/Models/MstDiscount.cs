@@ -14,11 +14,11 @@ namespace ISWebPOS.Models
         public Decimal DiscountRate { get; set; }
         public Boolean IsVatExempt { get; set; }
         public Boolean IsDateScheduled { get; set; }
-        public DateTime DateStart { get; set; }
-        public DateTime DateEnd { get; set; }
+        public String DateStart { get; set; }
+        public String DateEnd { get; set; }
         public Boolean IsTimeScheduled { get; set; }
-        public DateTime TimeStart { get; set; }
-        public DateTime TimeEnd { get; set; }
+        public String TimeStart { get; set; }
+        public String TimeEnd { get; set; }
         public Boolean IsDayScheduled { get; set; }
         public Boolean DayMon { get; set; }
         public Boolean DayTue { get; set; }
@@ -28,9 +28,9 @@ namespace ISWebPOS.Models
         public Boolean DaySat { get; set; }
         public Boolean DaySun { get; set; }
         public Int32 EntryUserId { get; set; }
-        public DateTime EntryDateTime { get; set; }
+        public String EntryDateTime { get; set; }
         public Int32 UpdateUserId { get; set; }
-        public DateTime UpdateDateTime { get; set; }
+        public String UpdateDateTime { get; set; }
         public Boolean IsLocked { get; set; }
     }
 }
