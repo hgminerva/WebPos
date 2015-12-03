@@ -233,6 +233,11 @@
     <Compile Include="Models\TrnJournal.cs" />
     <Compile Include="Models\TrnPurchaseOrder.cs" />
     <Compile Include="Models\TrnPurchaseOrderLine.cs" />
+    <Compile Include="Models\TrnStockCountLine.cs" />
+    <Compile Include="Models\TrnStockIn.cs" />
+    <Compile Include="Models\TrnStockInLine.cs" />
+    <Compile Include="Models\TrnStockOut.cs" />
+    <Compile Include="Models\TrnStockOutLine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
