@@ -170,6 +170,10 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ApiItemController.cs" />
+    <Compile Include="Controllers\ApiItemComponentController.cs" />
+    <Compile Include="Controllers\ApiDiscountItemController.cs" />
+    <Compile Include="Controllers\ApiDiscountController.cs" />
     <Compile Include="Controllers\ApiCustomerController.cs" />
     <Compile Include="Controllers\ApiAccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -207,6 +211,17 @@
     <Compile Include="Models\MstUnit.cs" />
     <Compile Include="Models\MstUser.cs" />
     <Compile Include="Models\MstUserForm.cs" />
+    <Compile Include="Models\SysAuditTrail.cs" />
+    <Compile Include="Models\SysForm.cs" />
+    <Compile Include="Models\SysSalesLocked.cs" />
+    <Compile Include="Models\TrnCollection.cs" />
+    <Compile Include="Models\TrnCollectionLine.cs" />
+    <Compile Include="Models\TrnDebitCreditMemo.cs" />
+    <Compile Include="Models\TrnDebitCreditMemoLine.cs" />
+    <Compile Include="Models\TrnDisbursement.cs" />
+    <Compile Include="Models\TrnJournal.cs" />
+    <Compile Include="Models\TrnPurchaseOrder.cs" />
+    <Compile Include="Models\TrnPurchaseOrderLine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>

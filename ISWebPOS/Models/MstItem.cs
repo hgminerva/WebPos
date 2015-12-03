@@ -15,7 +15,7 @@ namespace ISWebPOS.Models
         public String ItemDescription { get; set; }
         public String Alias { get; set; }
         public String GenericName { get; set; }
-        public String Catergory { get; set; }
+        public String Category { get; set; }
         public Int32 SalesAccountId { get; set; }
         public Int32 AssetAccountId { get; set; }
         public Int32 CostAccountId { get; set; }
@@ -30,13 +30,13 @@ namespace ISWebPOS.Models
         public Decimal ReorderQuantity { get; set; }
         public Decimal OnhandQuantity { get; set; }
         public Boolean IsInventory { get; set; }
-        public DateTime ExpiryDate { get; set; }
+        public String ExpiryDate { get; set; }
         public String LotNumber { get; set; }
         public String Remarks { get; set; }
         public Int32 EntryUserId { get; set; }
-        public DateTime EntryDateTime { get; set; }
+        public String EntryDateTime { get; set; }
         public Int32 UpdateUserId { get; set; }
-        public DateTime UpdateDateTime { get; set; }
+        public String UpdateDateTime { get; set; }
         public Boolean isLocked { get; set; }
         public String DefaultKitchenReport { get; set; }
         public Boolean IsPackage { get; set; }

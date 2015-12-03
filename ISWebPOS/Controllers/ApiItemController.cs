@@ -14,42 +14,112 @@ namespace ISWebPOS.Controllers
 
         // ===========
         // LIST Item
-        // ===========
+        // =========== 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         [Route("api/item/list")]
-        public List<Models.MstCustomer> Get()
+        public List<Models.MstItem> Get()
         {
             var isLocked = true;
 
-            var customer = from d in db.MstCustomers
-                           select new Models.MstCustomer
+            var item = from d in db.MstItems
+                           select new Models.MstItem
                            {
-                               Customer = d.Customer,
-                               Address = d.Address,
-                               ContactPerson = d.ContactPerson,
-                               ContactNumber = d.ContactNumber,
-                               CreditLimit = d.CreditLimit,
-                               TermId = d.TermId,
-                               TIN  = d.TIN,
-                               WithReward = d.WithReward,
-                               RewardNumber = d.RewardNumber,
-                               RewardConversion = d.RewardConversion,
-                               AccountId = d.AccountId,
-                               DefaultPriceDescription = d.DefaultPriceDescription,
+
+                               ItemCode = d.ItemCode,
+                               BarCode = d.BarCode,
+                               ItemDescription = d.ItemDescription,
+                               Alias = d.Alias,
+                               GenericName = d.GenericName,
+                               Category = d.Category,
+                               SalesAccountId = d.SalesAccountId,
+                               AssetAccountId = d.AssetAccountId,
+                               CostAccountId = d.CostAccountId,
+                               InTaxId = d.InTaxId,
+                               OutTaxId = d.OutTaxId,
+                               UnitId = d.UnitId,
+                               DefaultSupplierId = d.DefaultSupplierId,
+                               Cost = d.Cost,
+                               MarkUp = d.MarkUp,
+                               Price = d.Price,
+                               ImagePath = d.ImagePath,
+                               ReorderQuantity = d.ReorderQuantity,
+                               OnhandQuantity = d.OnhandQuantity,
+                               IsInventory = d.IsInventory,
+                               ExpiryDate = Convert.ToString(d.ExpiryDate),
+                               LotNumber = d.LotNumber,
+                               Remarks = d.Remarks,
+                               DefaultKitchenReport = d.DefaultKitchenReport,
+                               IsPackage = d.IsPackage,
 
                                EntryUserId = d.EntryUserId,
-                               EntryDateTime = d.EntryDateTime,
+                               EntryDateTime = Convert.ToString(d.EntryDateTime),
                                UpdateUserId = d.UpdateUserId,
-                               UpdateDateTime = d.UpdateDateTime,
-                               IsLocked = isLocked
+                               UpdateDateTime = Convert.ToString(d.UpdateDateTime),
+                               isLocked = isLocked
+            
                            };
-            return customer.ToList();
+            return item.ToList();
         }
 
         // ===========
         // ADD Item
         // ===========
         [Route("api/item/add")]
-        public int Post(Models.MstCustomer customer)
+        public int Post(Models.MstItem item)
         {
             try
             {
@@ -58,31 +128,44 @@ namespace ISWebPOS.Controllers
                 var mstUserId = (from d in db.MstUsers where "" + d.Id == identityUserId select d.Id).SingleOrDefault();
                 var date = DateTime.Now;
 
-                Data.MstCustomer newCustomer = new Data.MstCustomer();
+                Data.MstItem newItem = new Data.MstItem();
 
-                newCustomer.Customer = customer.Customer;
-                newCustomer.Address = customer.Address;
-                newCustomer.ContactPerson = customer.ContactPerson;
-                newCustomer.ContactNumber = customer.ContactNumber;
-                newCustomer.CreditLimit = customer.CreditLimit;
-                newCustomer.TermId = customer.TermId;
-                newCustomer.TIN  = customer.TIN;
-                newCustomer.WithReward = customer.WithReward;
-                newCustomer.RewardNumber = customer.RewardNumber;
-                newCustomer.RewardConversion = customer.RewardConversion;
-                newCustomer.AccountId = customer.AccountId;
-                newCustomer.DefaultPriceDescription = customer.DefaultPriceDescription;
+                newItem.ItemCode = item.ItemCode;
+                newItem.BarCode = item.BarCode;
+                newItem.ItemDescription = item.ItemDescription;
+                newItem.Alias = item.Alias;
+                newItem.GenericName = item.GenericName;
+                newItem.Category = item.Category;
+                newItem.SalesAccountId = item.SalesAccountId;
+                newItem.AssetAccountId = item.AssetAccountId;
+                newItem.CostAccountId = item.CostAccountId;
+                newItem.InTaxId = item.InTaxId;
+                newItem.OutTaxId = item.OutTaxId;
+                newItem.UnitId = item.UnitId;
+                newItem.DefaultSupplierId = item.DefaultSupplierId;
+                newItem.Cost = item.Cost;
+                newItem.MarkUp = item.MarkUp;
+                newItem.Price = item.Price;
+                newItem.ImagePath = item.ImagePath;
+                newItem.ReorderQuantity = item.ReorderQuantity;
+                newItem.OnhandQuantity = item.OnhandQuantity;
+                newItem.IsInventory = item.IsInventory;
+                newItem.ExpiryDate = Convert.ToDateTime(item.ExpiryDate);
+                newItem.LotNumber = item.LotNumber;
+                newItem.Remarks = item.Remarks;
+                newItem.DefaultKitchenReport = item.DefaultKitchenReport;
+                newItem.IsPackage = item.IsPackage;
 
-                newCustomer.EntryUserId = mstUserId;
-                newCustomer.EntryDateTime = date;
-                newCustomer.UpdateUserId = mstUserId;
-                newCustomer.UpdateDateTime = date;
-                newCustomer.IsLocked = isLocked;    
+                newItem.EntryUserId = mstUserId;
+                newItem.EntryDateTime = date;
+                newItem.UpdateUserId = mstUserId;
+                newItem.UpdateDateTime = date;
+                newItem.IsLocked = isLocked;
 
-                db.MstCustomers.InsertOnSubmit(newCustomer);
+                db.MstItems.InsertOnSubmit(newItem);
                 db.SubmitChanges();
 
-                return newCustomer.Id;
+                return newItem.Id;
             }
             catch
             {
@@ -94,7 +177,7 @@ namespace ISWebPOS.Controllers
         // UPDATE Item
         // ==============
         [Route("api/item/update/{id}")]
-        public HttpResponseMessage Put(String id, Models.MstCustomer customer)
+        public HttpResponseMessage Put(String id, Models.MstItem item)
         {
             try
             {
@@ -103,29 +186,42 @@ namespace ISWebPOS.Controllers
                 var mstUserId = (from d in db.MstUsers where "" + d.Id == identityUserId select d.Id).SingleOrDefault();
                 var date = DateTime.Now;
 
-                var cusomerId = Convert.ToInt32(id);
-                var customers = from d in db.MstCustomers where d.Id == cusomerId select d;
+                var itemId = Convert.ToInt32(id);
+                var items = from d in db.MstItems where d.Id == itemId select d;
 
-                if (customers.Any())
+                if (items.Any())
                 {
-                    var updateCustomer = customers.FirstOrDefault();
+                    var updateItem = items.FirstOrDefault();
 
-                    updateCustomer.Customer = customer.Customer;
-                    updateCustomer.Address = customer.Address;
-                    updateCustomer.ContactPerson = customer.ContactPerson;
-                    updateCustomer.ContactNumber = customer.ContactNumber;
-                    updateCustomer.CreditLimit = customer.CreditLimit;
-                    updateCustomer.TermId = customer.TermId;
-                    updateCustomer.TIN = customer.TIN;
-                    updateCustomer.WithReward = customer.WithReward;
-                    updateCustomer.RewardNumber = customer.RewardNumber;
-                    updateCustomer.RewardConversion = customer.RewardConversion;
-                    updateCustomer.AccountId = customer.AccountId;
-                    updateCustomer.DefaultPriceDescription = customer.DefaultPriceDescription;
+                    updateItem.ItemCode = item.ItemCode;
+                    updateItem.BarCode = item.BarCode;
+                    updateItem.ItemDescription = item.ItemDescription;
+                    updateItem.Alias = item.Alias;
+                    updateItem.GenericName = item.GenericName;
+                    updateItem.Category = item.Category;
+                    updateItem.SalesAccountId = item.SalesAccountId;
+                    updateItem.AssetAccountId = item.AssetAccountId;
+                    updateItem.CostAccountId = item.CostAccountId;
+                    updateItem.InTaxId = item.InTaxId;
+                    updateItem.OutTaxId = item.OutTaxId;
+                    updateItem.UnitId = item.UnitId;
+                    updateItem.DefaultSupplierId = item.DefaultSupplierId;
+                    updateItem.Cost = item.Cost;
+                    updateItem.MarkUp = item.MarkUp;
+                    updateItem.Price = item.Price;
+                    updateItem.ImagePath = item.ImagePath;
+                    updateItem.ReorderQuantity = item.ReorderQuantity;
+                    updateItem.OnhandQuantity = item.OnhandQuantity;
+                    updateItem.IsInventory = item.IsInventory;
+                    updateItem.ExpiryDate = Convert.ToDateTime(item.ExpiryDate);
+                    updateItem.LotNumber = item.LotNumber;
+                    updateItem.Remarks = item.Remarks;
+                    updateItem.DefaultKitchenReport = item.DefaultKitchenReport;
+                    updateItem.IsPackage = item.IsPackage;
 
-                    updateCustomer.UpdateUserId = mstUserId;
-                    updateCustomer.UpdateDateTime = date;
-                    updateCustomer.IsLocked = isLocked;
+                    updateItem.UpdateUserId = mstUserId;
+                    updateItem.UpdateDateTime = date;
+                    updateItem.IsLocked = isLocked;
 
                     db.SubmitChanges();
 
@@ -151,12 +247,12 @@ namespace ISWebPOS.Controllers
         {
             try
             {
-                var customerId = Convert.ToInt32(id);
-                var customers = from d in db.MstCustomers where d.Id == customerId select d;
+                var itemId = Convert.ToInt32(id);
+                var items = from d in db.MstItems where d.Id == itemId select d;
 
-                if (customers.Any())
+                if (items.Any())
                 {
-                    db.MstCustomers.DeleteOnSubmit(customers.First());
+                    db.MstItems.DeleteOnSubmit(items.First());
                     db.SubmitChanges();
 
                     return Request.CreateResponse(HttpStatusCode.OK);
