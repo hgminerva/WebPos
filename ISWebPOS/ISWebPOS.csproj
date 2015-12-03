@@ -176,6 +176,17 @@
     <Compile Include="Controllers\ApiDiscountController.cs" />
     <Compile Include="Controllers\ApiCustomerController.cs" />
     <Compile Include="Controllers\ApiAccountController.cs" />
+    <Compile Include="Controllers\ApiItemGroupController.cs" />
+    <Compile Include="Controllers\ApiItemGroupItemController.cs" />
+    <Compile Include="Controllers\ApiItemInventoryController.cs" />
+    <Compile Include="Controllers\ApiItemPackageController.cs" />
+    <Compile Include="Controllers\ApiJournalController.cs" />
+    <Compile Include="Controllers\ApiPurchaseOrderController.cs" />
+    <Compile Include="Controllers\ApiPurchaseOrderLineController.cs" />
+    <Compile Include="Controllers\ApiTableController.cs" />
+    <Compile Include="Controllers\ApiTableGroupController.cs" />
+    <Compile Include="Controllers\ApiTaxController.cs" />
+    <Compile Include="Controllers\ApiTermController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Models\MstAccount.cs" />
@@ -289,6 +300,18 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\ApiItemGroupItem\" />
+    <Folder Include="Views\ApiItemGroup\" />
+    <Folder Include="Views\ApiItemInventory\" />
+    <Folder Include="Views\ApiItemPackage\" />
+    <Folder Include="Views\ApiJournal\" />
+    <Folder Include="Views\ApiPurchaseOrderLine\" />
+    <Folder Include="Views\ApiPurchaseOrder\" />
+    <Folder Include="Views\ApiTableGroup\" />
+    <Folder Include="Views\ApiTable\" />
+    <Folder Include="Views\ApiTax\" />
+    <Folder Include="Views\ApiTerm\" />
+    <Folder Include="Views\PurchaseOrderLine\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

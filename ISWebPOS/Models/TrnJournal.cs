@@ -8,7 +8,7 @@ namespace ISWebPOS.Models
     public class TrnJournal
     {
         public Int32 Id { get; set; }
-        public DateTime JournalDate { get; set; }
+        public String JournalDate { get; set; }
         public String JournalRefDocument { get; set; }
         public Int32 AccountId { get; set; }
         public Decimal DebitAmount { get; set; }
