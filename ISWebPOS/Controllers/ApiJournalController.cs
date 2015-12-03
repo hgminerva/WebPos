@@ -18,34 +18,54 @@ namespace ISWebPOS.Controllers
         [Route("api/journal/list")]
         public List<Models.TrnJournal> Get()
         {
-            var Term = from d in db.TrnJournals
+            var Journal = from d in db.TrnJournals
                        select new Models.TrnJournal
                        {
                            Id = d.Id,
-                           
+                           JournalDate = Convert.ToString(d.JournalDate),
+                           JournalRefDocument = d.JournalRefDocument,
+                           AccountId = d.AccountId,
+                           DebitAmount = d.DebitAmount,
+                           CreditAmount = d.CreditAmount,
+                           SalesId = d.SalesId,
+                           StockInId = d.StockInId,
+                           StockOutId = d.StockOutId,
+                           CollectionId = d.CollectionId,
+                           DCMemoId = d.DCMemoId,
+                           DisbursementId = d.DisbursementId
                        };
-            return Term.ToList();
+            return Journal.ToList();
         }
 
         // ===========
         // ADD Journal
         // ===========
         [Route("api/journal/add")]
-        public int Post(Models.TrnJournal term)
+        public int Post(Models.TrnJournal journal)
         {
             try
             {
 
-                Data.TrnJournal newTerm = new Data.TrnJournal();
+                Data.TrnJournal newJournal = new Data.TrnJournal();
 
                 //
-               
+                newJournal.JournalDate = Convert.ToDateTime(journal.JournalDate);
+                newJournal.JournalRefDocument = journal.JournalRefDocument;
+                newJournal.AccountId = journal.AccountId;
+                newJournal.DebitAmount = journal.DebitAmount;
+                newJournal.CreditAmount = journal.CreditAmount;
+                newJournal.SalesId = journal.SalesId;
+                newJournal.StockInId = journal.StockInId;
+                newJournal.StockOutId = journal.StockOutId;
+                newJournal.CollectionId = journal.CollectionId;
+                newJournal.DCMemoId = journal.DCMemoId;
+                newJournal.DisbursementId = journal.DisbursementId;
                 //
 
-                db.TrnJournals.InsertOnSubmit(newTerm);
+                db.TrnJournals.InsertOnSubmit(newJournal);
                 db.SubmitChanges();
 
-                return newTerm.Id;
+                return newJournal.Id;
             }
             catch
             {
@@ -57,20 +77,30 @@ namespace ISWebPOS.Controllers
         // UPDATE Journal
         // ==============
         [Route("api/journal/update/{id}")]
-        public HttpResponseMessage Put(String id, Models.TrnJournal term)
+        public HttpResponseMessage Put(String id, Models.TrnJournal journal)
         {
             try
             {
 
-                var TermId = Convert.ToInt32(id);
-                var Term = from d in db.TrnJournals where d.Id == TermId select d;
+                var JournalId = Convert.ToInt32(id);
+                var Journal = from d in db.TrnJournals where d.Id == JournalId select d;
 
-                if (Term.Any())
+                if (Journal.Any())
                 {
-                    var updateTax = Term.FirstOrDefault();
+                    var updateJournal = Journal.FirstOrDefault();
 
                     //
-                    
+                    updateJournal.JournalDate = Convert.ToDateTime(journal.JournalDate);
+                    updateJournal.JournalRefDocument = journal.JournalRefDocument;
+                    updateJournal.AccountId = journal.AccountId;
+                    updateJournal.DebitAmount = journal.DebitAmount;
+                    updateJournal.CreditAmount = journal.CreditAmount;
+                    updateJournal.SalesId = journal.SalesId;
+                    updateJournal.StockInId = journal.StockInId;
+                    updateJournal.StockOutId = journal.StockOutId;
+                    updateJournal.CollectionId = journal.CollectionId;
+                    updateJournal.DCMemoId = journal.DCMemoId;
+                    updateJournal.DisbursementId = journal.DisbursementId;                              
                     //
 
                     db.SubmitChanges();
@@ -97,12 +127,12 @@ namespace ISWebPOS.Controllers
         {
             try
             {
-                var TaxId = Convert.ToInt32(id);
-                var Tax = from d in db.TrnJournals where d.Id == TaxId select d;
+                var JournalId = Convert.ToInt32(id);
+                var Journal = from d in db.TrnJournals where d.Id == JournalId select d;
 
-                if (Tax.Any())
+                if (Journal.Any())
                 {
-                    db.TrnJournals.DeleteOnSubmit(Tax.First());
+                    db.TrnJournals.DeleteOnSubmit(Journal.First());
                     db.SubmitChanges();
 
                     return Request.CreateResponse(HttpStatusCode.OK);

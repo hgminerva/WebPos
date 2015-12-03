@@ -170,6 +170,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ApiDisbursementController.cs" />
     <Compile Include="Controllers\ApiItemController.cs" />
     <Compile Include="Controllers\ApiItemComponentController.cs" />
     <Compile Include="Controllers\ApiDiscountItemController.cs" />
@@ -305,6 +306,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\ApiDisbursement\" />
     <Folder Include="Views\ApiItemGroupItem\" />
     <Folder Include="Views\ApiItemGroup\" />
     <Folder Include="Views\ApiItemInventory\" />
