@@ -40,10 +40,13 @@ namespace ISWebPOS.Controllers
         {
             try
             {
+                var identityUserId = User.Identity.GetUserId();
+                var mstUserId = (from d in db.MstUsers where "" + d.Id == identityUserId select d.Id).SingleOrDefault();
+
                 Data.SysAuditTrail newAuditTrail = new Data.SysAuditTrail();
 
                 //
-                newAuditTrail.UserId = audittrail.UserId;
+                newAuditTrail.UserId = mstUserId;
                 newAuditTrail.AuditDate = Convert.ToDateTime(audittrail.AuditDate);
                 newAuditTrail.TableInformation = audittrail.TableInformation;
                 newAuditTrail.RecordInformation = audittrail.RecordInformation;
@@ -70,6 +73,8 @@ namespace ISWebPOS.Controllers
         {
             try
             {
+                var identityUserId = User.Identity.GetUserId();
+                var mstUserId = (from d in db.MstUsers where "" + d.Id == identityUserId select d.Id).SingleOrDefault();
 
                 var AuditTrailId = Convert.ToInt32(id);
                 var AuditTrail = from d in db.SysAuditTrails where d.Id == AuditTrailId select d;
@@ -79,7 +84,7 @@ namespace ISWebPOS.Controllers
                     var updateAuditTrail = AuditTrail.FirstOrDefault();
 
                     //
-                    updateAuditTrail.UserId = audittrail.UserId;
+                    updateAuditTrail.UserId = mstUserId;
                     updateAuditTrail.AuditDate = Convert.ToDateTime(audittrail.AuditDate);
                     updateAuditTrail.TableInformation = audittrail.TableInformation;
                     updateAuditTrail.RecordInformation = audittrail.RecordInformation;
