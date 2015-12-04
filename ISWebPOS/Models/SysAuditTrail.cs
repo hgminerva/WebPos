@@ -9,7 +9,7 @@ namespace ISWebPOS.Models
     {
         public Int32 Id { get; set; }
         public Int32 UserId { get; set; }
-        public DateTime AuditDate { get; set; }
+        public String AuditDate { get; set; }
         public String TableInformation { get; set; }
         public String RecordInformation { get; set; }
         public String FormInformation { get; set; }

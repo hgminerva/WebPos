@@ -170,7 +170,13 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ApiAuditTrailController.cs" />
+    <Compile Include="Controllers\ApiCollectionController.cs" />
+    <Compile Include="Controllers\ApiCollectionLineController.cs" />
+    <Compile Include="Controllers\ApiDebitCreditMemoController.cs" />
+    <Compile Include="Controllers\ApiDebitCreditMemoLineController.cs" />
     <Compile Include="Controllers\ApiDisbursementController.cs" />
+    <Compile Include="Controllers\ApiFormController.cs" />
     <Compile Include="Controllers\ApiItemController.cs" />
     <Compile Include="Controllers\ApiItemComponentController.cs" />
     <Compile Include="Controllers\ApiDiscountItemController.cs" />
@@ -184,6 +190,7 @@
     <Compile Include="Controllers\ApiJournalController.cs" />
     <Compile Include="Controllers\ApiPurchaseOrderController.cs" />
     <Compile Include="Controllers\ApiPurchaseOrderLineController.cs" />
+    <Compile Include="Controllers\ApiSalesLockedController.cs" />
     <Compile Include="Controllers\ApiTableController.cs" />
     <Compile Include="Controllers\ApiTableGroupController.cs" />
     <Compile Include="Controllers\ApiTaxController.cs" />
@@ -306,7 +313,13 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\ApiAuditTrail\" />
+    <Folder Include="Views\ApiCollectionLine\" />
+    <Folder Include="Views\ApiCollection\" />
+    <Folder Include="Views\ApiDebitCreditMemoLine\" />
+    <Folder Include="Views\ApiDebitCreditMemo\" />
     <Folder Include="Views\ApiDisbursement\" />
+    <Folder Include="Views\ApiForm\" />
     <Folder Include="Views\ApiItemGroupItem\" />
     <Folder Include="Views\ApiItemGroup\" />
     <Folder Include="Views\ApiItemInventory\" />
@@ -314,6 +327,8 @@
     <Folder Include="Views\ApiJournal\" />
     <Folder Include="Views\ApiPurchaseOrderLine\" />
     <Folder Include="Views\ApiPurchaseOrder\" />
+    <Folder Include="Views\ApiSalesLocked\" />
+    <Folder Include="Views\ApiSysSalesLocked\" />
     <Folder Include="Views\ApiTableGroup\" />
     <Folder Include="Views\ApiTable\" />
     <Folder Include="Views\ApiTax\" />

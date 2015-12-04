@@ -9,13 +9,13 @@ namespace ISWebPOS.Models
     {
         public Int32 Id { get; set; }
         public Int32 PeriodId { get; set; }
-        public DateTime CollectionDate { get; set; }
+        public String CollectionDate { get; set; }
         public String CollectionNumber { get; set; }
         public Int32 TerminalId { get; set; }
         public String ManualORNumber { get; set; }
         public Int32 CustomerId { get; set; }
         public String Remarks { get; set; }
-        public Int32 SalesId { get; set; }
+        public Int32? SalesId { get; set; }
         public Decimal SalesBalanceAmount { get; set; }
         public Decimal Amount { get; set; }
         public Decimal TenderAmount { get; set; }
