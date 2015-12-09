@@ -187,10 +187,14 @@
     <Compile Include="Controllers\ApiItemGroupItemController.cs" />
     <Compile Include="Controllers\ApiItemInventoryController.cs" />
     <Compile Include="Controllers\ApiItemPackageController.cs" />
+    <Compile Include="Controllers\ApiItemPriceController.cs" />
     <Compile Include="Controllers\ApiJournalController.cs" />
+    <Compile Include="Controllers\ApiPayTypeController.cs" />
+    <Compile Include="Controllers\ApiPeriodController.cs" />
     <Compile Include="Controllers\ApiPurchaseOrderController.cs" />
     <Compile Include="Controllers\ApiPurchaseOrderLineController.cs" />
     <Compile Include="Controllers\ApiSalesLockedController.cs" />
+    <Compile Include="Controllers\ApiSupplierController.cs" />
     <Compile Include="Controllers\ApiTableController.cs" />
     <Compile Include="Controllers\ApiTableGroupController.cs" />
     <Compile Include="Controllers\ApiTaxController.cs" />
