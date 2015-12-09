@@ -172,6 +172,15 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ApiCustomerController.cs" />
     <Compile Include="Controllers\ApiAccountController.cs" />
+    <Compile Include="Controllers\ApiSalesController.cs" />
+    <Compile Include="Controllers\ApiSalesDraftController.cs" />
+    <Compile Include="Controllers\ApiSalesLineController.cs" />
+    <Compile Include="Controllers\ApiSalesReleasedController.cs" />
+    <Compile Include="Controllers\ApiStockCountController.cs" />
+    <Compile Include="Controllers\ApiTerminalController.cs" />
+    <Compile Include="Controllers\ApiUnitController.cs" />
+    <Compile Include="Controllers\ApiUserController.cs" />
+    <Compile Include="Controllers\ApiUserFormController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Models\MstAccount.cs" />
@@ -207,6 +216,11 @@
     <Compile Include="Models\MstUnit.cs" />
     <Compile Include="Models\MstUser.cs" />
     <Compile Include="Models\MstUserForm.cs" />
+    <Compile Include="Models\TrnSales.cs" />
+    <Compile Include="Models\TrnSalesDraft.cs" />
+    <Compile Include="Models\TrnSalesLine.cs" />
+    <Compile Include="Models\TrnSalesReleased.cs" />
+    <Compile Include="Models\TrnStockCount.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -274,6 +288,15 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\ApiSalesDraft\" />
+    <Folder Include="Views\ApiSalesLine\" />
+    <Folder Include="Views\ApiSalesReleased\" />
+    <Folder Include="Views\ApiSales\" />
+    <Folder Include="Views\ApiStockCount\" />
+    <Folder Include="Views\ApiTerminal\" />
+    <Folder Include="Views\ApiUnit\" />
+    <Folder Include="Views\ApiUserForm\" />
+    <Folder Include="Views\ApiUser\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
