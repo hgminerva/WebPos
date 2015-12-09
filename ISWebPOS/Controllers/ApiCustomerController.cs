@@ -34,18 +34,19 @@ namespace ISWebPOS.Controllers
                                RewardNumber = d.RewardNumber,
                                RewardConversion = d.RewardConversion,
                                AccountId = d.AccountId,
+                               DefaultPriceDescription = d.DefaultPriceDescription,
+
                                EntryUserId = d.EntryUserId,
                                EntryDateTime = d.EntryDateTime,
                                UpdateUserId = d.UpdateUserId,
                                UpdateDateTime = d.UpdateDateTime,
-                               IsLocked = isLocked,    
-                               DefaultPriceDescription = d.DefaultPriceDescription
+                               IsLocked = isLocked
                            };
             return customer.ToList();
         }
 
         // ===========
-        // ADD Account
+        // ADD Customer
         // ===========
         [Route("api/customer/add")]
         public int Post(Models.MstCustomer customer)
@@ -56,9 +57,6 @@ namespace ISWebPOS.Controllers
                 var identityUserId = User.Identity.GetUserId();
                 var mstUserId = (from d in db.MstUsers where "" + d.Id == identityUserId select d.Id).SingleOrDefault();
                 var date = DateTime.Now;
-
-                Double trn = 1;
-                Double trt = trn;
 
                 Data.MstCustomer newCustomer = new Data.MstCustomer();
 
@@ -73,12 +71,13 @@ namespace ISWebPOS.Controllers
                 newCustomer.RewardNumber = customer.RewardNumber;
                 newCustomer.RewardConversion = customer.RewardConversion;
                 newCustomer.AccountId = customer.AccountId;
+                newCustomer.DefaultPriceDescription = customer.DefaultPriceDescription;
+
                 newCustomer.EntryUserId = mstUserId;
                 newCustomer.EntryDateTime = date;
                 newCustomer.UpdateUserId = mstUserId;
                 newCustomer.UpdateDateTime = date;
                 newCustomer.IsLocked = isLocked;    
-                newCustomer.DefaultPriceDescription = customer.DefaultPriceDescription;
 
                 db.MstCustomers.InsertOnSubmit(newCustomer);
                 db.SubmitChanges();
@@ -92,26 +91,41 @@ namespace ISWebPOS.Controllers
         }
 
         // ==============
-        // UPDATE Account
+        // UPDATE Customer
         // ==============
         [Route("api/customer/update/{id}")]
-        public HttpResponseMessage Put(String id, Models.MstAccount account)
+        public HttpResponseMessage Put(String id, Models.MstCustomer customer)
         {
             try
             {
                 var isLocked = true;
+                var identityUserId = User.Identity.GetUserId();
+                var mstUserId = (from d in db.MstUsers where "" + d.Id == identityUserId select d.Id).SingleOrDefault();
+                var date = DateTime.Now;
 
                 var cusomerId = Convert.ToInt32(id);
-                var accounts = from d in db.MstCustomers where d.Id == cusomerId select d;
+                var customers = from d in db.MstCustomers where d.Id == cusomerId select d;
 
-                if (accounts.Any())
+                if (customers.Any())
                 {
-                    var updateAccount = accounts.FirstOrDefault();
+                    var updateCustomer = customers.FirstOrDefault();
 
-                    //updateAccount.Account = account.Account;
-                    //updateAccount.IsLocked = isLocked;
-                    //updateAccount.Code = account.Code;
-                    //updateAccount.AccountType = account.AccountType;
+                    updateCustomer.Customer = customer.Customer;
+                    updateCustomer.Address = customer.Address;
+                    updateCustomer.ContactPerson = customer.ContactPerson;
+                    updateCustomer.ContactNumber = customer.ContactNumber;
+                    updateCustomer.CreditLimit = customer.CreditLimit;
+                    updateCustomer.TermId = customer.TermId;
+                    updateCustomer.TIN = customer.TIN;
+                    updateCustomer.WithReward = customer.WithReward;
+                    updateCustomer.RewardNumber = customer.RewardNumber;
+                    updateCustomer.RewardConversion = customer.RewardConversion;
+                    updateCustomer.AccountId = customer.AccountId;
+                    updateCustomer.DefaultPriceDescription = customer.DefaultPriceDescription;
+
+                    updateCustomer.UpdateUserId = mstUserId;
+                    updateCustomer.UpdateDateTime = date;
+                    updateCustomer.IsLocked = isLocked;
 
                     db.SubmitChanges();
 
@@ -130,7 +144,7 @@ namespace ISWebPOS.Controllers
         }
 
         // ==============
-        // DELETE Account
+        // DELETE Customer
         // ==============
         [Route("api/customer/delete/{id}")]
         public HttpResponseMessage Delete(String id)

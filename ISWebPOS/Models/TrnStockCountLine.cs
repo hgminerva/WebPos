@@ -1,17 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.ComponentModel.DataAnnotations;
 
 namespace ISWebPOS.Models
 {
-    public class MstItemInventory
+    public class TrnStockCountLine
     {
         [Key]
         public Int32 Id { get; set; }
+        public Int32 StockCountId { get; set; }
         public Int32 ItemId { get; set; }
-        public String InventoryDate { get; set; }
+        public Int32 UnitId { get; set; }
         public Decimal Quantity { get; set; }
+        public Decimal Cost { get; set; }
+        public Decimal Amount { get; set; }
     }
 }
