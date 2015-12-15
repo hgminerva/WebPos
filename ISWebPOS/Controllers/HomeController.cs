@@ -26,5 +26,14 @@ namespace ISWebPOS.Controllers
 
             return View();
         }
+        public ActionResult Customer()
+        {
+            return View();
+        }
+        [Route("custmer/list")]
+        public ActionResult list()
+        {
+            return null;
+        }
     }
 }
