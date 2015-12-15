@@ -1,0 +1,544 @@
+﻿
+@{
+    ViewBag.Title = "AddItem";
+}
+
+<!DOCTYPE html>
+<html>
+<!-- ADD THE CLASS sidedar-collapse TO HIDE THE SIDEBAR PRIOR TO LOADING THE SITE -->
+<body class="hold-transition skin-blue sidebar-collapse sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+
+        <header class="main-header">
+            <!-- Logo -->
+            <a href="../../index2.html" class="logo">
+                <!-- mini logo for sidebar mini 50x50 pixels -->
+                <span class="logo-mini"><b>P</b>OS</span>
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg"><b>Web</b>POS</span>
+            </a>
+            <!-- Header Navbar: style can be found in header.less -->
+            <nav class="navbar navbar-static-top" role="navigation">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <!-- User Account: style can be found in dropdown.less -->
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="../../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                                <span class="hidden-xs">Administrator</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- User image -->
+                                <li class="user-header">
+                                    <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                    <p>
+                                        Administrator - Cashier
+                                        <small>Member since Nov. 2012</small>
+                                    </p>
+                                </li>
+                                <!-- Menu Body -->
+                                <li class="user-body">
+                                    <div class="col-xs-4 text-center">
+                                        <a href="#">Sales</a>
+                                    </div>
+                                </li>
+                                <!-- Menu Footer-->
+                                <li class="user-footer">
+                                    <div class="pull-right">
+                                        <a href="#" class="btn btn-default btn-flat fa fa-sign-out">Sign out</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- Control Sidebar Toggle Button -->
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <!-- =============================================== -->
+        <!-- Left side column. contains the sidebar -->
+        <aside class="main-sidebar">
+            <!-- sidebar: style can be found in sidebar.less -->
+            <section class="sidebar">
+                <!-- Sidebar user panel -->
+                <div class="user-panel">
+                    <div class="pull-left image">
+                        <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                    </div>
+                    <div class="pull-left info">
+                        <p>Administrator</p>
+                    </div>
+                </div>
+                <!-- search form -->
+                <form action="#" method="get" class="sidebar-form">
+                    <div class="input-group">
+                        <input type="text" name="q" class="form-control" placeholder="Search...">
+                        <span class="input-group-btn">
+                            <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
+                        </span>
+                    </div>
+                </form>
+                <!-- /.search form -->
+                <!-- sidebar menu: : style can be found in sidebar.less -->
+                <ul class="sidebar-menu">
+                    <li class="header">MAIN NAVIGATION</li>
+                    <li class="treeview">
+                        <a href="../Software/Dashboard">
+                            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-percent"></i>
+                            <span>Discount</span>
+                            <span class="label label-primary pull-right">4</span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="top-nav.html"><i class="fa fa-circle-o"></i> Top Navigation</a></li>
+                            <li><a href="boxed.html"><i class="fa fa-circle-o"></i> Boxed</a></li>
+                            <li><a href="fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>
+                            <li><a href="collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="../widgets.html">
+                            <i class="fa fa-users"></i> <span>Customers</span> <small class="label pull-right bg-green">new</small>
+                        </a>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-truck"></i>
+                            <span>Supplier</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="../charts/chartjs.html"><i class="fa fa-circle-o"></i> ChartJS</a></li>
+                            <li><a href="../charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
+                            <li><a href="../charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
+                            <li><a href="../charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-list"></i>
+                            <span>System Tables</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="../UI/general.html"><i class="fa fa-circle-o"></i> General</a></li>
+                            <li><a href="../UI/icons.html"><i class="fa fa-circle-o"></i> Icons</a></li>
+                            <li><a href="../UI/buttons.html"><i class="fa fa-circle-o"></i> Buttons</a></li>
+                            <li><a href="../UI/sliders.html"><i class="fa fa-circle-o"></i> Sliders</a></li>
+                            <li><a href="../UI/timeline.html"><i class="fa fa-circle-o"></i> Timeline</a></li>
+                            <li><a href="../UI/modals.html"><i class="fa fa-circle-o"></i> Modals</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-user"></i> <span>User</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="../forms/general.html"><i class="fa fa-circle-o"></i> General Elements</a></li>
+                            <li><a href="../forms/advanced.html"><i class="fa fa-circle-o"></i> Advanced Elements</a></li>
+                            <li><a href="../forms/editors.html"><i class="fa fa-circle-o"></i> Editors</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-shopping-basket"></i> <span>POS</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="../tables/simple.html"><i class="fa fa-circle-o"></i> Simple tables</a></li>
+                            <li><a href="../tables/data.html"><i class="fa fa-circle-o"></i> Data tables</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="../calendar.html">
+                            <i class="fa fa-product-hunt"></i> <span>Collection</span>
+                            <small class="label pull-right bg-red">3</small>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../mailbox/mailbox.html">
+                            <i class="fa fa-shopping-bag"></i> <span>Purchase</span>
+                            <small class="label pull-right bg-yellow">12</small>
+                        </a>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-money"></i> <span>Disbursement</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="../examples/invoice.html"><i class="fa fa-circle-o"></i> Invoice</a></li>
+                            <li><a href="../examples/profile.html"><i class="fa fa-circle-o"></i> Profile</a></li>
+                            <li><a href="../examples/login.html"><i class="fa fa-circle-o"></i> Login</a></li>
+                            <li><a href="../examples/register.html"><i class="fa fa-circle-o"></i> Register</a></li>
+                            <li><a href="../examples/lockscreen.html"><i class="fa fa-circle-o"></i> Lockscreen</a></li>
+                            <li><a href="../examples/404.html"><i class="fa fa-circle-o"></i> 404 Error</a></li>
+                            <li><a href="../examples/500.html"><i class="fa fa-circle-o"></i> 500 Error</a></li>
+                            <li><a href="../examples/blank.html"><i class="fa fa-circle-o"></i> Blank Page</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-arrow-circle-o-down"></i> <span>Stock In</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
+                            <li>
+                                <a href="#"><i class="fa fa-circle-o"></i> Level One <i class="fa fa-angle-left pull-right"></i></a>
+                                <ul class="treeview-menu">
+                                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
+                                    <li>
+                                        <a href="#"><i class="fa fa-circle-o"></i> Level Two <i class="fa fa-angle-left pull-right"></i></a>
+                                        <ul class="treeview-menu">
+                                            <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
+                                            <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="../../documentation/index.html"><i class="fa fa-arrow-circle-o-up"></i> <span>Stock Out</span></a></li>
+                    <li class="header">LABELS</li>
+                    <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
+                    <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
+                    <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
+                </ul>
+            </section>
+            <!-- /.sidebar -->
+        </aside>
+
+        <!-- =============================================== -->
+
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1 class="fa fa-table">
+                    Item Detail
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="../Software/Dashboard"><i class="fa fa-table"></i> Home</a></li>
+                    <li ><a href="../Software/Item">Item</a></li>
+                    <li class="active">Add Item</li>
+                </ol>
+            </section>
+            <!-- Content Wrapper. Contains page content -->
+            <div class="content-wrapper">
+                <!-- Main content -->
+                <section class="content">
+                    <div class="row">
+                            <div class="btn-group-horizontal" style="margin-left:70%;" >
+                                <a class="btn btn-app">
+                                    <i class="fa fa-lock"></i> Lock
+                                </a>
+                                <a class="btn  btn-app">
+                                    <i class="fa fa-unlock"></i> Unlock
+                                </a>
+                                <a class="btn btn-app">
+                                    <i class="fa fa-ban"></i> Cancel
+                                </a>
+                            </div><!--btn horizontal-->
+                        <!-- right column -->
+                        <!-- left column -->
+                        <div class="col-md-6">
+                            <!-- general form elements -->
+                           
+                            <div class="box box-primary">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">General Information</h3>
+                                </div><!-- /.box-header -->
+                                <!-- form start -->
+                                <form class="form-horizontal">
+                                    <div class="box-body">
+                                        <div class="form-group">
+                                            <label for="image" class="col-sm-2 control-label">Image Path</label>
+                                            <input type="file" id="image">
+                                            <p class="help-block col-sm-10">Choose a file</p>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="itemCode" class="col-sm-2 control-label">Item Code</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="itemCode" placeholder="Item Code">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="barCode" class="col-sm-2 control-label">Bar Code (SKU)</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="barCode" placeholder="NA">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="itemDescription" class="col-sm-2 control-label">Item Description</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="itemDescription" placeholder="NA">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="alias" class="col-sm-2 control-label">Alias</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="alias" placeholder="NA">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="category" class="col-sm-2 control-label">Category</label>
+                                            <div class="col-sm-10">
+                                                <select class="form-control">
+                                                    <option>NA</option>
+                                                    <option>Kitchen</option>
+                                                    <option>Maintenance Supply</option>
+                                                    <option>Fans</option>
+                                                    <option>Lightning</option>
+                                                    <option>Office Supply </option>
+                                                    <option>Food</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <!-- select -->
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Unit</label>
+                                            <div class="col-sm-10">
+                                            <select class="form-control">
+                                                <option>Pair(s)</option>
+                                                <option>PC(s)</option>
+                                                <option>Peso</option>
+                                                <option>Pint(s)</option>
+                                                <option>Quarts(s)</option>
+                                                <option>Ream(s)</option>
+                                                <option>Roll(s)</option>
+                                            </select>
+                                            </div>
+                                        </div>
+                                        <!-- select -->
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Default Supplier</label>
+                                            <div class="col-sm-10">
+                                                <select class="form-control">
+                                                    <option>Return from customer</option>
+                                                    <option>BQ Gases</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="alias" class="col-sm-2 control-label">Cost</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="cost" placeholder="0.00">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="alias" class="col-sm-2 control-label">Mark up(%)</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="markup" placeholder="0.00">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="alias" class="col-sm-2 control-label">Price</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="price" placeholder="0.00">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="alias" class="col-sm-2 control-label">Stock Level Quantity</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="stocklvlqty" placeholder="0.00">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="alias" class="col-sm-2 control-label">On-Hand Quantity</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="onhandqty" placeholder="0.00">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Inventory</label>
+                                            <div class="col-sm-10">
+                                                <input type="checkbox" class="minimal" checked>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Package</label>
+                                            <div class="col-sm-10">
+                                                <input type="checkbox" class="minimal" checked>
+                                             </div>
+                                         </div>
+                                        <div class="form-group">
+                                            <label for="alias" class="col-sm-2 control-label">Expiry Date</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="expdate" placeholder="">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="alias" class="col-sm-2 control-label">Lot Number</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="lotno" placeholder="">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="alias" class="col-sm-2 control-label">Remarks</label>
+                                            <div class="col-sm-10">
+                                                <textarea max-length="500" class="form-control" id="remarks"></textarea>`
+                                            </div>
+                                        </div>
+                                    </div><!-- /.box-body -->
+                                    <div class="box-footer">
+                                    </div><!-- /.box-footer -->
+                                </form>
+                            </div><!-- /.box -->
+                        </div><!--/.col (left) -->
+                        <!-- right column -->
+                      
+                        <div class="col-md-6">
+                            <!-- Horizontal Form -->
+                            <div class="box box-info">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Other Information</h3>
+                                </div><!-- /.box-header -->
+                                <!-- form start -->
+                                <form class="form-horizontal">
+                                    <div class="box-body">
+                                        <div class="form-group">
+                                            <label for="genericName" class="col-sm-2 control-label">Generic Name</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" id="genericName" placeholder="Generic Name">
+                                            </div>
+                                        </div>
+                                    </div><!-- /.box-body -->
+                                    <div class="form-group">
+                                        <label for="category" class="col-sm-2 control-label">Sales Account</label>
+                                        <div class="col-sm-8">
+                                            <select class="form-control">
+                                                <option>Sales</option>
+                                                <option>Account Name</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="category" class="col-sm-2 control-label">Asset Account</label>
+                                        <div class="col-sm-8">
+                                            <select class="form-control">
+                                                <option>Sales</option>
+                                                <option>Account Name</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="category" class="col-sm-2 control-label">Cost Account</label>
+                                        <div class="col-sm-8">
+                                            <select class="form-control">
+                                                <option>Sales</option>
+                                                <option>Account Name</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="category" class="col-sm-2 control-label">Purchase VAT</label>
+                                        <div class="col-sm-6">
+                                            <select class="form-control">
+                                                <option>Sales</option>
+                                                <option>Account Name</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="category" class="col-sm-2 control-label">Sales VAT</label>
+                                        <div class="col-sm-6">
+                                            <select class="form-control">
+                                                <option>Sales</option>
+                                                <option>Account Name</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="category" class="col-sm-2 control-label">Kitchen Report</label>
+                                        <div class="col-sm-6">
+                                            <select class="form-control">
+                                                <option>Sales</option>
+                                                <option>Account Name</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="box-body table-responsive no-padding">
+                                        <table class="table table-hover">
+                                            <tr>
+                                                <th>Price Description</th>
+                                                <th>Price</th>
+                                                <th>Trigger Quantity</th>
+                                                <th>Filters</th>
+                                            </tr>
+                                            <tr>
+                                                <td>CLASS A</td>
+                                                <td>0.10</td>
+                                                <td>0.0</td>
+                                                <td>
+                                                    <div class="btn-group">
+                                                        <button type="button" class="btn btn-danger fa fa-trash"></button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>CLASS A</td>
+                                                <td>0.10</td>
+                                                <td>0.0</td>
+                                                <td>
+                                                    <div class="btn-group">
+                                                        <button type="button" class="btn btn-danger fa fa-trash"></button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div><!-- /.box-body -->
+                                    <div class="box-footer">
+                                    </div><!-- /.box-footer -->
+                                </form>
+                            </div><!-- /.box -->
+                         </div>
+                        </div>   <!-- /.row -->
+                </section><!-- /.content -->
+            </div><!-- /.content-wrapper -->
+        </div><!-- ./wrapper -->
+        <div class="control-sidebar-bg"></div>
+        <footer class="main-footer">
+            <div class="pull-right hidden-xs">
+                
+            </div>
+            <strong>Copyright &copy; 2015 <a href="http://innosoft.ph">Innosoft</a>.</strong> All rights reserved.
+        </footer>
+
+
+
+
+
+
+
+        <!-- jQuery 2.1.4 -->
+        <script src="../plugins/jQuery/jQuery-2.1.4.min.js"></script>
+        <!-- Bootstrap 3.3.5 -->
+        <script src="../bootstrap/js/bootstrap.min.js"></script>
+        <!-- SlimScroll -->
+        <script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
+        <!-- FastClick -->
+        <script src="../plugins/fastclick/fastclick.min.js"></script>
+        <!-- AdminLTE App -->
+        <script src="../dist/js/app.min.js"></script>
+        <!-- AdminLTE for demo purposes -->
+        <script src="../dist/js/demo.js"></script>
+</body>
+</html>
+
+
+
