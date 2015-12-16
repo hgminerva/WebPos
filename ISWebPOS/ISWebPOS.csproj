@@ -185,6 +185,15 @@
     <Compile Include="Controllers\ApiDiscountController.cs" />
     <Compile Include="Controllers\ApiCustomerController.cs" />
     <Compile Include="Controllers\ApiAccountController.cs" />
+    <Compile Include="Controllers\ApiSalesController.cs" />
+    <Compile Include="Controllers\ApiSalesDraftController.cs" />
+    <Compile Include="Controllers\ApiSalesLineController.cs" />
+    <Compile Include="Controllers\ApiSalesReleasedController.cs" />
+    <Compile Include="Controllers\ApiStockCountController.cs" />
+    <Compile Include="Controllers\ApiTerminalController.cs" />
+    <Compile Include="Controllers\ApiUnitController.cs" />
+    <Compile Include="Controllers\ApiUserController.cs" />
+    <Compile Include="Controllers\ApiUserFormController.cs" />
     <Compile Include="Controllers\ApiItemGroupController.cs" />
     <Compile Include="Controllers\ApiItemGroupItemController.cs" />
     <Compile Include="Controllers\ApiItemInventoryController.cs" />
@@ -237,6 +246,11 @@
     <Compile Include="Models\MstUnit.cs" />
     <Compile Include="Models\MstUser.cs" />
     <Compile Include="Models\MstUserForm.cs" />
+    <Compile Include="Models\TrnSales.cs" />
+    <Compile Include="Models\TrnSalesDraft.cs" />
+    <Compile Include="Models\TrnSalesLine.cs" />
+    <Compile Include="Models\TrnSalesReleased.cs" />
+    <Compile Include="Models\TrnStockCount.cs" />
     <Compile Include="Models\SysAuditTrail.cs" />
     <Compile Include="Models\SysForm.cs" />
     <Compile Include="Models\SysSalesLocked.cs" />
@@ -1273,6 +1287,26 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\ApiAuditTrail\" />
+    <Folder Include="Views\ApiCollectionLine\" />
+    <Folder Include="Views\ApiCollection\" />
+    <Folder Include="Views\ApiDebitCreditMemoLine\" />
+    <Folder Include="Views\ApiDebitCreditMemo\" />
+    <Folder Include="Views\ApiDisbursement\" />
+    <Folder Include="Views\ApiForm\" />
+    <Folder Include="Views\ApiItemGroupItem\" />
+    <Folder Include="Views\ApiItemGroup\" />
+    <Folder Include="Views\ApiItemInventory\" />
+    <Folder Include="Views\ApiItemPackage\" />
+    <Folder Include="Views\ApiJournal\" />
+    <Folder Include="Views\ApiPurchaseOrderLine\" />
+    <Folder Include="Views\ApiPurchaseOrder\" />
+    <Folder Include="Views\ApiSalesLocked\" />
+    <Folder Include="Views\ApiSysSalesLocked\" />
+    <Folder Include="Views\ApiTableGroup\" />
+    <Folder Include="Views\ApiTable\" />
+    <Folder Include="Views\ApiTax\" />
+    <Folder Include="Views\ApiTerm\" />
     <Folder Include="Views\PurchaseOrderLine\" />
   </ItemGroup>
   <ItemGroup>
