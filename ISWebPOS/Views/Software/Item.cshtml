@@ -10,59 +10,6 @@
     <!-- Site wrapper -->
     <div class="wrapper">
 
-        <header class="main-header">
-            <!-- Logo -->
-            <a href="../../index2.html" class="logo">
-                <!-- mini logo for sidebar mini 50x50 pixels -->
-                <span class="logo-mini"><b>P</b>OS</span>
-                <!-- logo for regular state and mobile devices -->
-                <span class="logo-lg"><b>Web</b>POS</span>
-            </a>
-            <!-- Header Navbar: style can be found in header.less -->
-            <nav class="navbar navbar-static-top" role="navigation">
-                <!-- Sidebar toggle button-->
-                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </a>
-                <div class="navbar-custom-menu">
-                    <ul class="nav navbar-nav">
-                        <!-- User Account: style can be found in dropdown.less -->
-                        <li class="dropdown user user-menu">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <img src="../../dist/img/avatar5.png" class="user-image" alt="User Image">
-                                <span class="hidden-xs">Administrator</span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <!-- User image -->
-                                <li class="user-header">
-                                    <img src="../../dist/img/avatar5.png" class="img-circle" alt="User Image">
-                                    <p>
-                                        Administrator - Cashier
-                                        <small>Member since Nov. 2012</small>
-                                    </p>
-                                </li>
-                                <!-- Menu Body -->
-                                <li class="user-body">
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Sales</a>
-                                    </div>
-                                </li>
-                                <!-- Menu Footer-->
-                                <li class="user-footer">
-                                    <div class="pull-right">
-                                        <a href="#" class="btn btn-default btn-flat fa fa-sign-out">Sign out</a>
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
-                        <!-- Control Sidebar Toggle Button -->
-                    </ul>
-                </div>
-            </nav>
-        </header>
 
         <!-- =============================================== -->
         <!-- Left side column. contains the sidebar -->
@@ -225,7 +172,7 @@
             <!-- /.sidebar -->
         </aside>
 
-        <!-- =============================================== -->
+
 
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
@@ -241,9 +188,11 @@
              <section class="content">
                  <div class="row">
                      <div class="col-xs-12">
+                         <!--table container-->
                          <div class="box">
                              <div class="box-header">
                                  <a href="../Software/AddItem" class="btn btn-deafult btn-primary fa fa-plus">Add</a>
+                                 <!--search box-->
                                  <div class="box-tools">
                                      <div class="input-group" style="width: 150px;">
                                          <input type="text" name="table_search" class="form-control input-sm pull-right" placeholder="Search">
@@ -252,99 +201,39 @@
                                          </div>
                                      </div>
                                  </div>
-                             </div><!-- /.box-header -->
-                             <div class="box-body table-responsive no-padding">
-                                 <table class="table table-hover">
-                                     <tr>
-                                         <th>Code</th>
-                                         <th>Description</th>
-                                         <th>Category</th>
-                                         <th>Bar Code</th>
-                                         <th>Price</th>
-                                         <th>Qty</th>
-                                         <th>L</th>
-                                         <th>I</th>
-                                         <th>Filters</th>
-                                     </tr>
-                                     <tr>
-                                         <td>B1001</td>
-                                         <td>Cement hollow block</td>
-                                         <td>Building Materials</td>
-                                         <td>0035</td>
-                                         <td>14.00</td>
-                                         <td>900</td>
-                                         <td></td>
-                                         <td></td>
-                                         <td>
-                                             <div class="btn-group">
-                                                 <a href="../Software/EditItem" class="btn btn-primary fa fa-pencil-square-o"></a>
-                                                 <button type="button" class="btn btn-danger fa fa-trash"></button>
                                              </div>
-                                         </td>
-                                     </tr>
-                                     <tr>
-                                         <td>B1001</td>
-                                         <td>Cement hollow block</td>
-                                         <td>Building Materials</td>
-                                         <td>0035</td>
-                                         <td>14.00</td>
-                                         <td>900</td>
-                                         <td></td>
-                                         <td></td>
-                                         <td>
-                                             <div class="btn-group">
-                                                 <a href="../Software/EditItem" class="btn btn-primary fa fa-pencil-square-o"></a>
-                                                 <button type="button" class="btn btn-danger fa fa-trash"></button>
+                             
+                                <!--table-->            
+                                <table id="itemCollectionGrid" class="grid border-custom"></table>                         
+                             
                                              </div>
-                                         </td>
-                                     </tr>
-                                     <tr>
-                                         <td>B1001</td>
-                                         <td>Cement hollow block</td>
-                                         <td>Building Materials</td>
-                                         <td>0035</td>
-                                         <td>14.00</td>
-                                         <td>900</td>
-                                         <td></td>
-                                         <td></td>
-                                         <td>
-                                             <div class="btn-group">
-                                                 <button type="button" href="../Software/EditItem" class="btn btn-primary fa fa-pencil-square-o"></button>
-                                                 <button type="button" class="btn btn-danger fa fa-trash"></button>
-                                             </div>
-                                         </td>
-                                     </tr>
-                                     <tr>
-                                         <td>B1001</td>
-                                         <td>Cement hollow block</td>
-                                         <td>Building Materials</td>
-                                         <td>0035</td>
-                                         <td>14.00</td>
-                                         <td>900</td>
-                                         <td></td>
-                                         <td></td>
-                                         <td>
-                                             <div class="btn-group">
-                                                 <a href="../Software/EditItem" class="btn btn-primary fa fa-pencil-square-o"></a>
-                                                 <button type="button" class="btn btn-danger fa fa-trash"></button>
-                                             </div>
-                                         </td>
-                                     </tr>
-                                 </table>
-                             </div><!-- /.box-body -->
-                         </div><!-- /.box -->
                      </div>
                   </div>
         </section>
-        </div><!-- ./wrapper -->
-        <div class="control-sidebar-bg"></div>
-        <footer class="main-footer">
-            <div class="pull-right hidden-xs">
-                <b>Version</b> 2.3.0
+            <!--navigation buttons-->
+            <div class="btn-group col-md-4 pull-right" id="navigationPageGrid">
+                <button type="button" class="btn btn-default border-custom" id="btnMoveToFirstPageGrid">
+                    <span class="glyphicon glyphicon-fast-backward"></span>
+                </button>
+                <button type="button" class="btn btn-default border-custom" id="btnMoveToPreviousPageGrid">
+                    <span class="glyphicon glyphicon-step-backward"></span>
+                </button>
+                <button type="button" class="btn btn-default border-custom" disabled style="width: 100px" id="btnCurrentPageGrid"></button>
+                <button type="button" class="btn btn-default border-custom" id="btnMoveToNextPageGrid">
+                    <span class="glyphicon glyphicon-step-forward"></span>
+                </button>
+                <button type="button" class="btn btn-default border-custom" id="btnMoveToLastPageGrid">
+                    <span class="glyphicon glyphicon-fast-forward"></span>
+                </button>
             </div>
-            <strong>Copyright &copy; 2015 <a href="http://innosoft.ph">Innosoft</a>.</strong> All rights reserved.
-        </footer>
+        </div><!-- ./wrapper -->
+        
+
+        @Html.Partial("_MainFooter")
+
         </div>
+
+
         <!-- jQuery 2.1.4 -->
         <script src="../plugins/jQuery/jQuery-2.1.4.min.js"></script>
         <!-- Bootstrap 3.3.5 -->
@@ -357,6 +246,195 @@
         <script src="../dist/js/app.min.js"></script>
         <!-- AdminLTE for demo purposes -->
         <script src="../dist/js/demo.js"></script>
+    
+        <script src="~/wijmo/controls/wijmo.min.js"></script>
+        <script src="~/wijmo/controls/wijmo.input.min.js"></script>
+        <script src="~/wijmo/controls/wijmo.grid.min.js"></script>
+        <script src="~/wijmo/controls/wijmo.chart.min.js"></script>
+    
+    <script type="text/javascript">
+
+        //================
+        // Global variables
+        // ================
+        var itemCollections;
+        var itemGrid;
+
+        var btnFirstPageGrid;
+        var btnPreviousPageGrid;
+        var btnNextPageGrid;
+        var btnLastPageGrid;
+        var btnCurrentPageGrid;
+
+        // =============================
+        // Get ItemMasterList Data
+        // ============================= 
+        function getItemMasterList() {
+            var ItemList = new wijmo.collections.ObservableArray();
+            $.ajax({                
+                url: '/api/item/list',
+                cache: false,
+                type: 'GET',
+                contentType: 'application/json; charset=utf-8',
+                data: {},
+                success: function (results) {
+                    /* var results = JSON.parse(result); */
+                    if (results.length > 0) {
+                        for (i = 0; i < results.length; i++) {
+                            ItemList.push({
+                                ItemCode: results[i]["ItemCode"],
+                                BarCode: results[i]["BarCode"],
+                                ItemDescription: results[i]["ItemDescription"],
+                                Category: results[i]["Category"],
+                                Price: results[i]["Price"],
+                                OnhandQuantity: results[i]["OnhandQuantity"],
+                                IsInventory: results[i]["IsInventory"],
+                                isLocked: results[i]["isLocked"]
+
+                            });
+                        }
+                        itemCollections = new wijmo.collections.CollectionView(ItemList);
+                        btnCurrentPageGrid.innerHTML = (itemCollections.pageIndex + 1) + ' / ' + itemCollections.pageCount;
+
+                        itemCollections.canFilter = true;
+                        itemCollections.pageSize = 15;
+
+                        //Flex Grid
+                        itemGrid = new wijmo.grid.FlexGrid('#itemCollectionGrid');
+                        itemGrid.initialize({
+                            columns: [
+							{
+								"header" : "Code",
+								"binding": "ItemCode",
+								"allowSorting" : true,
+								"width" : "2*"
+							}, 
+							{
+							    "header": "Description",
+							    "binding": "ItemDescription",
+							    "allowSorting": true,
+							    "isContentHtml": true,
+							    "width": "2*"
+							}, {
+							    "header": "Category",
+							    "binding": "Category",
+							    "allowSorting": true,
+							    "width": "2*"
+							}, {
+							    "header": "Bar Code",
+							    "binding": "BarCode",
+							    "allowSorting": true,
+							    "width": "2*"
+							},
+                            {
+                                "header": "Price",
+                                "binding": "Price",
+                                "allowSorting": true,
+                                "isContentHtml": true,
+                                "width": "2*"
+                            },
+                            {
+                                "header": "Qty",
+                                "binding": "OnhandQuantity",
+                                "allowSorting": true,
+                                "isContentHtml": true,
+                                "width": "2*"
+                            },
+                            {
+                                "header": "L",
+                                "binding": "isLocked",
+                                "allowSorting": true,
+                                "isContentHtml": true,
+                                "width": "2*"
+                            },
+                            {
+							    "header": "I",
+							    "binding": "IsInventory",
+							    "allowSorting": true,
+							    "isContentHtml": true,
+							    "width": "2*"
+                            }],
+                            autoGenerateColumns: false,
+                            itemsSource: itemCollections,
+                            isReadOnly: true,
+                            selectionMode: wijmo.grid.SelectionMode.Row
+                        });
+
+                        itemGrid.trackChanges = true;
+
+                        updateNavigateButtonsCollection();
+
+                        btnFirstPageGrid.addEventListener('click', function () {
+                            itemCollections.moveToFirstPage();
+                            updateNavigateButtonsCollection();
+                        });
+                        btnPreviousPageGrid.addEventListener('click', function () {
+                            itemCollections.moveToPreviousPage();
+                            updateNavigateButtonsCollection();
+                        });
+                        btnNextPageGrid.addEventListener('click', function () {
+                            itemCollections.moveToNextPage();
+                            updateNavigateButtonsCollection();
+                        });
+                        btnLastPageGrid.addEventListener('click', function () {
+                            itemCollections.moveToLastPage();
+                            updateNavigateButtonsCollection();
+                        });
+                    } else {
+                        /*   alert("No data."); */
+                    }
+                }
+            });
+        }
+        // ==================
+        // Navigation Buttons
+        // ==================   
+        function updateNavigateButtonsCollection() {
+            if (itemCollections.pageSize <= 0) {
+                document.getElementById('navigationPageGrid').style.display = 'none';
+                return;
+            }
+            document.getElementById('navigationPageGrid').style.display = 'block';
+            if (itemCollections.pageIndex === 0) {
+                btnFirstPageGrid.setAttribute('disabled', 'disabled');
+                btnPreviousPageGrid.setAttribute('disabled', 'disabled');
+                btnNextPageGrid.removeAttribute('disabled');
+                btnLastPageGrid.removeAttribute('disabled');
+            } else if (itemCollections.pageIndex === (itemCollections.pageCount - 1)) {
+                btnFirstPageGrid.removeAttribute('disabled');
+                btnPreviousPageGrid.removeAttribute('disabled');
+                btnLastPageGrid.setAttribute('disabled', 'disabled');
+                btnNextPageGrid.setAttribute('disabled', 'disabled');
+            } else {
+                btnFirstPageGrid.removeAttribute('disabled');
+                btnPreviousPageGrid.removeAttribute('disabled');
+                btnNextPageGrid.removeAttribute('disabled');
+                btnLastPageGrid.removeAttribute('disabled');
+            }
+            btnCurrentPageGrid.innerHTML = (itemCollections.pageIndex + 1) + ' / ' + itemCollections.pageCount;
+
+        }
+
+
+        //============
+        // On Page Load
+        // ============
+        $(document).ready(function () {
+
+            // Navigation button
+            btnFirstPageGrid = document.getElementById('btnMoveToFirstPageGrid');
+            btnPreviousPageGrid = document.getElementById('btnMoveToPreviousPageGrid');
+            btnNextPageGrid = document.getElementById('btnMoveToNextPageGrid');
+            btnLastPageGrid = document.getElementById('btnMoveToLastPageGrid');
+            btnCurrentPageGrid = document.getElementById('btnCurrentPageGrid');
+
+            //Collection View
+            getItemMasterList();
+
+        });
+    </script>
+
+
 </body>
 </html>
 
