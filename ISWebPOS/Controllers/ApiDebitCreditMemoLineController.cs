@@ -12,10 +12,10 @@ namespace ISWebPOS.Controllers
     {
         private Data.webposDataContext db = new Data.webposDataContext();
 
-        // ===========
+        // ========================
         // LIST DebitCreditMemoLine
-        // ===========
-        [Route("api/debitcreditmemoline/list")]
+        // ========================
+        [Route("api/debitCreditMemoLine/list")]
         public List<Models.TrnDebitCreditMemoLine> Get()
         {
             var DebitCreditMemoLine = from d in db.TrnDebitCreditMemoLines
@@ -32,10 +32,10 @@ namespace ISWebPOS.Controllers
             return DebitCreditMemoLine.ToList();
         }
 
-        // ===========
+        // =======================
         // ADD DebitCreditMemoLine
-        // ===========
-        [Route("api/debitcreditmemoline/add")]
+        // =======================
+        [Route("api/debitCreditMemoLine/add")]
         public int Post(Models.TrnDebitCreditMemoLine debitcreditmemoLine)
         {
             try
@@ -63,10 +63,10 @@ namespace ISWebPOS.Controllers
             }
         }
 
-        // ==============
+        // ==========================
         // UPDATE DebitCreditMemoLine
-        // ==============
-        [Route("api/debitcreditmemoline/update/{id}")]
+        // ==========================
+        [Route("api/debitCreditMemoLine/update/{id}")]
         public HttpResponseMessage Put(String id, Models.TrnDebitCreditMemoLine debitcreditmemoLine)
         {
             try
@@ -104,10 +104,10 @@ namespace ISWebPOS.Controllers
             }
         }
 
-        // ==============
+        // ==========================
         // DELETE DebitCreditMemoLine
-        // ==============
-        [Route("api/debitcreditmemoline/delete/{id}")]
+        // ==========================
+        [Route("api/debitCreditMemoLine/delete/{id}")]
         public HttpResponseMessage Delete(String id)
         {
             try

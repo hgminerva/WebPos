@@ -12,9 +12,9 @@ namespace ISWebPOS.Controllers
     {
         private Data.webposDataContext db = new Data.webposDataContext();
 
-        // ===========
+        // =================
         // LIST Disbursement
-        // ===========
+        // =================
         [Route("api/disbursement/list")]
         public List<Models.TrnDisbursement> Get()
         {
@@ -61,9 +61,9 @@ namespace ISWebPOS.Controllers
             return Disbursement.ToList();
         }
 
-        // ===========
+        // ================
         // ADD Disbursement
-        // ===========
+        // ================
         [Route("api/disbursement/add")]
         public int Post(Models.TrnDisbursement disbursement)
         {
@@ -121,9 +121,9 @@ namespace ISWebPOS.Controllers
             }
         }
 
-        // ==============
+        // ===================
         // UPDATE Disbursement
-        // ==============
+        // ===================
         [Route("api/disbursement/update/{id}")]
         public HttpResponseMessage Put(String id, Models.TrnDisbursement disbursement)
         {
@@ -191,9 +191,9 @@ namespace ISWebPOS.Controllers
             }
         }
 
-        // ==============
+        // ===================
         // DELETE Disbursement
-        // ==============
+        // ===================
         [Route("api/disbursement/delete/{id}")]
         public HttpResponseMessage Delete(String id)
         {

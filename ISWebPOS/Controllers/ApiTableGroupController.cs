@@ -12,10 +12,10 @@ namespace ISWebPOS.Controllers
     {
         private Data.webposDataContext db = new Data.webposDataContext();
 
-        // ===========
+        // ===============
         // LIST TableGroup
-        // ===========
-        [Route("api/tablegroup/list")]
+        // ===============
+        [Route("api/tableGroup/list")]
         public List<Models.MstTableGroup> Get()
         {
             var isLocked = true;
@@ -34,10 +34,10 @@ namespace ISWebPOS.Controllers
             return TableGroup.ToList();
         }
 
-        // ===========
+        // ==============
         // ADD TableGroup
-        // ===========
-        [Route("api/tablegroup/add")]
+        // ==============
+        [Route("api/tableGroup/add")]
         public int Post(Models.MstTableGroup tablegroup)
         {
             try
@@ -69,10 +69,10 @@ namespace ISWebPOS.Controllers
             }
         }
 
-        // ==============
+        // =================
         // UPDATE TableGroup
-        // ==============
-        [Route("api/tablegroup/update/{id}")]
+        // =================
+        [Route("api/tableGroup/update/{id}")]
         public HttpResponseMessage Put(String id, Models.MstTableGroup tablegroup)
         {
             try
@@ -112,10 +112,10 @@ namespace ISWebPOS.Controllers
             }
         }
 
-        // ==============
+        // =================
         // DELETE TableGroup
-        // ==============
-        [Route("api/tablegroup/delete/{id}")]
+        // =================
+        [Route("api/tableGroup/delete/{id}")]
         public HttpResponseMessage Delete(String id)
         {
             try
