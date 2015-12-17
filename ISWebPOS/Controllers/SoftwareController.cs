@@ -13,6 +13,7 @@ namespace ISWebPOS.Controllers
         {
             return View();
         }
+
         public ActionResult Dashboard()
         {
             return View();
@@ -29,5 +30,6 @@ namespace ISWebPOS.Controllers
         {
             return View();
         }
+       
     }
 }

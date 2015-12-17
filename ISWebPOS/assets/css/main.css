@@ -205,7 +205,7 @@ a:before, a:after {
    ========================================================================== */
 
 #headerwrap {
-	background: url(../img/header_bg.jpg) no-repeat center top;
+	background: url(../img/header_bg1.jpg) no-repeat center top;
 	margin-top: -50px;
 	padding-top: 120px;
 	text-align: center;
@@ -236,15 +236,16 @@ a:before, a:after {
 	font-weight: 300;
 	text-align: center;
 	letter-spacing: 1px;
+    margin-top:2%;
 }
 #headerwrap .icon {
-	color: #ffffff;
+	color: rgba(255,255,255,.6);
 	margin-top: 90px;
 	padding-bottom: 30px;
 	letter-spacing: 8px;
 	font-size: 100px;
 	font-weight: bold;
-	text-shadow: 0px 20px 7px #3da8ae;
+	text-shadow: 0px 20px 7px rgba(0,0,0,.6);
 }
 #headerwrap .btn {
 	font-weight: 500;
@@ -252,8 +253,8 @@ a:before, a:after {
 	margin: 50px 0;
 	background-color: #ffbf00;
 	color: #fff;
-	text-shadow: 0 0 4px #bf9004;
-	box-shadow: -5px -5px 20px #3da8ae;
+	text-shadow: 0 0 4px rgba(0,0,0,.6);
+	box-shadow: -5px -5px 20px rgba(0,0,0,.6);
 	border: 0;
 }
 #headerwrap .btn:hover, #headerwrap .btn:focus {
