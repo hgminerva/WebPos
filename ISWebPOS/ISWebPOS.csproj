@@ -1236,7 +1236,9 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -1321,26 +1323,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\ApiAuditTrail\" />
-    <Folder Include="Views\ApiCollectionLine\" />
-    <Folder Include="Views\ApiCollection\" />
-    <Folder Include="Views\ApiDebitCreditMemoLine\" />
-    <Folder Include="Views\ApiDebitCreditMemo\" />
-    <Folder Include="Views\ApiDisbursement\" />
-    <Folder Include="Views\ApiForm\" />
-    <Folder Include="Views\ApiItemGroupItem\" />
-    <Folder Include="Views\ApiItemGroup\" />
-    <Folder Include="Views\ApiItemInventory\" />
-    <Folder Include="Views\ApiItemPackage\" />
-    <Folder Include="Views\ApiJournal\" />
-    <Folder Include="Views\ApiPurchaseOrderLine\" />
-    <Folder Include="Views\ApiPurchaseOrder\" />
-    <Folder Include="Views\ApiSalesLocked\" />
-    <Folder Include="Views\ApiSysSalesLocked\" />
-    <Folder Include="Views\ApiTableGroup\" />
-    <Folder Include="Views\ApiTable\" />
-    <Folder Include="Views\ApiTax\" />
-    <Folder Include="Views\ApiTerm\" />
     <Folder Include="Views\PurchaseOrderLine\" />
   </ItemGroup>
   <ItemGroup>
