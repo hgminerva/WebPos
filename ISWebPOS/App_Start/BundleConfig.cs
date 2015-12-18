@@ -8,24 +8,38 @@ namespace ISWebPOS
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
-         /*   bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+            // =============
+            // Template CSS
+            // =============
+            bundles.Add(new StyleBundle("~/Template/Css").Include(
+                "~/bootstrap/css/bootstrap.min.css",
+                "~/font-awesome/css/font-awesome.css",
+                "~/font-awesome/css/font-awesome.min.css",
+                "~/Content/ionicons.min.css",
+                "~/dist/css/AdminLTE.min.css",
+                "~/dist/css/skins/_all-skins.min.css",
+                "~/wijmo/styles/wijmo.min.css",
+                "~/Content/style.css"));
 
-            bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
-                        "~/Scripts/jquery.validate*"));
+            // ============
+            // Template JS
+            // ============
+            bundles.Add(new ScriptBundle("~/Template/Js").Include(
+                "~/plugins/jQuery/jQuery-2.1.4.min.js",
+                "~/bootstrap/js/bootstrap.min.js",
+                "~/plugins/slimScroll/jquery.slimscroll.min.js",
+                "~/plugins/fastclick/fastclick.min.js",
+                "~/dist/js/demo.js",
+                "~/dist/js/app.min.js"));
 
-            // Use the development version of Modernizr to develop with and learn from. Then, when you're
-            // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
-            bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
-                        "~/Scripts/modernizr-*"));
-
-            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js"));
-
-            bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css"));*/
+            // =========
+            // Wijmo JS
+            // =========
+            bundles.Add(new ScriptBundle("~/Wijmo/Js").Include(
+                "~/wijmo/controls/wijmo.min.js",
+                "~/wijmo/controls/wijmo.input.min.js",
+                "~/wijmo/controls/wijmo.grid.min.js",
+                "~/wijmo/controls/wijmo.chart.min.js"));
         }
     }
 }
