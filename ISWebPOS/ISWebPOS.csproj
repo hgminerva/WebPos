@@ -261,6 +261,7 @@
     <Content Include="assets\css\bootstrap.css" />
     <Content Include="assets\css\font-awesome.css" />
     <Content Include="assets\css\font-awesome.min.css" />
+    <Content Include="assets\css\ionicons.min.css" />
     <Content Include="assets\css\main.css" />
     <Content Include="assets\fonts\fontawesome-webfont.svg" />
     <Content Include="assets\img\about\about1.jpg" />
