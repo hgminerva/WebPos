@@ -9,13 +9,10 @@
 <body class="hold-transition skin-blue sidebar-collapse sidebar-mini">
     <!-- Site wrapper -->
     <div class="wrapper">
-
-        
+        <!-- ===================Main Header============================ -->
         @Html.Partial("_MainHeader")
-        @Html.Partial("_MainSidebar")
-
-        
-
+        <!-- ===================Main Sidebar============================ -->
+         @Html.Partial("_MainSidebar")
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
             <section class="content-header">
@@ -35,7 +32,7 @@
                              <div class="box-header">
                                  <a href="../Software/AddItem" class="btn btn-deafult btn-primary fa fa-plus">Add</a>
                                  <!--search box-->
-                                 <div class="box-tools">                                     
+                                 <div class="box-tools">
                                      <div class="input-group" style="width: 150px;">
                                          <input type="text" name="table_search" class="form-control input-sm pull-right" placeholder="Search">
                                          <div class="input-group-btn">
@@ -43,12 +40,12 @@
                                          </div>
                                      </div>
                                  </div>
-                             </div>
+                                             </div>
                              
                                 <!--table-->            
                                 <table id="itemCollectionGrid" class="grid border-custom"></table>                         
                              
-                         </div>
+                                             </div>
                      </div>
                   </div>
         </section>
