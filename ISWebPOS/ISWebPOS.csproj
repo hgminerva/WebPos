@@ -1320,6 +1320,8 @@
     <Content Include="wijmo\styles\themes\wijmo.theme.trust.less" />
     <Content Include="wijmo\styles\themes\wijmo.theme.zen.less" />
     <Content Include="Views\Shared\_MainFooter.cshtml" />
+    <Content Include="Views\Software\Customer.cshtml" />
+    <Content Include="Views\Software\AddCustomer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

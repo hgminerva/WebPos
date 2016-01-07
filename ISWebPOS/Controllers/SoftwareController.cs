@@ -18,6 +18,7 @@ namespace ISWebPOS.Controllers
         {
             return View();
         }
+        //Item View
         public ActionResult Item()
         {
             return View();
@@ -27,6 +28,15 @@ namespace ISWebPOS.Controllers
             return View();
         }
         public ActionResult EditItem()
+        {
+            return View();
+        }
+        //CustomerView
+        public ActionResult Customer()
+        {
+            return View();
+        }
+        public ActionResult AddCustomer()
         {
             return View();
         }
