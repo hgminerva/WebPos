@@ -13,10 +13,12 @@ namespace ISWebPOS.Controllers
         {
             return View();
         }
+
         public ActionResult Dashboard()
         {
             return View();
         }
+        //Item View
         public ActionResult Item()
         {
             return View();
@@ -29,5 +31,24 @@ namespace ISWebPOS.Controllers
         {
             return View();
         }
+        //DiscountView
+        public ActionResult Discount()
+        {
+            return View();
+        }
+        public  ActionResult AddDiscount()
+        {
+            return View();
+        }
+        //CustomerView
+        public ActionResult Customer()
+        {
+            return View();
+        }
+        public ActionResult AddCustomer()
+        {
+            return View();
+        }
+       
     }
 }

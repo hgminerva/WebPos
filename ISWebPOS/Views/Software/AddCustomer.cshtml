@@ -1,0 +1,203 @@
+﻿
+@{
+    ViewBag.Title = "AddCustomer";
+}
+<!DOCTYPE html>
+<html>
+<!-- ADD THE CLASS sidedar-collapse TO HIDE THE SIDEBAR PRIOR TO LOADING THE SITE -->
+<body class="hold-transition skin-blue sidebar-collapse sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+
+        <!-- ===================Main Header============================ -->
+        @Html.Partial("_MainHeader")
+        <!-- ===================Main Sidebar============================ -->
+        @Html.Partial("_MainSidebar")
+        <!-- =============================================== -->
+
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1 class="fa fa-user">
+                    Customer Detail
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="../Software/Dashboard"><i class="fa fa-table"></i> Home</a></li>
+                    <li><a href="../Software/Customer">Customer</a></li>
+                    <li class="active">Add Customer</li>
+                </ol>
+                <!---Menu Tab-->
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <!-- Nav tabs -->
+                            <div class="card">
+                                <section class="container">
+                                    <!--Buttons-->
+                                    <div class="btn-group-horizontal pull-right">
+                                        <a class="btn btn-app">
+                                            <i class="fa fa-lock"></i> Lock
+                                        </a>
+                                        <a class="btn  btn-app">
+                                            <i class="fa fa-unlock"></i> Unlock
+                                        </a>
+                                        <a class="btn btn-app">
+                                            <i class="fa fa-close"></i> Close
+                                        </a>
+                                    </div><!--btn horizontal-->
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title" id="genInfo">General Information</h3>
+                        </div><!-- /.box-header -->
+                        <!-- form start -->
+                        <form class="form-horizontal">
+                            <div class="box-body">
+
+                                <div class="form-group">
+                                    <label for="customer" class="col-sm-2 control-label">Customer</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="customer" placeholder="NA">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="address" class="col-sm-2 control-label">Address</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="address" placeholder="NA">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="contactPerson" class="col-sm-2 control-label">Contact Person</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="contactPerson" placeholder="NA">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="contactNo" class="col-sm-2 control-label">Contact No</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="contactNo" placeholder="NA">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="creditLimit" class="col-sm-2 control-label">Credit Limit</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="creditLimit" placeholder="0.0">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Term</label>
+                                    <div class="col-sm-4">
+                                        <select class="form-control">
+                                            <option>15 days</option>
+                                            <option>30 days</option>
+                                            <option>60 days</option>
+                                            <option>90 days</option>
+                                            <option>120 days</option>
+                                            <option>COD</option>
+                                            <option>Roll(s)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="tin" class="col-sm-2 control-label">TIN</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="tin" placeholder="NA">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">AR Account</label>
+                                    <div class="col-sm-4">
+                                        <select class="form-control">
+                                            <option>Account</option>
+                                            <option>Account Receivable -Others</option>
+                                            <option>Account Receivable -Sales</option>
+                                            <option>Cash On Hand</option>
+                                            <option>Inventory</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">With Reward</label>
+                                    <div class="col-sm-6">
+                                        <input type="checkbox" class="minimal" checked>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="reCardNo" class="col-sm-2 control-label">Reward Card No</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="reCardNo" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="rewConversion" class="col-sm-2 control-label">Reward Conversion</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="rewConversion" placeholder="0.0">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Default Price</label>
+                                    <div class="col-sm-4">
+                                        <select class="form-control">
+                                            <option>CLASS A</option>
+                                            <option>CLASS B</option>
+                                            <option>CLASS C</option>
+                                            <option>CLASS D</option>
+                                            <option>CLASS X</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="box-body table-responsive no-padding">
+                                    <table class="table table-bordered" style="width:100%">
+                                        <tr>
+                                            <th align="center" colspan="2">Sales History</th>
+                                            <th align="center" colspan="5">Amount</th>
+
+                                        </tr>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Sales Number</th>
+                                            <th>Sales</th>
+                                            <th>Payment</th>
+                                            <th>Debit</th>
+                                            <th>Credit</th>
+                                            <th>Balance</th>
+                                        </tr>
+                                        <tr></tr>
+                                    </table>
+                                </div><!-- /.box-body -->
+                                
+                            </div><!-- /.box-body -->
+                            <div class="box-footer">
+                            </div><!-- /.box-footer -->
+                        </form>
+                    </div><!-- /.box -->
+                </div>
+
+                
+            </section>
+        </div><!-- ./wrapper -->
+        <!-- ===================Main Footer============================ -->
+        @Html.Partial("_MainFooter")
+    </div>
+
+    <!-- jQuery 2.1.4 -->
+    <script src="../plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <!-- Bootstrap 3.3.5 -->
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <!-- SlimScroll -->
+    <script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
+    <!-- FastClick -->
+    <script src="../plugins/fastclick/fastclick.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="../dist/js/app.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="../dist/js/demo.js"></script>
+</body>
+</html>
+
+
