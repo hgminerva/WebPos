@@ -29,9 +29,9 @@ namespace ISWebPOS.Controllers
             return Form.ToList();
         }
 
-        // ===========
+        // ========
         // ADD Form
-        // ===========
+        // ========
         [Route("api/form/add")]
         public int Post(Models.SysForm form)
         {
@@ -55,9 +55,9 @@ namespace ISWebPOS.Controllers
             }
         }
 
-        // ==============
+        // ===========
         // UPDATE Form
-        // ==============
+        // ===========
         [Route("api/form/update/{id}")]
         public HttpResponseMessage Put(String id, Models.SysForm form)
         {
@@ -92,9 +92,9 @@ namespace ISWebPOS.Controllers
             }
         }
 
-        // ==============
+        // ===========
         // DELETE Form
-        // ==============
+        // ===========
         [Route("api/form/delete/{id}")]
         public HttpResponseMessage Delete(String id)
         {

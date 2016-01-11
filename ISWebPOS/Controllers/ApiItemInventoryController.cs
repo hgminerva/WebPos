@@ -12,10 +12,10 @@ namespace ISWebPOS.Controllers
     {
         private Data.webposDataContext db = new Data.webposDataContext();
 
-        // ===========
+        // ==================
         // LIST ItemInventory
-        // ===========
-        [Route("api/iteminventory/list")]
+        // ==================
+        [Route("api/itemInventory/list")]
         public List<Models.MstItemInventory> Get()
         {
             var itemInventory = from d in db.MstItemInventories
@@ -29,10 +29,10 @@ namespace ISWebPOS.Controllers
             return itemInventory.ToList();
         }
 
-        // ===========
+        // =================
         // ADD ItemInventory
-        // ===========
-        [Route("api/iteminventory/add")]
+        // =================
+        [Route("api/itemInventory/add")]
         public int Post(Models.MstItemInventory iteminventory)
         {
             try
@@ -58,10 +58,10 @@ namespace ISWebPOS.Controllers
             }
         }
 
-        // ==============
+        // ====================
         // UPDATE ItemInventory
-        // ==============
-        [Route("api/iteminventory/update/{id}")]
+        // ====================
+        [Route("api/itemInventory/update/{id}")]
         public HttpResponseMessage Put(String id, Models.MstItemInventory iteminventory)
         {
             try
@@ -97,10 +97,10 @@ namespace ISWebPOS.Controllers
             }
         }
 
-        // ==============
+        // ====================
         // DELETE ItemInventory
-        // ==============
-        [Route("api/iteminventory/delete/{id}")]
+        // ====================
+        [Route("api/itemInventory/delete/{id}")]
         public HttpResponseMessage Delete(String id)
         {
             try

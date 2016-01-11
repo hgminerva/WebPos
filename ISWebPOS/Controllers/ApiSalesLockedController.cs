@@ -11,10 +11,10 @@ namespace ISWebPOS.Controllers
     {
         private Data.webposDataContext db = new Data.webposDataContext();
 
-        // ===========
+        // ================
         // LIST SalesLocked
-        // ===========
-        [Route("api/saleslocked/list")]
+        // ================
+        [Route("api/salesLocked/list")]
         public List<Models.SysSalesLocked> Get()
         {
             var isLocked = true;
@@ -28,10 +28,10 @@ namespace ISWebPOS.Controllers
             return SalesLocked.ToList();
         }
 
-        // ===========
+        // ===============
         // ADD SalesLocked
-        // ===========
-        [Route("api/saleslocked/add")]
+        // ===============
+        [Route("api/salesLocked/add")]
         public int Post(Models.SysSalesLocked saleslocked)
         {
             try
@@ -57,10 +57,10 @@ namespace ISWebPOS.Controllers
             }
         }
 
-        // ==============
+        // ==================
         // UPDATE SalesLocked
-        // ==============
-        [Route("api/saleslocked/update/{id}")]
+        // ==================
+        [Route("api/salesLocked/update/{id}")]
         public HttpResponseMessage Put(String id, Models.SysSalesLocked saleslocked)
         {
             try
@@ -96,10 +96,10 @@ namespace ISWebPOS.Controllers
             }
         }
 
-        // ==============
+        // ==================
         // DELETE SalesLocked
-        // ==============
-        [Route("api/saleslocked/delete/{id}")]
+        // ==================
+        [Route("api/salesLocked/delete/{id}")]
         public HttpResponseMessage Delete(String id)
         {
             try

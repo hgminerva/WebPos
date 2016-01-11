@@ -12,10 +12,10 @@ namespace ISWebPOS.Controllers
     {
         private Data.webposDataContext db = new Data.webposDataContext();
 
-        // ===========
+        // ==============
         // LIST ItemGroup
-        // ===========
-        [Route("api/itemgroup/list")]
+        // ==============
+        [Route("api/itemGroup/list")]
         public List<Models.MstItemGroup> Get()
         {
             var isLocked = true;
@@ -35,10 +35,10 @@ namespace ISWebPOS.Controllers
             return itemGroup.ToList();
         }
 
-        // ===========
+        // =============
         // ADD ItemGroup
-        // ===========
-        [Route("api/itemgroup/add")]
+        // =============
+        [Route("api/itemGroup/add")]
         public int Post(Models.MstItemGroup itemgroup)
         {
             try
@@ -73,10 +73,10 @@ namespace ISWebPOS.Controllers
             }
         }
 
-        // ==============
+        // ================
         // UPDATE ItemGroup
-        // ==============
-        [Route("api/itemgroup/update/{id}")]
+        // ================
+        [Route("api/itemGroup/update/{id}")]
         public HttpResponseMessage Put(String id, Models.MstItemGroup itemgroup)
         {
             try
@@ -120,10 +120,10 @@ namespace ISWebPOS.Controllers
             }
         }
 
-        // ==============
+        // ================
         // DELETE ItemGroup
-        // ==============
-        [Route("api/itemgroup/delete/{id}")]
+        // ================
+        [Route("api/itemGroup/delete/{id}")]
         public HttpResponseMessage Delete(String id)
         {
             try

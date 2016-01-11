@@ -12,10 +12,10 @@ namespace ISWebPOS.Controllers
     {
         private Data.webposDataContext db = new Data.webposDataContext();
 
-        // ===========
+        // ===============
         // LIST AuditTrail
-        // ===========
-        [Route("api/audittrail/list")]
+        // ===============
+        [Route("api/auditTrail/list")]
         public List<Models.SysAuditTrail> Get()
         {
             var AuditTrail = from d in db.SysAuditTrails
@@ -32,10 +32,10 @@ namespace ISWebPOS.Controllers
             return AuditTrail.ToList();
         }
 
-        // ===========
+        // ==============
         // ADD AuditTrail
-        // ===========
-        [Route("api/audittrail/add")]
+        // ==============
+        [Route("api/auditTrail/add")]
         public int Post(Models.SysAuditTrail audittrail)
         {
             try
@@ -65,10 +65,10 @@ namespace ISWebPOS.Controllers
             }
         }
 
-        // ==============
+        // =================
         // UPDATE AuditTrail
-        // ==============
-        [Route("api/audittrail/update/{id}")]
+        // =================
+        [Route("api/auditTrail/update/{id}")]
         public HttpResponseMessage Put(String id, Models.SysAuditTrail audittrail)
         {
             try
@@ -108,10 +108,10 @@ namespace ISWebPOS.Controllers
             }
         }
 
-        // ==============
+        // =================
         // DELETE AuditTrail
-        // ==============
-        [Route("api/audittrail/delete/{id}")]
+        // =================
+        [Route("api/auditTrail/delete/{id}")]
         public HttpResponseMessage Delete(String id)
         {
             try

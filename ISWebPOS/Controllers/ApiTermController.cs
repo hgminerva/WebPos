@@ -12,9 +12,9 @@ namespace ISWebPOS.Controllers
     {
         private Data.webposDataContext db = new Data.webposDataContext();
 
-        // ===========
+        // =========
         // LIST Term
-        // ===========
+        // =========
         [Route("api/term/list")]
         public List<Models.MstTerm> Get()
         {
@@ -28,9 +28,9 @@ namespace ISWebPOS.Controllers
             return Term.ToList();
         }
 
-        // ===========
+        // ========
         // ADD Term
-        // ===========
+        // ========
         [Route("api/term/add")]
         public int Post(Models.MstTerm term)
         {
@@ -55,9 +55,9 @@ namespace ISWebPOS.Controllers
             }
         }
 
-        // ==============
+        // ===========
         // UPDATE Term
-        // ==============
+        // ===========
         [Route("api/term/update/{id}")]
         public HttpResponseMessage Put(String id, Models.MstTerm term)
         {
@@ -92,9 +92,9 @@ namespace ISWebPOS.Controllers
             }
         }
 
-        // ==============
+        // ===========
         // DELETE Term
-        // ==============
+        // ===========
         [Route("api/tax/delete/{id}")]
         public HttpResponseMessage Delete(String id)
         {
