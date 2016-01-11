@@ -3211,7 +3211,7 @@ table.text-center th {
 }
 .login-box-body,
 .register-box-body {
-  background: #fff;
+  background: rgba(23,54,93,.8);
   padding: 20px;
   border-top: 0;
   color: #666;

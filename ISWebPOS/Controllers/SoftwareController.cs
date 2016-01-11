@@ -31,6 +31,11 @@ namespace ISWebPOS.Controllers
         {
             return View();
         }
+        //DiscountView
+        public ActionResult Discount()
+        {
+            return View();
+        }
         //CustomerView
         public ActionResult Customer()
         {

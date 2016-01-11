@@ -1322,6 +1322,7 @@
     <Content Include="Views\Shared\_MainFooter.cshtml" />
     <Content Include="Views\Software\Customer.cshtml" />
     <Content Include="Views\Software\AddCustomer.cshtml" />
+    <Content Include="Views\Software\Discount.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
