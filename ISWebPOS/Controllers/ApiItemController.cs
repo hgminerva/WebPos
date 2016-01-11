@@ -15,61 +15,6 @@ namespace ISWebPOS.Controllers
         // ===========
         // LIST Item
         // =========== 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         [Route("api/item/list")]
         public List<Models.MstItem> Get()
         {
@@ -78,7 +23,7 @@ namespace ISWebPOS.Controllers
             var item = from d in db.MstItems
                            select new Models.MstItem
                            {
-
+                               Id = d.Id,
                                ItemCode = d.ItemCode,
                                BarCode = d.BarCode,
                                ItemDescription = d.ItemDescription,
@@ -245,11 +190,12 @@ namespace ISWebPOS.Controllers
         [Route("api/item/delete/{id}")]
         public HttpResponseMessage Delete(String id)
         {
+            
             try
             {
                 var itemId = Convert.ToInt32(id);
                 var items = from d in db.MstItems where d.Id == itemId select d;
-
+                
                 if (items.Any())
                 {
                     db.MstItems.DeleteOnSubmit(items.First());
