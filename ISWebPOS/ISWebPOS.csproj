@@ -1104,6 +1104,8 @@
     <Content Include="plugins\datatables\extensions\TableTools\Readme.md" />
     <Content Include="plugins\input-mask\phone-codes\phone-be.json" />
     <Content Include="plugins\input-mask\phone-codes\phone-codes.json" />
+    <Content Include="Scripts\toastr.js" />
+    <Content Include="Scripts\toastr.min.js" />
     <Content Include="wijmo\controls\cultures\wijmo.culture.de.js" />
     <Content Include="wijmo\controls\cultures\wijmo.culture.de.min.js" />
     <Content Include="wijmo\controls\cultures\wijmo.culture.en-GB.js" />

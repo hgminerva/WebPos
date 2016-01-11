@@ -30,7 +30,18 @@ namespace ISWebPOS
                 "~/plugins/slimScroll/jquery.slimscroll.min.js",
                 "~/plugins/fastclick/fastclick.min.js",
                 "~/dist/js/demo.js",
+                "~/Scripts/toastr.js",
+                "~/Scripts/toastr.min.js",
                 "~/dist/js/app.min.js"));
+
+            // ============
+            // Software JS
+            // ============
+            bundles.Add(new ScriptBundle("~/Software/Js").Include(
+            
+                
+                ));
+
 
             // =========
             // Wijmo JS
