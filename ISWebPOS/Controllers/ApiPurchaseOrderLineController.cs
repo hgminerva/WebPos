@@ -12,10 +12,10 @@ namespace ISWebPOS.Controllers
     {
         private Data.webposDataContext db = new Data.webposDataContext();
 
-        // ===========
+        // ======================
         // LIST PurchaseOrderLine
-        // ===========
-        [Route("api/purchaseorderline/list")]
+        // ======================
+        [Route("api/purchaseOrderLine/list")]
         public List<Models.TrnPurchaseOrderLine> Get()
         {
             var PurchaseOrderLine = from d in db.TrnPurchaseOrderLines
@@ -32,10 +32,10 @@ namespace ISWebPOS.Controllers
             return PurchaseOrderLine.ToList();
         }
 
-        // ===========
+        // =====================
         // ADD PurchaseOrderLine
-        // ===========
-        [Route("api/purchaseorderline/add")]
+        // =====================
+        [Route("api/purchaseOrderLine/add")]
         public int Post(Models.TrnPurchaseOrderLine purchaseorderline)
         {
             try
@@ -63,10 +63,10 @@ namespace ISWebPOS.Controllers
             }
         }
 
-        // ==============
+        // ========================
         // UPDATE PurchaseOrderLine
-        // ==============
-        [Route("api/purchaseorderline/update/{id}")]
+        // ========================
+        [Route("api/purchaseOrderLine/update/{id}")]
         public HttpResponseMessage Put(String id, Models.TrnPurchaseOrderLine purchaseorderline)
         {
             try
@@ -104,10 +104,10 @@ namespace ISWebPOS.Controllers
             }
         }
 
-        // ==============
+        // ========================
         // DELETE purchaseorderline
-        // ==============
-        [Route("api/purchaseorderline/delete/{id}")]
+        // ========================
+        [Route("api/purchaseOrderLine/delete/{id}")]
         public HttpResponseMessage Delete(String id)
         {
             try

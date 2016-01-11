@@ -12,10 +12,10 @@ namespace ISWebPOS.Controllers
     {
         private Data.webposDataContext db = new Data.webposDataContext();
 
-        // ===========
-        // LIST PurchaseOrderLine
-        // ===========
-        [Route("api/purchaseorder/list")]
+        // ==================
+        // LIST PurchaseOrder
+        // ==================
+        [Route("api/purchaseOrder/list")]
         public List<Models.TrnPurchaseOrder> Get()
         {
             var isLocked = true;
@@ -41,10 +41,10 @@ namespace ISWebPOS.Controllers
             return PurchaseOrder.ToList();
         }
 
-        // ===========
+        // =================
         // ADD PurchaseOrder
-        // ===========
-        [Route("api/purchaseorder/add")]
+        // =================
+        [Route("api/purchaseOrder/add")]
         public int Post(Models.TrnPurchaseOrder purchaseorder)
         {
             try
@@ -84,10 +84,10 @@ namespace ISWebPOS.Controllers
             }
         }
 
-        // ==============
+        // ====================
         // UPDATE PurchaseOrder
-        // ==============
-        [Route("api/purchaseorder/update/{id}")]
+        // ====================
+        [Route("api/purchaseOrder/update/{id}")]
         public HttpResponseMessage Put(String id, Models.TrnPurchaseOrder purchaseorder)
         {
             try
@@ -135,10 +135,10 @@ namespace ISWebPOS.Controllers
             }
         }
 
-        // ==============
-        // DELETE purchaseorderline
-        // ==============
-        [Route("api/purchaseorder/delete/{id}")]
+        // ====================
+        // DELETE PurchaseOrder
+        // ====================
+        [Route("api/purchaseOrder/delete/{id}")]
         public HttpResponseMessage Delete(String id)
         {
             try

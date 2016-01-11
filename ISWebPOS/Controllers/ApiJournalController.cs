@@ -12,9 +12,9 @@ namespace ISWebPOS.Controllers
     {
         private Data.webposDataContext db = new Data.webposDataContext();
 
-        // ===========
+        // ============
         // LIST Journal
-        // ===========
+        // ============
         [Route("api/journal/list")]
         public List<Models.TrnJournal> Get()
         {

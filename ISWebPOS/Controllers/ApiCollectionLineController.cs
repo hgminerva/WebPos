@@ -12,10 +12,10 @@ namespace ISWebPOS.Controllers
     {
         private Data.webposDataContext db = new Data.webposDataContext();
 
-        // ===========
+        // ===================
         // LIST CollectionLine
-        // ===========
-        [Route("api/collectionline/list")]
+        // ===================
+        [Route("api/collectionLine/list")]
         public List<Models.TrnCollectionLine> Get()
         {
             var isLocked = true;
@@ -44,10 +44,10 @@ namespace ISWebPOS.Controllers
             return CollectionLine.ToList();
         }
 
-        // ===========
+        // ==================
         // ADD CollectionLine
-        // ===========
-        [Route("api/collectionline/add")]
+        // ==================
+        [Route("api/collectionLine/add")]
         public int Post(Models.TrnCollectionLine collectionline)
         {
             try
@@ -87,10 +87,10 @@ namespace ISWebPOS.Controllers
             }
         }
 
-        // ==============
+        // =====================
         // UPDATE CollectionLine
-        // ==============
-        [Route("api/collectionline/update/{id}")]
+        // =====================
+        [Route("api/collectionLine/update/{id}")]
         public HttpResponseMessage Put(String id, Models.TrnCollectionLine collectionline)
         {
             try
@@ -138,10 +138,10 @@ namespace ISWebPOS.Controllers
             }
         }
 
-        // ==============
+        // =====================
         // DELETE CollectionLine
-        // ==============
-        [Route("api/collectionline/delete/{id}")]
+        // =====================
+        [Route("api/collectionLine/delete/{id}")]
         public HttpResponseMessage Delete(String id)
         {
             try
