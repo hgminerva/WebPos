@@ -279,6 +279,8 @@
     <Content Include="assets\css\main.css" />
     <Content Include="assets\fonts\fontawesome-webfont.svg" />
     <Content Include="assets\img\about\about1.jpg" />
+    <Content Include="assets\img\header_bg.jpg" />
+    <Content Include="assets\img\header_bg.png" />
     <Content Include="assets\img\header_bg1.jpg" />
     <Content Include="assets\img\portfolio\folio01-preview.jpg" />
     <Content Include="assets\img\portfolio\folio01.jpg" />
@@ -1323,6 +1325,7 @@
     <Content Include="Views\Software\Customer.cshtml" />
     <Content Include="Views\Software\AddCustomer.cshtml" />
     <Content Include="Views\Software\Discount.cshtml" />
+    <Content Include="Views\Software\AddDiscount.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
