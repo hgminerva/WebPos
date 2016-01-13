@@ -13,9 +13,9 @@ namespace ISWebPOS.Controllers
     {
         private Data.webposDataContext db = new Data.webposDataContext();
 
-        // ===========
+        // ===============
         // LIST Collection
-        // ===========
+        // ===============
         [Route("api/collection/list")]
         public List<Models.TrnCollection> Get()
         {
@@ -49,9 +49,9 @@ namespace ISWebPOS.Controllers
             return Collection.ToList();
         }
 
-        // ===========
+        // ==============
         // ADD Collection
-        // ===========
+        // ==============
         [Route("api/collection/add")]
         public int Post(Models.TrnCollection collection)
         {
@@ -99,9 +99,9 @@ namespace ISWebPOS.Controllers
             }
         }
 
-        // ==============
+        // =================
         // UPDATE Collection
-        // ==============
+        // =================
         [Route("api/collection/update/{id}")]
         public HttpResponseMessage Put(String id, Models.TrnCollection collection)
         {
@@ -157,9 +157,9 @@ namespace ISWebPOS.Controllers
             }
         }
 
-        // ==============
-        // DELETE CollectionLine
-        // ==============
+        // =================
+        // DELETE Collection
+        // =================
         [Route("api/collection/delete/{id}")]
         public HttpResponseMessage Delete(String id)
         {

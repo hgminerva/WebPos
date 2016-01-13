@@ -12,9 +12,9 @@ namespace ISWebPOS.Controllers
     {
         private Data.webposDataContext db = new Data.webposDataContext();
 
-        // ===========
+        // ========
         // LIST Tax
-        // ===========
+        // ========
         [Route("api/tax/list")]
         public List<Models.MstTax> Get()
         {
@@ -30,9 +30,9 @@ namespace ISWebPOS.Controllers
             return Tax.ToList();
         }
 
-        // ===========
+        // =======
         // ADD Tax
-        // ===========
+        // =======
         [Route("api/tax/add")]
         public int Post(Models.MstTax tax)
         {
@@ -59,9 +59,9 @@ namespace ISWebPOS.Controllers
             }
         }
 
-        // ==============
+        // ==========
         // UPDATE Tax
-        // ==============
+        // ==========
         [Route("api/tax/update/{id}")]
         public HttpResponseMessage Put(String id, Models.MstTax tax)
         {
@@ -98,9 +98,9 @@ namespace ISWebPOS.Controllers
             }
         }
 
-        // ==============
+        // ==========
         // DELETE Tax
-        // ==============
+        // ==========
         [Route("api/tax/delete/{id}")]
         public HttpResponseMessage Delete(String id)
         {

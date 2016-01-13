@@ -13,10 +13,10 @@ namespace ISWebPOS.Controllers
     {
         private Data.webposDataContext db = new Data.webposDataContext();
 
-        // ===========
+        // ====================
         // LIST DebitCreditMemo
-        // ===========
-        [Route("api/debitcreditmemo/list")]
+        // ====================
+        [Route("api/debitCreditMemo/list")]
         public List<Models.TrnDebitCreditMemo> Get()
         {
             var isLocked = true;
@@ -40,10 +40,10 @@ namespace ISWebPOS.Controllers
             return DebitCreditMemo.ToList();
         }
 
-        // ===========
+        // ===================
         // ADD DebitCreditMemo
-        // ===========
-        [Route("api/debitcreditmemo/add")]
+        // ===================
+        [Route("api/debitCreditMemo/add")]
         public int Post(Models.TrnDebitCreditMemo debitcreditmemo)
         {
             try
@@ -81,10 +81,10 @@ namespace ISWebPOS.Controllers
             }
         }
 
-        // ==============
+        // ======================
         // UPDATE DebitCreditMemo
-        // ==============
-        [Route("api/debitcreditmemo/update/{id}")]
+        // ======================
+        [Route("api/debitCreditMemo/update/{id}")]
         public HttpResponseMessage Put(String id, Models.TrnDebitCreditMemo debitcreditmemo)
         {
             try
@@ -130,10 +130,10 @@ namespace ISWebPOS.Controllers
             }
         }
 
-        // ==============
+        // ======================
         // DELETE DebitCreditMemo
-        // ==============
-        [Route("api/debitcreditmemo/delete/{id}")]
+        // ======================
+        [Route("api/debitCreditMemo/delete/{id}")]
         public HttpResponseMessage Delete(String id)
         {
             try
