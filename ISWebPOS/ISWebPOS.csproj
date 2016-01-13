@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -20,6 +21,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <TypeScriptToolsVersion>1.0</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -170,15 +172,48 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ApiAuditTrailController.cs" />
+    <Compile Include="Controllers\ApiCollectionController.cs" />
+    <Compile Include="Controllers\ApiCollectionLineController.cs" />
+    <Compile Include="Controllers\ApiDebitCreditMemoController.cs" />
+    <Compile Include="Controllers\ApiDebitCreditMemoLineController.cs" />
+    <Compile Include="Controllers\ApiDisbursementController.cs" />
+    <Compile Include="Controllers\ApiFormController.cs" />
     <Compile Include="Controllers\ApiItemController.cs" />
     <Compile Include="Controllers\ApiItemComponentController.cs" />
     <Compile Include="Controllers\ApiDiscountItemController.cs" />
     <Compile Include="Controllers\ApiDiscountController.cs" />
     <Compile Include="Controllers\ApiCustomerController.cs" />
     <Compile Include="Controllers\ApiAccountController.cs" />
+    <Compile Include="Controllers\ApiSalesController.cs" />
+    <Compile Include="Controllers\ApiSalesDraftController.cs" />
+    <Compile Include="Controllers\ApiSalesLineController.cs" />
+    <Compile Include="Controllers\ApiSalesReleasedController.cs" />
+    <Compile Include="Controllers\ApiStockCountController.cs" />
+    <Compile Include="Controllers\ApiTerminalController.cs" />
+    <Compile Include="Controllers\ApiUnitController.cs" />
+    <Compile Include="Controllers\ApiUserController.cs" />
+    <Compile Include="Controllers\ApiUserFormController.cs" />
+    <Compile Include="Controllers\ApiItemGroupController.cs" />
+    <Compile Include="Controllers\ApiItemGroupItemController.cs" />
+    <Compile Include="Controllers\ApiItemInventoryController.cs" />
+    <Compile Include="Controllers\ApiItemPackageController.cs" />
+    <Compile Include="Controllers\ApiItemPriceController.cs" />
+    <Compile Include="Controllers\ApiJournalController.cs" />
+    <Compile Include="Controllers\ApiPayTypeController.cs" />
+    <Compile Include="Controllers\ApiPeriodController.cs" />
+    <Compile Include="Controllers\ApiPurchaseOrderController.cs" />
+    <Compile Include="Controllers\ApiPurchaseOrderLineController.cs" />
+    <Compile Include="Controllers\ApiSalesLockedController.cs" />
+    <Compile Include="Controllers\ApiSupplierController.cs" />
+    <Compile Include="Controllers\ApiTableController.cs" />
+    <Compile Include="Controllers\ApiTableGroupController.cs" />
+    <Compile Include="Controllers\ApiTaxController.cs" />
+    <Compile Include="Controllers\ApiTermController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JsonController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\SoftwareController.cs" />
     <Compile Include="Models\MstAccount.cs" />
     <Compile Include="Models\MstCustomer.cs" />
     <Compile Include="Data\webpos.designer.cs">
@@ -212,6 +247,11 @@
     <Compile Include="Models\MstUnit.cs" />
     <Compile Include="Models\MstUser.cs" />
     <Compile Include="Models\MstUserForm.cs" />
+    <Compile Include="Models\TrnSales.cs" />
+    <Compile Include="Models\TrnSalesDraft.cs" />
+    <Compile Include="Models\TrnSalesLine.cs" />
+    <Compile Include="Models\TrnSalesReleased.cs" />
+    <Compile Include="Models\TrnStockCount.cs" />
     <Compile Include="Models\SysAuditTrail.cs" />
     <Compile Include="Models\SysForm.cs" />
     <Compile Include="Models\SysSalesLocked.cs" />
@@ -232,6 +272,73 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\css\animations.min.css" />
+    <Content Include="assets\css\bootstrap.css" />
+    <Content Include="assets\css\font-awesome.css" />
+    <Content Include="assets\css\ionicons.css" />
+    <Content Include="assets\css\style-blue.css" />
+    <Content Include="assets\css\style-green.css" />
+    <Content Include="assets\css\style-red.css" />
+    <Content Include="assets\css\style-solid-black.css" />
+    <Content Include="assets\css\style-solid-red.css" />
+    <Content Include="assets\css\style-yellow.css" />
+    <Content Include="assets\fonts\fontawesome-webfont.svg" />
+    <Content Include="assets\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="assets\fonts\ionicons.svg" />
+    <Content Include="assets\img\1.jpg" />
+    <Content Include="assets\img\2.jpg" />
+    <Content Include="assets\img\portfolio\1.jpg" />
+    <Content Include="assets\img\portfolio\2.jpg" />
+    <Content Include="assets\img\portfolio\3.jpg" />
+    <Content Include="assets\img\portfolio\4.jpg" />
+    <Content Include="assets\img\portfolio\5.jpg" />
+    <Content Include="assets\img\portfolio\6.jpg" />
+    <Content Include="assets\img\team\1.jpg" />
+    <Content Include="assets\img\team\2.jpg" />
+    <Content Include="assets\img\team\3.jpg" />
+    <Content Include="assets\img\team\4.jpg" />
+    <Content Include="assets\js\animations.min.js" />
+    <Content Include="assets\js\appear.min.js" />
+    <Content Include="assets\js\bootstrap.js" />
+    <Content Include="assets\js\custom-solid.js" />
+    <Content Include="assets\js\custom.js" />
+    <Content Include="assets\js\jquery-1.11.1.js" />
+    <Content Include="assets\js\jquery.easing.min.js" />
+    <Content Include="assets\js\jquery.isotope.js" />
+    <Content Include="assets\js\source\blank.gif" />
+    <Content Include="assets\js\source\fancybox_loading%402x.gif" />
+    <Content Include="assets\js\source\fancybox_loading.gif" />
+    <Content Include="assets\js\source\fancybox_overlay.png" />
+    <Content Include="assets\js\source\fancybox_sprite%402x.png" />
+    <Content Include="assets\js\source\fancybox_sprite.png" />
+    <Content Include="assets\js\source\helpers\fancybox_buttons.png" />
+    <Content Include="assets\js\source\helpers\jquery.fancybox-buttons.css" />
+    <Content Include="assets\js\source\helpers\jquery.fancybox-buttons.js" />
+    <Content Include="assets\js\source\helpers\jquery.fancybox-media.js" />
+    <Content Include="assets\js\source\helpers\jquery.fancybox-thumbs.css" />
+    <Content Include="assets\js\source\helpers\jquery.fancybox-thumbs.js" />
+    <Content Include="assets\js\source\jquery.fancybox.css" />
+    <Content Include="assets\js\source\jquery.fancybox.js" />
+    <Content Include="assets\js\source\jquery.fancybox.pack.js" />
+    <Content Include="assets\js\vegas\images\loading.html" />
+    <Content Include="assets\js\vegas\jquery.vegas.min.css" />
+    <Content Include="assets\js\vegas\jquery.vegas.min.js" />
+    <Content Include="assets\js\vegas\overlays\01.png" />
+    <Content Include="assets\js\vegas\overlays\02.png" />
+    <Content Include="assets\js\vegas\overlays\03.png" />
+    <Content Include="assets\js\vegas\overlays\04.png" />
+    <Content Include="assets\js\vegas\overlays\05.png" />
+    <Content Include="assets\js\vegas\overlays\06.png" />
+    <Content Include="assets\js\vegas\overlays\07.png" />
+    <Content Include="assets\js\vegas\overlays\08.png" />
+    <Content Include="assets\js\vegas\overlays\09.png" />
+    <Content Include="assets\js\vegas\overlays\10.png" />
+    <Content Include="assets\js\vegas\overlays\11.png" />
+    <Content Include="assets\js\vegas\overlays\12.png" />
+    <Content Include="assets\js\vegas\overlays\13.png" />
+    <Content Include="assets\js\vegas\overlays\14.png" />
+    <Content Include="assets\js\vegas\overlays\15.png" />
+    <Content Include="Content\animations.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Dashboard login\css\boostrap\awesome.css" />
@@ -240,7 +347,75 @@
     <Content Include="Dashboard login\index.html" />
     <Content Include="Dashboard login\js\bootsrap.js" />
     <Content Include="Dashboard login\js\jquery.js" />
+    <Content Include="Content\ionicons.css" />
+    <Content Include="Content\ionicons.min.css" />
+    <Content Include="Content\style.css" />
+    <Content Include="dist\css\AdminLTE.css" />
+    <Content Include="dist\css\AdminLTE.min.css" />
+    <Content Include="dist\css\skins\skin-black-light.css" />
+    <Content Include="dist\css\skins\skin-black-light.min.css" />
+    <Content Include="dist\css\skins\skin-black.css" />
+    <Content Include="dist\css\skins\skin-black.min.css" />
+    <Content Include="dist\css\skins\skin-blue-light.css" />
+    <Content Include="dist\css\skins\skin-blue-light.min.css" />
+    <Content Include="dist\css\skins\skin-blue.css" />
+    <Content Include="dist\css\skins\skin-blue.min.css" />
+    <Content Include="dist\css\skins\skin-green-light.css" />
+    <Content Include="dist\css\skins\skin-green-light.min.css" />
+    <Content Include="dist\css\skins\skin-green.css" />
+    <Content Include="dist\css\skins\skin-green.min.css" />
+    <Content Include="dist\css\skins\skin-purple-light.css" />
+    <Content Include="dist\css\skins\skin-purple-light.min.css" />
+    <Content Include="dist\css\skins\skin-purple.css" />
+    <Content Include="dist\css\skins\skin-purple.min.css" />
+    <Content Include="dist\css\skins\skin-red-light.css" />
+    <Content Include="dist\css\skins\skin-red-light.min.css" />
+    <Content Include="dist\css\skins\skin-red.css" />
+    <Content Include="dist\css\skins\skin-red.min.css" />
+    <Content Include="dist\css\skins\skin-yellow-light.css" />
+    <Content Include="dist\css\skins\skin-yellow-light.min.css" />
+    <Content Include="dist\css\skins\skin-yellow.css" />
+    <Content Include="dist\css\skins\skin-yellow.min.css" />
+    <Content Include="dist\css\skins\_all-skins.css" />
+    <Content Include="dist\css\skins\_all-skins.min.css" />
+    <Content Include="dist\img\avatar.png" />
+    <Content Include="dist\img\avatar04.png" />
+    <Content Include="dist\img\avatar2.png" />
+    <Content Include="dist\img\avatar3.png" />
+    <Content Include="dist\img\avatar5.png" />
+    <Content Include="dist\img\boxed-bg.jpg" />
+    <Content Include="dist\img\boxed-bg.png" />
+    <Content Include="dist\img\credit\american-express.png" />
+    <Content Include="dist\img\credit\cirrus.png" />
+    <Content Include="dist\img\credit\mastercard.png" />
+    <Content Include="dist\img\credit\mestro.png" />
+    <Content Include="dist\img\credit\paypal.png" />
+    <Content Include="dist\img\credit\paypal2.png" />
+    <Content Include="dist\img\credit\visa.png" />
+    <Content Include="dist\img\default-50x50.gif" />
+    <Content Include="dist\img\icons.png" />
+    <Content Include="dist\img\photo1.png" />
+    <Content Include="dist\img\photo2.png" />
+    <Content Include="dist\img\photo3.jpg" />
+    <Content Include="dist\img\photo4.jpg" />
+    <Content Include="dist\img\user1-128x128.jpg" />
+    <Content Include="dist\img\user2-160x160.jpg" />
+    <Content Include="dist\img\user3-128x128.jpg" />
+    <Content Include="dist\img\user4-128x128.jpg" />
+    <Content Include="dist\img\user5-128x128.jpg" />
+    <Content Include="dist\img\user6-128x128.jpg" />
+    <Content Include="dist\img\user7-128x128.jpg" />
+    <Content Include="dist\img\user8-128x128.jpg" />
+    <Content Include="dist\js\app.js" />
+    <Content Include="dist\js\app.min.js" />
+    <Content Include="dist\js\demo.js" />
+    <Content Include="dist\js\pages\dashboard.js" />
+    <Content Include="dist\js\pages\dashboard2.js" />
     <Content Include="favicon.ico" />
+    <Content Include="font-awesome\css\font-awesome.css" />
+    <Content Include="font-awesome\css\font-awesome.min.css" />
+    <Content Include="font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="font-awesome\HELP-US-OUT.txt" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -1035,34 +1210,6 @@
       <LastGenOutput>webpos.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="pos\bootstrap\css\bootstrap.css.map" />
-    <Content Include="pos\bootstrap\fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="pos\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="pos\bootstrap\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="pos\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="pos\plugins\ckeditor\CHANGES.md" />
-    <Content Include="pos\plugins\ckeditor\LICENSE.md" />
-    <Content Include="pos\plugins\ckeditor\plugins\scayt\LICENSE.md" />
-    <Content Include="pos\plugins\ckeditor\plugins\scayt\README.md" />
-    <Content Include="pos\plugins\ckeditor\plugins\wsc\LICENSE.md" />
-    <Content Include="pos\plugins\ckeditor\plugins\wsc\README.md" />
-    <Content Include="pos\plugins\ckeditor\README.md" />
-    <Content Include="pos\plugins\ckeditor\skins\moono\readme.md" />
-    <Content Include="pos\plugins\datatables\extensions\ColReorder\Readme.md" />
-    <Content Include="pos\plugins\datatables\extensions\ColVis\Readme.md" />
-    <Content Include="pos\plugins\datatables\extensions\FixedColumns\Readme.md" />
-    <Content Include="pos\plugins\datatables\extensions\Responsive\css\dataTables.responsive.scss" />
-    <Content Include="pos\plugins\datatables\extensions\Responsive\Readme.md" />
-    <Content Include="pos\plugins\datatables\extensions\Scroller\examples\data\ssp.php" />
-    <Content Include="pos\plugins\datatables\extensions\TableTools\images\psd\collection.psd" />
-    <Content Include="pos\plugins\datatables\extensions\TableTools\images\psd\copy document.psd" />
-    <Content Include="pos\plugins\datatables\extensions\TableTools\images\psd\file_types.psd" />
-    <Content Include="pos\plugins\datatables\extensions\TableTools\images\psd\printer.psd" />
-    <Content Include="pos\plugins\datatables\extensions\TableTools\Readme.md" />
-    <Content Include="pos\plugins\input-mask\phone-codes\phone-be.json" />
-    <Content Include="pos\plugins\input-mask\phone-codes\phone-codes.json" />
-    <Content Include="pos\Software\Dashboard.cshtml" />
-    <Content Include="pos\Software\Item.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -1114,8 +1261,27 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\ApiCustList\" />
-    <Folder Include="Views\Json\" />
+    <Folder Include="Views\ApiAuditTrail\" />
+    <Folder Include="Views\ApiCollectionLine\" />
+    <Folder Include="Views\ApiCollection\" />
+    <Folder Include="Views\ApiDebitCreditMemoLine\" />
+    <Folder Include="Views\ApiDebitCreditMemo\" />
+    <Folder Include="Views\ApiDisbursement\" />
+    <Folder Include="Views\ApiForm\" />
+    <Folder Include="Views\ApiItemGroupItem\" />
+    <Folder Include="Views\ApiItemGroup\" />
+    <Folder Include="Views\ApiItemInventory\" />
+    <Folder Include="Views\ApiItemPackage\" />
+    <Folder Include="Views\ApiJournal\" />
+    <Folder Include="Views\ApiPurchaseOrderLine\" />
+    <Folder Include="Views\ApiPurchaseOrder\" />
+    <Folder Include="Views\ApiSalesLocked\" />
+    <Folder Include="Views\ApiSysSalesLocked\" />
+    <Folder Include="Views\ApiTableGroup\" />
+    <Folder Include="Views\ApiTable\" />
+    <Folder Include="Views\ApiTax\" />
+    <Folder Include="Views\ApiTerm\" />
+    <Folder Include="Views\PurchaseOrderLine\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -1132,11 +1298,56 @@
       <DependentUpon>webpos.dbml</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="wijmo\controls\cultures\wijmo.culture.de.d.ts" />
+    <TypeScriptCompile Include="wijmo\controls\cultures\wijmo.culture.de.ts" />
+    <TypeScriptCompile Include="wijmo\controls\cultures\wijmo.culture.en-GB.d.ts" />
+    <TypeScriptCompile Include="wijmo\controls\cultures\wijmo.culture.en-GB.ts" />
+    <TypeScriptCompile Include="wijmo\controls\cultures\wijmo.culture.en.d.ts" />
+    <TypeScriptCompile Include="wijmo\controls\cultures\wijmo.culture.en.ts" />
+    <TypeScriptCompile Include="wijmo\controls\cultures\wijmo.culture.es.d.ts" />
+    <TypeScriptCompile Include="wijmo\controls\cultures\wijmo.culture.es.ts" />
+    <TypeScriptCompile Include="wijmo\controls\cultures\wijmo.culture.fr.d.ts" />
+    <TypeScriptCompile Include="wijmo\controls\cultures\wijmo.culture.fr.ts" />
+    <TypeScriptCompile Include="wijmo\controls\cultures\wijmo.culture.it.d.ts" />
+    <TypeScriptCompile Include="wijmo\controls\cultures\wijmo.culture.it.ts" />
+    <TypeScriptCompile Include="wijmo\controls\cultures\wijmo.culture.ja.d.ts" />
+    <TypeScriptCompile Include="wijmo\controls\cultures\wijmo.culture.ja.ts" />
+    <TypeScriptCompile Include="wijmo\controls\cultures\wijmo.culture.ko.d.ts" />
+    <TypeScriptCompile Include="wijmo\controls\cultures\wijmo.culture.ko.ts" />
+    <TypeScriptCompile Include="wijmo\controls\cultures\wijmo.culture.pt.d.ts" />
+    <TypeScriptCompile Include="wijmo\controls\cultures\wijmo.culture.pt.ts" />
+    <TypeScriptCompile Include="wijmo\controls\cultures\wijmo.culture.ru.d.ts" />
+    <TypeScriptCompile Include="wijmo\controls\cultures\wijmo.culture.ru.ts" />
+    <TypeScriptCompile Include="wijmo\controls\cultures\wijmo.culture.zh.d.ts" />
+    <TypeScriptCompile Include="wijmo\controls\cultures\wijmo.culture.zh.ts" />
+    <TypeScriptCompile Include="wijmo\controls\wijmo.chart.d.ts" />
+    <TypeScriptCompile Include="wijmo\controls\wijmo.chart.interaction.d.ts" />
+    <TypeScriptCompile Include="wijmo\controls\wijmo.chart.interaction.ts" />
+    <TypeScriptCompile Include="wijmo\controls\wijmo.chart.ts" />
+    <TypeScriptCompile Include="wijmo\controls\wijmo.d.ts" />
+    <TypeScriptCompile Include="wijmo\controls\wijmo.gauge.d.ts" />
+    <TypeScriptCompile Include="wijmo\controls\wijmo.gauge.ts" />
+    <TypeScriptCompile Include="wijmo\controls\wijmo.grid.d.ts" />
+    <TypeScriptCompile Include="wijmo\controls\wijmo.grid.filter.d.ts" />
+    <TypeScriptCompile Include="wijmo\controls\wijmo.grid.filter.ts" />
+    <TypeScriptCompile Include="wijmo\controls\wijmo.grid.grouppanel.d.ts" />
+    <TypeScriptCompile Include="wijmo\controls\wijmo.grid.grouppanel.ts" />
+    <TypeScriptCompile Include="wijmo\controls\wijmo.grid.ts" />
+    <TypeScriptCompile Include="wijmo\controls\wijmo.input.d.ts" />
+    <TypeScriptCompile Include="wijmo\controls\wijmo.input.ts" />
+    <TypeScriptCompile Include="wijmo\controls\wijmo.ts" />
+    <TypeScriptCompile Include="wijmo\interop\angular\wijmo.angular.d.ts" />
+    <TypeScriptCompile Include="wijmo\interop\angular\wijmo.angular.ts" />
+    <TypeScriptCompile Include="wijmo\interop\knockout\wijmo.knockout.d.ts" />
+    <TypeScriptCompile Include="wijmo\interop\knockout\wijmo.knockout.ts" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">

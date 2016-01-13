@@ -11,6 +11,6 @@ namespace ISWebPOS.Models
         [Key]
         public Int32 Id { get; set; }
         public String PayType { get; set; }
-        public String AccountId { get; set; }
+        public Int32 AccountId { get; set; }
     }
 }
