@@ -1,5 +1,8 @@
 ﻿<!-- =============================================== -->
 <!-- Left side column. contains the sidebar -->
+@Styles.Render("~/Template/Css")
+@Scripts.Render("~/Template/Js")
+@Scripts.Render("~/Wijmo/Js")
 <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
@@ -22,7 +25,7 @@
                 </a>
             </li>
             <li class="treeview">
-                <a href="../Software/AddItem">
+                <a href="../Software/Item">
                     <i class=" fa fa-table">
                     </i> <span>Item</span>
                 </a>
@@ -40,7 +43,7 @@
                 </a>
             </li>
             <li class="treeview">
-                <a href="#">
+                <a href="../Software/Supplier">
                     <i class="fa fa-truck"></i>
                     <span>Supplier</span>
                     <i class="fa fa-angle-left pull-right"></i>

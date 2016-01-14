@@ -460,6 +460,7 @@
     <Content Include="plugins\datatables\extensions\TableTools\Readme.md" />
     <Content Include="plugins\input-mask\phone-codes\phone-be.json" />
     <Content Include="plugins\input-mask\phone-codes\phone-codes.json" />
+    <Content Include="Scripts\html5shiv.min.js" />
     <Content Include="Scripts\toastr.js" />
     <Content Include="Scripts\toastr.min.js" />
     <Content Include="wijmo\controls\cultures\wijmo.culture.de.js" />
@@ -581,6 +582,8 @@
     <Content Include="font-awesome\scss\_rotated-flipped.scss" />
     <Content Include="font-awesome\scss\_stacked.scss" />
     <Content Include="font-awesome\scss\_variables.scss" />
+    <Content Include="fonts\ionicons.ttf" />
+    <Content Include="fonts\ionicons.woff" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -686,29 +689,11 @@
     <Content Include="Views\Software\AddCustomer.cshtml" />
     <Content Include="Views\Software\Discount.cshtml" />
     <Content Include="Views\Software\AddDiscount.cshtml" />
+    <Content Include="Views\Software\Supplier.cshtml" />
+    <Content Include="Views\Software\AddSupplier.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\ApiAuditTrail\" />
-    <Folder Include="Views\ApiCollectionLine\" />
-    <Folder Include="Views\ApiCollection\" />
-    <Folder Include="Views\ApiDebitCreditMemoLine\" />
-    <Folder Include="Views\ApiDebitCreditMemo\" />
-    <Folder Include="Views\ApiDisbursement\" />
-    <Folder Include="Views\ApiForm\" />
-    <Folder Include="Views\ApiItemGroupItem\" />
-    <Folder Include="Views\ApiItemGroup\" />
-    <Folder Include="Views\ApiItemInventory\" />
-    <Folder Include="Views\ApiItemPackage\" />
-    <Folder Include="Views\ApiJournal\" />
-    <Folder Include="Views\ApiPurchaseOrderLine\" />
-    <Folder Include="Views\ApiPurchaseOrder\" />
-    <Folder Include="Views\ApiSalesLocked\" />
-    <Folder Include="Views\ApiSysSalesLocked\" />
-    <Folder Include="Views\ApiTableGroup\" />
-    <Folder Include="Views\ApiTable\" />
-    <Folder Include="Views\ApiTax\" />
-    <Folder Include="Views\ApiTerm\" />
     <Folder Include="Views\PurchaseOrderLine\" />
   </ItemGroup>
   <ItemGroup>

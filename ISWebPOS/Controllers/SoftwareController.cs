@@ -49,6 +49,15 @@ namespace ISWebPOS.Controllers
         {
             return View();
         }
+        //SupplierView
+        public ActionResult Supplier() 
+        {
+            return View();
+        }
+        public ActionResult AddSupplier()
+        {
+            return View();
+        }
        
     }
 }
