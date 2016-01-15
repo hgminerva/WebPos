@@ -29,10 +29,17 @@ namespace ISWebPOS
                 "~/bootstrap/js/bootstrap.min.js",
                 "~/plugins/slimScroll/jquery.slimscroll.min.js",
                 "~/plugins/fastclick/fastclick.min.js",
+                "~/plugins/iCheck/icheck.min.js",
                 "~/dist/js/demo.js",
+                "~/Scripts/respond.js",
+                "~/Scripts/respond.min.js",
+                "~/Scripts/html5shiv.min.js",
                 "~/Scripts/toastr.js",
                 "~/Scripts/toastr.min.js",
-                "~/dist/js/app.min.js"));
+                "~/dist/js/app.min.js",
+                "~/dist/js/dashboard.js",
+                "~/dist/js/demo.js"
+                ));
 
             // ============
             // Software JS

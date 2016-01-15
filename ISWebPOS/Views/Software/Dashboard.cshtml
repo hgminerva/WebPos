@@ -1,13 +1,19 @@
-﻿<!-- ADD THE CLASS sidedar-collapse TO HIDE THE SIDEBAR PRIOR TO LOADING THE SITE -->
-<div class="hold-transition skin-blue sidebar-collapse sidebar-mini">
+﻿@{
+    ViewBag.Title = "Dashboard";
+}
+<!DOCTYPE html>
+<html>
+<!-- ADD THE CLASS sidedar-collapse TO HIDE THE SIDEBAR PRIOR TO LOADING THE SITE -->
+<body class="hold-transition skin-blue sidebar-collapse sidebar-mini">
     <!-- Site wrapper -->
     <div class="wrapper">
 
+        <!-- ===================Main Header============================ -->
         @Html.Partial("_MainHeader")
+        <!-- ===================Main Sidebar============================ -->
         @Html.Partial("_MainSidebar")
-        
+        <!-- =============================================== -->
 
-     
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
             <section class="content-header">
@@ -35,7 +41,7 @@
                                 <i class="fa fa-table"></i>
                             </div>
                             <a href="../Software/Item" class="small-box-footer">
-                                 <i class="fa fa-arrow-circle-right"></i>
+                                <i class="fa fa-arrow-circle-right"></i>
                             </a>
                         </div>
                     </div><!-- ./col -->
@@ -50,7 +56,7 @@
                                 <i class="fa fa-shopping-basket"></i>
                             </div>
                             <a href="#" class="small-box-footer">
-                                 <i class="fa fa-arrow-circle-right"></i>
+                                <i class="fa fa-arrow-circle-right"></i>
                             </a>
                         </div>
                     </div><!-- ./col -->
@@ -65,7 +71,7 @@
                                 <i class="fa  fa-hand-pointer-o"></i>
                             </div>
                             <a href="#" class="small-box-footer">
-                               <i class="fa fa-arrow-circle-right"></i>
+                                <i class="fa fa-arrow-circle-right"></i>
                             </a>
                         </div>
                     </div><!-- ./col -->
@@ -94,7 +100,7 @@
                             <div class="icon">
                                 <i class="fa fa-percent"></i>
                             </div>
-                            <a href="#" class="small-box-footer">
+                            <a href="../Software/Discount" class="small-box-footer">
                                 <i class="fa fa-arrow-circle-right"></i>
                             </a>
                         </div>
@@ -154,7 +160,7 @@
                             <div class="icon">
                                 <i class="fa fa-users"></i>
                             </div>
-                            <a href="#" class="small-box-footer">
+                            <a href="../Software/Customer" class="small-box-footer">
                                 <i class="fa fa-arrow-circle-right"></i>
                             </a>
                         </div>
@@ -189,21 +195,21 @@
                             </a>
                         </div>
                     </div><!-- ./col -->
-                        <div class="col-lg-3 col-xs-6">
-                            <!-- small box -->
-                            <div class="small-box bg-red-gradient">
-                                <div class="inner">
-                                    <h3>Account </h3>
-                                    <p>Receivable Report</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="fa fa-credit-card-alt"></i>
-                                </div>
-                                <a href="#" class="small-box-footer">
-                                    <i class="fa fa-arrow-circle-right"></i>
-                                </a>
+                    <div class="col-lg-3 col-xs-6">
+                        <!-- small box -->
+                        <div class="small-box bg-red-gradient">
+                            <div class="inner">
+                                <h3>Account </h3>
+                                <p>Receivable Report</p>
                             </div>
-                        </div><!-- ./col -->
+                            <div class="icon">
+                                <i class="fa fa-credit-card-alt"></i>
+                            </div>
+                            <a href="#" class="small-box-footer">
+                                <i class="fa fa-arrow-circle-right"></i>
+                            </a>
+                        </div>
+                    </div><!-- ./col -->
                     <div class="col-lg-3 col-xs-6">
                         <!-- small box -->
                         <div class="small-box bg-light-blue-gradient">
@@ -214,14 +220,14 @@
                             <div class="icon">
                                 <i class="fa fa-truck"></i>
                             </div>
-                            <a href="#" class="small-box-footer">
+                            <a href="../Software/Supplier" class="small-box-footer">
                                 <i class="fa fa-arrow-circle-right"></i>
                             </a>
                         </div>
                     </div><!-- ./col -->
                     <div class="col-lg-3 col-xs-6">
                         <!-- small box -->
-                        <div class="small-box bg-olive" >
+                        <div class="small-box bg-olive">
                             <div class="inner">
                                 <h3>Disbursement </h3>
                                 <p>&nbsp;</p>
@@ -328,25 +334,23 @@
                 </div><!-- /.row -->
             </section>
         </div><!-- ./wrapper -->
-        <div class="control-sidebar-bg"></div>
-        <footer class="main-footer">
-            <div class="pull-right hidden-xs">
-                <b>Version</b> 2.3.0
-            </div>
-            <strong>Copyright &copy; 2015 <a href="http://innosoft.ph">Innosoft</a>.</strong> All rights reserved.
-        </footer>
-        </div>
-        <!-- jQuery 2.1.4 -->
-        <script src="../plugins/jQuery/jQuery-2.1.4.min.js"></script>
-        <!-- Bootstrap 3.3.5 -->
-        <script src="../bootstrap/js/bootstrap.min.js"></script>
-        <!-- SlimScroll -->
-        <script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
-        <!-- FastClick -->
-        <script src="../plugins/fastclick/fastclick.min.js"></script>
-        <!-- AdminLTE App -->
-        <script src="../dist/js/app.min.js"></script>
-        <!-- AdminLTE for demo purposes -->
-        <script src="../dist/js/demo.js"></script>
-</div>
+        <!-- ===================Main Footer============================ -->
+        @Html.Partial("_MainFooter")
+    </div>
+    <!-- jQuery 2.1.4 -->
+    <script src="../plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <!-- Bootstrap 3.3.5 -->
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <!-- SlimScroll -->
+    <script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
+    <!-- FastClick -->
+    <script src="../plugins/fastclick/fastclick.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="../dist/js/app.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="../dist/js/demo.js"></script>
+</body>
+</html>
+
+
 

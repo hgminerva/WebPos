@@ -1,4 +1,7 @@
-﻿<header class="main-header">
+﻿@Styles.Render("~/Template/Css")
+@Scripts.Render("~/Template/Js")
+@Scripts.Render("~/Wijmo/Js")
+<header class="main-header">
     <!-- Logo -->
     <a href="~/Software/Dashboard" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
@@ -28,14 +31,17 @@
                         <li class="user-header">
                             <img src="../../dist/img/avatar5.png" class="img-circle" alt="User Image">
                             <p>
-                                Administrator - Cashier
+                                <small>Created by  :<span> Administarator</span></br></small>
+                                <small>Created date: 1/13/2016 10:26 AM</small>
+                                <small>Updated by  : Administarator</br></small>
+                                <small> Updated date: 1/13/2016 10:26 AM</small>
                                 <small>Member since Nov. 2012</small>
                             </p>
                         </li>                        
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-right">
-                                <a href="#" class="btn btn-default btn-flat fa fa-sign-out">Sign out</a>
+                                <a href="../Home/Index" class="btn btn-default btn-flat fa fa-sign-out">Sign out</a>
                             </div>
                         </li>
                     </ul>

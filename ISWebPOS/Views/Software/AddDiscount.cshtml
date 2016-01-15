@@ -2,6 +2,154 @@
 @{
     ViewBag.Title = "AddDiscount";
 }
+<!DOCTYPE html>
+<html>
+<!-- ADD THE CLASS sidedar-collapse TO HIDE THE SIDEBAR PRIOR TO LOADING THE SITE -->
+<body class="hold-transition skin-blue sidebar-collapse sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="wrapper">
 
-<h2>AddDiscount</h2>
+        <!-- ===================Main Header============================ -->
+        @Html.Partial("_MainHeader")
+        <!-- ===================Main Sidebar============================ -->
+        @Html.Partial("_MainSidebar")
+        <!-- =============================================== -->
+
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1 class="fa fa-user">
+                    Discount Detail
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="../Software/Dashboard"><i class="fa fa-table"></i> Home</a></li>
+                    <li><a href="../Software/Customer">Discount</a></li>
+                    <li class="active">Add Discount</li>
+                </ol>
+                <!---Menu Tab-->
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <!-- Nav tabs -->
+                            <div class="card">
+                                <section class="container">
+                                    <!--Buttons-->
+                                    <div class="btn-group-horizontal pull-right">
+                                        <a class="btn btn-app">
+                                            <i class="fa fa-lock"></i> Lock
+                                        </a>
+                                        <a class="btn  btn-app">
+                                            <i class="fa fa-unlock"></i> Unlock
+                                        </a>
+                                        <a class="btn btn-app">
+                                            <i class="fa fa-close"></i> Close
+                                        </a>
+                                    </div><!--btn horizontal-->
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box box-primary">
+                        <!-- form start -->
+                        <form class="form-horizontal">
+                            <div class="box-body">
+
+                                <div class="form-group">
+                                    <label for="discount" class="col-sm-2 control-label">Discount</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="dicount" placeholder="NA">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="discountRate" class="col-sm-2 control-label">Discount Rate</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="discountRate" placeholder="NA">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">VAT Exempt</label>
+                                    <div class="col-sm-6">
+                                        <input type="checkbox" class="minimal" checked>
+                                    </div>
+                                </div>
+                                <div class="box-body table-responsive no-padding">
+                                    <table class="table table-bordered" style="background-color:#3c8dbc">
+                                        <tr>
+                                            <th>Date Schedule</th>
+                                            <th><input type="checkbox" class="minimal" checked></th>
+                                            <th><label class="">Day Scheduled</label></th>
+                                            <th colspan="7"><input type="checkbox" class="minimal" checked></th>
+                                            <th><label>Time Scheduled</label></th>
+                                            <th><input type="checkbox" class="minimal" checked></th>
+                                        </tr>
+                                        <tr>
+                                            <th>Date Start</th>
+                                            <th><input type="date" id="strdate" placeholder=""></th>
+                                            <th rowspan="2">Day</th>
+                                            <th><label>Mon</label></th>
+                                            <th><label>Tue</label></th>
+                                            <th><label>Wed</label></th>
+                                            <th><label>Thu</label></th>
+                                            <th><label>Fri</label></th>
+                                            <th><label>Sat</label></th>
+                                            <th><label>Sun</label></th>
+                                            <th><label>Time Start</label></th>
+                                            <th><input type="time" id="srttime" placeholder=""></th>
+                                        </tr>
+                                        <tr>
+                                            <th>Date End</th>
+                                            <th><input type="date" id="endate" placeholder=""></th>
+                                            <th><input type="checkbox" class="minimal" checked></th>
+                                            <th><input type="checkbox" class="minimal" checked></th>
+                                            <th><input type="checkbox" class="minimal" checked></th>
+                                            <th><input type="checkbox" class="minimal" checked></th>
+                                            <th><input type="checkbox" class="minimal" checked></th>
+                                            <th><input type="checkbox" class="minimal" checked></th>
+                                            <th><input type="checkbox" class="minimal" checked></th>
+                                            <th><label>Time end</label></th>
+                                            <th><input type="time" id="endtime" placeholder=""></th>
+                                        </tr>
+                                    </table>
+                                    <div class="box-body table-responsive no-padding">
+                                        <table class="table table-bordered" style="background-color:#dbe2ea">
+                                            <tr>
+                                                <th></th>
+                                                <th style="text-align:center">Item</th>
+                                                <th></th>
+                                            </tr>
+                                            <tr>
+                                         </table>
+                                    </div>
+                                    </div><!-- /.box-body -->
+
+                                </div><!-- /.box-body -->
+                            <div class="box-footer">
+                            </div><!-- /.box-footer -->
+                        </form>
+                    </div><!-- /.box -->
+                </div>
+
+
+            </section>
+        </div><!-- ./wrapper -->
+        <!-- ===================Main Footer============================ -->
+        @Html.Partial("_MainFooter")
+    </div>
+
+    <!-- jQuery 2.1.4 -->
+    <script src="../plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <!-- Bootstrap 3.3.5 -->
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <!-- SlimScroll -->
+    <script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
+    <!-- FastClick -->
+    <script src="../plugins/fastclick/fastclick.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="../dist/js/app.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="../dist/js/demo.js"></script>
+</body>
+</html>
+
 
