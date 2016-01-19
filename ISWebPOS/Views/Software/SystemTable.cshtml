@@ -1,0 +1,128 @@
+﻿
+@{
+    ViewBag.Title = "SystemTable";
+}
+
+@Styles.Render("~/Template/Css")
+@Scripts.Render("~/Template/Js")
+@Scripts.Render("~/Wijmo/Js")
+<!DOCTYPE html>
+<html>
+<!-- ADD THE CLASS sidedar-collapse TO HIDE THE SIDEBAR PRIOR TO LOADING THE SITE -->
+<body class="hold-transition skin-blue sidebar-collapse sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+
+        <!-- ===================Main Header============================ -->
+        @Html.Partial("_MainHeader")
+        <!-- ===================Main Sidebar============================ -->
+        @Html.Partial("_MainSidebar")
+        <!-- =============================================== -->
+
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1 class="fa fa-list">
+                    System Tables
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="../Software/Dashboard"><i class="fa fa-table"></i> Home</a></li>
+                    <li><a href="active">System Table</a></li>
+                </ol>
+                <!---Menu Tab-->
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <!-- Nav tabs -->
+                            <div class="card">
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" class="active"><a href="#chartAccounts" aria-controls="chartAccounts" role="tab" data-toggle="tab">Chart of Accounts</a></li>
+                                    <li role="presentation"><a href="#payType" aria-controls="payType" role="tab" data-toggle="tab">Pay Type</a></li>
+                                    <li role="presentation"><a href="#tax" aria-controls="tax" role="tab" data-toggle="tab">Tax</a></li>
+                                    <li role="presentation"><a href="#unit" aria-controls="tax" role="unit" data-toggle="tab">Unit</a></li>
+                                    <li role="presentation"><a href="#period" aria-controls="period" role="tab" data-toggle="tab">Period</a></li>
+                                    <li role="presentation"><a href="#terminal" aria-controls="terminal" role="tab" data-toggle="tab">Terminal</a></li>
+                                </ul>
+                                <section class="container">
+                                    <!--Buttons-->
+                                    <div class="btn-group-horizontal pull-right">
+                                        <a class="btn btn-app">
+                                            <i class="fa fa-lock"></i> Lock
+                                        </a>
+                                        <a class="btn  btn-app">
+                                            <i class="fa fa-unlock"></i> Unlock
+                                        </a>
+                                        <a class="btn btn-app">
+                                            <i class="fa fa-close"></i> Close
+                                        </a>
+                                    </div><!--btn horizontal-->
+                                </section>
+
+                                <!-- Tab panes -->
+                                <div class="tab-content">
+                                    <div role="tabpanel" class="tab-pane active" id="chartAccounts">
+                                        <!-- ===================Chart of Accounts============================ -->
+                                        @Html.Partial("ChartOfAccounts") 
+                                    </div><!-- /.box -->
+                                    <div role="tabpanel" class="tab-pane" id="payType">
+                                        <div class="box box-info">
+                                            
+                                            <!-- ===================PayType============================ -->
+                                            @Html.Partial("PayType")
+                                        </div><!-- /.box -->
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane" id="tax">
+                                        <div class="box box-info">
+                                           @Html.Partial("Tax")
+                                        </div><!-- /.box -->
+                                    </div><!---End of tax tab--->
+                                    <div role="tabpanel" class="tab-pane" id="unit">
+                                        <div class="box box-info">
+
+                                            @Html.Partial("Unit")
+                                        </div><!-- /.box -->
+                                    </div><!---End of unit tab--->
+                                    <div role="tabpanel" class="tab-pane" id="period">
+                                        <div class="box box-info">
+
+                                            <h1>Period</h1>
+                                        </div><!-- /.box -->
+                                    </div><!---End of period tab--->
+                                    <div role="tabpanel" class="tab-pane" id="terminal">
+                                        <div class="box box-info">
+
+                                            <h1>Terminal</h1>
+                                        </div><!-- /.box -->
+                                    </div><!---End of terminal tab--->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!---End Tab-->
+            </section>
+        </div><!-- ./wrapper -->
+        <!-- ===================Main Footer============================ -->
+        @Html.Partial("_MainFooter")
+    </div>
+
+
+    <!-- jQuery 2.1.4 -->
+    <script src="../plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <!-- Bootstrap 3.3.5 -->
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <!-- SlimScroll -->
+    <script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
+    <!-- FastClick -->
+    <script src="../plugins/fastclick/fastclick.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="../dist/js/app.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="../dist/js/demo.js"></script>
+</body>
+</html>
+
+
+
+

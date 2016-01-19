@@ -63,6 +63,22 @@ namespace ISWebPOS.Controllers
         {
             return View();
         }
+        public ActionResult ChartOfAccounts()
+        {
+            return View();
+        }
+        public ActionResult PayType()
+        {
+            return View();
+        }
+        public ActionResult Tax()
+        {
+            return View();
+        }
+        public ActionResult Unit()
+        {
+            return View();
+        }
         //Users View
         public ActionResult User()
         {

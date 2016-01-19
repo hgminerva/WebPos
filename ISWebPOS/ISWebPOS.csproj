@@ -694,6 +694,10 @@
     <Content Include="Views\Software\SystemTable.cshtml" />
     <Content Include="Views\Software\User.cshtml" />
     <Content Include="Views\Software\AddUser.cshtml" />
+    <Content Include="Views\Software\ChartOfAccounts.cshtml" />
+    <Content Include="Views\Software\PayType.cshtml" />
+    <Content Include="Views\Software\Tax.cshtml" />
+    <Content Include="Views\Software\Unit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
