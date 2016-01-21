@@ -1,18 +1,17 @@
-﻿        <section class="content">
+﻿<div class="box box-info">
+    <div class="content">
+        <section class="content">
             <div class="row">
                 <div class="col-xs-12">
-
                     <!--table container-->
                     <div class="box">
-
                         <div class="row">
-
                             <div class="box-header">
                                 <div class="col-md-6">
                                     <!--search box-->
                                     <div class="box-tools">
                                         <div class="input-group" style="width: 150px;">
-                                            <input type="text" class="form-control input-sm" id="InputFilter" placeholder="Search unit">
+                                            <input type="text" class="form-control input-sm" id="InputFilter" placeholder="Search">
                                             <div class="input-group-btn">
                                                 <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
                                             </div>
@@ -20,8 +19,7 @@
                                     </div>
                                 </div>
                                 <div class="btn-group-horizontal btn-sm pull-right">
-                                    <a href="~/Software/AddCustomer" class="btn btn-info"><i class="fa fa-plus"></i> Add</a>
-                                    <a href="~/Software/Dashboard" class="btn btn-danger "><i class="fa fa-close"></i> Close</a>
+                                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#addUnit"><i class="fa fa-plus"></i>Add</button>
                                 </div>
                             </div>
                         </div>
@@ -39,7 +37,7 @@
                 <button type="button" class="btn btn-default border-custom" id="btnMoveToPreviousPageGrid">
                     <span class="glyphicon glyphicon-step-backward"></span>
                 </button>
-                <button type="button" class="btn btn-default border-custom" disabled style="width: 100px" id="btnCurrentPageGrid"></button>
+                <button type="button" class="btn btn-default border-custom" disabled style="width: 100px" id="btnCurrentPageGrid4"></button>
                 <button type="button" class="btn btn-default border-custom" id="btnMoveToNextPageGrid">
                     <span class="glyphicon glyphicon-step-forward"></span>
                 </button>
@@ -48,24 +46,48 @@
                 </button>
             </div>
         </section>
+    </div><!-- ./wrapper -->
     <!-- Company Delete -->
-    <div class="modal fade" id="deleteunitConfirm" role="dialog">
+    <div class="modal fade" id="deleteItemConfirm" role="dialog">
         <div class="modal-dialog modal-sm">
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Delete unit? <i class="fa fa-trash"></i></h4>
+                    <h4 class="modal-title">Delete Item? <i class="fa fa-trash"></i></h4>
                 </div>
 
                 <div class="modal-footer">
-                    <button class="btn btn-danger btn-sm" id="cmdConfirmDeleteunit" onclick="cmdunitConfirmDeleteButton_OnClick()">Delete</button>
+                    <button class="btn btn-danger btn-sm" id="cmdConfirmDeleteItem" onclick="cmdItemConfirmDeleteButton_OnClick()">Delete</button>
                     <button id="cmdConfirmDeleteCloseButton" class="btn btn-primary btn-sm" data-dismiss="modal">Cancel</button>
                 </div>
             </div>
         </div>
     </div>
+    <!-- Add Modal -->
+    <div class="modal modal-primary" id="addUnit" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title"><i class="fa fa-list"></i>Unit</h4>
+                </div>
 
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="unit" class="col-sm-4 control-label">Unit</label>
+                        <div class="">
+                            <input type="text" class="form-control" id="unit" placeholder="NA">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-outline">Save changes</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
     <!-- Loading Modal -->
     <div class="modal fade" id="loadingModal" tabindex="-1" role="dialog" aria-labelledby="Loading..." aria-hidden="true" data-backdrop="static" data-keyboard="false">
         <div class=" modal-dialog modal-sm">
@@ -83,255 +105,247 @@
 
     <script type="text/javascript">
 
-            //================
-            // Global variables
-            // ================
-            var unitCollections;
-            var unitGrid;
-            var editunit;
+        //================
+        // Global variables
+        // ================
+        var unitCollections;
+        var unitGrid;
+        var editUnit;
 
-            var btnFirstPageGrid;
-            var btnPreviousPageGrid;
-            var btnNextPageGrid;
-            var btnLastPageGrid;
-            var btnCurrentPageGrid;
+        var btnFirstPageGrid4;
+        var btnPreviousPageGrid4;
+        var btnNextPageGri4;
+        var btnLastPageGrid4;
+        var btnCurrentPageGrid4;
 
-            // =============================
-            // Get unitMasterList Data
-            // =============================
-            function getunitMasterList() {
-                var unitList = new wijmo.collections.ObservableArray();
-                $("#loadingModal").modal("show");
-                $.ajax({
-                    url: '/api/customer/list',
-                    cache: false,
-                    type: 'GET',
-                    contentType: 'application/json; charset=utf-8',
-                    data: {},
-                    success: function (results) {
-                        $("#loadingModal").modal("hide");
-                        /* var results = JSON.parse(result); */
-                        if (results.length > 0) {
-                            for (i = 0; i < results.length; i++) {
-                                unitList.push({
-                                    EditId: "<button class='btn btn-primary btn-xs btn-block' id='unitEditButton' onclick='cmdunitEditButton_OnClick()'><i class='fa fa-pencil'></i> Edit</button>",
-                                    DeleteId: "<button class='btn btn-danger btn-xs btn-block' id='unitDeleteButton' onclick='cmdunitDeleteButton_OnClick()'><i class='fa fa-trash'></i> Delete</button>",
-                                    Customer: results[i]["Customer"],
-                                    Address: results[i]["Address"],
-                                    ContactNumber: results[i]["ContactNumber"],
-                                    isLocked: results[i]["IsLocked"]
-
-                                });
-                            }
-                            unitCollections = new wijmo.collections.CollectionView(unitList);
-                            btnCurrentPageGrid.innerHTML = (unitCollections.pageIndex + 1) + ' / ' + unitCollections.pageCount;
-
-                            unitCollections.canFilter = true;
-                            unitCollections.pageSize = 15;
-
-                            //Filter
-                            var filterText = '';
-                            $('#InputFilter').keydown(function () {
-                                filterText = this.value.toLowerCase();
-                                unitCollections.refresh();
-                            });
-                            unitCollections.filter = function (unit) {
-                                return !filterText || (unit.Customer.toLowerCase().indexOf(filterText) > -1);
-                            }
-                            unitCollections.collectionChanged.addHandler(function (sender, args) {
-                                updateNavigateButtonsCollection();
+        // =============================
+        // Get ItemMasterList Data
+        // =============================
+        function getIUnitMasterList() {
+            var UnitList = new wijmo.collections.ObservableArray();
+            $("#loadingModal").modal("show");
+            $.ajax({
+                url: '/api/unit/list',
+                cache: false,
+                type: 'GET',
+                contentType: 'application/json; charset=utf-8',
+                data: {},
+                success: function (results) {
+                    $("#loadingModal").modal("hide");
+                    /* var results = JSON.parse(result); */
+                    if (results.length > 0) {
+                        for (i = 0; i < results.length; i++) {
+                            UnitList.push({
+                                EditId: "<button class='btn btn-primary btn-xs btn-block' id='itemEditButton' onclick='cmdItemEditButton_OnClick()'><i class='fa fa-pencil'></i> Edit</button>",
+                                DeleteId: "<button class='btn btn-danger btn-xs btn-block' id='itemDeleteButton' onclick='cmdItemDeleteButton_OnClick()'><i class='fa fa-trash'></i> Delete</button>",
+                                Unit: results[i]["Unit"],
 
                             });
-                            unitCollections.currentChanged.addHandler(function (sender, args) {
-                                updateNavigateButtonsCollection();
-                            });
+                        }
+                        unitCollections = new wijmo.collections.CollectionView(UnitList);
+                        btnCurrentPageGrid4.innerHTML = (unitCollections.pageIndex + 1) + ' / ' + unitCollections.pageCount;
 
+                        unitCollections.canFilter = true;
+                        unitCollections.pageSize = 15;
 
-                            //Flex Grid
-                            unitGrid = new wijmo.grid.FlexGrid('#unitCollectionGrid');
-                            unitGrid.initialize({
-                                columns: [
-
-
-                                {
-                                    "header": "Edit",
-                                    "binding": "EditId",
-                                    "width": 60,
-                                    "align": "center",
-                                    "isContentHtml": true
-                                },
-                                {
-                                    "header": "Delete",
-                                    "binding": "DeleteId",
-                                    "width": 70,
-                                    "align": "center",
-                                    "isContentHtml": true
-
-                                },
-                                {
-                                    "header": "Customer",
-                                    "binding": "Customer",
-                                    "align": "center",
-                                    "allowSorting": true,
-                                    "isContentHtml": true,
-                                    "width": "2*"
-                                },
-                                {
-                                    "header": "ContactNumber",
-                                    "binding": "ContactNumber",
-                                    "align": "center",
-                                    "allowSorting": true,
-                                    "isContentHtml": true,
-                                    "width": "2*"
-                                },
-                                {
-                                    "header": "L",
-                                    "binding": "isLocked",
-                                    "align": "center",
-                                    "allowSorting": true,
-                                    "width": "1.5*"
-                                }],
-                                autoGenerateColumns: false,
-                                unitsSource: unitCollections,
-                                isReadOnly: true,
-                                autoSizeMode: wijmo.grid.AutoSizeMode.Both,
-                                allowDragging: wijmo.grid.AllowDragging.None,
-                                selectionMode: wijmo.grid.SelectionMode.Row
-                            });
-
-                            unitGrid.trackChanges = true;
-
+                        //Filter
+                        var filterText = '';
+                        $('#InputFilter').keydown(function () {
+                            filterText = this.value.toLowerCase();
+                            unitCollections.refresh();
+                        });
+                        unitCollections.filter = function (
+                            ) {
+                            return !filterText || (item.Unit.toLowerCase().indexOf(filterText) > -1);
+                        }
+                        unitCollections.collectionChanged.addHandler(function (sender, args) {
                             updateNavigateButtonsCollection();
 
-                            btnFirstPageGrid.addEventListener('click', function () {
-                                unitCollections.moveToFirstPage();
-                                updateNavigateButtonsCollection();
-                            });
-                            btnPreviousPageGrid.addEventListener('click', function () {
-                                unitCollections.moveToPreviousPage();
-                                updateNavigateButtonsCollection();
-                            });
-                            btnNextPageGrid.addEventListener('click', function () {
-                                unitCollections.moveToNextPage();
-                                updateNavigateButtonsCollection();
-                            });
-                            btnLastPageGrid.addEventListener('click', function () {
-                                unitCollections.moveToLastPage();
-                                updateNavigateButtonsCollection();
-                            });
-                        } else {
-                            /*   alert("No data."); */
-                        }
+                        });
+                        unitCollections.currentChanged.addHandler(function (sender, args) {
+                            updateNavigateButtonsCollection();
+                        });
+
+
+                        //Flex Grid
+                        unitGrid = new wijmo.grid.FlexGrid('#unitCollectionGrid');
+                        unitGrid.initialize({
+                            columns: [
+
+
+                            {
+                                "header": "Edit",
+                                "binding": "EditId",
+                                "width": 60,
+                                "align": "center",
+                                "isContentHtml": true
+                            },
+                            {
+                                "header": "Delete",
+                                "binding": "DeleteId",
+                                "width": 70,
+                                "align": "center",
+                                "isContentHtml": true
+
+                            },
+                            {
+                                "header": "Unit",
+                                "binding": "Unit",
+                                "align": "center",
+                                "allowSorting": true,
+                                "isContentHtml": true,
+                                "width": "2*"
+                            }],
+                            autoGenerateColumns: false,
+                            itemsSource: unitCollections,
+                            isReadOnly: true,
+                            autoSizeMode: wijmo.grid.AutoSizeMode.Both,
+                            allowDragging: wijmo.grid.AllowDragging.None,
+                            selectionMode: wijmo.grid.SelectionMode.Row
+                        });
+
+                        unitGrid.trackChanges = true;
+
+                        updateNavigateButtonsCollection();
+
+                        btnFirstPageGrid4.addEventListener('click', function () {
+                            unitCollections.moveToFirstPage();
+                            updateNavigateButtonsCollection();
+                        });
+                        btnPreviousPageGrid4.addEventListener('click', function () {
+                            unitCollections.moveToPreviousPage();
+                            updateNavigateButtonsCollection();
+                        });
+                        btnNextPageGri4.addEventListener('click', function () {
+                            unitCollections.moveToNextPage();
+                            updateNavigateButtonsCollection();
+                        });
+                        btnLastPageGrid4.addEventListener('click', function () {
+                            unitCollections.moveToLastPage();
+                            updateNavigateButtonsCollection();
+                        });
+                    } else {
+                        /*   alert("No data."); */
                     }
-                });
-            }
-
-            // ===================
-            // Company Edit Button
-            // ===================
-            function cmdCompanyEditButton_OnClick() {
-                unitCollections.editunit(unitCollections.currentunit);
-
-            }
-
-            // =====================
-            // unit delete Button
-            // =====================
-            function cmdunitDeleteButton_OnClick() {
-                var id = unitCollections.currentunit.Id;
-
-                console.log(typeof id + id);
-
-                $('#deleteunitConfirm').modal({
-                    show: true,
-                    backdrop: 'static'
-                });
-                $("#cmdConfirmDeleteunit").prop("disabled", false);
-                $("#cmdConfirmDeleteCloseButton").prop("disabled", false);
-            }
-            // Company Confirm Delete Button
-            function cmdunitConfirmDeleteButton_OnClick() {
-                $("#cmdConfirmDeleteunit").prop("disabled", true);
-                $("#cmdConfirmDeleteCloseButton").prop("disabled", true);
-
-                //====================
-                var id = unitCollections.currentunit.Id;
-
-                $.ajax({
-                    url: '/api/customer/delete/' + id,
-                    type: "DELETE",
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    statusCode: {
-                        200: function () {
-                            $("#cmdConfirmDeleteunit").prop("disabled", true);
-                            $("#cmdConfirmDeleteCloseButton").prop("disabled", true);
-                            toastr.success("Successfully Deleted");
-                            window.setTimeout(function () {
-                                location.reload()
-                            }, 1000);
-                        },
-                        404: function () {
-                            toastr.error("Request Not Found");
-                            $('#deleteunitConfirm').modal('hide');
-                            $("#cmdConfirmDeleteunit").prop("disabled", false);
-                            $("#cmdConfirmDeleteCloseButton").prop("disabled", false);
-                        },
-                        400: function () {
-                            toastr.error("Can't be deleted");
-                            $('#deleteCompanyConfirm').modal('hide');
-                            $("#cmdConfirmDeleteunit").prop("disabled", false);
-                            $("#cmdConfirmDeleteCloseButton").prop("disabled", false);
-                        }
-                    }
-                });
-            }
-
-            // ==================
-            // Navigation Buttons
-            // ==================
-            function updateNavigateButtonsCollection() {
-                if (unitCollections.pageSize <= 0) {
-                    document.getElementById('navigationPageGrid').style.display = 'none';
-                    return;
                 }
-                document.getElementById('navigationPageGrid').style.display = 'block';
-                if (unitCollections.pageIndex === 0) {
-                    btnFirstPageGrid.setAttribute('disabled', 'disabled');
-                    btnPreviousPageGrid.setAttribute('disabled', 'disabled');
-                    btnNextPageGrid.removeAttribute('disabled');
-                    btnLastPageGrid.removeAttribute('disabled');
-                } else if (unitCollections.pageIndex === (unitCollections.pageCount - 1)) {
-                    btnFirstPageGrid.removeAttribute('disabled');
-                    btnPreviousPageGrid.removeAttribute('disabled');
-                    btnLastPageGrid.setAttribute('disabled', 'disabled');
-                    btnNextPageGrid.setAttribute('disabled', 'disabled');
-                } else {
-                    btnFirstPageGrid.removeAttribute('disabled');
-                    btnPreviousPageGrid.removeAttribute('disabled');
-                    btnNextPageGrid.removeAttribute('disabled');
-                    btnLastPageGrid.removeAttribute('disabled');
-                }
-                btnCurrentPageGrid.innerHTML = (unitCollections.pageIndex + 1) + ' / ' + unitCollections.pageCount;
-
-            }
-
-
-            //============
-            // On Page Load
-            // ============
-            $(document).ready(function () {
-
-                // Navigation button
-                btnFirstPageGrid = document.getElementById('btnMoveToFirstPageGrid');
-                btnPreviousPageGrid = document.getElementById('btnMoveToPreviousPageGrid');
-                btnNextPageGrid = document.getElementById('btnMoveToNextPageGrid');
-                btnLastPageGrid = document.getElementById('btnMoveToLastPageGrid');
-                btnCurrentPageGrid = document.getElementById('btnCurrentPageGrid');
-
-                //Collection View
-                getunitMasterList();
-
             });
-    </script>
+        }
 
+        // ===================
+        // Company Edit Button
+        // ===================
+        function cmdCompanyEditButton_OnClick() {
+            unitCollections.editUnit(unitCollections.currentItem);
+
+        }
+
+        // =====================
+        // Item delete Button
+        // =====================
+        function cmdItemDeleteButton_OnClick() {
+            var id = unitCollections.currentItem.Id;
+
+            console.log(typeof id + id);
+
+            $('#deleteItemConfirm').modal({
+                show: true,
+                backdrop: 'static'
+            });
+            $("#cmdConfirmDeleteItem").prop("disabled", false);
+            $("#cmdConfirmDeleteCloseButton").prop("disabled", false);
+        }
+        // =====================
+        // Add Account Button
+        // =====================
+        function cmdaddUnitButton_OnClick() {
+            $('#addUnit').modal({
+                show: true,
+                backdrop: 'static'
+            });
+        }
+        // Company Confirm Delete Button
+        function cmdItemConfirmDeleteButton_OnClick() {
+            $("#cmdConfirmDeleteItem").prop("disabled", true);
+            $("#cmdConfirmDeleteCloseButton").prop("disabled", true);
+
+            //====================
+            var id = unitCollections.currentItem.Id;
+
+            $.ajax({
+                url: '/api/unit/delete/' + id,
+                type: "DELETE",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                statusCode: {
+                    200: function () {
+                        $("#cmdConfirmDeleteItem").prop("disabled", true);
+                        $("#cmdConfirmDeleteCloseButton").prop("disabled", true);
+                        toastr.success("Successfully Deleted");
+                        window.setTimeout(function () {
+                            location.reload()
+                        }, 1000);
+                    },
+                    404: function () {
+                        toastr.error("Request Not Found");
+                        $('#deleteItemConfirm').modal('hide');
+                        $("#cmdConfirmDeleteItem").prop("disabled", false);
+                        $("#cmdConfirmDeleteCloseButton").prop("disabled", false);
+                    },
+                    400: function () {
+                        toastr.error("Can't be deleted");
+                        $('#deleteCompanyConfirm').modal('hide');
+                        $("#cmdConfirmDeleteItem").prop("disabled", false);
+                        $("#cmdConfirmDeleteCloseButton").prop("disabled", false);
+                    }
+                }
+            });
+        }
+
+        // ==================
+        // Navigation Buttons
+        // ==================
+        function updateNavigateButtonsCollection() {
+            if (unitCollections.pageSize <= 0) {
+                document.getElementById('navigationPageGrid').style.display = 'none';
+                return;
+            }
+            document.getElementById('navigationPageGrid').style.display = 'block';
+            if (unitCollections.pageIndex === 0) {
+                btnFirstPageGrid4.setAttribute('disabled', 'disabled');
+                btnPreviousPageGrid4.setAttribute('disabled', 'disabled');
+                btnNextPageGri4.removeAttribute('disabled');
+                btnLastPageGrid4.removeAttribute('disabled');
+            } else if (unitCollections.pageIndex === (unitCollections.pageCount - 1)) {
+                btnFirstPageGrid4.removeAttribute('disabled');
+                btnPreviousPageGrid4.removeAttribute('disabled');
+                btnLastPageGrid4.setAttribute('disabled', 'disabled');
+                btnNextPageGri4.setAttribute('disabled', 'disabled');
+            } else {
+                btnFirstPageGrid4.removeAttribute('disabled');
+                btnPreviousPageGrid4.removeAttribute('disabled');
+                btnNextPageGri4.removeAttribute('disabled');
+                btnLastPageGrid4.removeAttribute('disabled');
+            }
+            btnCurrentPageGrid4.innerHTML = (unitCollections.pageIndex + 1) + ' / ' + unitCollections.pageCount;
+
+        }
+
+
+        //============
+        // On Page Load
+        // ============
+        $(document).ready(function () {
+
+            // Navigation button
+            btnFirstPageGrid4 = document.getElementById('btnMoveToFirstPageGrid');
+            btnPreviousPageGrid4 = document.getElementById('btnMoveToPreviousPageGrid');
+            btnNextPageGri4 = document.getElementById('btnMoveToNextPageGrid');
+            btnLastPageGrid4 = document.getElementById('btnMoveToLastPageGrid');
+            btnCurrentPageGrid4 = document.getElementById('btnCurrentPageGrid4');
+
+            //Collection View
+            getIUnitMasterList();
+
+        });
+    </script>
+</div>

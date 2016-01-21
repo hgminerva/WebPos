@@ -40,7 +40,7 @@
                                     <li role="presentation" class="active"><a href="#chartAccounts" aria-controls="chartAccounts" role="tab" data-toggle="tab">Chart of Accounts</a></li>
                                     <li role="presentation"><a href="#payType" aria-controls="payType" role="tab" data-toggle="tab">Pay Type</a></li>
                                     <li role="presentation"><a href="#tax" aria-controls="tax" role="tab" data-toggle="tab">Tax</a></li>
-                                    <li role="presentation"><a href="#unit" aria-controls="tax" role="unit" data-toggle="tab">Unit</a></li>
+                                    <li role="presentation"><a href="#unit" aria-controls="tax" role="tab" data-toggle="tab">Unit</a></li>
                                     <li role="presentation"><a href="#period" aria-controls="period" role="tab" data-toggle="tab">Period</a></li>
                                     <li role="presentation"><a href="#terminal" aria-controls="terminal" role="tab" data-toggle="tab">Terminal</a></li>
                                 </ul>
@@ -85,14 +85,15 @@
                                     </div><!---End of unit tab--->
                                     <div role="tabpanel" class="tab-pane" id="period">
                                         <div class="box box-info">
-
+                                            <div class="box box-info">
+                                                @Html.Partial("Period")
+                                            </div><!-- /.box -->
                                             <h1>Period</h1>
                                         </div><!-- /.box -->
                                     </div><!---End of period tab--->
                                     <div role="tabpanel" class="tab-pane" id="terminal">
                                         <div class="box box-info">
-
-                                            <h1>Terminal</h1>
+                                            @Html.Partial("Terminal")
                                         </div><!-- /.box -->
                                     </div><!---End of terminal tab--->
                                 </div>

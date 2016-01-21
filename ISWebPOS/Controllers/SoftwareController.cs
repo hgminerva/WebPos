@@ -79,6 +79,14 @@ namespace ISWebPOS.Controllers
         {
             return View();
         }
+        public ActionResult Period()
+        {
+            return View();
+        }
+        public ActionResult Terminal()
+        {
+            return View();
+        }
         //Users View
         public ActionResult User()
         {
@@ -88,6 +96,7 @@ namespace ISWebPOS.Controllers
         {
             return View();
         }
+
        
     }
 }
