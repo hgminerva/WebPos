@@ -10,6 +10,8 @@ namespace ISWebPOS.Controllers
 {
     public class ApiItemController : ApiController
     {
+        private string lastItemCode;
+       
         private Data.webposDataContext db = new Data.webposDataContext();
 
         // ===========
@@ -64,8 +66,9 @@ namespace ISWebPOS.Controllers
         // ADD Item
         // ===========
         [Route("api/item/add")]
-        public int Post(Models.MstItem item)
+        public string Post(Models.MstItem item)
         {
+            
             try
             {
                 var isLocked = true;
@@ -101,21 +104,35 @@ namespace ISWebPOS.Controllers
                 newItem.DefaultKitchenReport = item.DefaultKitchenReport;
                 newItem.IsPackage = item.IsPackage;
 
-                newItem.EntryUserId = mstUserId;
+                newItem.EntryUserId = 1;
                 newItem.EntryDateTime = date;
-                newItem.UpdateUserId = mstUserId;
+                newItem.UpdateUserId = 1;
                 newItem.UpdateDateTime = date;
                 newItem.IsLocked = isLocked;
 
                 db.MstItems.InsertOnSubmit(newItem);
                 db.SubmitChanges();
 
-                return newItem.Id;
+                lastItemCode = getLastInsertItemCode(newItem.Id);
+
+                return lastItemCode +"";
             }
             catch
             {
-                return 0;
+                return null;
             }
+       } 
+
+        public string getLastInsertItemCode(int ID)
+        {
+            string lastItemCode = (from d in db.MstItems where  d.Id == ID select d.ItemCode).SingleOrDefault();
+
+            if (lastItemCode != null)
+            {
+                return null;
+            }
+
+            return lastItemCode;
         }
 
         // ==============

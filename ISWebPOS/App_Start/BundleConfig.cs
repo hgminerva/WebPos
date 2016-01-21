@@ -26,6 +26,10 @@ namespace ISWebPOS
             // ============
             bundles.Add(new ScriptBundle("~/Template/Js").Include(
                 "~/plugins/jQuery/jQuery-2.1.4.min.js",
+                "~/Scripts/jquery.validate.min.js",
+                "~/Scripts/item-validate.js",
+                "~/Scripts/item.js",
+                "~/Scripts/jquery.cookie.js",
                 "~/bootstrap/js/bootstrap.min.js",
                 "~/plugins/slimScroll/jquery.slimscroll.min.js",
                 "~/plugins/fastclick/fastclick.min.js",
