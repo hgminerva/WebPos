@@ -1,9 +1,12 @@
 ﻿
 @{
-    ViewBag.Title = "User";
+    ViewBag.Title = "ItemComponent";
 }
-
-<div class="hold-transition skin-blue sidebar-collapse sidebar-mini">
+@Styles.Render("~/Template/Css")
+<!DOCTYPE html>
+<html>
+<!-- ADD THE CLASS sidedar-collapse TO HIDE THE SIDEBAR PRIOR TO LOADING THE SITE -->
+<body class="hold-transition skin-blue sidebar-collapse sidebar-mini">
     <!-- Site wrapper -->
     <div class="wrapper">
 
@@ -16,29 +19,26 @@
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
             <section class="content-header">
-                <h1 class="fa fa-user">
-                    User List
+                <h1 class="fa fa-table">
+                    Item Component List
                 </h1>
                 <ol class="breadcrumb">
                     <li><a href="../Software/Dashboard"><i class="fa fa-table"></i> Home</a></li>
-                    <li class="active">User</li>
+                    <li class="active">Item Component</li>
                 </ol>
             </section>
             <section class="content">
                 <div class="row">
                     <div class="col-xs-12">
-
                         <!--table container-->
                         <div class="box">
-
                             <div class="row">
-
                                 <div class="box-header">
                                     <div class="col-md-6">
                                         <!--search box-->
                                         <div class="box-tools">
                                             <div class="input-group" style="width: 150px;">
-                                                <input type="text" class="form-control input-sm" id="InputFilter" placeholder="Search Item">
+                                                <input type="text" class="form-control input-sm" id="InputFilter" placeholder="Search">
                                                 <div class="input-group-btn">
                                                     <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
                                                 </div>
@@ -46,7 +46,7 @@
                                         </div>
                                     </div>
                                     <div class="btn-group-horizontal btn-sm pull-right">
-                                        <a href="~/Software/AddUser" class="btn btn-info"><i class="fa fa-plus"></i> Add</a>
+                                        <a href="~/Software/AddItemComponent" class="btn btn-info"><i class="fa fa-plus"></i> Add</a>
                                         <a href="~/Software/Dashboard" class="btn btn-danger "><i class="fa fa-close"></i> Close</a>
                                     </div>
                                 </div>
@@ -130,7 +130,7 @@
                     var ItemList = new wijmo.collections.ObservableArray();
                     $("#loadingModal").modal("show");
                     $.ajax({
-                        url: '/api/user/list',
+                        url: '/api/ItemComponent/list',
                         cache: false,
                         type: 'GET',
                         contentType: 'application/json; charset=utf-8',
@@ -143,9 +143,10 @@
                                     ItemList.push({
                                         EditId: "<button class='btn btn-primary btn-xs btn-block' id='itemEditButton' onclick='cmdItemEditButton_OnClick()'><i class='fa fa-pencil'></i> Edit</button>",
                                         DeleteId: "<button class='btn btn-danger btn-xs btn-block' id='itemDeleteButton' onclick='cmdItemDeleteButton_OnClick()'><i class='fa fa-trash'></i> Delete</button>",
-                                        UserName: results[i]["UserName"],
-                                        FullName: results[i]["FullName"],
-                                        isLocked: results[i]["IsLocked"]
+                                        ItemId: results[i]["ItemId"],
+                                        ComponentItemId: results[i]["ComponentItemId"],
+                                        IsPrinted: results[i]["IsPrinted"],
+                                        isLocked: results[i]["isLocked"]
 
                                     });
                                 }
@@ -162,7 +163,7 @@
                                     itemCollections.refresh();
                                 });
                                 itemCollections.filter = function (item) {
-                                    return !filterText || (item.FullName.toLowerCase().indexOf(filterText) > -1);
+                                    return !filterText || (item.ItemDescription.toLowerCase().indexOf(filterText) > -1);
                                 }
                                 itemCollections.collectionChanged.addHandler(function (sender, args) {
                                     updateNavigateButtonsCollection();
@@ -195,22 +196,44 @@
 
                                     },
                                     {
-                                        "header": "User Name",
-                                        "binding": "UserName",
+                                        "header": "Item",
+                                        "binding": "ItemId",
                                         "align": "center",
                                         "allowSorting": true,
                                         "isContentHtml": true,
                                         "width": "2*"
                                     },
                                     {
-                                        "header": "Full Name",
-                                        "binding": "FullName",
+                                        "header": "Components",
+                                        "binding": "ComponentItemId",
                                         "align": "center",
                                         "allowSorting": true,
                                         "isContentHtml": true,
                                         "width": "2*"
                                     },
-                                    
+                                    {
+                                        "header": "P",
+                                        "binding": "IsPrinted",
+                                        "align": "center",
+                                        "allowSorting": true,
+                                        "width": "4*"
+                                    },
+                                    {
+                                        "header": "Category",
+                                        "binding": "Category",
+                                        "align": "center",
+                                        "allowSorting": true,
+                                        "width": "2.5*"
+                                    },
+                                    {
+                                        "header": "Packages",
+                                        "binding": " ",
+                                        "align": "center",
+                                        "allowSorting": true,
+                                        "width": "2*"
+                                    },
+                                   
+                                   
                                     {
                                         "header": "L",
                                         "binding": "isLocked",
@@ -285,7 +308,7 @@
                     var id = itemCollections.currentItem.Id;
 
                     $.ajax({
-                        url: '/api/user/delete/' + id,
+                        url: '/api/item/delete/' + id,
                         type: "DELETE",
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
@@ -364,8 +387,24 @@
         <!-- ===================Main Footer============================ -->
         @Html.Partial("_MainFooter")
     </div>
-</div>
+    @Scripts.Render("~/Template/Js")
+    @Scripts.Render("~/Wijmo/Js")
 
+
+    <!-- jQuery 2.1.4 -->
+    <script src="../plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <!-- Bootstrap 3.3.5 -->
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <!-- SlimScroll -->
+    <script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
+    <!-- FastClick -->
+    <script src="../plugins/fastclick/fastclick.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="../dist/js/app.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="../dist/js/demo.js"></script>
+</body>
+</html>
 
 
 
