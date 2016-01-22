@@ -691,9 +691,6 @@
     <Content Include="Views\Software\AddDiscount.cshtml" />
     <Content Include="Views\Software\Supplier.cshtml" />
     <Content Include="Views\Software\AddSupplier.cshtml" />
-    <Content Include="Views\Software\SystemTable.cshtml" />
-    <Content Include="Views\Software\User.cshtml" />
-    <Content Include="Views\Software\AddUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
