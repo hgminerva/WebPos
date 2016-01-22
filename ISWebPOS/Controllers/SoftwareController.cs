@@ -170,5 +170,14 @@ namespace ISWebPOS.Controllers
         {
             return View();
         }
+        //Collection View
+        public ActionResult Collection()
+        {
+            return View();
+        }
+        public ActionResult AddCollection()
+        {
+            return View();
+        }
     }
 }
