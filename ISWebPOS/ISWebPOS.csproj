@@ -717,6 +717,8 @@
     <Content Include="Views\Software\Table.cshtml" />
     <Content Include="Views\Software\Terminal.cshtml" />
     <Content Include="Views\Software\_ViewStart.cshtml" />
+    <Content Include="Views\Software\Collection.cshtml" />
+    <Content Include="Views\Software\AddCollection.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
