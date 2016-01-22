@@ -163,7 +163,7 @@
                                 disbursementCollections.refresh();
                             });
                             disbursementCollections.filter = function (disbursement) {
-                                return !filterText || (disbursement.DisbursementDate.toLowerCase().indexOf(filterText) > -1);
+                                return !filterText || ((disbursement.DisbursementDate.toLowerCase().indexOf(filterText) > -1) || ((disbursement.DisbursementNumber.toLowerCase().indexOf(filterText) > -1) ));
                             }
                             disbursementCollections.collectionChanged.addHandler(function (sender, args) {
                                 updateNavigateButtonsCollection();

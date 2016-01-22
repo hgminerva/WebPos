@@ -41,7 +41,7 @@
                                         <!--search box-->
                                         <div class="box-tools">
                                             <div class="input-group" style="width: 150px;">
-                                                <input type="text" class="form-control input-sm" id="InputFilter" placeholder="Search Customer">
+                                                <input type="text" class="form-control input-sm" id="InputFilter" placeholder="Search">
                                                 <div class="input-group-btn">
                                                     <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
                                                 </div>
@@ -167,7 +167,7 @@
                                 customerCollections.refresh();
                             });
                             customerCollections.filter = function (customer) {
-                                return !filterText || (customer.Customer.toLowerCase().indexOf(filterText) > -1);
+                                return !filterText || (customer.Customer.toLowerCase().indexOf(filterText) > -1) || (customer.Address.toLowerCase().indexOf(filterText) > -1) || (customer.ContactNumber.toLowerCase().indexOf(filterText) > -1);
                             }
                             customerCollections.collectionChanged.addHandler(function (sender, args) {
                                 updateNavigateButtonsCollection();
@@ -202,6 +202,14 @@
                                 {
                                     "header": "Customer",
                                     "binding": "Customer",
+                                    "align": "center",
+                                    "allowSorting": true,
+                                    "isContentHtml": true,
+                                    "width": "2*"
+                                },
+                                {
+                                    "header": "Address",
+                                    "binding": "Address",
                                     "align": "center",
                                     "allowSorting": true,
                                     "isContentHtml": true,
