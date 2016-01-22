@@ -8,7 +8,6 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     @Styles.Render("~/Template/Css")
-    @Scripts.Render("~/Template/Js")
     @Scripts.Render("~/Wijmo/Js")
     <!-- Bootstrap 3.3.5 -->
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
@@ -36,6 +35,7 @@
 <body>
     <div cid=" page-top" data-spy="scroll" data-target=".navbar-fixed-top">
         @RenderBody()
+        @Scripts.Render("~/Template/Js")
     </div>
 </body>
 </html>

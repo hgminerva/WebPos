@@ -1,5 +1,7 @@
-﻿@{
-    ViewBag.Title = "Item";}
+﻿
+@{
+    ViewBag.Title = "StockIn";
+}
 @Styles.Render("~/Template/Css")
 @Scripts.Render("~/Template/Js")
 @Scripts.Render("~/Wijmo/Js")
@@ -17,102 +19,99 @@
         @Html.Partial("_MainSidebar")
         <!-- =============================================== -->
 
-                <div class="content-wrapper">
-                    <!-- Content Header (Page header) -->
-                    <section class="content-header">
-                        <h1 class="fa fa-table">
-                            Item List
-                        </h1>
-                        <ol class="breadcrumb">
-                            <li><a href="../Software/Dashboard"><i class="fa fa-table"></i> Home</a></li>
-                            <li class="active">Item</li>
-                        </ol>
-                    </section>
-                    <section class="content">
-                        <div class="row">
-                            <div class="col-xs-12">
-
-                                <!--table container-->
-                                <div class="box">
-
-                                    <div class="row">
-
-                                        <div class="box-header">
-                                            <div class="col-md-6">
-                                                <!--search box-->
-                                                <div class="box-tools">
-                                                    <div class="input-group" style="width: 150px;">
-                                                        <input type="text" class="form-control input-sm" id="InputFilter" placeholder="Search Item">
-                                                        <div class="input-group-btn">
-                                                            <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
-                                                        </div>
-                                                    </div>
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1 class="fa fa-table">
+                   Stock-In List
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="../Software/Dashboard"><i class="fa fa-table"></i> Home</a></li>
+                    <li class="active">Stock In</li>
+                </ol>
+            </section>
+            <section class="content">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <!--table container-->
+                        <div class="box">
+                            <div class="row">
+                                <div class="box-header">
+                                    <div class="col-md-6">
+                                        <!--search box-->
+                                        <div class="box-tools">
+                                            <div class="input-group" style="width: 150px;">
+                                                <input type="text" class="form-control input-sm" id="InputFilter" placeholder="Search ">
+                                                <div class="input-group-btn">
+                                                    <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
                                                 </div>
-                                            </div>
-                                            <div class="btn-group-horizontal btn-sm pull-right">
-                                                <a href="~/Software/AddItem" class="btn btn-info"><i class="fa fa-plus"></i> Add</a>
-                                                <a href="~/Software/Dashboard" class="btn btn-danger "><i class="fa fa-close"></i> Close</a>
                                             </div>
                                         </div>
                                     </div>
-                                    <!--table-->
-                                    <table id="itemCollectionGrid" class="grid border-custom"></table>
-
+                                    <div class="btn-group-horizontal btn-sm pull-right">
+                                        <a href="~/Software/AddItem" class="btn btn-info"><i class="fa fa-plus"></i> Add</a>
+                                        <a href="~/Software/Dashboard" class="btn btn-danger "><i class="fa fa-close"></i> Close</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <!--navigation buttons-->
-                        <div class="btn-group pull-right" id="navigationPageGrid">
-                            <button type="button" class="btn btn-default border-custom" id="btnMoveToFirstPageGrid">
-                                <span class="glyphicon glyphicon-fast-backward"></span>
-                            </button>
-                            <button type="button" class="btn btn-default border-custom" id="btnMoveToPreviousPageGrid">
-                                <span class="glyphicon glyphicon-step-backward"></span>
-                            </button>
-                            <button type="button" class="btn btn-default border-custom" disabled style="width: 100px" id="btnCurrentPageGrid"></button>
-                            <button type="button" class="btn btn-default border-custom" id="btnMoveToNextPageGrid">
-                                <span class="glyphicon glyphicon-step-forward"></span>
-                            </button>
-                            <button type="button" class="btn btn-default border-custom" id="btnMoveToLastPageGrid">
-                                <span class="glyphicon glyphicon-fast-forward"></span>
-                            </button>
-                        </div>
-                    </section>
-                </div><!-- ./wrapper -->
-                <!-- Company Delete -->
-                <div class="modal fade" id="deleteItemConfirm" role="dialog">
-                    <div class="modal-dialog modal-sm">
-                        <!-- Modal content-->
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title">Delete Item? <i class="fa fa-trash"></i></h4>
-                            </div>
+                            <!--table-->
+                            <table id="itemCollectionGrid" class="grid border-custom"></table>
 
-                            <div class="modal-footer">
-                                <button class="btn btn-danger btn-sm" id="cmdConfirmDeleteItem" onclick="cmdItemConfirmDeleteButton_OnClick()">Delete</button>
-                                <button id="cmdConfirmDeleteCloseButton" class="btn btn-primary btn-sm" data-dismiss="modal">Cancel</button>
-                            </div>
                         </div>
                     </div>
                 </div>
+                <!--navigation buttons-->
+                <div class="btn-group pull-right" id="navigationPageGrid">
+                    <button type="button" class="btn btn-default border-custom" id="btnMoveToFirstPageGrid">
+                        <span class="glyphicon glyphicon-fast-backward"></span>
+                    </button>
+                    <button type="button" class="btn btn-default border-custom" id="btnMoveToPreviousPageGrid">
+                        <span class="glyphicon glyphicon-step-backward"></span>
+                    </button>
+                    <button type="button" class="btn btn-default border-custom" disabled style="width: 100px" id="btnCurrentPageGrid"></button>
+                    <button type="button" class="btn btn-default border-custom" id="btnMoveToNextPageGrid">
+                        <span class="glyphicon glyphicon-step-forward"></span>
+                    </button>
+                    <button type="button" class="btn btn-default border-custom" id="btnMoveToLastPageGrid">
+                        <span class="glyphicon glyphicon-fast-forward"></span>
+                    </button>
+                </div>
+            </section>
+        </div><!-- ./wrapper -->
+        <!-- Company Delete -->
+        <div class="modal fade" id="deleteItemConfirm" role="dialog">
+            <div class="modal-dialog modal-sm">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Delete Item? <i class="fa fa-trash"></i></h4>
+                    </div>
 
-                <!-- Loading Modal -->
-                <div class="modal fade" id="loadingModal" tabindex="-1" role="dialog" aria-labelledby="Loading..." aria-hidden="true" data-backdrop="static" data-keyboard="false">
-                    <div class=" modal-dialog modal-sm">
-                        Modal content
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                <h4 style="text-align:center">Loading ...</h4>
-                            </div>
-                            <div class="modal-footer">
-                                <img class="img-thumbnail img-responsive center-block img-custom" src='~/images/loading/progress_bar.gif'>
-                            </div>
-                        </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-danger btn-sm" id="cmdConfirmDeleteItem" onclick="cmdItemConfirmDeleteButton_OnClick()">Delete</button>
+                        <button id="cmdConfirmDeleteCloseButton" class="btn btn-primary btn-sm" data-dismiss="modal">Cancel</button>
                     </div>
                 </div>
+            </div>
+        </div>
 
-            <script type="text/javascript">
+        <!-- Loading Modal -->
+        <div class="modal fade" id="loadingModal" tabindex="-1" role="dialog" aria-labelledby="Loading..." aria-hidden="true" data-backdrop="static" data-keyboard="false">
+            <div class=" modal-dialog modal-sm">
+                Modal content
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <h4 style="text-align:center">Loading ...</h4>
+                    </div>
+                    <div class="modal-footer">
+                        <img class="img-thumbnail img-responsive center-block img-custom" src='~/images/loading/progress_bar.gif'>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
 
                 //================
                 // Global variables
@@ -413,7 +412,7 @@
                     getItemMasterList();
 
                 });
-            </script>
+        </script>
         <!-- ===================Main Footer============================ -->
         @Html.Partial("_MainFooter")
     </div>
@@ -432,6 +431,8 @@
     <script src="../dist/js/demo.js"></script>
 </body>
 </html>
+
+
 
 
 
