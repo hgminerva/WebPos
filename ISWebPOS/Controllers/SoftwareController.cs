@@ -23,7 +23,7 @@ namespace ISWebPOS.Controllers
         {
             return View();
         }
-        public ActionResult AddItem() 
+        public ActionResult AddItem()
         {
             return View();
         }
@@ -36,7 +36,7 @@ namespace ISWebPOS.Controllers
         {
             return View();
         }
-        public  ActionResult AddDiscount()
+        public ActionResult AddDiscount()
         {
             return View();
         }
@@ -50,7 +50,7 @@ namespace ISWebPOS.Controllers
             return View();
         }
         //SupplierView
-        public ActionResult Supplier() 
+        public ActionResult Supplier()
         {
             return View();
         }
@@ -96,7 +96,79 @@ namespace ISWebPOS.Controllers
         {
             return View();
         }
+        //Stock In View
+        public ActionResult StockIn()
+        {
+            return View();
+        }
+        //Stock Out View
 
-       
+        public ActionResult StockOut()
+        {
+            return View();
+        }
+        //Disbursement View
+        public ActionResult Disbursement()
+        {
+            return View();
+        }
+        public ActionResult AddDisbursement()
+        {
+            return View();
+        }
+        //Purchase View
+        public ActionResult Purchase()
+        {
+            return View();
+        }
+        public ActionResult AddPurchase()
+        {
+            return View();
+        }
+        //Item Group Views
+        public ActionResult ItemGroup()
+        {
+            return View();
+        }
+        public ActionResult AddItemGroup()
+        {
+            return View();
+        }
+        //Views Item Component
+        public ActionResult ItemComponent()
+        {
+            return View();
+        }
+        public ActionResult AddItemComponent()
+        {
+            return View();
+        }
+        //Views Table
+        public ActionResult Table()
+        {
+            return View();
+        }
+        public ActionResult AddTable()
+        {
+            return View();
+        }
+        //Stock Count
+        public ActionResult StockCount()
+        {
+            return View();
+        }
+        public ActionResult AddStockCount()
+        {
+            return View();
+        }
+        //Inventory View
+        public ActionResult Inventory()
+        {
+            return View();
+        }
+        public ActionResult AddInventory()
+        {
+            return View();
+        }
     }
 }

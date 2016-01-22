@@ -698,6 +698,25 @@
     <Content Include="Views\Software\PayType.cshtml" />
     <Content Include="Views\Software\Tax.cshtml" />
     <Content Include="Views\Software\Unit.cshtml" />
+    <Content Include="Views\Software\AddDisbursement.cshtml" />
+    <Content Include="Views\Software\AddInventory.cshtml" />
+    <Content Include="Views\Software\AddItemComponent.cshtml" />
+    <Content Include="Views\Software\AddItemGroup.cshtml" />
+    <Content Include="Views\Software\AddPurchase.cshtml" />
+    <Content Include="Views\Software\AddStockCount.cshtml" />
+    <Content Include="Views\Software\AddTable.cshtml" />
+    <Content Include="Views\Software\Disbursement.cshtml" />
+    <Content Include="Views\Software\Inventory.cshtml" />
+    <Content Include="Views\Software\ItemComponent.cshtml" />
+    <Content Include="Views\Software\ItemGroup.cshtml" />
+    <Content Include="Views\Software\Period.cshtml" />
+    <Content Include="Views\Software\Purchase.cshtml" />
+    <Content Include="Views\Software\StockCount.cshtml" />
+    <Content Include="Views\Software\StockIn.cshtml" />
+    <Content Include="Views\Software\StockOut.cshtml" />
+    <Content Include="Views\Software\Table.cshtml" />
+    <Content Include="Views\Software\Terminal.cshtml" />
+    <Content Include="Views\Software\_ViewStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
