@@ -1,7 +1,7 @@
 ﻿$(document).ready(function () {
 
-    
-    $('#itemCode').val(localStorage.getItem("lastCode"));
+
+
     var ITEMDATA = {};
     var err = "";
     var rdr = false;
@@ -99,6 +99,9 @@
                 cache: false,
                 success: function (data, status, xhr) {
                     var result = JSON.parse(data);
+                    
+                 
+                    
                     $('#msg-txt').css("color", "#66a3ff");
                     $('#msg-txt').append("<h4>Item successfuly" + result + " added</h4>");
                     $('#msg-btn').removeClass('btn btn-warning').addClass('btn btn-success');
@@ -114,21 +117,19 @@
     });
 
     $('#close').click(function () {
-        window.location = "/Software/Dashboard";
+        window.location = "http://localhost:54206/Software/Dashboard";
     });
 
     $('#msg-btn').click(function () {
         if (rdr == true) {
             $('#loadingModal').modal("hide");
             $('#msg-txt').html('');
-            window.location.href = "/Software/Item";
+            window.location.href = "http://localhost:54206/Software/Item";
         } else {
             $('#msg-txt').html('');
             $('#loadingModal').modal("hide");
         }
     });
-
-    loadLastItemCode();
 
 });
 
@@ -137,18 +138,4 @@ function setCookie(name, value, daysToLive) {
     if (typeof daysToLive === "number")
         cookie += "; max-age=" + (daysToLive * 60 * 60 * 24);
     document.cookie = cookie;
-}
-
-function loadLastItemCode() {
-
-    $.ajax({
-        url: '/api/item/lastitemcode/',
-        type: 'GET',
-        async: true,
-        success: function (data, status, xhr) {
-            var result = JSON.parse(data);
-
-            alert(result);
-        }
-    });
 }
