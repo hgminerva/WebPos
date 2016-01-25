@@ -1,10 +1,10 @@
 ﻿
 @{
-    ViewBag.Title = "AddSupplier";
+    ViewBag.Title = "AddUser";
 }
+
 @Styles.Render("~/Template/Css")
-@Scripts.Render("~/Template/Js")
-@Scripts.Render("~/Wijmo/Js")
+
 <!DOCTYPE html>
 <html>
 <!-- ADD THE CLASS sidedar-collapse TO HIDE THE SIDEBAR PRIOR TO LOADING THE SITE -->
@@ -22,12 +22,12 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1 class="fa fa-user">
-                    Supplier Detail
+                    User Detail
                 </h1>
                 <ol class="breadcrumb">
                     <li><a href="../Software/Dashboard"><i class="fa fa-table"></i> Home</a></li>
-                    <li><a href="../Software/Customer">Supplier</a></li>
-                    <li class="active">Add Supplier</li>
+                    <li><a href="../Software/User">User</a></li>
+                    <li class="active">Add User</li>
                 </ol>
                 <!---Menu Tab-->
                 <div class="container">
@@ -59,68 +59,33 @@
                             <div class="box-body">
 
                                 <div class="form-group">
-                                    <label for="supplier" class="col-sm-2 control-label">Supplier</label>
+                                    <label for="username" class="col-sm-2 control-label">User Name</label>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control" id="supplier" placeholder="NA">
+                                        <input type="text" class="form-control" id="username" placeholder="NA">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="address" class="col-sm-2 control-label">Address</label>
+                                    <label for="password" class="col-sm-2 control-label">Password</label>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control" id="address" placeholder="NA">
+                                        <input type="password" class="form-control" id="password" placeholder="***">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="telNo" class="col-sm-2 control-label">Telephone No</label>
+                                    <label for="fullname" class="col-sm-2 control-label">Full Name</label>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control" id="telNo" placeholder="NA">
+                                        <input type="text" class="form-control" id="fullname" placeholder="NA">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="celNo" class="col-sm-2 control-label">Cellphone No</label>
+                                    <label for="usercardno" class="col-sm-2 control-label">User Card Number</label>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control" id="celNo" placeholder="NA">
+                                        <input type="text" class="form-control" id="usercardnoe" placeholder="NA">
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="foxNo" class="col-sm-2 control-label">Fox No</label>
-                                    <div class="col-sm-6">
-                                        <input type="text" class="form-control" id="foxNo" placeholder="NA">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="term" class="col-sm-2 control-label">Term</label>
-                                    <div class="col-sm-4">
-                                        <select class="form-control">
-                                            <option>15 days</option>
-                                            <option>30 days</option>
-                                            <option>60 days</option>
-                                            <option>90 days</option>
-                                            <option>120 days</option>
-                                            <option>COD </option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="tin" class="col-sm-2 control-label">TIN</label>
-                                    <div class="col-sm-6">
-                                        <input type="text" class="form-control" id="tin" placeholder="NA">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="category" class="col-sm-2 control-label">AP Account</label>
-                                    <div class="col-sm-4">
-                                        <select class="form-control">
-                                            <option>Accounts</option>
-                                            <option>Accounts Payable</option>
-                                            <option>Local Tax Payable</option>
-                                            <option>VAT Payable -Input</option>
-                                            <option>VAT Payable -Ouput</option>
-                                        </select>
-                                    </div>
-                                </div>
-                             </div><!-- /.box-body -->
-                           
+
+                            </div><!-- /.box-body -->
+                            <div class="box-footer">
+                            </div><!-- /.box-footer -->
                         </form>
                     </div><!-- /.box -->
                 </div>
@@ -131,7 +96,8 @@
         <!-- ===================Main Footer============================ -->
         @Html.Partial("_MainFooter")
     </div>
-
+    @Scripts.Render("~/Template/Js")
+    @Scripts.Render("~/Wijmo/Js")
     <!-- jQuery 2.1.4 -->
     <script src="../plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <!-- Bootstrap 3.3.5 -->

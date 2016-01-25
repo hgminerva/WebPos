@@ -7,7 +7,9 @@
 <body class="hold-transition skin-blue sidebar-collapse sidebar-mini">
     <!-- Site wrapper -->
     <div class="wrapper">
-
+        @Styles.Render("~/Template/Css")
+        @Scripts.Render("~/Template/Js")
+        @Scripts.Render("~/Wijmo/Js")
         <!-- ===================Main Header============================ -->
         @Html.Partial("_MainHeader")
         <!-- ===================Main Sidebar============================ -->
@@ -32,7 +34,7 @@
                 <div class="row">
                     <div class="col-lg-3 col-xs-6">
                         <!-- small box -->
-                        <div class="small-box bg-aqua">
+                        <div class="small-box bg-light-blue-gradient">
                             <div class="inner">
                                 <h3>Item</h3>
                                 <p>New Orders</p>
@@ -45,9 +47,10 @@
                             </a>
                         </div>
                     </div><!-- ./col -->
+                   
                     <div class="col-lg-3 col-xs-6">
                         <!-- small box -->
-                        <div class="small-box bg-green">
+                        <div class="small-box bg-light-blue-gradient">
                             <div class="inner">
                                 <h3>POS<sup style="font-size: 20px"></sup></h3>
                                 <p>Sales</p>
@@ -62,22 +65,7 @@
                     </div><!-- ./col -->
                     <div class="col-lg-3 col-xs-6">
                         <!-- small box -->
-                        <div class="small-box bg-yellow">
-                            <div class="inner">
-                                <h3>POS Touch</h3>
-                                <p>POS Touch</p>
-                            </div>
-                            <div class="icon">
-                                <i class="fa  fa-hand-pointer-o"></i>
-                            </div>
-                            <a href="#" class="small-box-footer">
-                                <i class="fa fa-arrow-circle-right"></i>
-                            </a>
-                        </div>
-                    </div><!-- ./col -->
-                    <div class="col-lg-3 col-xs-6">
-                        <!-- small box -->
-                        <div class="small-box bg-red">
+                        <div class="small-box bg-light-blue-gradient">
                             <div class="inner">
                                 <h3>Sales Report</h3>
                                 <p>Report</p>
@@ -107,37 +95,37 @@
                     </div><!-- ./col -->
                     <div class="col-lg-3 col-xs-6">
                         <!-- small box -->
-                        <div class="small-box bg-lime">
+                        <div class="small-box bg-light-blue-gradient">
                             <div class="inner">
                                 <h3>Collection</h3>
-                                <p>collection</p>
+                                <p>&nbsp;</p>
                             </div>
                             <div class="icon">
                                 <i class="fa fa-product-hunt"></i>
                             </div>
-                            <a href="#" class="small-box-footer">
+                            <a href="../Software/Collection" class="small-box-footer">
                                 <i class="fa fa-arrow-circle-right"></i>
                             </a>
                         </div>
                     </div><!-- ./col -->
                     <div class="col-lg-3 col-xs-6">
                         <!-- small box -->
-                        <div class="small-box bg-orange">
+                        <div class="small-box bg-light-blue-gradient">
                             <div class="inner">
                                 <h3>Item Group</h3>
-                                <p>Items</p>
+                                <p>&nbsp;</p>
                             </div>
                             <div class="icon">
                                 <i class="fa fa-object-group"></i>
                             </div>
-                            <a href="#" class="small-box-footer">
+                            <a href="../Software/ItemGroup" class="small-box-footer">
                                 <i class="fa fa-arrow-circle-right"></i>
                             </a>
                         </div>
                     </div><!-- ./col -->
                     <div class="col-lg-3 col-xs-6">
                         <!-- small box -->
-                        <div class="small-box bg-red-active">
+                        <div class="small-box bg-light-blue-gradient">
                             <div class="inner">
                                 <h3>Collection</h3>
                                 <p>Report</p>
@@ -152,7 +140,7 @@
                     </div><!-- ./col -->
                     <div class="col-lg-3 col-xs-6">
                         <!-- small box -->
-                        <div class="small-box bg-navy">
+                        <div class="small-box bg-light-blue-gradient">
                             <div class="inner">
                                 <h3>Customer</h3>
                                 <p>Detail</p>
@@ -167,7 +155,7 @@
                     </div><!-- ./col -->
                     <div class="col-lg-3 col-xs-6">
                         <!-- small box -->
-                        <div class="small-box bg-green-gradient">
+                        <div class="small-box bg-light-blue-gradient">
                             <div class="inner">
                                 <h3>Purchase</h3>
                                 <p>Order</p>
@@ -175,14 +163,14 @@
                             <div class="icon">
                                 <i class="fa fa-shopping-bag"></i>
                             </div>
-                            <a href="#" class="small-box-footer">
+                            <a href="../Software/Purchase" class="small-box-footer">
                                 <i class="fa fa-arrow-circle-right"></i>
                             </a>
                         </div>
                     </div><!-- ./col -->
                     <div class="col-lg-3 col-xs-6">
                         <!-- small box -->
-                        <div class="small-box bg-yellow-gradient">
+                        <div class="small-box bg-light-blue">
                             <div class="inner">
                                 <h3>Item</h3>
                                 <p>Component</p>
@@ -197,7 +185,7 @@
                     </div><!-- ./col -->
                     <div class="col-lg-3 col-xs-6">
                         <!-- small box -->
-                        <div class="small-box bg-red-gradient">
+                        <div class="small-box bg-light-blue">
                             <div class="inner">
                                 <h3>Account </h3>
                                 <p>Receivable Report</p>
@@ -212,7 +200,7 @@
                     </div><!-- ./col -->
                     <div class="col-lg-3 col-xs-6">
                         <!-- small box -->
-                        <div class="small-box bg-light-blue-gradient">
+                        <div class="small-box bg-light-blue">
                             <div class="inner">
                                 <h3>Supplier </h3>
                                 <p>Supply</p>
@@ -227,7 +215,7 @@
                     </div><!-- ./col -->
                     <div class="col-lg-3 col-xs-6">
                         <!-- small box -->
-                        <div class="small-box bg-olive">
+                        <div class="small-box bg-light-blue">
                             <div class="inner">
                                 <h3>Disbursement </h3>
                                 <p>&nbsp;</p>
@@ -235,14 +223,14 @@
                             <div class="icon">
                                 <i class="fa fa-money"></i>
                             </div>
-                            <a href="#" class="small-box-footer">
+                            <a href="../Software/Disbursement" class="small-box-footer">
                                 <i class="fa fa-arrow-circle-right"></i>
                             </a>
                         </div>
                     </div><!-- ./col -->
                     <div class="col-lg-3 col-xs-6">
                         <!-- small box -->
-                        <div class="small-box bg-orange-active">
+                        <div class="small-box bg-light-blue">
                             <div class="inner">
                                 <h3>Table</h3>
                                 <p>&nbsp;</p>
@@ -250,14 +238,29 @@
                             <div class="icon">
                                 <i class="fa fa-cutlery"></i>
                             </div>
-                            <a href="#" class="small-box-footer">
+                            <a href="../Software/Table" class="small-box-footer">
+                                <i class="fa fa-arrow-circle-right"></i>
+                            </a>
+                        </div>
+                    </div><!-- ./col -->
+                 <div class="col-lg-3 col-xs-6">
+                        <!-- small box -->
+                        <div class="small-box bg-light-blue">
+                            <div class="inner">
+                                <h3>Stock Count</h3>
+                                <p>&nbsp;</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fa fa-dropbox"></i>
+                            </div>
+                            <a href="../Software/StockCount" class="small-box-footer">
                                 <i class="fa fa-arrow-circle-right"></i>
                             </a>
                         </div>
                     </div><!-- ./col -->
                     <div class="col-lg-3 col-xs-6">
                         <!-- small box -->
-                        <div class="small-box bg-maroon-gradient">
+                        <div class="small-box bg-light-blue">
                             <div class="inner">
                                 <h3>Debit/Credit</h3>
                                 <p>Memo&nbsp;</p>
@@ -272,7 +275,7 @@
                     </div><!-- ./col -->
                     <div class="col-lg-3 col-xs-6">
                         <!-- small box -->
-                        <div class="small-box bg-teal">
+                        <div class="small-box bg-light-blue-gradient">
                             <div class="inner">
                                 <h3>Systems </h3>
                                 <p>Table</p>
@@ -280,14 +283,14 @@
                             <div class="icon">
                                 <i class="fa fa-list"></i>
                             </div>
-                            <a href="#" class="small-box-footer">
+                            <a href="../Software/SystemTable" class="small-box-footer">
                                 <i class="fa fa-arrow-circle-right"></i>
                             </a>
                         </div>
                     </div><!-- ./col -->
                     <div class="col-lg-3 col-xs-6">
                         <!-- small box -->
-                        <div class="small-box bg-green-gradient">
+                        <div class="small-box bg-light-blue">
                             <div class="inner">
                                 <h3>Stock In</h3>
                                 <p>&nbsp;</p>
@@ -295,14 +298,29 @@
                             <div class="icon">
                                 <i class="fa fa-arrow-circle-o-down"></i>
                             </div>
-                            <a href="#" class="small-box-footer">
+                            <a href="../Software/StockIn" class="small-box-footer">
                                 <i class="fa fa-arrow-circle-right"></i>
                             </a>
                         </div>
                     </div><!-- ./col -->
                     <div class="col-lg-3 col-xs-6">
                         <!-- small box -->
-                        <div class="small-box bg-yellow-gradient">
+                        <div class="small-box bg-light-blue">
+                            <div class="inner">
+                                <h3>Stock Out</h3>
+                                <p>&nbsp;</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fa fa-arrow-circle-o-up"></i>
+                            </div>
+                            <a href="../Software/StockOut" class="small-box-footer">
+                                <i class="fa fa-arrow-circle-right"></i>
+                            </a>
+                        </div>
+                    </div><!-- ./col -->
+                    <div class="col-lg-3 col-xs-6">
+                        <!-- small box -->
+                        <div class="small-box bg-light-blue">
                             <div class="inner">
                                 <h3>Inventory</h3>
                                 <p>&nbsp;</p>
@@ -317,7 +335,22 @@
                     </div><!-- ./col -->
                     <div class="col-lg-3 col-xs-6">
                         <!-- small box -->
-                        <div class="small-box bg-maroon-active">
+                        <div class="small-box bg-light-blue-gradient">
+                            <div class="inner">
+                                <h3>User<sup style="font-size: 20px"></sup></h3>
+                                <p>&nbsp;</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fa fa-user"></i>
+                            </div>
+                            <a href="../Software/User" class="small-box-footer">
+                                <i class="fa fa-arrow-circle-right"></i>
+                            </a>
+                        </div>
+                    </div><!-- ./col -->
+                    <div class="col-lg-3 col-xs-6">
+                        <!-- small box -->
+                        <div class="small-box bg-light-blue">
                             <div class="inner">
                                 <h3>Disbursement </h3>
                                 <p>Report</p>

@@ -36,7 +36,7 @@ namespace ISWebPOS.Controllers
         {
             return View();
         }
-        public  ActionResult AddDiscount()
+        public ActionResult AddDiscount()
         {
             return View();
         }
