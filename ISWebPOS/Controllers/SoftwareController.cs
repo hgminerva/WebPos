@@ -58,6 +58,19 @@ namespace ISWebPOS.Controllers
         {
             return View();
         }
+        public ActionResult ItemComponent()
+        {
+            return View();
+        }
+
+
+
+
+
+        public ActionResult Table()
+        {
+            return View();
+        }
        
     }
 }

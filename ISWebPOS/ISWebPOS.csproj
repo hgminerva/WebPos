@@ -185,6 +185,7 @@
     <Compile Include="Controllers\ApiDiscountController.cs" />
     <Compile Include="Controllers\ApiCustomerController.cs" />
     <Compile Include="Controllers\ApiAccountController.cs" />
+    <Compile Include="Controllers\ApiLastItemCodeController.cs" />
     <Compile Include="Controllers\ApiSalesController.cs" />
     <Compile Include="Controllers\ApiSalesDraftController.cs" />
     <Compile Include="Controllers\ApiSalesLineController.cs" />
@@ -1252,6 +1253,9 @@
     <Content Include="plugins\input-mask\phone-codes\phone-be.json" />
     <Content Include="plugins\input-mask\phone-codes\phone-codes.json" />
     <Content Include="Scripts\html5shiv.min.js" />
+    <Content Include="Scripts\item-validate.js" />
+    <Content Include="Scripts\item.js" />
+    <Content Include="Scripts\itemCompent-ajax.js" />
     <Content Include="Scripts\toastr.js" />
     <Content Include="Scripts\toastr.min.js" />
     <Content Include="wijmo\controls\cultures\wijmo.culture.de.js" />
@@ -1378,6 +1382,7 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery.cookie" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -1482,6 +1487,9 @@
     <Content Include="Views\Software\AddDiscount.cshtml" />
     <Content Include="Views\Software\Supplier.cshtml" />
     <Content Include="Views\Software\AddSupplier.cshtml" />
+    <Content Include="Views\Software\ItemGroup.cshtml" />
+    <Content Include="Views\Software\ItemComponent.cshtml" />
+    <Content Include="Views\Software\Table.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

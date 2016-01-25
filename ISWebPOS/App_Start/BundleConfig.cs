@@ -27,7 +27,6 @@ namespace ISWebPOS
             bundles.Add(new ScriptBundle("~/Template/Js").Include(
                 "~/plugins/jQuery/jQuery-2.1.4.min.js",
                 "~/Scripts/jquery.validate.min.js",
-                "~/Scripts/item-validate.js",
                 "~/Scripts/item.js",
                 "~/Scripts/jquery.cookie.js",
                 "~/bootstrap/js/bootstrap.min.js",
@@ -62,6 +61,17 @@ namespace ISWebPOS
                 "~/wijmo/controls/wijmo.input.min.js",
                 "~/wijmo/controls/wijmo.grid.min.js",
                 "~/wijmo/controls/wijmo.chart.min.js"));
+
+
+            //=======
+            //ADDITEM JS
+            //=======
+
+            bundles.Add(new ScriptBundle("~/AddItem/Js").Include(
+                "~/Scripts/item-validate.js"));
+
+            bundles.Add(new ScriptBundle("~/Scripts/ItemComponent-AJAX").Include(
+                "~/Scripts/itemComponent-ajax.js"));
         }
     }
 }
