@@ -58,6 +58,5 @@ namespace ISWebPOS.Controllers
         {
             return View();
         }
-       
     }
 }
