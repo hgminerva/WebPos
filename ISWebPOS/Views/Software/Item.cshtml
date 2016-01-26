@@ -26,15 +26,18 @@
                     <section class="content">
                         <div class="row">
                             <div class="col-xs-12">
+
                                 <!--table container-->
                                 <div class="box">
+
                                     <div class="row">
+
                                         <div class="box-header">
                                             <div class="col-md-6">
                                                 <!--search box-->
                                                 <div class="box-tools">
                                                     <div class="input-group" style="width: 150px;">
-                                                        <input type="text" class="form-control input-sm" id="InputFilter" placeholder="Search Item">
+                                                        <input type="text" class="form-control input-sm" id="InputFilter" placeholder="Search">
                                                         <div class="input-group-btn">
                                                             <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
                                                         </div>
@@ -173,7 +176,10 @@
                                     itemCollections.refresh();
                                 });
                                 itemCollections.filter = function (item) {
-                                    return !filterText || (item.ItemDescription.toLowerCase().indexOf(filterText) > -1);
+                                    return !filterText || (item.ItemDescription.toLowerCase().indexOf(filterText) > -1)
+                                    || (item.ItemCode.toLowerCase().indexOf(filterText) > -1)
+                                    || (item.BarCode.toLowerCase().indexOf(filterText) > -1)
+                                    || (item.Category.toLowerCase().indexOf(filterText) > -1);
                                 }
                                 itemCollections.collectionChanged.addHandler(function (sender, args) {
                                     updateNavigateButtonsCollection();
@@ -205,14 +211,7 @@
                                         "isContentHtml": true
 
                                     },
-                                    {
-                                        "header": "Id",
-                                        "binding": "Id",
-                                        "align": "center",
-                                        "allowSorting": true,
-                                        "isContentHtml": true,
-                                        "width": "2*"
-                                    },
+
                                     {
                                         "header": "Code",
                                         "binding": "ItemCode",
@@ -360,7 +359,7 @@
                             },
                             400: function () {
                                 toastr.error("Can't be deleted");
-                                $('#deleteCompanyConfirm').modal('hide');
+                                $('#deleteItemConfirm').modal('hide');
                                 $("#cmdConfirmDeleteItem").prop("disabled", false);
                                 $("#cmdConfirmDeleteCloseButton").prop("disabled", false);
                             }
