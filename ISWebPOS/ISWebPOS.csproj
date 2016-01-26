@@ -191,6 +191,8 @@
     <Compile Include="Controllers\ApiSalesLineController.cs" />
     <Compile Include="Controllers\ApiSalesReleasedController.cs" />
     <Compile Include="Controllers\ApiStockCountController.cs" />
+    <Compile Include="Controllers\ApiStockInController.cs" />
+    <Compile Include="Controllers\ApiStockOutController.cs" />
     <Compile Include="Controllers\ApiTerminalController.cs" />
     <Compile Include="Controllers\ApiUnitController.cs" />
     <Compile Include="Controllers\ApiUserController.cs" />
@@ -1520,6 +1522,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\ApiStockIn\" />
+    <Folder Include="Views\ApiStockOut\" />
     <Folder Include="Views\PurchaseOrderLine\" />
   </ItemGroup>
   <ItemGroup>

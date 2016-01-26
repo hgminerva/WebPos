@@ -16,7 +16,7 @@ namespace ISWebPOS.Models
         public Int32 AccountId { get; set; }
         public String Remarks { get; set; }
         public Int32 PreparedBy { get; set; }
-        public Int32 CheckBy { get; set; }
+        public Int32 CheckedBy { get; set; }
         public Int32 ApprovedBy { get; set; }
         public Boolean IsLocked { get; set; }
         public Int32 EntryUserId { get; set; }
