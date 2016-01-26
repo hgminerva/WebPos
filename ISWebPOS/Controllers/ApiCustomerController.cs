@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using Microsoft.AspNet.Identity;
+using System.Web.Script.Serialization;
 
 namespace ISWebPOS.Controllers
 {
@@ -15,8 +16,9 @@ namespace ISWebPOS.Controllers
         // ===========
         // LIST Customer
         // ===========
+        
         [Route("api/customer/list")]
-        public List<Models.MstCustomer> Get()
+        public List<Models.MstCustomer>  Get()
         {
             var isLocked = true;
 
@@ -42,6 +44,8 @@ namespace ISWebPOS.Controllers
                                UpdateDateTime = d.UpdateDateTime,
                                IsLocked = isLocked
                            };
+
+
             return customer.ToList();
         }
 

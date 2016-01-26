@@ -1,11 +1,6 @@
 ﻿@{
-    ViewBag.Title = "Item";}
-@Styles.Render("~/Template/Css")
-@Scripts.Render("~/Template/Js")
-@Scripts.Render("~/Wijmo/Js")
-
-<!DOCTYPE html>
-<html>
+    ViewBag.Title = "Item";
+}
 <!-- ADD THE CLASS sidedar-collapse TO HIDE THE SIDEBAR PRIOR TO LOADING THE SITE -->
 <body class="hold-transition skin-blue sidebar-collapse sidebar-mini">
     <!-- Site wrapper -->
@@ -118,6 +113,7 @@
                 var itemGrid;
                 var editItem;
 
+                var lastCount = 0;
                 var btnFirstPageGrid;
                 var btnPreviousPageGrid;
                 var btnNextPageGrid;
@@ -141,6 +137,11 @@
                             /* var results = JSON.parse(result); */
                             if (results.length > 0) {
                                 for (i = 0; i < results.length; i++) {
+
+                                    if (i == lastCount) {
+                                        localStorage.setItem("lastCode", results[i]["ItemCode"]);
+                                    }
+
                                     ItemList.push({
                                         EditId: "<button class='btn btn-primary btn-xs btn-block' id='itemEditButton' onclick='cmdItemEditButton_OnClick()'><i class='fa fa-pencil'></i> Edit</button>",
                                         DeleteId: "<button class='btn btn-danger btn-xs btn-block' id='itemDeleteButton' onclick='cmdItemDeleteButton_OnClick()'><i class='fa fa-trash'></i> Delete</button>",
@@ -155,7 +156,10 @@
                                         isLocked: results[i]["isLocked"]
 
                                     });
+                                    lastCount++;
                                 }
+                                
+                                
                                 itemCollections = new wijmo.collections.CollectionView(ItemList);
                                 btnCurrentPageGrid.innerHTML = (itemCollections.pageIndex + 1) + ' / ' + itemCollections.pageCount;
 

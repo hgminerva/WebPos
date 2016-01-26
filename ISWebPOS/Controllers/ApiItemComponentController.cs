@@ -20,7 +20,7 @@ namespace ISWebPOS.Controllers
         {
             var isLocked = true;
 
-            var customer = from d in db.MstItemComponents
+            var itemComponent = from d in db.MstItemComponents
                            select new Models.MstItemComponent
                            {
                                ItemId = d.ItemId,
@@ -30,9 +30,8 @@ namespace ISWebPOS.Controllers
                                Cost = d.Cost,
                                Amount = d.Amount,
                                IsPrinted = d.IsPrinted
-
                            };
-            return customer.ToList();
+            return itemComponent.ToList();
         }
 
         // ===========
