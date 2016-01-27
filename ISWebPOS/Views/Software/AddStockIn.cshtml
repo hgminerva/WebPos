@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "AddCollection";
+    ViewBag.Title = "AddStockIn";
 }
 <!-- ADD THE CLASS sidedar-collapse TO HIDE THE SIDEBAR PRIOR TO LOADING THE SITE -->
 <body class="hold-transition skin-blue sidebar-collapse sidebar-mini">
@@ -16,13 +16,13 @@
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
             <section class="content-header">
-                <h1 class="fa fa-product-hunt">
-                    Collection Detail
+                <h1 class="fa fa-arrow-circle-o-down">
+                    Stock-In Detail
                 </h1>
                 <ol class="breadcrumb">
                     <li><a href="../Software/Dashboard"><i class="fa fa-table"></i> Home</a></li>
-                    <li><a href="../Software/Collection">Collection</a></li>
-                    <li class="active">Add Collection</li>
+                    <li><a href="../Software/StockIn">Stock-In</a></li>
+                    <li class="active">Add Stock-In</li>
                 </ol>
                 <!---Menu Tab-->
                 <div class="container">
@@ -60,33 +60,23 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="customer" class="col-sm-3 control-label">Collection No.</label>
+                                            <label for="stockIn" class="col-sm-3 control-label">Stock-In No.</label>
                                             <div class="col-sm-6">
-                                                <input type="text" class="form-control" id="collectionNo" placeholder="">
+                                                <input type="text" class="form-control" id="stockInNo" placeholder="">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="address" class="col-sm-3 control-label">Amount</label>
+                                            <label for="address" class="col-sm-3 control-label">Return</label>
                                             <div class="col-sm-6">
-                                                <input type="text" class="form-control" id="amount" placeholder="0.00">
+                                                <input type="checkbox" class="form-control-static minimal dis" checked>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-6 ">
                                         <div class="form-group">
-                                            <label for="address" class="col-sm-3 control-label">Period</label>
-                                            <div class="col-sm-6">
-                                                <select class="form-control">
-                                                    <option></option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="address" class="col-sm-3 control-label">Terminal</label>
+                                            <label for="address" class="col-sm-3 control-label ">Period</label>
                                             <div class="col-sm-6">
                                                 <select class="form-control">
                                                     <option></option>
@@ -96,15 +86,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="customer" class="col-sm-3 control-label">Collection Date</label>
-                                            <div class="col-sm-6">
-                                                <input type="date" class="form-control" id="collectionDate" placeholder="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="address" class="col-sm-3 control-label">Prepared By</label>
+                                            <label for="address" class="col-sm-3 control-label">Return OR No.</label>
                                             <div class="col-sm-6">
                                                 <select class="form-control">
                                                     <option></option>
@@ -114,25 +96,15 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="customer" class="col-sm-3 control-label">Manual OR No.</label>
+                                            <label for="stockDate" class="col-sm-3 control-label">Stock-In Date</label>
                                             <div class="col-sm-6">
-                                                <input type="text" class="form-control" id="collectionDate" placeholder="">
+                                                <input type="date" class="form-control" id="stockInDate" placeholder="">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="address" class="col-sm-3 control-label">Checked By</label>
-                                            <div class="col-sm-6">
-                                                <select class="form-control">
-                                                    <option></option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="customer" class="col-sm-3 control-label">Customer</label>
+                                            <label for="preparedby" class="col-sm-3 control-label">Prepared By</label>
                                             <div class="col-sm-6">
                                                 <select class="form-control">
                                                     <option></option>
@@ -142,7 +114,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="customer" class="col-sm-3 control-label">Approved by</label>
+                                            <label for="supplier" class="col-sm-3 control-label">Supplier</label>
                                             <div class="col-sm-6">
                                                 <select class="form-control">
                                                     <option></option>
@@ -152,7 +124,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="customer" class="col-sm-3 control-label">Sales Number</label>
+                                            <label for="checkedby" class="col-sm-3 control-label">Checked By</label>
                                             <div class="col-sm-6">
                                                 <select class="form-control">
                                                     <option></option>
@@ -162,7 +134,27 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="customer" class="col-sm-3 control-label">Remarks</label>
+                                            <label for="poNo" class="col-sm-3 control-label">PO No.</label>
+                                            <div class="col-sm-6">
+                                                <select class="form-control">
+                                                    <option></option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="approvedby" class="col-sm-3 control-label">Approved by</label>
+                                            <div class="col-sm-6">
+                                                <select class="form-control">
+                                                    <option></option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="remarks" class="col-sm-3 control-label">Remarks</label>
                                             <div class="col-sm-6">
                                                 <textarea class="form-control"></textarea>
                                             </div>
@@ -170,37 +162,47 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="customer" class="col-sm-3 control-label">Sales Balance</label>
+                                            <label for="approvedby" class="col-sm-3 control-label">Download the items from category.</label>
                                             <div class="col-sm-6">
-                                                <input type="text" class="form-control" id="amount" placeholder="0.00">
+                                                <select class="form-control">
+                                                    <option></option>
+                                                </select>
                                             </div>
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-info btn-flat" type="button">DOWNLOAD</button>
+                                            </span>
                                         </div>
+                                    </div> 
+                                    <div class="col-md-12">
+                                        <div class="input-group margin">
+                                            <div class="input-group-btn">
+                                                <button type="button" class="btn btn-primary"><i class='fa fa-barcode'></i>F11 BARCODE</button>
+                                            </div><!-- /btn-group -->
+                                            <input type="text" class="form-control">
+                                        </div><!-- /input-group -->
                                     </div>
                                 </div>
                                 <div class="box-body table-responsive no-padding">
                                     <table class="table table-bordered">
                                         <tr style="width:100%;background-color:#42A5F5; color:#fff;">
-                                            <th rowspan="2"></th>
-                                            <th align="center" rowspan="2" colspan="2">Amount</th>
-                                            <th align="center" rowspan="2" colspan="2">Pay Type</th>
-                                            <th align="center" colspan="3">Check Information</th>
-                                            <th align="center" colspan="4">Credit Card Information</th>
-                                            <th align="center" rowspan="2">Gift Certificate No</th>
-                                            <th align="center" rowspan="2">Stock Number</th>
+                                            <th></th>
+                                            <th align="center">Item</th>
+                                            <th align="center">Unit</th>
+                                            <th align="center">Cost</th>
+                                            <th align="center">Quantity</th>
+                                            <th align="center">Amount</th>
+                                            <th align="center">Expiry Date</th>
+                                            <th align="center">Lot Number</th>
+                                            <th align="center">Asset Account</th>
+                                            <th></th>
+                                            <th align="center"><button class="btn btn-info btn-flat" type="button">IMPORT XLS</button></th>
+                                            <th align="center"><button class="btn btn-info btn-flat" type="button">EXPORT XLS</button></th>
                                         </tr>
-                                        <tr style="width:100%;background-color:#42A5F5;">
-                                            <th>Check No</th>
-                                            <th>Check Date</th>
-                                            <th>Check Bank</th>
-                                            <th>Verification Code</th>
-                                            <th>Credit Card No</th>
-                                            <th>Credit Card Type </th>
-                                            <th>Credit Card Bank</th>
-                                        </tr>
+
                                         <tr style="width:100%;background-color:#BBDEFB;">
                                             <td><button class='btn btn-danger btn-xs btn-block'><i class='fa fa-trash'></i> Delete</button></td>
-                                            <td colspan="2"></td>
-                                            <td colspan ="2"></td>
+                                            <td></td>
+                                            <td></td>
                                             <td></td>
                                             <td></td>
                                             <td></td>
@@ -229,6 +231,7 @@
         @Html.Partial("_MainFooter")
     </div>
 </body>
+
 
 
 

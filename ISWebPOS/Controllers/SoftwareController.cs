@@ -101,9 +101,17 @@ namespace ISWebPOS.Controllers
         {
             return View();
         }
+        public ActionResult AddStockIn()
+        {
+            return View();
+        }
         //Stock Out View
        
         public ActionResult StockOut()
+        {
+            return View();
+        }
+        public ActionResult AddStockOut()
         {
             return View();
         }
