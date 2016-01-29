@@ -2,11 +2,6 @@
 @{
     ViewBag.Title = "AddUser";
 }
-
-@Styles.Render("~/Template/Css")
-
-<!DOCTYPE html>
-<html>
 <!-- ADD THE CLASS sidedar-collapse TO HIDE THE SIDEBAR PRIOR TO LOADING THE SITE -->
 <body class="hold-transition skin-blue sidebar-collapse sidebar-mini">
     <!-- Site wrapper -->
@@ -54,39 +49,120 @@
                         </div>
                     </div>
                     <div class="box box-primary">
-                        <!-- form start -->
-                        <form class="form-horizontal">
-                            <div class="box-body">
+                        <div class="box-body">
+                            <!-- form start -->
+                            <form class="form-horizontal">
 
-                                <div class="form-group">
-                                    <label for="username" class="col-sm-2 control-label">User Name</label>
-                                    <div class="col-sm-6">
-                                        <input type="text" class="form-control" id="username" placeholder="NA">
+                                <div class="row">
+                                    <div class="form-group">
+                                        <label for="username" class="col-sm-2 control-label">User Name</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" id="username" placeholder="NA">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="password" class="col-sm-2 control-label">Password</label>
-                                    <div class="col-sm-6">
-                                        <input type="password" class="form-control" id="password" placeholder="***">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="fullname" class="col-sm-2 control-label">Full Name</label>
-                                    <div class="col-sm-6">
-                                        <input type="text" class="form-control" id="fullname" placeholder="NA">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="usercardno" class="col-sm-2 control-label">User Card Number</label>
-                                    <div class="col-sm-6">
-                                        <input type="text" class="form-control" id="usercardnoe" placeholder="NA">
-                                    </div>
-                                </div>
 
-                            </div><!-- /.box-body -->
-                            <div class="box-footer">
-                            </div><!-- /.box-footer -->
-                        </form>
+                                    <div class="form-group">
+                                        <label for="password" class="col-sm-2 control-label">Password</label>
+                                        <div class="col-sm-6">
+                                            <input type="password" class="form-control" id="password" placeholder="***">
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <label for="password" class="col-sm-6  control-label">Copy the rights of...</label>
+                                            <div class="input-group margin">
+                                                <!--Copies the rights of existing user -->
+                                                <select class="form-control col-sm-8">
+                                                    <option>Admin</option>
+                                                    <option>Cashier</option>
+                                                    <option>User</option>
+                                                </select>
+
+                                                <span class="input-group-btn">
+                                                    <button class="btn btn-info btn-flat" type="button">COPY</button>
+                                                </span>
+                                            </div><!-- /input-group -->
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="fullname" class="col-sm-2 control-label">Full Name</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" id="fullname" placeholder="NA">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="usercardno" class="col-sm-2 control-label">User Card Number</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" id="usercardno" placeholder="NA">
+                                        </div>
+                                    </div>
+                                </div><!-- /.box-body -->
+                                <div class="box-footer">
+                                </div><!-- /.box-footer -->
+                                <div class="box-body table-responsive no-padding">
+                                    <table class="table table-bordered" style="background-color:#90CAF9">
+                                        <tr>
+                                            <th>&nbsp;</th>
+                                            <th>Forms/Reports</th>
+                                            <th>Add</th>
+                                            <th>Edit</th>
+                                            <th>Delete</th>
+                                            <th>Lock</th>
+                                            <th>Unlock</th>
+                                            <th>Print</th>
+                                            <th>Preview</th>
+                                            <th>View</th>
+                                            <th>&nbsp</th>
+                                        </tr>
+                                        <tr>
+                                            <td><button class="btn btn-danger btn-xs btn-block"><i class='fa fa-trash'></i> Delete</button></td>
+                                            <td>
+                                                <!--Selects allowable features-->
+                                                <select class="form-control col-sm-8">
+                                                    <option>Activity -Collection</option>
+                                                    <option>Activity -Collection Detail</option>
+                                                    <option>Activity -Credit/Debit Memo</option>
+                                                    <option>Activity -Credit/Debit Memo Detail/option>
+                                                    <option>Activity -Disbursement</option>
+                                                </select>
+                                            </td>
+                                            <td style="text-align:center"><input type="checkbox" class="minimal" checked></td>
+                                            <td style="text-align:center"><input type="checkbox" class="minimal" checked></td>
+                                            <td style="text-align:center"><input type="checkbox" class="minimal" checked></td>
+                                            <td style="text-align:center"><input type="checkbox" class="minimal" checked></td>
+                                            <td style="text-align:center"><input type="checkbox" class="minimal" checked></td>
+                                            <td style="text-align:center"><input type="checkbox" class="minimal" checked></td>
+                                            <td style="text-align:center"><input type="checkbox" class="minimal" checked></td>
+                                            <td style="text-align:center"><input type="checkbox" class="minimal" checked></td>
+                                            <td style="text-align:center"><button class="btn btn-success btn-xs btn-block"><i class='fa fa-long-arrow-right'></i> Advance</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td><button class="btn btn-danger btn-xs btn-block"><i class='fa fa-trash'></i> Delete</button></td>
+                                            <td>
+                                                <!--Selects allowable features-->
+                                                <select class="form-control col-sm-8">
+                                                    <option>Activity -Collection</option>
+                                                    <option>Activity -Collection Detail</option>
+                                                    <option>Activity -Credit/Debit Memo</option>
+                                                    <option>Activity -Credit/Debit Memo Detail/option>
+                                                    <option>Activity -Disbursement</option>
+                                                </select>
+                                            </td>
+                                            <td style="text-align:center"><input type="checkbox" class="minimal" checked></td>
+                                            <td style="text-align:center"><input type="checkbox" class="minimal" checked></td>
+                                            <td style="text-align:center"><input type="checkbox" class="minimal" checked></td>
+                                            <td style="text-align:center"><input type="checkbox" class="minimal" checked></td>
+                                            <td style="text-align:center"><input type="checkbox" class="minimal" checked></td>
+                                            <td style="text-align:center"><input type="checkbox" class="minimal" checked></td>
+                                            <td style="text-align:center"><input type="checkbox" class="minimal" checked></td>
+                                            <td style="text-align:center"><input type="checkbox" class="minimal" checked></td>
+                                            <td style="text-align:center"><button class="btn btn-success btn-xs btn-block"><i class='fa fa-long-arrow-right'></i> Advance</button></td>
+                                        </tr>
+
+                                    </table>
+                                </div><!-- /.box-body -->
+
+                            </form>
+                        </div>
                     </div><!-- /.box -->
                 </div>
 
@@ -96,21 +172,6 @@
         <!-- ===================Main Footer============================ -->
         @Html.Partial("_MainFooter")
     </div>
-    @Scripts.Render("~/Template/Js")
-    @Scripts.Render("~/Wijmo/Js")
-    <!-- jQuery 2.1.4 -->
-    <script src="../plugins/jQuery/jQuery-2.1.4.min.js"></script>
-    <!-- Bootstrap 3.3.5 -->
-    <script src="../bootstrap/js/bootstrap.min.js"></script>
-    <!-- SlimScroll -->
-    <script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
-    <!-- FastClick -->
-    <script src="../plugins/fastclick/fastclick.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="../dist/js/app.min.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="../dist/js/demo.js"></script>
 </body>
-</html>
 
 

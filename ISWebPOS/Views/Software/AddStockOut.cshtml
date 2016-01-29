@@ -1,6 +1,5 @@
-﻿
-@{
-    ViewBag.Title = "AddStockCount";
+﻿@{
+    ViewBag.Title = "AddStockOut";
 }
 <!-- ADD THE CLASS sidedar-collapse TO HIDE THE SIDEBAR PRIOR TO LOADING THE SITE -->
 <body class="hold-transition skin-blue sidebar-collapse sidebar-mini">
@@ -16,13 +15,13 @@
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
             <section class="content-header">
-                <h1 class="fa fa-dropbox">
-                    Stock-Count Detail
+                <h1 class="fa fa-arrow-circle-o-up">
+                    Stock-Out Detail
                 </h1>
                 <ol class="breadcrumb">
-                    <li><a href="../Software/Dashboard"><i class="fa fa-home"></i> Home</a></li>
-                    <li><a href="../Software/StockCout">Stock-Count</a></li>
-                    <li class="active">Add Stock-Count</li>
+                    <li><a href="../Software/Dashboard"><i class="fa fa-table"></i> Home</a></li>
+                    <li><a href="../Software/StockOut">Stock-Out</a></li>
+                    <li class="active">Add Stock-Out</li>
                 </ol>
                 <!---Menu Tab-->
                 <div class="container">
@@ -60,9 +59,9 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="stockIn" class="col-sm-3 control-label">Stock-Count No.</label>
+                                            <label for="stockIn" class="col-sm-3 control-label">Stock-Out No.</label>
                                             <div class="col-sm-6">
-                                                <input type="text" class="form-control" id="StockCoutNo" placeholder="">
+                                                <input type="text" class="form-control" id="stockOutNo" placeholder="">
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -74,9 +73,17 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="stockDate" class="col-sm-3 control-label">Stock-Count Date</label>
+                                            <label for="stockDate" class="col-sm-3 control-label">Stock-Out Date</label>
                                             <div class="col-sm-6">
                                                 <input type="date" class="form-control" id="stockInDate" placeholder="">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="account" class="col-sm-3 control-label">Account</label>
+                                            <div class="col-sm-6">
+                                                <select class="form-control">
+                                                    <option></option>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -125,18 +132,20 @@
                                     <table class="table table-bordered">
                                         <tr style="width:100%;background-color:#42A5F5; color:#fff;">
                                             <th></th>
-                                            <th style="width:25%">Item</th>
+                                            <th align="center">Item</th>
                                             <th align="center">Unit</th>
                                             <th align="center">Cost</th>
                                             <th align="center">Quantity</th>
                                             <th align="center">Amount</th>
+                                            <th align="center">Asset Account</th>
                                             <th></th>
-                                            <th style="width:5%"><button class="btn btn-info btn-flat" type="button">IMPORT XLS</button></th>
-                                            <th style="width:5%"><button class="btn btn-info btn-flat" type="button">EXPORT XLS</button></th>
+                                            <th align="center"><button class="btn btn-info btn-flat" type="button">IMPORT XLS</button></th>
+                                            <th align="center"><button class="btn btn-info btn-flat" type="button">EXPORT XLS</button></th>
                                         </tr>
 
                                         <tr style="width:100%;background-color:#BBDEFB;">
-                                            <td style ="width:10%"><button class='btn btn-danger btn-xs btn-block'><i class='fa fa-trash'></i> Delete</button></tdstyle>
+                                            <td><button class='btn btn-danger btn-xs btn-block'><i class='fa fa-trash'></i> Delete</button></td>
+                                            <td></td>
                                             <td></td>
                                             <td></td>
                                             <td></td>
@@ -164,7 +173,6 @@
         @Html.Partial("_MainFooter")
     </div>
 </body>
-
 
 
 

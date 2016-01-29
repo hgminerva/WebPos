@@ -23,7 +23,7 @@ namespace ISWebPOS.Controllers
         {
             return View();
         }
-        public ActionResult AddItem()
+        public ActionResult AddItem() 
         {
             return View();
         }
@@ -50,7 +50,7 @@ namespace ISWebPOS.Controllers
             return View();
         }
         //SupplierView
-        public ActionResult Supplier()
+        public ActionResult Supplier() 
         {
             return View();
         }
@@ -101,9 +101,17 @@ namespace ISWebPOS.Controllers
         {
             return View();
         }
+        public ActionResult AddStockIn()
+        {
+            return View();
+        }
         //Stock Out View
-
+       
         public ActionResult StockOut()
+        {
+            return View();
+        }
+        public ActionResult AddStockOut()
         {
             return View();
         }

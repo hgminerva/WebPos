@@ -1,8 +1,256 @@
 ﻿
 @{
     ViewBag.Title = "AddDisbursement";
-    Layout = "~/Views/Software/Dashboard.cshtml";
 }
+@{
+    ViewBag.Title = "AddStockCount";
+}
+<!-- ADD THE CLASS sidedar-collapse TO HIDE THE SIDEBAR PRIOR TO LOADING THE SITE -->
+<body class="hold-transition skin-blue sidebar-collapse sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="wrapper">
 
-<h2>AddDisbursement</h2>
+        <!-- ===================Main Header============================ -->
+        @Html.Partial("_MainHeader")
+        <!-- ===================Main Sidebar============================ -->
+        @Html.Partial("_MainSidebar")
+        <!-- =============================================== -->
+
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1 class="fa fa-money">
+                    Disbursement Detail
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="../Software/Dashboard"><i class="fa fa-home"></i> Home</a></li>
+                    <li><a href="../Software/Disbursement">Disbursement</a></li>
+                    <li class="active">Add Disbursement</li>
+                </ol>
+                <!---Menu Tab-->
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <!-- Nav tabs -->
+                            <div class="card">
+                                <section class="container">
+                                    <!--Buttons-->
+                                    <div class="btn-group-horizontal pull-right">
+                                        <a class="btn btn-app">
+                                            <i class="fa fa-lock"></i> Lock
+                                        </a>
+                                        <a class="btn  btn-app">
+                                            <i class="fa fa-unlock"></i> Unlock
+                                        </a>
+                                        <a class="btn  btn-app">
+                                            <i class="fa fa-eye"></i> Preview
+                                        </a>
+                                        <a class="btn  btn-app">
+                                            <i class="fa fa-print"></i> Print
+                                        </a>
+                                        <a class="btn btn-app">
+                                            <i class="fa fa-close"></i> Close
+                                        </a>
+                                    </div><!--btn horizontal-->
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box box-primary">
+                        <!-- form start -->
+                        <form class="form-horizontal">
+                            <div class="box-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="disbursementNo" class="col-sm-3 control-label">Disbursement No.</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" id="disbursementNo" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="periodId" class="col-sm-3 control-label">Period Id</label>
+                                        <div class="col-sm-6">
+                                            <select class="form-control">
+                                                <option></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="terminal" class="col-sm-3 control-label">Terminal</label>
+                                        <div class="col-sm-6">
+                                            <select class="form-control">
+                                                <option></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="disbursementDate" class="col-sm-3 control-label">Disbursement Date</label>
+                                        <div class="col-sm-6">
+                                            <input type="date" class="form-control" id="disbursementDate" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="disbursementDate" class="col-sm-8 control-label" style="color:grey">Debit -add cash to drawer; Credit -get cash drawer</label>
+                                     </div>
+                                     <div class="form-group">
+                                            <label for="type" class="col-sm-3 control-label">Type</label>
+                                         <div class="col-sm-6">
+                                             <select class="form-control">
+                                                 <option></option>
+                                             </select>
+                                         </div>
+                                      </div>
+                                    <div class="form-group">
+                                        <label for="disbursementDate" class="col-sm-12 control-label" style="color:grey">You are not limited from just adding/getting cash, you can also add/get checks, etc.</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="paytype" class="col-sm-3 control-label">Pay Type</label>
+                                        <div class="col-sm-6">
+                                            <select class="form-control">
+                                                <option></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="account" class="col-sm-3 control-label">Account</label>
+                                        <div class="col-sm-6">
+                                            <select class="form-control">
+                                                <option></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="payee" class="col-sm-3 control-label">Payee</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" id="payee" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="amount" class="col-sm-3 control-label">Amount</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" id="amount" placeholder="0.0">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="remarks" class="col-sm-3 control-label">Remarks</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" id="remarks" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="disbursementDate" class="col-sm-6 control-label" style="color:grey">Return information for refund purposes</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="address" class="col-sm-3 control-label">Return</label>
+                                        <div class="col-sm-6">
+                                            <input type="checkbox" class="form-control-static minimal dis" checked>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="address" class="col-sm-3 control-label">Return Stock-In No.</label>
+                                        <div class="col-sm-6">
+                                            <select class="form-control">
+                                                <option></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="preparedby" class="col-sm-3 control-label">Prepared By</label>
+                                        <div class="col-sm-6">
+                                            <select class="form-control">
+                                                <option></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="checkedby" class="col-sm-3 control-label">Checked By</label>
+                                        <div class="col-sm-6">
+                                            <select class="form-control">
+                                                <option></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="approvedby" class="col-sm-3 control-label">Approved by</label>
+                                        <div class="col-sm-6">
+                                            <select class="form-control">
+                                                <option></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="box-body table-responsive no-padding">
+                                        <table class="table table-bordered">
+                                            <tr style="width:100%;background-color:#42A5F5; color:#fff;">
+                                                
+                                                <th rowspan="7" style="background-color:#BBDEFB;color:#000;">Amount Denomination</th>
+                                                <td><input type="text" class="form-control" id="" placeholder="0.00"></td>
+                                                <td style="width:20%">x &#8369;1,000</td>
+                                                <td><input type="text" class="form-control" id="" placeholder="0.00" /></td>
+                                                <td style="width:20%">x &#8369;5</td>
+                                            </tr>
+                                            <tr style="background-color:#42A5F5; color:#fff;">
+                                                <td><input type="text" class="form-control" id="" placeholder="0.00"></td>
+                                                <td style="width:20%">x &#8369;500</td>
+                                                <td><input type="text" class="form-control" id="" placeholder="0.00" /></td>
+                                                <td style="width:20%">x &#8369;1</td>
+                                            </tr>
+                                            <tr style="background-color:#42A5F5; color:#fff;">
+                                                <td><input type="text" class="form-control" id="" placeholder="0.00"></td>
+                                                <td style="width:20%">x &#8369;500</td>
+                                                <td><input type="text" class="form-control" id="" placeholder="0.00" /></td>
+                                                <td style="width:20%">x &#8373;25</td>
+                                            </tr>
+                                            <tr style="background-color:#42A5F5; color:#fff;">
+                                                <td><input type="text" class="form-control" id="" placeholder="0.00"></td>
+                                                <td style="width:20%">x &#8369;200</td>
+                                                <td><input type="text" class="form-control" id="" placeholder="0.00" /></td>
+                                                <td style="width:20%">x &#8373;25</td>
+                                            </tr>
+                                            <tr style="background-color:#42A5F5; color:#fff;">
+                                                <td><input type="text" class="form-control" id="" placeholder="0.00"></td>
+                                                <td style="width:20%">x &#8369;50</td>
+                                                <td><input type="text" class="form-control" id="" placeholder="0.00" /></td>
+                                                <td style="width:20%">x &#8373;5</td>
+                                            </tr>
+                                            <tr style="background-color:#42A5F5; color:#fff;">
+                                                <td><input type="text" class="form-control" id="" placeholder="0.00"></td>
+                                                <td style="width:20%">x &#8369;20</td>
+                                                <td><input type="text" class="form-control" id="" placeholder="0.00" /></td>
+                                                <td style="width:20%">x &#8373;1</td>
+                                            </tr>
+                                            <tr style="background-color:#42A5F5; color:#fff;">
+                                                <td><input type="text" class="form-control" id="" placeholder="0.00"></td>
+                                                <td style="width:20%">x &#8369;10</td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                        </table>
+                                    </div><!-- /.box-body -->
+                                </div>
+                            </div>
+                            </div>
+                            <div class="box-footer">
+                            </div><!-- /.box-footer -->
+                        </form>
+                       
+                    </div><!-- /.box -->
+                </div>
+
+
+            </section>
+        </div><!-- ./wrapper -->
+        <!-- ===================Main Footer============================ -->
+        @Html.Partial("_MainFooter")
+    </div>
+</body>
+
+
+
+
+
+
+
 
