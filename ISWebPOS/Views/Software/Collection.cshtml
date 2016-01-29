@@ -291,9 +291,9 @@
             }
 
             // ===================
-            // Company Edit Button
+            // Collection Edit Button
             // ===================
-            function cmdCompanyEditButton_OnClick() {
+            function cmdCollectionEditButton_OnClick() {
                 collectionCollections.editItem(collectionCollections.currentItem);
 
             }
@@ -313,7 +313,7 @@
                 $("#cmdConfirmDeleteCollection").prop("disabled", false);
                 $("#cmdConfirmDeleteCloseButton").prop("disabled", false);
             }
-            // Company Confirm Delete Button
+            // Collection Confirm Delete Button
             function cmdCollectionConfirmDeleteButton_OnClick() {
                 $("#cmdConfirmDeleteCollection").prop("disabled", true);
                 $("#cmdConfirmDeleteCloseButton").prop("disabled", true);
@@ -343,7 +343,7 @@
                         },
                         400: function () {
                             toastr.error("Can't be deleted");
-                            $('#deleteCompanyConfirm').modal('hide');
+                            $('#deleteCollectionConfirm').modal('hide');
                             $("#cmdConfirmDeleteCollection").prop("disabled", false);
                             $("#cmdConfirmDeleteCloseButton").prop("disabled", false);
                         }

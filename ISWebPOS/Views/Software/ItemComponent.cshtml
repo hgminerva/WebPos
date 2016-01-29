@@ -176,11 +176,14 @@
                                     
                                     
                                         
-                                        ItemList.push({
-                                            EditId: "<button class='btn btn-primary btn-xs btn-block' id='itemEditButton' onclick='cmdItemEditButton_OnClick()'><i class='fa fa-pencil'></i> Edit</button>",
-                                            DeleteId: "<button class='btn btn-danger btn-xs btn-block' id='itemDeleteButton' onclick='cmdItemDeleteButton_OnClick()'><i class='fa fa-trash'></i> Delete</button>",
+                                ItemList.push({
+                                    EditId: "<button class='btn btn-primary btn-xs btn-block' id='itemEditButton' onclick='cmdItemEditButton_OnClick()'><i class='fa fa-pencil'></i> Edit</button>",
+                                    DeleteId: "<button class='btn btn-danger btn-xs btn-block' id='itemDeleteButton' onclick='cmdItemDeleteButton_OnClick()'><i class='fa fa-trash'></i> Delete</button>",
+                                    Id: results[i]["Id"],
+                                    ItemId: results[i]["ItemId"],
+                                    ComponentItemId: results[i]["ComponentItemId"]
                                          
-                                        });
+                                    });
                             }
 
                               
@@ -230,64 +233,42 @@
 
                                     },
                                     {
-                                        "header": "Id",
-                                        "binding": "Id",
+                                        "header": "Item",
+                                        "binding": "ItemId",
                                         "align": "center",
                                         "allowSorting": true,
                                         "isContentHtml": true,
                                         "width": "2*"
                                     },
                                     {
-                                        "header": "ComponentId",
-                                        "binding": "ComponentId",
+                                        "header": "Components",
+                                        "binding": "ComponentItemId",
                                         "align": "center",
                                         "allowSorting": true,
                                         "isContentHtml": true,
                                         "width": "2*"
                                     },
                                     {
-                                        "header": "Description",
-                                        "binding": "ItemDescription",
-                                        "align": "center",
-                                        "allowSorting": true,
-                                        "width": "4*"
-                                    },
-                                    {
-                                        "header": "Unit(s)",
-                                        "binding": "Unit",
+                                        "header": "P",
+                                        "binding": " ",
                                         "align": "center",
                                         "allowSorting": true,
                                         "width": "2*"
                                     },
                                     {
-                                        "header": "Amount",
-                                        "binding": "Amount",
+                                        "header": "Packages",
+                                        "binding": " ",
                                         "align": "center",
                                         "allowSorting": true,
-                                        "isContentHtml": true,
-                                        "width": "2*"
-                                    },
-                                    {
-                                        "header": "Qty",
-                                        "binding": "OnhandQuantity",
-                                        "align": "center",
-                                        "allowSorting": true,
-                                        "isContentHtml": true,
                                         "width": "2*"
                                     },
                                     {
                                         "header": "L",
-                                        "binding": "isLocked",
+                                        "binding": " ",
                                         "align": "center",
                                         "allowSorting": true,
-                                        "width": "1.5*"
-                                    },
-                                    {
-                                        "header": "I",
-                                        "binding": "IsInventory",
-                                        "align": "center",
-                                        "allowSorting": true,
-                                        "width": "1.5*"
+                                        "isContentHtml": true,
+                                        "width": "2*"                                    
                                     }],
                                     autoGenerateColumns: false,
                                     itemsSource: itemCollections,
