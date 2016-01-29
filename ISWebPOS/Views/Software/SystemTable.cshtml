@@ -57,12 +57,13 @@
                                 <!-- Tab panes -->
                                 <div class="tab-content">
                                     <div role="tabpanel" class="tab-pane active" id="chartAccounts">
-                                        <!-- ===================Chart of Accounts============================ -->
-                                        @Html.Partial("ChartOfAccounts") 
-                                    </div><!-- /.box -->
+                                        <div class="box box-primary">
+                                            <!-- ===================Chart of Accounts============================ -->
+                                            @Html.Partial("ChartOfAccounts")
+                                        </div>
+                                        </div><!-- /.box -->
                                     <div role="tabpanel" class="tab-pane" id="payType">
                                         <div class="box box-info">
-                                            
                                             <!-- ===================PayType============================ -->
                                             @Html.Partial("PayType")
                                         </div><!-- /.box -->

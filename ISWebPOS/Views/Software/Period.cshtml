@@ -83,7 +83,7 @@
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
     <!-- Loading Modal -->
-    <div class="modal fade" id="loadingModal" tabindex="-1" role="dialog" aria-labelledby="Loading..." aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal fade" id="loadingModal5" tabindex="-1" role="dialog" aria-labelledby="Loading..." aria-hidden="true" data-backdrop="static" data-keyboard="false">
         <div class=" modal-dialog modal-sm">
             Modal content
             <div class="modal-content">
@@ -117,7 +117,7 @@
                                                 // =============================
                                                 function getPeriodMasterList() {
                                                     var PeriodList = new wijmo.collections.ObservableArray();
-                                                    $("#loadingModal").modal("show");
+                                                    $("#loadingModal5").modal("show");
                                                     $.ajax({
                                                         url: '/api/period/list',
                                                         cache: false,
@@ -125,7 +125,7 @@
                                                         contentType: 'application/json; charset=utf-8',
                                                         data: {},
                                                         success: function (results) {
-                                                            $("#loadingModal").modal("hide");
+                                                            $("#loadingModal5").modal("hide");
                                                             /* var results = JSON.parse(result); */
                                                             if (results.length > 0) {
                                                                 for (i = 0; i < results.length; i++) {
@@ -152,11 +152,11 @@
                                                                     return !filterText || (item.Period.toLowerCase().indexOf(filterText) > -1);
                                                                 }
                                                                 periodCollections.collectionChanged.addHandler(function (sender, args) {
-                                                                    updateNavigateButtonsCollection();
+                                                                    updateNavigateButtonsCollectionFive();
 
                                                                 });
                                                                 periodCollections.currentChanged.addHandler(function (sender, args) {
-                                                                    updateNavigateButtonsCollection();
+                                                                    updateNavigateButtonsCollectionFive();
                                                                 });
 
 
@@ -199,23 +199,23 @@
 
                                                                 periodGrid.trackChanges = true;
 
-                                                                updateNavigateButtonsCollection();
+                                                                updateNavigateButtonsCollectionFive();
 
                                                                 btnFirstPageGrid5.addEventListener('click', function () {
                                                                     periodCollections.moveToFirstPage();
-                                                                    updateNavigateButtonsCollection();
+                                                                    updateNavigateButtonsCollectionFive();
                                                                 });
                                                                 btnPreviousPageGrid5.addEventListener('click', function () {
                                                                     periodCollections.moveToPreviousPage();
-                                                                    updateNavigateButtonsCollection();
+                                                                    updateNavigateButtonsCollectionFive();
                                                                 });
                                                                 btnNextPageGrid5.addEventListener('click', function () {
                                                                     periodCollections.moveToNextPage();
-                                                                    updateNavigateButtonsCollection();
+                                                                    updateNavigateButtonsCollectionFive();
                                                                 });
                                                                 btnLastPageGrid5.addEventListener('click', function () {
                                                                     periodCollections.moveToLastPage();
-                                                                    updateNavigateButtonsCollection();
+                                                                    updateNavigateButtonsCollectionFive();
                                                                 });
                                                             } else {
                                                                 /*   alert("No data."); */
@@ -297,7 +297,7 @@
                                                 // ==================
                                                 // Navigation Buttons
                                                 // ==================
-                                                function updateNavigateButtonsCollection() {
+                                                function updateNavigateButtonsCollectionFive() {
                                                     if (periodCollections.pageSize <= 0) {
                                                         document.getElementById('navigationPageGrid').style.display = 'none';
                                                         return;

@@ -151,6 +151,10 @@ namespace ISWebPOS.Controllers
         {
             return View();
         }
+        public ActionResult EditItemComponent()
+        {
+            return View();
+        }
         //Views Table
         public ActionResult Table()
         {

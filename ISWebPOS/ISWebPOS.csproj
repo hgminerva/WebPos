@@ -1521,6 +1521,7 @@
     <Content Include="Views\Software\AddCollection.cshtml" />
     <Content Include="Views\Software\AddStockIn.cshtml" />
     <Content Include="Views\Software\AddStockOut.cshtml" />
+    <Content Include="Views\Software\EditItemComponent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

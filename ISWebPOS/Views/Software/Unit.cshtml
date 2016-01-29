@@ -89,7 +89,7 @@
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
     <!-- Loading Modal -->
-    <div class="modal fade" id="loadingModal" tabindex="-1" role="dialog" aria-labelledby="Loading..." aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal fade" id="loadingModal4" tabindex="-1" role="dialog" aria-labelledby="Loading..." aria-hidden="true" data-backdrop="static" data-keyboard="false">
         <div class=" modal-dialog modal-sm">
             Modal content
             <div class="modal-content">
@@ -123,7 +123,7 @@
         // =============================
         function getIUnitMasterList() {
             var UnitList = new wijmo.collections.ObservableArray();
-            $("#loadingModal").modal("show");
+            $("#loadingModal4").modal("show");
             $.ajax({
                 url: '/api/unit/list',
                 cache: false,
@@ -131,7 +131,7 @@
                 contentType: 'application/json; charset=utf-8',
                 data: {},
                 success: function (results) {
-                    $("#loadingModal").modal("hide");
+                    $("#loadingModal4").modal("hide");
                     /* var results = JSON.parse(result); */
                     if (results.length > 0) {
                         for (i = 0; i < results.length; i++) {
@@ -159,11 +159,11 @@
                             return !filterText || (item.Unit.toLowerCase().indexOf(filterText) > -1);
                         }
                         unitCollections.collectionChanged.addHandler(function (sender, args) {
-                            updateNavigateButtonsCollection();
+                            updateNavigateButtonsCollectionFour();
 
                         });
                         unitCollections.currentChanged.addHandler(function (sender, args) {
-                            updateNavigateButtonsCollection();
+                            updateNavigateButtonsCollectionFour();
                         });
 
 
@@ -206,23 +206,23 @@
 
                         unitGrid.trackChanges = true;
 
-                        updateNavigateButtonsCollection();
+                        updateNavigateButtonsCollectionFour();
 
                         btnFirstPageGrid4.addEventListener('click', function () {
                             unitCollections.moveToFirstPage();
-                            updateNavigateButtonsCollection();
+                            updateNavigateButtonsCollectionFour();
                         });
                         btnPreviousPageGrid4.addEventListener('click', function () {
                             unitCollections.moveToPreviousPage();
-                            updateNavigateButtonsCollection();
+                            updateNavigateButtonsCollectionFour();
                         });
                         btnNextPageGri4.addEventListener('click', function () {
                             unitCollections.moveToNextPage();
-                            updateNavigateButtonsCollection();
+                            updateNavigateButtonsCollectionFour();
                         });
                         btnLastPageGrid4.addEventListener('click', function () {
                             unitCollections.moveToLastPage();
-                            updateNavigateButtonsCollection();
+                            updateNavigateButtonsCollectionFour();
                         });
                     } else {
                         /*   alert("No data."); */
@@ -304,7 +304,7 @@
         // ==================
         // Navigation Buttons
         // ==================
-        function updateNavigateButtonsCollection() {
+        function updateNavigateButtonsCollectionFour() {
             if (unitCollections.pageSize <= 0) {
                 document.getElementById('navigationPageGrid').style.display = 'none';
                 return;

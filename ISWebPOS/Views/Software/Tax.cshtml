@@ -115,7 +115,7 @@
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
     <!-- Loading Modal -->
-    <div class="modal fade" id="loadingModal" tabindex="-1" role="dialog" aria-labelledby="Loading..." aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal fade" id="loadingModal3" tabindex="-1" role="dialog" aria-labelledby="Loading..." aria-hidden="true" data-backdrop="static" data-keyboard="false">
         <div class=" modal-dialog modal-sm">
             Modal content
             <div class="modal-content">
@@ -149,7 +149,7 @@
         // =============================
         function getTaxMasterList() {
             var TaxList = new wijmo.collections.ObservableArray();
-            $("#loadingModal").modal("show");
+            $("#loadingModal3").modal("show");
             $.ajax({
                 url: '/api/tax/list',
                 cache: false,
@@ -157,7 +157,7 @@
                 contentType: 'application/json; charset=utf-8',
                 data: {},
                 success: function (results) {
-                    $("#loadingModal").modal("hide");
+                    $("#loadingModal3").modal("hide");
                     /* var results = JSON.parse(result); */
                     if (results.length > 0) {
                         for (i = 0; i < results.length; i++) {
@@ -187,11 +187,11 @@
                             return !filterText || (item.Tax.toLowerCase().indexOf(filterText) > -1);
                         }
                         taxCollections.collectionChanged.addHandler(function (sender, args) {
-                            updateNavigateButtonsCollection();
+                            updateNavigateButtonsCollectionTax();
 
                         });
                         taxCollections.currentChanged.addHandler(function (sender, args) {
-                            updateNavigateButtonsCollection();
+                            updateNavigateButtonsCollectionTax();
                         });
 
 
@@ -256,23 +256,23 @@
 
                         taxGrid.trackChanges = true;
 
-                        updateNavigateButtonsCollection();
+                        updateNavigateButtonsCollectionTax();
 
                         btnFirstPageGrid3.addEventListener('click', function () {
                             taxCollections.moveToFirstPage();
-                            updateNavigateButtonsCollection();
+                            updateNavigateButtonsCollectionTax();
                         });
                         btnPreviousPageGrid3.addEventListener('click', function () {
                             taxCollections.moveToPreviousPage();
-                            updateNavigateButtonsCollection();
+                            updateNavigateButtonsCollectionTax();
                         });
                         btnNextPageGrid3.addEventListener('click', function () {
                             taxCollections.moveToNextPage();
-                            updateNavigateButtonsCollection();
+                            updateNavigateButtonsCollectionTax();
                         });
                         btnLastPageGrid3.addEventListener('click', function () {
                             taxCollections.moveToLastPage();
-                            updateNavigateButtonsCollection();
+                            updateNavigateButtonsCollectionTax();
                         });
                     } else {
                         /*   alert("No data."); */
@@ -354,7 +354,7 @@
         // ==================
         // Navigation Buttons
         // ==================
-        function updateNavigateButtonsCollection() {
+        function updateNavigateButtonsCollectionTax() {
             if (taxCollections.pageSize <= 0) {
                 document.getElementById('navigationPageGrid').style.display = 'none';
                 return;
