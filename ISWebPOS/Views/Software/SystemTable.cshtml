@@ -32,12 +32,12 @@
                             <!-- Nav tabs -->
                             <div class="card">
                                 <ul class="nav nav-tabs" role="tablist">
-                                    <li role="presentation" class="active"><a href="#chartAccounts" aria-controls="chartAccounts" role="tab" data-toggle="tab">Chart of Accounts</a></li>
-                                    <li role="presentation"><a href="#payType" aria-controls="payType" role="tab" data-toggle="tab">Pay Type</a></li>
-                                    <li role="presentation"><a href="#tax" aria-controls="tax" role="tab" data-toggle="tab">Tax</a></li>
-                                    <li role="presentation"><a href="#unit" aria-controls="tax" role="tab" data-toggle="tab">Unit</a></li>
-                                    <li role="presentation"><a href="#period" aria-controls="period" role="tab" data-toggle="tab">Period</a></li>
-                                    <li role="presentation"><a href="#terminal" aria-controls="terminal" role="tab" data-toggle="tab">Terminal</a></li>
+                                    <li class="tab" id="t1" role="presentation"><a href="#chartAccounts" aria-controls="chartAccounts" role="tab" data-toggle="tab">Chart of Accounts</a></li>
+                                    <li class="tab" id="t2" role="presentation"><a href="#payType" aria-controls="payType" role="tab" data-toggle="tab">Pay Type</a></li>
+                                    <li class="tab" id="t3" role="presentation"><a href="#tax" aria-controls="tax" role="tab" data-toggle="tab">Tax</a></li>
+                                    <li class="tab" id="t4" role="presentation"><a href="#unit" aria-controls="unit" role="tab" data-toggle="tab">Unit</a></li>
+                                    <li class="tab" id="t5" role="presentation"><a href="#period" aria-controls="period" role="tab" data-toggle="tab">Period</a></li>
+                                    <li class="tab" id="t6" role="presentation"><a href="#terminal" aria-controls="terminal" role="tab" data-toggle="tab">Terminal</a></li>
                                 </ul>
                                 <section class="container">
                                     <!--Buttons-->
@@ -56,15 +56,13 @@
 
                                 <!-- Tab panes -->
                                 <div class="tab-content">
-                                    <div role="tabpanel" class="tab-pane active" id="chartAccounts">
-                                        <div class="box box-primary">
-                                            <!-- ===================Chart of Accounts============================ -->
-                                            @Html.Partial("ChartOfAccounts")
-                                        </div>
-                                        </div><!-- /.box -->
-                                    <div role="tabpanel" class="tab-pane" id="payType">
+                                    <div role="tabpanel" class="tab-pane"  id="chartAccounts">                                        
                                         <div class="box box-info">
-                                            <!-- ===================PayType============================ -->
+                                            @Html.Partial("ChartOfAccounts")
+                                        </div><!-- /.box -->
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane" id="payType">
+                                        <div class="box box-info">    
                                             @Html.Partial("PayType")
                                         </div><!-- /.box -->
                                     </div>
@@ -75,7 +73,6 @@
                                     </div><!---End of tax tab--->
                                     <div role="tabpanel" class="tab-pane" id="unit">
                                         <div class="box box-info">
-
                                             @Html.Partial("Unit")
                                         </div><!-- /.box -->
                                     </div><!---End of unit tab--->
@@ -102,7 +99,56 @@
         <!-- ===================Main Footer============================ -->
         @Html.Partial("_MainFooter")
     </div>
+    <script>
+    $(document).ready(function () {
 
+        $("#t1").addClass("active");
+        $("#chartAccounts").addClass("active");
+
+
+        $("t1").click(function () {
+            $(".tab").removeClass("active");
+            $(".tab-pane").removeClass("active");
+            $(this).addClass("active");
+            $("#chartAccounts").addClass("active");
+            $("#chartAccounts").boxRefresh();
+            
+        });
+        $("t2").click(function () {
+            $(".tab").removeClass("active");
+            $(".tab-pane").removeClass("active");
+            $(this).addClass("active");
+            $("#payType").addClass("active");
+           
+            
+        });
+        $("t3").click(function () {
+            $(".tab").removeClass("active");
+            $(".tab-pane").removeClass("active");
+            $(this).addClass("active");
+            $("#tax").addClass("active");
+
+        });
+        $("t4").click(function () {
+            $(".tab").removeClass("active");
+            $(".tab-pane").removeClass("active");
+            $(this).addClass("active");
+            $("#unit").addClass("active");
+        });
+        $("t5").click(function () {
+            $(".tab").removeClass("active");
+            $(".tab-pane").removeClass("active");
+            $(this).addClass("active");
+            $("#period").addClass("active");
+        });
+        $("t6").click(function () {
+            $(".tab").removeClass("active");
+            $(".tab-pane").removeClass("active");
+            $(this).addClass("active");
+            $("#terminal").addClass("active");
+        });
+    });
+    </script>
 </body>
 
 

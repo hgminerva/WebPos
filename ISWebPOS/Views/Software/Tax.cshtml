@@ -37,7 +37,7 @@
                 <button type="button" class="btn btn-default border-custom" id="btnMoveToPreviousPageGrid">
                     <span class="glyphicon glyphicon-step-backward"></span>
                 </button>
-                <button type="button" class="btn btn-default border-custom" disabled style="width: 100px" id="btnCurrentPageGrid3"></button>
+                <button type="button" class="btn btn-default border-custom" disabled style="width: 100px" id="btnCurrentPageGrid"></button>
                 <button type="button" class="btn btn-default border-custom" id="btnMoveToNextPageGrid">
                     <span class="glyphicon glyphicon-step-forward"></span>
                 </button>
@@ -47,18 +47,18 @@
             </div>
         </section>
     </div><!-- ./wrapper -->
-    <!-- Company Delete -->
-    <div class="modal fade" id="deleteItemConfirm" role="dialog">
+    <!-- Tax Delete -->
+    <div class="modal fade" id="deleteTaxConfirm" role="dialog">
         <div class="modal-dialog modal-sm">
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Delete Item? <i class="fa fa-trash"></i></h4>
+                    <h4 class="modal-title">Delete Tax? <i class="fa fa-trash"></i></h4>
                 </div>
 
                 <div class="modal-footer">
-                    <button class="btn btn-danger btn-sm" id="cmdConfirmDeleteItem" onclick="cmdItemConfirmDeleteButton_OnClick()">Delete</button>
+                    <button class="btn btn-danger btn-sm" id="cmdConfirmDeleteTax" onclick="cmdTaxConfirmDeleteButton_OnClick()">Delete</button>
                     <button id="cmdConfirmDeleteCloseButton" class="btn btn-primary btn-sm" data-dismiss="modal">Cancel</button>
                 </div>
             </div>
@@ -138,14 +138,14 @@
         var taxGrid;
         var editTax;
 
-        var btnFirstPageGrid3;
-        var btnPreviousPageGrid3;
-        var btnNextPageGrid3;
-        var btnLastPageGrid3;
-        var btnCurrentPageGrid3;
+        var btnFirstPageGrid;
+        var btnPreviousPageGrid;
+        var btnNextPageGrid;
+        var btnLastPageGrid;
+        var btnCurrentPageGrid;
 
         // =============================
-        // Get ItemMasterList Data
+        // Get TaxMasterList Data
         // =============================
         function getTaxMasterList() {
             var TaxList = new wijmo.collections.ObservableArray();
@@ -162,8 +162,8 @@
                     if (results.length > 0) {
                         for (i = 0; i < results.length; i++) {
                             TaxList.push({
-                                EditId: "<button class='btn btn-primary btn-xs btn-block' id='itemEditButton' onclick='cmdItemEditButton_OnClick()'><i class='fa fa-pencil'></i> Edit</button>",
-                                DeleteId: "<button class='btn btn-danger btn-xs btn-block' id='itemDeleteButton' onclick='cmdItemDeleteButton_OnClick()'><i class='fa fa-trash'></i> Delete</button>",
+                                EditId: "<button class='btn btn-primary btn-xs btn-block' id='taxEditButton' onclick='cmdTaxEditButton_OnClick()'><i class='fa fa-pencil'></i> Edit</button>",
+                                DeleteId: "<button class='btn btn-danger btn-xs btn-block' id='taxDeleteButton' onclick='cmdTaxDeleteButton_OnClick()'><i class='fa fa-trash'></i> Delete</button>",
                                 Tax: results[i]["Tax"],
                                 Code: results[i]["Code"],
                                 Rate: results[i]["Rate"],
@@ -171,7 +171,7 @@
                             });
                         }
                         taxCollections = new wijmo.collections.CollectionView(TaxList);
-                        btnCurrentPageGrid3.innerHTML = (taxCollections.pageIndex + 1) + ' / ' + taxCollections.pageCount;
+                        btnCurrentPageGrid.innerHTML = (taxCollections.pageIndex + 1) + ' / ' + taxCollections.pageCount;
 
                         taxCollections.canFilter = true;
                         taxCollections.pageSize = 15;
@@ -182,9 +182,9 @@
                             filterText = this.value.toLowerCase();
                             taxCollections.refresh();
                         });
-                        taxCollections.filter = function (
-                            ) {
-                            return !filterText || (item.Tax.toLowerCase().indexOf(filterText) > -1);
+                        taxCollections.filter = function (tax) {
+                            return !filterText || (tax.Tax.toLowerCase().indexOf(filterText) > -1)
+                            || (tax.Code.toLowerCase().indexOf(filterText) > -1);
                         }
                         taxCollections.collectionChanged.addHandler(function (sender, args) {
                             updateNavigateButtonsCollectionTax();
@@ -258,19 +258,19 @@
 
                         updateNavigateButtonsCollectionTax();
 
-                        btnFirstPageGrid3.addEventListener('click', function () {
+                        btnFirstPageGrid.addEventListener('click', function () {
                             taxCollections.moveToFirstPage();
                             updateNavigateButtonsCollectionTax();
                         });
-                        btnPreviousPageGrid3.addEventListener('click', function () {
+                        btnPreviousPageGrid.addEventListener('click', function () {
                             taxCollections.moveToPreviousPage();
                             updateNavigateButtonsCollectionTax();
                         });
-                        btnNextPageGrid3.addEventListener('click', function () {
+                        btnNextPageGrid.addEventListener('click', function () {
                             taxCollections.moveToNextPage();
                             updateNavigateButtonsCollectionTax();
                         });
-                        btnLastPageGrid3.addEventListener('click', function () {
+                        btnLastPageGrid.addEventListener('click', function () {
                             taxCollections.moveToLastPage();
                             updateNavigateButtonsCollectionTax();
                         });
@@ -282,26 +282,26 @@
         }
 
         // ===================
-        // Company Edit Button
+        // Tax Edit Button
         // ===================
-        function cmdCompanyEditButton_OnClick() {
+        function cmdTaxEditButton_OnClick() {
             taxCollections.editTax(taxCollections.currentItem);
 
         }
 
         // =====================
-        // Item delete Button
+        // Tax delete Button
         // =====================
-        function cmdItemDeleteButton_OnClick() {
+        function cmdTaxDeleteButton_OnClick() {
             var id = taxCollections.currentItem.Id;
 
             console.log(typeof id + id);
 
-            $('#deleteItemConfirm').modal({
+            $('#deleteTaxConfirm').modal({
                 show: true,
                 backdrop: 'static'
             });
-            $("#cmdConfirmDeleteItem").prop("disabled", false);
+            $("#cmdConfirmDeleteTax").prop("disabled", false);
             $("#cmdConfirmDeleteCloseButton").prop("disabled", false);
         }
         // =====================
@@ -313,9 +313,9 @@
                 backdrop: 'static'
             });
         }
-        // Company Confirm Delete Button
-        function cmdItemConfirmDeleteButton_OnClick() {
-            $("#cmdConfirmDeleteItem").prop("disabled", true);
+        // Tax Confirm Delete Button
+        function cmdTaxConfirmDeleteButton_OnClick() {
+            $("#cmdConfirmDeleteTax").prop("disabled", true);
             $("#cmdConfirmDeleteCloseButton").prop("disabled", true);
 
             //====================
@@ -328,7 +328,7 @@
                 dataType: "json",
                 statusCode: {
                     200: function () {
-                        $("#cmdConfirmDeleteItem").prop("disabled", true);
+                        $("#cmdConfirmDeleteTax").prop("disabled", true);
                         $("#cmdConfirmDeleteCloseButton").prop("disabled", true);
                         toastr.success("Successfully Deleted");
                         window.setTimeout(function () {
@@ -337,14 +337,14 @@
                     },
                     404: function () {
                         toastr.error("Request Not Found");
-                        $('#deleteItemConfirm').modal('hide');
-                        $("#cmdConfirmDeleteItem").prop("disabled", false);
+                        $('#deleteTaxConfirm').modal('hide');
+                        $("#cmdConfirmDeleteTax").prop("disabled", false);
                         $("#cmdConfirmDeleteCloseButton").prop("disabled", false);
                     },
                     400: function () {
                         toastr.error("Can't be deleted");
-                        $('#deleteCompanyConfirm').modal('hide');
-                        $("#cmdConfirmDeleteItem").prop("disabled", false);
+                        $('#deleteTaxConfirm').modal('hide');
+                        $("#cmdConfirmDeleteTax").prop("disabled", false);
                         $("#cmdConfirmDeleteCloseButton").prop("disabled", false);
                     }
                 }
@@ -361,22 +361,22 @@
             }
             document.getElementById('navigationPageGrid').style.display = 'block';
             if (taxCollections.pageIndex === 0) {
-                btnFirstPageGrid3.setAttribute('disabled', 'disabled');
-                btnPreviousPageGrid3.setAttribute('disabled', 'disabled');
-                btnNextPageGrid3.removeAttribute('disabled');
-                btnLastPageGrid3.removeAttribute('disabled');
+                btnFirstPageGrid.setAttribute('disabled', 'disabled');
+                btnPreviousPageGrid.setAttribute('disabled', 'disabled');
+                btnNextPageGrid.removeAttribute('disabled');
+                btnLastPageGrid.removeAttribute('disabled');
             } else if (taxCollections.pageIndex === (taxCollections.pageCount - 1)) {
-                btnFirstPageGrid3.removeAttribute('disabled');
-                btnPreviousPageGrid3.removeAttribute('disabled');
-                btnLastPageGrid3.setAttribute('disabled', 'disabled');
-                btnNextPageGrid3.setAttribute('disabled', 'disabled');
+                btnFirstPageGrid.removeAttribute('disabled');
+                btnPreviousPageGrid.removeAttribute('disabled');
+                btnLastPageGrid.setAttribute('disabled', 'disabled');
+                btnNextPageGrid.setAttribute('disabled', 'disabled');
             } else {
-                btnFirstPageGrid3.removeAttribute('disabled');
-                btnPreviousPageGrid3.removeAttribute('disabled');
-                btnNextPageGrid3.removeAttribute('disabled');
-                btnLastPageGrid3.removeAttribute('disabled');
+                btnFirstPageGrid.removeAttribute('disabled');
+                btnPreviousPageGrid.removeAttribute('disabled');
+                btnNextPageGrid.removeAttribute('disabled');
+                btnLastPageGrid.removeAttribute('disabled');
             }
-            btnCurrentPageGrid3.innerHTML = (taxCollections.pageIndex + 1) + ' / ' + taxCollections.pageCount;
+            btnCurrentPageGrid.innerHTML = (taxCollections.pageIndex + 1) + ' / ' + taxCollections.pageCount;
 
         }
 
@@ -387,11 +387,11 @@
         $(document).ready(function () {
 
             // Navigation button
-            btnFirstPageGrid3 = document.getElementById('btnMoveToFirstPageGrid');
-            btnPreviousPageGrid3 = document.getElementById('btnMoveToPreviousPageGrid');
-            btnNextPageGrid3 = document.getElementById('btnMoveToNextPageGrid');
-            btnLastPageGrid3 = document.getElementById('btnMoveToLastPageGrid');
-            btnCurrentPageGrid3 = document.getElementById('btnCurrentPageGrid3');
+            btnFirstPageGrid = document.getElementById('btnMoveToFirstPageGrid');
+            btnPreviousPageGrid = document.getElementById('btnMoveToPreviousPageGrid');
+            btnNextPageGrid = document.getElementById('btnMoveToNextPageGrid');
+            btnLastPageGrid = document.getElementById('btnMoveToLastPageGrid');
+            btnCurrentPageGrid = document.getElementById('btnCurrentPageGrid');
 
             //Collection View
             getTaxMasterList();

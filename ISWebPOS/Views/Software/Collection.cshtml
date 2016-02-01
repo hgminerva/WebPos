@@ -34,7 +34,7 @@
                                         <!--search box-->
                                         <div class="box-tools">
                                             <div class="input-group" style="width: 150px;">
-                                                <input type="text" class="form-control input-sm" id="InputFilter" placeholder="Search Collection">
+                                                <input type="text" class="form-control input-sm" id="InputFilter" placeholder="Search">
                                                 <div class="input-group-btn">
                                                     <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
                                                 </div>
@@ -163,7 +163,8 @@
                                 collectionCollections.refresh();
                             });
                             collectionCollections.filter = function (collection) {
-                                return !filterText || (collection.CollectionNumber.toLowerCase().indexOf(filterText) > -1);
+                                return !filterText || (collection.CollectionNumber.toLowerCase().indexOf(filterText) > -1)
+                                || (collection.CollectionDate.toLowerCase().indexOf(filterText) > -1);
                             }
                             collectionCollections.collectionChanged.addHandler(function (sender, args) {
                                 updateNavigateButtonsCollection();
@@ -290,9 +291,9 @@
             }
 
             // ===================
-            // Company Edit Button
+            // Collection Edit Button
             // ===================
-            function cmdCompanyEditButton_OnClick() {
+            function cmdCollectionEditButton_OnClick() {
                 collectionCollections.editItem(collectionCollections.currentItem);
 
             }
@@ -312,7 +313,7 @@
                 $("#cmdConfirmDeleteCollection").prop("disabled", false);
                 $("#cmdConfirmDeleteCloseButton").prop("disabled", false);
             }
-            // Company Confirm Delete Button
+            // Collection Confirm Delete Button
             function cmdCollectionConfirmDeleteButton_OnClick() {
                 $("#cmdConfirmDeleteCollection").prop("disabled", true);
                 $("#cmdConfirmDeleteCloseButton").prop("disabled", true);
@@ -342,7 +343,7 @@
                         },
                         400: function () {
                             toastr.error("Can't be deleted");
-                            $('#deleteCompanyConfirm').modal('hide');
+                            $('#deleteCollectionConfirm').modal('hide');
                             $("#cmdConfirmDeleteCollection").prop("disabled", false);
                             $("#cmdConfirmDeleteCloseButton").prop("disabled", false);
                         }

@@ -78,7 +78,7 @@
                 </div>
             </section>
         </div><!-- ./wrapper -->
-        <!-- Company Delete -->
+        <!-- Customer Delete -->
         <div class="modal fade" id="deleteCustomerConfirm" role="dialog">
             <div class="modal-dialog modal-sm">
                 <!-- Modal content-->
@@ -268,7 +268,7 @@
             // ===================
             // Customer Edit Button
             // ===================
-            function cmdCompanyEditButton_OnClick() {
+            function cmdCustomerEditButton_OnClick() {
                 customerCollections.editItem(customerCollections.currentItem);
 
             }
@@ -289,7 +289,7 @@
                 $("#cmdConfirmDeleteCustomer").prop("disabled", false);
                 $("#cmdConfirmDeleteCloseButton").prop("disabled", false);
             }
-            // Company Confirm Delete Button
+            // Customer Confirm Delete Button
             function cmdCustomerConfirmDeleteButton_OnClick() {
                 $("#cmdConfirmDeleteCustomer").prop("disabled", true);
                 $("#cmdConfirmDeleteCloseButton").prop("disabled", true);
