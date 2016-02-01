@@ -1,0 +1,125 @@
+﻿
+@{
+    ViewBag.Title = "Sales";
+}
+
+<!-- ADD THE CLASS sidedar-collapse TO HIDE THE SIDEBAR PRIOR TO LOADING THE SITE -->
+<body class="hold-transition skin-blue sidebar-collapse sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+
+        <!-- ===================Main Header============================ -->
+        @Html.Partial("_MainHeader")
+        <!-- ===================Main Sidebar============================ -->
+        @Html.Partial("_MainSidebar")
+        <!-- =============================================== -->
+
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1 class="fa fa-shopping-basket">
+                    Sales Detail
+                </h1>
+                <section class="container">
+                    <div class="btn-group-horizontal pull-right">
+                        <a class="btn btn-app">
+                            <i class="fa fa-lock"></i><strong>F2</strong> Lock
+                        </a>
+                        <a class="btn btn-app">
+                            <i class="fa fa-unlock"></i><strong>F3</strong> UnLock
+                        </a>
+                        <a class="btn btn-app">
+                            <i class="fa fa-eye"></i><strong>F4</strong> Preview
+                        </a>
+                        <a class="btn  btn-app">
+                            <i class="fa fa-print"></i><strong>F5</strong>Print
+                        </a>
+                        <a class="btn  btn-app">
+                            <i class="fa">&#8369;</i><strong>F6</strong> Tender
+                        </a>
+                        <a class="btn  btn-app">
+                            <i class="fa fa-percent"></i><strong>F7</strong>Discount
+                        </a>
+                        <a class="btn  btn-app">
+                            <i class="fa fa-user-secret"></i><strong>F8</strong> Override
+                        </a>
+                        <a class="btn  btn-app">
+                            <i class="fa fa-reply"></i><strong>F9</strong> Return
+                        </a>
+                        <a class="btn btn-app">
+                            <i class="fa fa-close"></i><strong>F12</strong> Close
+                        </a>
+                    </div><!--btn horizontal-->
+                </section>
+               
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box box-primary" style="background-color:rgba(60,141,188,.6);">
+                                <div class="box-body">
+                                    <p class="pull-right" style="color:#ffffff;font-size:6em;"> &#8369; 0.00</p>
+                                    <div class="form-group pull-left">
+                                        <label for="invoiceNo" class="col-sm-5 control-label">Invoice No</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" id="invoiceNo" value="0001-002324">
+                                        </div><br />
+                                        <label for="invoiceDate" class="col-sm-5 control-label">Invoice Date</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" id="invoiceDate" value="02/01/2016">
+                                        </div><br />
+                                        <label for="customer" class="col-sm-5 control-label">Customer</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" id="customer" value="0001-002324">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- /.box -->
+                        </div>
+                        <div class="col-md-12">
+                            <div class="input-group margin">
+                                <div class="input-group-btn">
+                                    <button type="button" class="btn btn-primary"><i class='fa fa-barcode'></i>F11 BARCODE</button>
+                                </div><!-- /btn-group -->
+                                <input type="text" class="form-control">
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-primary dropdown-toggle"><i class='fa fa-search'></i>F1 SEARCH</button>
+                                    <button type="button" class="btn btn-primary"><i class='fa fa-download'></i> DOWNLOAD</button>
+                                </span>
+                            </div><!-- /input-group -->
+                        </div>
+                    </div>
+
+
+                    <div class="box-body table-responsive no-padding">
+                        <table class="table table-bordered">
+                            <tr style="width:100%;background-color:#42A5F5; color:#fff;">
+                                <th rowspan="2"style="width:25%; text-align:center; vertical-align:middle;">Item</th>
+                                <th rowspan="2">Unit</th>
+                                <th rowspan="2">Price</th>
+                                <th colspan="2" style=" text-align: center; vertical-align: middle;">Discount</th>
+                                <th rowspan="2">Net Price</th>
+                                <th rowspan="2">Quantity</th>
+                                <th rowspan="2">Net Amount</th>
+                                <th colspan="2"style=" text-align: center; vertical-align: middle;">Vat</th>
+                            </tr>
+                            <tr style="background-color:#42A5F5; color:#fff;">
+                                <td>Rate(%)</td>
+                                <td>Amount</td>
+                                <td>Rate(%)</td>
+                                <td>Amount</td>
+                            </tr>
+                        </table>
+                    </div><!-- /.box-body -->
+                </section>
+             </div><!-- ./wrapper -->
+        <!-- ===================Main Footer============================ -->
+        @Html.Partial("_MainFooter")
+    </div>
+</body>
+
+
+
+
+
+
+
+

@@ -191,5 +191,14 @@ namespace ISWebPOS.Controllers
         {
             return View();
         }
+        //Purchase Order View
+        public ActionResult PurchaseOrder()
+        {
+            return View();
+        }
+        public ActionResult Sales()
+        {
+            return View();
+        }
     }
 }
