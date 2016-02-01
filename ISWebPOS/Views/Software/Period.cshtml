@@ -152,11 +152,11 @@
                         return !filterText || (period.Period.toLowerCase().indexOf(filterText) > -1);
                     }
                     periodCollections.collectionChanged.addHandler(function (sender, args) {
-                        updateNavigateButtonsCollection();
+                        updateNavigateButtonsCollectionPeriod();
 
                     });
                     periodCollections.currentChanged.addHandler(function (sender, args) {
-                        updateNavigateButtonsCollection();
+                        updateNavigateButtonsCollectionPeriod();
                     });
 
 
@@ -199,23 +199,23 @@
 
                     periodGrid.trackChanges = true;
 
-                    updateNavigateButtonsCollection();
+                    updateNavigateButtonsCollectionPeriod();
 
                     btnFirstPageGrid5.addEventListener('click', function () {
                         periodCollections.moveToFirstPage();
-                        updateNavigateButtonsCollection();
+                        updateNavigateButtonsCollectionPeriod();
                     });
                     btnPreviousPageGrid5.addEventListener('click', function () {
                         periodCollections.moveToPreviousPage();
-                        updateNavigateButtonsCollection();
+                        updateNavigateButtonsCollectionPeriod();
                     });
                     btnNextPageGrid5.addEventListener('click', function () {
                         periodCollections.moveToNextPage();
-                        updateNavigateButtonsCollection();
+                        updateNavigateButtonsCollectionPeriod();
                     });
                     btnLastPageGrid5.addEventListener('click', function () {
                         periodCollections.moveToLastPage();
-                        updateNavigateButtonsCollection();
+                        updateNavigateButtonsCollectionPeriod();
                     });
                 } else {
                     /*   alert("No data."); */
@@ -297,7 +297,7 @@
         // ==================
         // Navigation Buttons
         // ==================
-        function updateNavigateButtonsCollection() {
+        function updateNavigateButtonsCollectionPeriod() {
             if (periodCollections.pageSize <= 0) {
                 document.getElementById('navigationPageGrid').style.display = 'none';
                 return;

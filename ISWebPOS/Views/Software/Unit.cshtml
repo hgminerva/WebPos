@@ -159,11 +159,11 @@
                             return !filterText || (unit.Unit.toLowerCase().indexOf(filterText) > -1);                            
                         }
                         unitCollections.collectionChanged.addHandler(function (sender, args) {
-                            updateNavigateButtonsCollectionFour();
+                            updateNavigateButtonsCollectionUnit();
 
                         });
                         unitCollections.currentChanged.addHandler(function (sender, args) {
-                            updateNavigateButtonsCollectionFour();
+                            updateNavigateButtonsCollectionUnit();
                         });
 
 
@@ -206,23 +206,23 @@
 
                         unitGrid.trackChanges = true;
 
-                        updateNavigateButtonsCollectionFour();
+                        updateNavigateButtonsCollectionUnit();
 
                         btnFirstPageGrid.addEventListener('click', function () {
                             unitCollections.moveToFirstPage();
-                            updateNavigateButtonsCollectionFour();
+                            updateNavigateButtonsCollectionUnit();
                         });
                         btnPreviousPageGrid.addEventListener('click', function () {
                             unitCollections.moveToPreviousPage();
-                            updateNavigateButtonsCollectionFour();
+                            updateNavigateButtonsCollectionUnit();
                         });
                         btnNextPageGrid.addEventListener('click', function () {
                             unitCollections.moveToNextPage();
-                            updateNavigateButtonsCollectionFour();
+                            updateNavigateButtonsCollectionUnit();
                         });
                         btnLastPageGrid.addEventListener('click', function () {
                             unitCollections.moveToLastPage();
-                            updateNavigateButtonsCollectionFour();
+                            updateNavigateButtonsCollectionUnit();
                         });
                     } else {
                         /*   alert("No data."); */
@@ -304,7 +304,7 @@
         // ==================
         // Navigation Buttons
         // ==================
-        function updateNavigateButtonsCollectionFour() {
+        function updateNavigateButtonsCollectionUnit() {
             if (unitCollections.pageSize <= 0) {
                 document.getElementById('navigationPageGrid').style.display = 'none';
                 return;

@@ -153,11 +153,11 @@
                             return !filterText || (terminal.Terminal.toLowerCase().indexOf(filterText) > -1);
                         }
                         terminalCollections.collectionChanged.addHandler(function (sender, args) {
-                            updateNavigateButtonsCollection();
+                            updateNavigateButtonsCollectionTerminal();
 
                         });
                         terminalCollections.currentChanged.addHandler(function (sender, args) {
-                            updateNavigateButtonsCollection();
+                            updateNavigateButtonsCollectionTerminal();
                         });
 
 
@@ -200,23 +200,23 @@
 
                         terminalGrid.trackChanges = true;
 
-                        updateNavigateButtonsCollection();
+                        updateNavigateButtonsCollectionTerminal();
 
                         btnFirstPageGrid.addEventListener('click', function () {
                             terminalCollections.moveToFirstPage();
-                            updateNavigateButtonsCollection();
+                            updateNavigateButtonsCollectionTerminal();
                         });
                         btnPreviousPageGrid.addEventListener('click', function () {
                             terminalCollections.moveToPreviousPage();
-                            updateNavigateButtonsCollection();
+                            updateNavigateButtonsCollectionTerminal();
                         });
                         btnNextPageGrid.addEventListener('click', function () {
                             terminalCollections.moveToNextPage();
-                            updateNavigateButtonsCollection();
+                            updateNavigateButtonsCollectionTerminal();
                         });
                         btnLastPageGrid.addEventListener('click', function () {
                             terminalCollections.moveToLastPage();
-                            updateNavigateButtonsCollection();
+                            updateNavigateButtonsCollectionTerminal();
                         });
                     } else {
                         /*   alert("No data."); */
@@ -298,7 +298,7 @@
         // ==================
         // Navigation Buttons
         // ==================
-        function updateNavigateButtonsCollection() {
+        function updateNavigateButtonsCollectionTerminal() {
             if (terminalCollections.pageSize <= 0) {
                 document.getElementById('navigationPageGrid').style.display = 'none';
                 return;

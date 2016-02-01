@@ -206,11 +206,11 @@
                                 (paytype.AccountId.toLowerCase().indexOf(filterText) > -1);
                         }
                         paytypeCollections.collectionChanged.addHandler(function (sender, args) {
-                            updateNavigateButtonsCollection();
+                            updateNavigateButtonsCollectionPaytype();
 
                         });
                         paytypeCollections.currentChanged.addHandler(function (sender, args) {
-                            updateNavigateButtonsCollection();
+                            updateNavigateButtonsCollectionPaytype();
                         });
 
 
@@ -263,23 +263,23 @@
 
                         paytypeGrid.trackChanges = true;
 
-                        updateNavigateButtonsCollection();
+                        updateNavigateButtonsCollectionPaytype();
 
                         btnFirstPageGrid.addEventListener('click', function () {
                             paytypeCollections.moveToFirstPage();
-                            updateNavigateButtonsCollection();
+                            updateNavigateButtonsCollectionPaytype();
                         });
                         btnPreviousPageGrid.addEventListener('click', function () {
                             paytypeCollections.moveToPreviousPage();
-                            updateNavigateButtonsCollection();
+                            updateNavigateButtonsCollectionPaytype();
                         });
                         btnNextPageGrid.addEventListener('click', function () {
                             paytypeCollections.moveToNextPage();
-                            updateNavigateButtonsCollection();
+                            updateNavigateButtonsCollectionPaytype();
                         });
                         btnLastPageGrid.addEventListener('click', function () {
                             paytypeCollections.moveToLastPage();
-                            updateNavigateButtonsCollection();
+                            updateNavigateButtonsCollectionPaytype();
                         });
                     } else {
                         /*   alert("No data."); */
@@ -361,7 +361,7 @@
         // ==================
         // Navigation Buttons
         // ==================
-        function updateNavigateButtonsCollection() {
+        function updateNavigateButtonsCollectionPaytype() {
             if (paytypeCollections.pageSize <= 0) {
                 document.getElementById('navigationPageGrid').style.display = 'none';
                 return;
