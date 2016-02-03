@@ -144,7 +144,7 @@
                                         PurchaseOrderDate: results[i]["PurchaseOrderDate"],
                                         PurchaseOrderNumber: results[i]["PurchaseOrderNumber"],
                                         Amount: results[i]["Amount"],
-                                        Supplier: results[i]["Supplier"],
+                                        SupplierId: results[i]["SupplierId"],
                                         IsLocked: results[i]["IsLocked"]
 
                                     });
@@ -221,14 +221,14 @@
                                     },
                                     {
                                         "header": "Supplier",
-                                        "binding": "Supplier",
+                                        "binding": "SupplierId",
                                         "align": "center",
                                         "allowSorting": true,
                                         "width": "2.5*"
                                     },
                                     {
                                         "header": "L",
-                                        "binding": "isLocked",
+                                        "binding": "IsLocked",
                                         "align": "center",
                                         "allowSorting": true,
                                         "width": "1.5*"
@@ -343,6 +343,13 @@
                         btnPreviousPageGrid.setAttribute('disabled', 'disabled');
                         btnNextPageGrid.removeAttribute('disabled');
                         btnLastPageGrid.removeAttribute('disabled');
+                    } if (purchaseCollections.pageIndex === 1) {
+                        btnFirstPageGrid.setAttribute('disabled', 'disabled');
+                        btnPreviousPageGrid.setAttribute('disabled', 'disabled');
+                    }
+                    if (purchaseCollections.pageCount === 1) {
+                        btnLastPageGrid.setAttribute('disabled', 'disabled');
+                        btnNextPageGrid.setAttribute('disabled', 'disabled');
                     } else if (purchaseCollections.pageIndex === (purchaseCollections.pageCount - 1)) {
                         btnFirstPageGrid.removeAttribute('disabled');
                         btnPreviousPageGrid.removeAttribute('disabled');

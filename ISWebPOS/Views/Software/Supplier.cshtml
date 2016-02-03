@@ -64,7 +64,7 @@
                     <button type="button" class="btn btn-default border-custom" id="btnMoveToPreviousPageGrid">
                         <span class="glyphicon glyphicon-step-backward"></span>
                     </button>
-                    <button type="button" class="btn btn-default border-custom" disabled style="width: 100px" id="btnCurrentPageGrid"></button>
+                    <button type="button" class="btn btn-default border-custom"  id="btnCurrentPageGrid"></button>
                     <button type="button" class="btn btn-default border-custom" id="btnMoveToNextPageGrid">
                         <span class="glyphicon glyphicon-step-forward"></span>
                     </button>
@@ -325,6 +325,7 @@
             // Navigation Buttons
             // ==================
             function updateNavigateButtonsCollection() {
+               
                 if (supplierCollections.pageSize <= 0) {
                     document.getElementById('navigationPageGrid').style.display = 'none';
                     return;
@@ -335,11 +336,20 @@
                     btnPreviousPageGrid.setAttribute('disabled', 'disabled');
                     btnNextPageGrid.removeAttribute('disabled');
                     btnLastPageGrid.removeAttribute('disabled');
-                } else if (supplierCollections.pageIndex === (supplierCollections.pageCount - 1)) {
-                    btnFirstPageGrid.removeAttribute('disabled');
-                    btnPreviousPageGrid.removeAttribute('disabled');
+                }
+                if (supplierCollections.pageIndex === 1) {
+                    btnFirstPageGrid.setAttribute('disabled', 'disabled');
+                    btnPreviousPageGrid.setAttribute('disabled', 'disabled');
+                }
+                if (supplierCollections.pageCount === 1) {
                     btnLastPageGrid.setAttribute('disabled', 'disabled');
                     btnNextPageGrid.setAttribute('disabled', 'disabled');
+                }
+                else if (supplierCollections.pageIndex === (supplierCollections.pageCount - 1)) {
+                    btnFirstPageGrid.removeAttribute('disabled');
+                    btnPreviousPageGrid.removeAttribute('disabled');
+                    btnLastPageGrid.setAttribute('disabled','disabled');
+                    btnNextPageGrid.setAttribute('disabled','disabled');
                 }
                 else {
                     btnFirstPageGrid.removeAttribute('disabled');

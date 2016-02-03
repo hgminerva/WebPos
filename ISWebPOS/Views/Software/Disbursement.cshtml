@@ -350,6 +350,13 @@
                     btnPreviousPageGrid.setAttribute('disabled', 'disabled');
                     btnNextPageGrid.removeAttribute('disabled');
                     btnLastPageGrid.removeAttribute('disabled');
+                } if (disbursementCollections.pageIndex === 1) {
+                    btnFirstPageGrid.setAttribute('disabled', 'disabled');
+                    btnPreviousPageGrid.setAttribute('disabled', 'disabled');
+                }
+                if (disbursementCollections.pageCount === 1) {
+                    btnLastPageGrid.setAttribute('disabled', 'disabled');
+                    btnNextPageGrid.setAttribute('disabled', 'disabled');
                 } else if (disbursementCollections.pageIndex === (disbursementCollections.pageCount - 1)) {
                     btnFirstPageGrid.removeAttribute('disabled');
                     btnPreviousPageGrid.removeAttribute('disabled');

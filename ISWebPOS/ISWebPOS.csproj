@@ -1524,6 +1524,9 @@
     <Content Include="Views\Software\EditItemComponent.cshtml" />
     <Content Include="Views\Software\PurchaseOrder.cshtml" />
     <Content Include="Views\Software\Sales.cshtml" />
+    <Content Include="Views\Software\DebitCreditMemo.cshtml" />
+    <Content Include="Views\Software\AddDebitCreditMemo.cshtml" />
+    <Content Include="Views\Software\Utilities.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

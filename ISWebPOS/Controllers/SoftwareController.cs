@@ -200,5 +200,19 @@ namespace ISWebPOS.Controllers
         {
             return View();
         }
+        //Debit Credit Memo View
+        public ActionResult DebitCreditMemo()
+        {
+            return View();
+        }
+        public ActionResult AddDebitCreditMemo()
+        {
+            return View();
+        }
+        //Utilities View
+        public ActionResult Utilities()
+        {
+            return View();
+        }
     }
 }
