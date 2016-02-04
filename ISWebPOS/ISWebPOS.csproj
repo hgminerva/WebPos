@@ -190,6 +190,8 @@
     <Compile Include="Controllers\ApiSalesLineController.cs" />
     <Compile Include="Controllers\ApiSalesReleasedController.cs" />
     <Compile Include="Controllers\ApiStockCountController.cs" />
+    <Compile Include="Controllers\ApiStockInController.cs" />
+    <Compile Include="Controllers\ApiStockOutController.cs" />
     <Compile Include="Controllers\ApiTerminalController.cs" />
     <Compile Include="Controllers\ApiUnitController.cs" />
     <Compile Include="Controllers\ApiUserController.cs" />
@@ -365,6 +367,8 @@
     <Content Include="Content\ionicons.css" />
     <Content Include="Content\ionicons.min.css" />
     <Content Include="Content\style.css" />
+    <Content Include="Content\toastr.css" />
+    <Content Include="Content\toastr.min.css" />
     <Content Include="dist\css\AdminLTE.css" />
     <Content Include="dist\css\AdminLTE.min.css" />
     <Content Include="dist\css\skins\skin-black-light.css" />
@@ -1511,9 +1515,13 @@
     <Content Include="Views\Software\_ViewStart.cshtml" />
     <Content Include="Views\Software\Collection.cshtml" />
     <Content Include="Views\Software\AddCollection.cshtml" />
+    <Content Include="Views\Software\AddStockIn.cshtml" />
+    <Content Include="Views\Software\AddStockOut.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\ApiStockIn\" />
+    <Folder Include="Views\ApiStockOut\" />
     <Folder Include="Views\PurchaseOrderLine\" />
   </ItemGroup>
   <ItemGroup>

@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -29,9 +30,10 @@
         var isHost = slashes.concat(window.location.host);
     </script>
 </head>
+
+        @RenderBody()        
+    
 <body>
-    <div cid=" page-top" data-spy="scroll" data-target=".navbar-fixed-top">
-        @RenderBody()
-    </div>
+    <!--no content-->
 </body>
 </html>

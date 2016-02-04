@@ -2,9 +2,6 @@
 @{
     ViewBag.Title = "Purchase";
 }
- @Styles.Render("~/Template/Css")
-<!DOCTYPE html>
-<html>
 <!-- ADD THE CLASS sidedar-collapse TO HIDE THE SIDEBAR PRIOR TO LOADING THE SITE -->
 <body class="hold-transition skin-blue sidebar-collapse sidebar-mini">
     <!-- Site wrapper -->
@@ -19,7 +16,7 @@
                 <div class="content-wrapper">
                     <!-- Content Header (Page header) -->
                     <section class="content-header">
-                        <h1 class="fa fa-table">
+                        <h1 class="fa fa-shopping-bag">
                             Purchase Order List
                         </h1>
                         <ol class="breadcrumb">
@@ -38,7 +35,7 @@
                                                 <!--search box-->
                                                 <div class="box-tools">
                                                     <div class="input-group" style="width: 150px;">
-                                                        <input type="text" class="form-control input-sm" id="InputFilter" placeholder="Search Item">
+                                                        <input type="text" class="form-control input-sm" id="InputFilter" placeholder="Search">
                                                         <div class="input-group-btn">
                                                             <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
                                                         </div>
@@ -52,7 +49,7 @@
                                         </div>
                                     </div>
                                     <!--table-->
-                                    <table id="itemCollectionGrid" class="grid border-custom"></table>
+                                    <table id="PurchaseCollectionGrid" class="grid border-custom"></table>
 
                                 </div>
                             </div>
@@ -75,18 +72,18 @@
                         </div>
                     </section>
                 </div><!-- ./wrapper -->
-                <!-- Company Delete -->
-                <div class="modal fade" id="deleteItemConfirm" role="dialog">
+                <!-- Purchase Delete -->
+                <div class="modal fade" id="deletePurchaseConfirm" role="dialog">
                     <div class="modal-dialog modal-sm">
                         <!-- Modal content-->
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title">Delete Item? <i class="fa fa-trash"></i></h4>
+                                <h4 class="modal-title">Delete Purchase? <i class="fa fa-trash"></i></h4>
                             </div>
 
                             <div class="modal-footer">
-                                <button class="btn btn-danger btn-sm" id="cmdConfirmDeleteItem" onclick="cmdItemConfirmDeleteButton_OnClick()">Delete</button>
+                                <button class="btn btn-danger btn-sm" id="cmdConfirmDeletePurchase" onclick="cmdPurchaseConfirmDeleteButton_OnClick()">Delete</button>
                                 <button id="cmdConfirmDeleteCloseButton" class="btn btn-primary btn-sm" data-dismiss="modal">Cancel</button>
                             </div>
                         </div>
@@ -113,8 +110,8 @@
                 //================
                 // Global variables
                 // ================
-                var itemCollections;
-                var itemGrid;
+                var purchaseCollections;
+                var purchaseGrid;
                 var editItem;
 
                 var btnFirstPageGrid;
@@ -124,10 +121,10 @@
                 var btnCurrentPageGrid;
 
                 // =============================
-                // Get ItemMasterList Data
+                // Get Purchase MasterList Data
                 // =============================
-                function getItemMasterList() {
-                    var ItemList = new wijmo.collections.ObservableArray();
+                function getPurchaseMasterList() {
+                    var Purchase = new wijmo.collections.ObservableArray();
                     $("#loadingModal").modal("show");
                     $.ajax({
                         url: '/api/purchaseOrder/list',
@@ -140,9 +137,10 @@
                             /* var results = JSON.parse(result); */
                             if (results.length > 0) {
                                 for (i = 0; i < results.length; i++) {
-                                    ItemList.push({
-                                        EditId: "<button class='btn btn-primary btn-xs btn-block' id='itemEditButton' onclick='cmdItemEditButton_OnClick()'><i class='fa fa-pencil'></i> Edit</button>",
-                                        DeleteId: "<button class='btn btn-danger btn-xs btn-block' id='itemDeleteButton' onclick='cmdItemDeleteButton_OnClick()'><i class='fa fa-trash'></i> Delete</button>",
+                                    Purchase.push({
+                                        EditId: "<button class='btn btn-primary btn-xs btn-block' id='purchaseEditButton' onclick='cmdPurchaseEditButton_OnClick()'><i class='fa fa-pencil'></i> Edit</button>",
+                                        DeleteId: "<button class='btn btn-danger btn-xs btn-block' id='purchaseDeleteButton' onclick='cmdPurchaseDeleteButton_OnClick()'><i class='fa fa-trash'></i> Delete</button>",
+                                        Id: results[i]["Id"],
                                         PurchaseOrderDate: results[i]["PurchaseOrderDate"],
                                         PurchaseOrderNumber: results[i]["PurchaseOrderNumber"],
                                         Amount: results[i]["Amount"],
@@ -151,33 +149,33 @@
 
                                     });
                                 }
-                                itemCollections = new wijmo.collections.CollectionView(ItemList);
-                                btnCurrentPageGrid.innerHTML = (itemCollections.pageIndex + 1) + ' / ' + itemCollections.pageCount;
+                                purchaseCollections = new wijmo.collections.CollectionView(Purchase);
+                                btnCurrentPageGrid.innerHTML = (purchaseCollections.pageIndex + 1) + ' / ' + purchaseCollections.pageCount;
 
-                                itemCollections.canFilter = true;
-                                itemCollections.pageSize = 15;
+                                purchaseCollections.canFilter = true;
+                                purchaseCollections.pageSize = 15;
 
                                 //Filter
                                 var filterText = '';
                                 $('#InputFilter').keydown(function () {
                                     filterText = this.value.toLowerCase();
-                                    itemCollections.refresh();
+                                    purchaseCollections.refresh();
                                 });
-                                itemCollections.filter = function (item) {
-                                    return !filterText || (item.PurchaseOrderDate.toLowerCase().indexOf(filterText) > -1);
+                                purchaseCollections.filter = function (purchase) {
+                                    return !filterText || (purchase.PurchaseOrderDate.toLowerCase().indexOf(filterText) > -1);
                                 }
-                                itemCollections.collectionChanged.addHandler(function (sender, args) {
+                                purchaseCollections.collectionChanged.addHandler(function (sender, args) {
                                     updateNavigateButtonsCollection();
 
                                 });
-                                itemCollections.currentChanged.addHandler(function (sender, args) {
+                                purchaseCollections.currentChanged.addHandler(function (sender, args) {
                                     updateNavigateButtonsCollection();
                                 });
 
 
                                 //Flex Grid
-                                itemGrid = new wijmo.grid.FlexGrid('#itemCollectionGrid');
-                                itemGrid.initialize({
+                                purchaseGrid = new wijmo.grid.FlexGrid('#PurchaseCollectionGrid');
+                                purchaseGrid.initialize({
                                     columns: [
 
 
@@ -197,7 +195,7 @@
 
                                     },
                                     {
-                                        "header": "PurchaseOrderDate",
+                                        "header": "Purchase Order Date",
                                         "binding": "PurchaseOrderDate",
                                         "align": "center",
                                         "allowSorting": true,
@@ -206,7 +204,7 @@
                                     },
 
                                     {
-                                        "header": "PurchaseOrderNumber",
+                                        "header": "Purchase Order Number",
                                         "binding": "PurchaseOrderNumber",
                                         "align": "center",
                                         "allowSorting": true,
@@ -236,31 +234,31 @@
                                         "width": "1.5*"
                                     }],
                                     autoGenerateColumns: false,
-                                    itemsSource: itemCollections,
+                                    itemsSource: purchaseCollections,
                                     isReadOnly: true,
                                     autoSizeMode: wijmo.grid.AutoSizeMode.Both,
                                     allowDragging: wijmo.grid.AllowDragging.None,
                                     selectionMode: wijmo.grid.SelectionMode.Row
                                 });
 
-                                itemGrid.trackChanges = true;
+                                purchaseGrid.trackChanges = true;
 
                                 updateNavigateButtonsCollection();
 
                                 btnFirstPageGrid.addEventListener('click', function () {
-                                    itemCollections.moveToFirstPage();
+                                    purchaseCollections.moveToFirstPage();
                                     updateNavigateButtonsCollection();
                                 });
                                 btnPreviousPageGrid.addEventListener('click', function () {
-                                    itemCollections.moveToPreviousPage();
+                                    purchaseCollections.moveToPreviousPage();
                                     updateNavigateButtonsCollection();
                                 });
                                 btnNextPageGrid.addEventListener('click', function () {
-                                    itemCollections.moveToNextPage();
+                                    purchaseCollections.moveToNextPage();
                                     updateNavigateButtonsCollection();
                                 });
                                 btnLastPageGrid.addEventListener('click', function () {
-                                    itemCollections.moveToLastPage();
+                                    purchaseCollections.moveToLastPage();
                                     updateNavigateButtonsCollection();
                                 });
                             } else {
@@ -271,35 +269,35 @@
                 }
 
                 // ===================
-                // Company Edit Button
+                // Purchase Edit Button
                 // ===================
-                function cmdCompanyEditButton_OnClick() {
-                    itemCollections.editItem(itemCollections.currentItem);
+                function cmdPurchaseEditButton_OnClick() {
+                    purchaseCollections.editItem(purchaseCollections.currentItem);
 
                 }
 
                 // =====================
-                // Item delete Button
+                // Purchase delete Button
                 // =====================
-                function cmdItemDeleteButton_OnClick() {
-                    var id = itemCollections.currentItem.Id;
+                function cmdPurchaseDeleteButton_OnClick() {
+                    var id = purchaseCollections.currentItem.Id;
 
                     console.log(typeof id + id);
 
-                    $('#deleteItemConfirm').modal({
+                    $('#deletePurchaseConfirm').modal({
                         show: true,
                         backdrop: 'static'
                     });
-                    $("#cmdConfirmDeleteItem").prop("disabled", false);
+                    $("#cmdConfirmDeletePurchase").prop("disabled", false);
                     $("#cmdConfirmDeleteCloseButton").prop("disabled", false);
                 }
-                // Company Confirm Delete Button
-                function cmdItemConfirmDeleteButton_OnClick() {
-                    $("#cmdConfirmDeleteItem").prop("disabled", true);
+                // Purchase Confirm Delete Button
+                function cmdPurchaseConfirmDeleteButton_OnClick() {
+                    $("#cmdConfirmDeletePurchase").prop("disabled", true);
                     $("#cmdConfirmDeleteCloseButton").prop("disabled", true);
 
                     //====================
-                    var id = itemCollections.currentItem.Id;
+                    var id = purchaseCollections.currentItem.Id;
 
                     $.ajax({
                         url: '/api/purchaseOrder/delete/' + id,
@@ -308,7 +306,7 @@
                         dataType: "json",
                         statusCode: {
                             200: function () {
-                                $("#cmdConfirmDeleteItem").prop("disabled", true);
+                                $("#cmdConfirmDeletePurchase").prop("disabled", true);
                                 $("#cmdConfirmDeleteCloseButton").prop("disabled", true);
                                 toastr.success("Successfully Deleted");
                                 window.setTimeout(function () {
@@ -317,14 +315,14 @@
                             },
                             404: function () {
                                 toastr.error("Request Not Found");
-                                $('#deleteItemConfirm').modal('hide');
-                                $("#cmdConfirmDeleteItem").prop("disabled", false);
+                                $('#deletePurchaseConfirm').modal('hide');
+                                $("#cmdConfirmDeletePurchase").prop("disabled", false);
                                 $("#cmdConfirmDeleteCloseButton").prop("disabled", false);
                             },
                             400: function () {
                                 toastr.error("Can't be deleted");
-                                $('#deleteCompanyConfirm').modal('hide');
-                                $("#cmdConfirmDeleteItem").prop("disabled", false);
+                                $('#deletePurchaseConfirm').modal('hide');
+                                $("#cmdConfirmDeletePurchase").prop("disabled", false);
                                 $("#cmdConfirmDeleteCloseButton").prop("disabled", false);
                             }
                         }
@@ -335,17 +333,17 @@
                 // Navigation Buttons
                 // ==================
                 function updateNavigateButtonsCollection() {
-                    if (itemCollections.pageSize <= 0) {
+                    if (purchaseCollections.pageSize <= 0) {
                         document.getElementById('navigationPageGrid').style.display = 'none';
                         return;
                     }
                     document.getElementById('navigationPageGrid').style.display = 'block';
-                    if (itemCollections.pageIndex === 0) {
+                    if (purchaseCollections.pageIndex === 0) {
                         btnFirstPageGrid.setAttribute('disabled', 'disabled');
                         btnPreviousPageGrid.setAttribute('disabled', 'disabled');
                         btnNextPageGrid.removeAttribute('disabled');
                         btnLastPageGrid.removeAttribute('disabled');
-                    } else if (itemCollections.pageIndex === (itemCollections.pageCount - 1)) {
+                    } else if (purchaseCollections.pageIndex === (purchaseCollections.pageCount - 1)) {
                         btnFirstPageGrid.removeAttribute('disabled');
                         btnPreviousPageGrid.removeAttribute('disabled');
                         btnLastPageGrid.setAttribute('disabled', 'disabled');
@@ -356,7 +354,7 @@
                         btnNextPageGrid.removeAttribute('disabled');
                         btnLastPageGrid.removeAttribute('disabled');
                     }
-                    btnCurrentPageGrid.innerHTML = (itemCollections.pageIndex + 1) + ' / ' + itemCollections.pageCount;
+                    btnCurrentPageGrid.innerHTML = (purchaseCollections.pageIndex + 1) + ' / ' + purchaseCollections.pageCount;
 
                 }
 
@@ -374,29 +372,15 @@
                     btnCurrentPageGrid = document.getElementById('btnCurrentPageGrid');
 
                     //Collection View
-                    getItemMasterList();
+                    getPurchaseMasterList();
 
                 });
             </script>
         <!-- ===================Main Footer============================ -->
         @Html.Partial("_MainFooter")
     </div>
-    @Scripts.Render("~/Template/Js")
-    @Scripts.Render("~/Wijmo/Js")
-    <!-- jQuery 2.1.4 -->
-    <script src="../plugins/jQuery/jQuery-2.1.4.min.js"></script>
-    <!-- Bootstrap 3.3.5 -->
-    <script src="../bootstrap/js/bootstrap.min.js"></script>
-    <!-- SlimScroll -->
-    <script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
-    <!-- FastClick -->
-    <script src="../plugins/fastclick/fastclick.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="../dist/js/app.min.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="../dist/js/demo.js"></script>
+
 </body>
-</html>
 
 
 

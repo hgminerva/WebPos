@@ -58,5 +58,134 @@ namespace ISWebPOS.Controllers
         {
             return View();
         }
+        //SystemsTableView
+        public ActionResult SystemTable()
+        {
+            return View();
+        }
+        public ActionResult ChartOfAccounts()
+        {
+            return View();
+        }
+        public ActionResult PayType()
+        {
+            return View();
+        }
+        public ActionResult Tax()
+        {
+            return View();
+        }
+        public ActionResult Unit()
+        {
+            return View();
+        }
+        public ActionResult Period()
+        {
+            return View();
+        }
+        public ActionResult Terminal()
+        {
+            return View();
+        }
+        //Users View
+        public ActionResult User()
+        {
+            return View();
+        }
+        public ActionResult AddUser()
+        {
+            return View();
+        }
+        //Stock In View
+        public ActionResult StockIn()
+        {
+            return View();
+        }
+        public ActionResult AddStockIn()
+        {
+            return View();
+        }
+        //Stock Out View
+       
+        public ActionResult StockOut()
+        {
+            return View();
+        }
+        public ActionResult AddStockOut()
+        {
+            return View();
+        }
+        //Disbursement View
+        public ActionResult Disbursement()
+        {
+            return View();
+        }
+        public ActionResult AddDisbursement()
+        {
+            return View();
+        }
+        //Purchase View
+        public ActionResult Purchase()
+        {
+            return View();
+        }
+        public ActionResult AddPurchase()
+        {
+            return View();
+        }
+        //Item Group Views
+        public ActionResult ItemGroup()
+        {
+            return View();
+        }
+        public ActionResult AddItemGroup()
+        {
+            return View();
+        }
+        //Views Item Component
+        public ActionResult ItemComponent()
+        {
+            return View();
+        }
+        public ActionResult AddItemComponent()
+        {
+            return View();
+        }
+        //Views Table
+        public ActionResult Table()
+        {
+            return View();
+        }
+        public ActionResult AddTable()
+        {
+            return View();
+        }
+        //Stock Count
+        public ActionResult StockCount()
+        {
+            return View();
+        }
+        public ActionResult AddStockCount()
+        {
+            return View();
+        }
+        //Inventory View
+        public ActionResult Inventory()
+        {
+            return View();
+        }
+        public ActionResult AddInventory()
+        {
+            return View();
+        }
+        //Collection View
+        public ActionResult Collection()
+        {
+            return View();
+        }
+        public ActionResult AddCollection()
+        {
+            return View();
+        }
     }
 }

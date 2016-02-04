@@ -18,7 +18,7 @@ namespace ISWebPOS.Models
         public Boolean IsReturn { get; set; }
         public Int32 CollectionId { get; set; }
         public Int32 PurchaseOrderId { get; set; }
-        public Int32 Prepareby { get; set; }
+        public Int32 PreparedBy { get; set; }
         public Int32 CheckedBy { get; set; }
         public Int32 ApprovedBy { get; set; }
         public Boolean IsLocked { get; set; }

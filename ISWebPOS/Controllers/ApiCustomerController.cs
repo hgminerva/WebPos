@@ -25,6 +25,7 @@ namespace ISWebPOS.Controllers
             var customer = from d in db.MstCustomers
                            select new Models.MstCustomer
                            {
+                               Id = d.Id,
                                Customer = d.Customer,
                                Address = d.Address,
                                ContactPerson = d.ContactPerson,

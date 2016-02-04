@@ -14,6 +14,7 @@ namespace ISWebPOS
             bundles.Add(new StyleBundle("~/Template/Css").Include(
                 "~/bootstrap/css/bootstrap.min.css",
                 "~/font-awesome/css/font-awesome.min.css",
+                "~/Content/toastr.min.css",
                 "~/Content/ionicons.min.css",
                 "~/dist/css/AdminLTE.min.css",
                 "~/dist/css/skins/_all-skins.min.css",

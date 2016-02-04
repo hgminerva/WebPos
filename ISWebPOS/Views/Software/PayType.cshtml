@@ -31,34 +31,34 @@
             </div>
             <!--navigation buttons-->
             <div class="btn-group pull-right" id="navigationPageGrid">
-                <button type="button" class="btn btn-default border-custom" id="btnMoveToFirstPageGrid2">
+                <button type="button" class="btn btn-default border-custom" id="btnMoveToFirstPageGrid">
                     <span class="glyphicon glyphicon-fast-backward"></span>
                 </button>
-                <button type="button" class="btn btn-default border-custom" id="btnMoveToPreviousPageGrid2">
+                <button type="button" class="btn btn-default border-custom" id="btnMoveToPreviousPageGrid">
                     <span class="glyphicon glyphicon-step-backward"></span>
                 </button>
-                <button type="button" class="btn btn-default border-custom" disabled style="width: 100px" id="btnCurrentPageGrid2"></button>
-                <button type="button" class="btn btn-default border-custom" id="btnMoveToNextPageGrid2">
+                <button type="button" class="btn btn-default border-custom" disabled style="width: 100px" id="btnCurrentPageGrid"></button>
+                <button type="button" class="btn btn-default border-custom" id="btnMoveToNextPageGrid">
                     <span class="glyphicon glyphicon-step-forward"></span>
                 </button>
-                <button type="button" class="btn btn-default border-custom" id="btnMoveToLastPageGrid2">
+                <button type="button" class="btn btn-default border-custom" id="btnMoveToLastPageGrid">
                     <span class="glyphicon glyphicon-fast-forward"></span>
                 </button>
             </div>
         </section>
     </div><!-- ./wrapper -->
-    <!-- Company Delete -->
-    <div class="modal fade" id="deleteItemConfirm" role="dialog">
+    <!-- PayType Delete -->
+    <div class="modal fade" id="deletePayTypeConfirm" role="dialog">
         <div class="modal-dialog modal-sm">
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Delete Item? <i class="fa fa-trash"></i></h4>
+                    <h4 class="modal-title">Delete PayType? <i class="fa fa-trash"></i></h4>
                 </div>
 
                 <div class="modal-footer">
-                    <button class="btn btn-danger btn-sm" id="cmdConfirmDeleteItem" onclick="cmdItemConfirmDeleteButton_OnClick()">Delete</button>
+                    <button class="btn btn-danger btn-sm" id="cmdConfirmDeletePaytype" onclick="cmdPayTypeConfirmDeleteButton_OnClick()">Delete</button>
                     <button id="cmdConfirmDeleteCloseButton" class="btn btn-primary btn-sm" data-dismiss="modal">Cancel</button>
                 </div>
             </div>
@@ -155,16 +155,16 @@
         var paytypeGrid;
         var editPaytype;
 
-        var btnFirstPageGrid2;
-        var btnPreviousPageGrid2;
-        var btnNextPageGrid2;
-        var btnLastPageGrid2;
-        var btnCurrentPageGrid2;
+        var btnFirstPageGrid;
+        var btnPreviousPageGrid;
+        var btnNextPageGrid;
+        var btnLastPageGrid;
+        var btnCurrentPageGrid;
 
         // =============================
-        // Get ItemMasterList Data
+        // Get PayTypeMasterList Data
         // =============================
-        function getIPaytypeMasterList() {
+        function getPaytypeMasterList() {
             var PaytypeList = new wijmo.collections.ObservableArray();
             $("#loadingModal").modal("show");
             $.ajax({
@@ -180,8 +180,9 @@
                     if (results.length > 0) {
                         for (i = 0; i < results.length; i++) {
                             PaytypeList.push({
-                                EditId: "<button class='btn btn-primary btn-xs btn-block' id='itemEditButton' onclick='cmdItemEditButton_OnClick()'><i class='fa fa-pencil'></i> Edit</button>",
-                                DeleteId: "<button class='btn btn-danger btn-xs btn-block' id='itemDeleteButton' onclick='cmdItemDeleteButton_OnClick()'><i class='fa fa-trash'></i> Delete</button>",
+                                EditId: "<button class='btn btn-primary btn-xs btn-block' id='paytypeEditButton' onclick='cmdPayTypeEditButton_OnClick()'><i class='fa fa-pencil'></i> Edit</button>",
+                                DeleteId: "<button class='btn btn-danger btn-xs btn-block' id='paytypeDeleteButton' onclick='cmdPayTypeDeleteButton_OnClick()'><i class='fa fa-trash'></i> Delete</button>",
+                                Id: results[i]["Id"],
                                 PayType: results[i]["PayType"],
                                 AccountId: results[i]["AccountId"],
              
@@ -189,7 +190,7 @@
                             });
                         }
                         paytypeCollections = new wijmo.collections.CollectionView(PaytypeList);
-                        btnCurrentPageGrid2.innerHTML = (paytypeCollections.pageIndex + 1) + ' / ' + paytypeCollections.pageCount;
+                        btnCurrentPageGrid.innerHTML = (paytypeCollections.pageIndex + 1) + ' / ' + paytypeCollections.pageCount;
 
                         paytypeCollections.canFilter = true;
                         paytypeCollections.pageSize = 15;
@@ -200,9 +201,9 @@
                             filterText = this.value.toLowerCase();
                             paytypeCollections.refresh();
                         });
-                        paytypeCollections.filter = function (
-                            ) {
-                            return !filterText || (item.Account.toLowerCase().indexOf(filterText) > -1);
+                        paytypeCollections.filter = function (paytype) {
+                            return !filterText || (paytype.PayType.toLowerCase().indexOf(filterText) > -1) ||
+                                (paytype.AccountId.toLowerCase().indexOf(filterText) > -1);
                         }
                         paytypeCollections.collectionChanged.addHandler(function (sender, args) {
                             updateNavigateButtonsCollection();
@@ -264,19 +265,19 @@
 
                         updateNavigateButtonsCollection();
 
-                        btnFirstPageGrid2.addEventListener('click', function () {
+                        btnFirstPageGrid.addEventListener('click', function () {
                             paytypeCollections.moveToFirstPage();
                             updateNavigateButtonsCollection();
                         });
-                        btnPreviousPageGrid2.addEventListener('click', function () {
+                        btnPreviousPageGrid.addEventListener('click', function () {
                             paytypeCollections.moveToPreviousPage();
                             updateNavigateButtonsCollection();
                         });
-                        btnNextPageGrid2.addEventListener('click', function () {
+                        btnNextPageGrid.addEventListener('click', function () {
                             paytypeCollections.moveToNextPage();
                             updateNavigateButtonsCollection();
                         });
-                        btnLastPageGrid2.addEventListener('click', function () {
+                        btnLastPageGrid.addEventListener('click', function () {
                             paytypeCollections.moveToLastPage();
                             updateNavigateButtonsCollection();
                         });
@@ -288,30 +289,30 @@
         }
 
         // ===================
-        // Company Edit Button
+        // PayType Edit Button
         // ===================
-        function cmdCompanyEditButton_OnClick() {
+        function cmdPayTypeEditButton_OnClick() {
             paytypeCollections.editPaytype(paytypeCollections.currentItem);
 
         }
 
         // =====================
-        // Item delete Button
+        // PayType delete Button
         // =====================
-        function cmdItemDeleteButton_OnClick() {
+        function cmdPayTypeDeleteButton_OnClick() {
             var id = paytypeCollections.currentItem.Id;
 
             console.log(typeof id + id);
 
-            $('#deleteItemConfirm').modal({
+            $('#deletePayTypeConfirm').modal({
                 show: true,
                 backdrop: 'static'
             });
-            $("#cmdConfirmDeleteItem").prop("disabled", false);
+            $("#cmdConfirmDeletePaytype").prop("disabled", false);
             $("#cmdConfirmDeleteCloseButton").prop("disabled", false);
         }
         // =====================
-        // Add Account Button
+        // Add PayType Button
         // =====================
         function cmdaddPaytypeButton_OnClick() {
             $('#addPaytype').modal({
@@ -319,9 +320,9 @@
                 backdrop: 'static'
             });
         }
-        // Company Confirm Delete Button
-        function cmdItemConfirmDeleteButton_OnClick() {
-            $("#cmdConfirmDeleteItem").prop("disabled", true);
+        // PayType Confirm Delete Button
+        function cmdPayTypeConfirmDeleteButton_OnClick() {
+            $("#cmdConfirmDeletePaytype").prop("disabled", true);
             $("#cmdConfirmDeleteCloseButton").prop("disabled", true);
 
             //====================
@@ -334,7 +335,7 @@
                 dataType: "json",
                 statusCode: {
                     200: function () {
-                        $("#cmdConfirmDeleteItem").prop("disabled", true);
+                        $("#cmdConfirmDeletePaytype").prop("disabled", true);
                         $("#cmdConfirmDeleteCloseButton").prop("disabled", true);
                         toastr.success("Successfully Deleted");
                         window.setTimeout(function () {
@@ -343,14 +344,14 @@
                     },
                     404: function () {
                         toastr.error("Request Not Found");
-                        $('#deleteItemConfirm').modal('hide');
-                        $("#cmdConfirmDeleteItem").prop("disabled", false);
+                        $('#deletePayTypeConfirm').modal('hide');
+                        $("#cmdConfirmDeletePaytype").prop("disabled", false);
                         $("#cmdConfirmDeleteCloseButton").prop("disabled", false);
                     },
                     400: function () {
                         toastr.error("Can't be deleted");
-                        $('#deleteCompanyConfirm').modal('hide');
-                        $("#cmdConfirmDeleteItem").prop("disabled", false);
+                        $('#deletePayTypeConfirm').modal('hide');
+                        $("#cmdConfirmDeletePaytype").prop("disabled", false);
                         $("#cmdConfirmDeleteCloseButton").prop("disabled", false);
                     }
                 }
@@ -367,22 +368,22 @@
             }
             document.getElementById('navigationPageGrid').style.display = 'block';
             if (paytypeCollections.pageIndex === 0) {
-                btnFirstPageGrid2.setAttribute('disabled', 'disabled');
-                btnPreviousPageGrid2.setAttribute('disabled', 'disabled');
-                btnNextPageGrid2.removeAttribute('disabled');
-                btnLastPageGrid2.removeAttribute('disabled');
+                btnFirstPageGrid.setAttribute('disabled', 'disabled');
+                btnPreviousPageGrid.setAttribute('disabled', 'disabled');
+                btnNextPageGrid.removeAttribute('disabled');
+                btnLastPageGrid.removeAttribute('disabled');
             } else if (paytypeCollections.pageIndex === (paytypeCollections.pageCount - 1)) {
-                btnFirstPageGrid2.removeAttribute('disabled');
-                btnPreviousPageGrid2.removeAttribute('disabled');
-                btnLastPageGrid2.setAttribute('disabled', 'disabled');
-                btnNextPageGrid2.setAttribute('disabled', 'disabled');
+                btnFirstPageGrid.removeAttribute('disabled');
+                btnPreviousPageGrid.removeAttribute('disabled');
+                btnLastPageGrid.setAttribute('disabled', 'disabled');
+                btnNextPageGrid.setAttribute('disabled', 'disabled');
             } else {
-                btnFirstPageGrid2.removeAttribute('disabled');
-                btnPreviousPageGrid2.removeAttribute('disabled');
-                btnNextPageGrid2.removeAttribute('disabled');
-                btnLastPageGrid2.removeAttribute('disabled');
+                btnFirstPageGrid.removeAttribute('disabled');
+                btnPreviousPageGrid.removeAttribute('disabled');
+                btnNextPageGrid.removeAttribute('disabled');
+                btnLastPageGrid.removeAttribute('disabled');
             }
-            btnCurrentPageGrid2.innerHTML = (paytypeCollections.pageIndex + 1) + ' / ' + paytypeCollections.pageCount;
+            btnCurrentPageGrid.innerHTML = (paytypeCollections.pageIndex + 1) + ' / ' + paytypeCollections.pageCount;
 
         }
 
@@ -393,14 +394,14 @@
         $(document).ready(function () {
 
             // Navigation button
-            btnFirstPageGrid2 = document.getElementById('btnMoveToFirstPageGrid2');
-            btnPreviousPageGrid2 = document.getElementById('btnMoveToPreviousPageGrid2');
-            btnNextPageGrid2 = document.getElementById('btnMoveToNextPageGrid2');
-            btnLastPageGrid2 = document.getElementById('btnMoveToLastPageGrid2');
-            btnCurrentPageGrid2 = document.getElementById('btnCurrentPageGrid2');
+            btnFirstPageGrid = document.getElementById('btnMoveToFirstPageGrid');
+            btnPreviousPageGrid = document.getElementById('btnMoveToPreviousPageGrid');
+            btnNextPageGrid = document.getElementById('btnMoveToNextPageGrid');
+            btnLastPageGrid = document.getElementById('btnMoveToLastPageGrid');
+            btnCurrentPageGrid = document.getElementById('btnCurrentPageGrid');
             paytypeGrid = new wijmo.grid.FlexGrid('#paytypeCollectionGrid');
             //Collection View
-            getIPaytypeMasterList();
+            getPaytypeMasterList();
 
         });
     </script>
