@@ -10,9 +10,53 @@ namespace ISWebPOS.Controllers
 {
     public class ApiItemController : ApiController
     {
-        private string lastItemCode;
-       
         private Data.webposDataContext db = new Data.webposDataContext();
+
+        // ===========
+        // Get Item
+        // =========== 
+
+        [Route("api/item/search/{id}")]
+        public List<Models.MstItem> GetItem(String id)
+        {
+            var isLocked = true;
+
+            var ID = Convert.ToInt32(id);
+            var item = from d in db.MstItems
+                       where d.Id == ID
+                       select new Models.MstItem
+                       {
+                           Id = d.Id,
+                           ItemCode = d.ItemCode,
+                           BarCode = d.BarCode,
+                           ItemDescription = d.ItemDescription,
+                           Alias = d.Alias,
+                           GenericName = d.GenericName,
+                           Category = d.Category,
+                           SalesAccountId = d.SalesAccountId,
+                           AssetAccountId = d.AssetAccountId,
+                           CostAccountId = d.CostAccountId,
+                           InTaxId = d.InTaxId,
+                           OutTaxId = d.OutTaxId,
+                           UnitId = d.UnitId,
+                           DefaultSupplierId = d.DefaultSupplierId,
+                           Cost = d.Cost,
+                           MarkUp = d.MarkUp,
+                           Price = d.Price,
+                           ImagePath = d.ImagePath,
+                           ReorderQuantity = d.ReorderQuantity,
+                           OnhandQuantity = d.OnhandQuantity,
+                           IsInventory = d.IsInventory,
+                           ExpiryDate = Convert.ToString(d.ExpiryDate),
+                           LotNumber = d.LotNumber,
+                           Remarks = d.Remarks,
+                           DefaultKitchenReport = d.DefaultKitchenReport,
+                           IsPackage = d.IsPackage,
+                           isLocked = d.IsLocked
+                       };
+
+            return item.ToList();
+        }
 
         // ===========
         // LIST Item
@@ -23,42 +67,42 @@ namespace ISWebPOS.Controllers
             var isLocked = true;
 
             var item = from d in db.MstItems
-                           select new Models.MstItem
-                           {
-                               Id = d.Id,
-                               ItemCode = d.ItemCode,
-                               BarCode = d.BarCode,
-                               ItemDescription = d.ItemDescription,
-                               Alias = d.Alias,
-                               GenericName = d.GenericName,
-                               Category = d.Category,
-                               SalesAccountId = d.SalesAccountId,
-                               AssetAccountId = d.AssetAccountId,
-                               CostAccountId = d.CostAccountId,
-                               InTaxId = d.InTaxId,
-                               OutTaxId = d.OutTaxId,
-                               UnitId = d.UnitId,
-                               DefaultSupplierId = d.DefaultSupplierId,
-                               Cost = d.Cost,
-                               MarkUp = d.MarkUp,
-                               Price = d.Price,
-                               ImagePath = d.ImagePath,
-                               ReorderQuantity = d.ReorderQuantity,
-                               OnhandQuantity = d.OnhandQuantity,
-                               IsInventory = d.IsInventory,
-                               ExpiryDate = Convert.ToString(d.ExpiryDate),
-                               LotNumber = d.LotNumber,
-                               Remarks = d.Remarks,
-                               DefaultKitchenReport = d.DefaultKitchenReport,
-                               IsPackage = d.IsPackage,
+                       select new Models.MstItem
+                       {
+                           Id = d.Id,
+                           ItemCode = d.ItemCode,
+                           BarCode = d.BarCode,
+                           ItemDescription = d.ItemDescription,
+                           Alias = d.Alias,
+                           GenericName = d.GenericName,
+                           Category = d.Category,
+                           SalesAccountId = d.SalesAccountId,
+                           AssetAccountId = d.AssetAccountId,
+                           CostAccountId = d.CostAccountId,
+                           InTaxId = d.InTaxId,
+                           OutTaxId = d.OutTaxId,
+                           UnitId = d.UnitId,
+                           DefaultSupplierId = d.DefaultSupplierId,
+                           Cost = d.Cost,
+                           MarkUp = d.MarkUp,
+                           Price = d.Price,
+                           ImagePath = d.ImagePath,
+                           ReorderQuantity = d.ReorderQuantity,
+                           OnhandQuantity = d.OnhandQuantity,
+                           IsInventory = d.IsInventory,
+                           ExpiryDate = Convert.ToString(d.ExpiryDate),
+                           LotNumber = d.LotNumber,
+                           Remarks = d.Remarks,
+                           DefaultKitchenReport = d.DefaultKitchenReport,
+                           IsPackage = d.IsPackage,
 
-                               EntryUserId = d.EntryUserId,
-                               EntryDateTime = Convert.ToString(d.EntryDateTime),
-                               UpdateUserId = d.UpdateUserId,
-                               UpdateDateTime = Convert.ToString(d.UpdateDateTime),
-                               isLocked = isLocked
-            
-                           };
+                           EntryUserId = d.EntryUserId,
+                           EntryDateTime = Convert.ToString(d.EntryDateTime),
+                           UpdateUserId = d.UpdateUserId,
+                           UpdateDateTime = Convert.ToString(d.UpdateDateTime),
+                           isLocked = isLocked
+
+                       };
             return item.ToList();
         }
 
@@ -66,14 +110,13 @@ namespace ISWebPOS.Controllers
         // ADD Item
         // ===========
         [Route("api/item/add")]
-        public string Post(Models.MstItem item)
+        public int Post(Models.MstItem item)
         {
-            
             try
             {
                 var isLocked = true;
                 var identityUserId = User.Identity.GetUserId();
-                var mstUserId = (from d in db.MstUsers where "" + d.Id == identityUserId select d.Id).SingleOrDefault();
+                var mstUserId = 121;// (from d in db.MstUsers where "" + d.Id == identityUserId select d.Id).SingleOrDefault();
                 var date = DateTime.Now;
 
                 Data.MstItem newItem = new Data.MstItem();
@@ -104,35 +147,21 @@ namespace ISWebPOS.Controllers
                 newItem.DefaultKitchenReport = item.DefaultKitchenReport;
                 newItem.IsPackage = item.IsPackage;
 
-                newItem.EntryUserId = 1;
+                newItem.EntryUserId = mstUserId;
                 newItem.EntryDateTime = date;
-                newItem.UpdateUserId = 1;
+                newItem.UpdateUserId = mstUserId;
                 newItem.UpdateDateTime = date;
                 newItem.IsLocked = isLocked;
 
                 db.MstItems.InsertOnSubmit(newItem);
                 db.SubmitChanges();
 
-                lastItemCode = getLastInsertItemCode(newItem.Id);
-
-                return lastItemCode +"";
+                return newItem.Id;
             }
             catch
             {
-                return null;
+                return 0;
             }
-       } 
-
-        public string getLastInsertItemCode(int ID)
-        {
-            string lastItemCode = (from d in db.MstItems where  d.Id == ID select d.ItemCode).SingleOrDefault();
-
-            if (lastItemCode != null)
-            {
-                return null;
-            }
-
-            return lastItemCode;
         }
 
         // ==============
@@ -175,13 +204,13 @@ namespace ISWebPOS.Controllers
                     updateItem.ReorderQuantity = item.ReorderQuantity;
                     updateItem.OnhandQuantity = item.OnhandQuantity;
                     updateItem.IsInventory = item.IsInventory;
-                    updateItem.ExpiryDate = Convert.ToDateTime(item.ExpiryDate);
+                    updateItem.ExpiryDate = Convert.ToDateTime(DateTime.Now);
                     updateItem.LotNumber = item.LotNumber;
                     updateItem.Remarks = item.Remarks;
                     updateItem.DefaultKitchenReport = item.DefaultKitchenReport;
                     updateItem.IsPackage = item.IsPackage;
 
-                    updateItem.UpdateUserId = mstUserId;
+                    updateItem.UpdateUserId = 123;
                     updateItem.UpdateDateTime = date;
                     updateItem.IsLocked = isLocked;
 
@@ -193,7 +222,6 @@ namespace ISWebPOS.Controllers
                 {
                     return Request.CreateResponse(HttpStatusCode.NotFound);
                 }
-
             }
             catch
             {
@@ -207,12 +235,12 @@ namespace ISWebPOS.Controllers
         [Route("api/item/delete/{id}")]
         public HttpResponseMessage Delete(String id)
         {
-            
+
             try
             {
                 var itemId = Convert.ToInt32(id);
                 var items = from d in db.MstItems where d.Id == itemId select d;
-                
+
                 if (items.Any())
                 {
                     db.MstItems.DeleteOnSubmit(items.First());

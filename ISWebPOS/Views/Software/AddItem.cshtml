@@ -1,8 +1,11 @@
 ﻿@{
     ViewBag.Title = "AddItem";
 }
+@Styles.Render("~/Template/Css")
+@Scripts.Render("~/Wijmo/Js")
+
 <!-- ADD THE CLASS sidedar-collapse TO HIDE THE SIDEBAR PRIOR TO LOADING THE SITE -->
-<body class="hold-transition skin-blue sidebar-collapse sidebar-mini">
+<section class="hold-transition skin-blue sidebar-collapse sidebar-mini">
     <!-- Site wrapper -->
     <div class="wrapper">
 
@@ -27,7 +30,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                           
+
                             <!-- Nav tabs -->
                             <div class="card">
                                 <ul class="nav nav-tabs" role="tablist">
@@ -38,10 +41,10 @@
                                 <section class="container">
                                     <!--Buttons-->
                                     <div class="btn-group-horizontal pull-right">
-                                        <a class="btn btn-app" id="lock-key">
+                                        <a class="btn btn-app" id="lock">
                                             <i class="fa fa-lock"></i> Lock
                                         </a>
-                                        <a class="btn  btn-app" id="unlock-key">
+                                        <a class="btn  btn-app" id="unlock">
                                             <i class="fa fa-unlock"></i> Unlock
                                         </a>
                                         <a class="btn btn-app" id="close">
@@ -49,7 +52,7 @@
                                         </a>
                                     </div><!--btn horizontal-->
                                 </section>
-                           
+
                                 <!-- Tab panes -->
                                 <div class="tab-content">
                                     <div role="tabpanel" class="tab-pane active" id="genInfo">
@@ -59,19 +62,19 @@
                                                 <h3 class="box-title" id="genInfo">General Information</h3>
                                             </div><!-- /.box-header -->
                                             <!-- form start -->
-                                            <form class="form-horizontal">
+                                            <form class="form-horizontal" id="add-form">
                                                 <div class="box-body">
-                                                    
+
                                                     <div class="form-group">
                                                         <label for="itemCode" class="col-sm-2 control-label">Item Code</label>
                                                         <div class="col-sm-6">
-                                                            <input type="text" class="form-control itemdis" id="itemCode" placeholder="Item Code">
+                                                            <input type="text" class="form-control" id="itemCode" disabled>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="barCode" class="col-sm-2 control-label">Bar Code (SKU)</label>
                                                         <div class="col-sm-6">
-                                                            <input type="text" class="form-control dis" id="barCode" placeholder="NA">
+                                                            <input type="text" name="barCode" class="form-control dis" id="barCode" placeholder="NA">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
@@ -90,13 +93,13 @@
                                                         <label for="category" class="col-sm-2 control-label">Category</label>
                                                         <div class="col-sm-4">
                                                             <select class="form-control dis" id="category">
-                                                                <option value="0">NA</option>
-                                                                <option value="1">Kitchen</option>
-                                                                <option value="2">Maintenance Supply</option>
-                                                                <option value="3">Fans</option>
-                                                                <option value="4">Lightning</option>
-                                                                <option value="5">Office Supply </option>
-                                                                <option value="6">Food</option>
+                                                                <option value="NA">NA</option>
+                                                                <option value="Kitchen">Kitchen</option>
+                                                                <option value="Maintenance Supply">Maintenance Supply</option>
+                                                                <option value="Fans">Fans</option>
+                                                                <option value="Lightning">Lightning</option>
+                                                                <option value="Office Supply">Office Supply</option>
+                                                                <option value="Food">Food</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -104,25 +107,14 @@
                                                     <div class="form-group">
                                                         <label class="col-sm-2 control-label">Unit</label>
                                                         <div class="col-sm-4">
-                                                            <select class="form-control dis" id="unit">
-                                                                <option value="1">Pair(s)</option>
-                                                                <option value="2">PC(s)</option>
-                                                                <option value="3">Peso</option>
-                                                                <option value="4">Pint(s)</option>
-                                                                <option value="5">Quarts(s)</option>
-                                                                <option value="6">Ream(s)</option>
-                                                                <option value="7">Roll(s)</option>
-                                                            </select>
+                                                            <select class="form-control dis" id="unit"></select>
                                                         </div>
                                                     </div>
                                                     <!-- select -->
                                                     <div class="form-group">
                                                         <label class="col-sm-2 control-label">Default Supplier</label>
                                                         <div class="col-sm-4">
-                                                            <select class="form-control dis" id="supplier">
-                                                                <option>Return from customer</option>
-                                                                <option>BQ Gases</option>
-                                                            </select>
+                                                            <select class="form-control dis" id="supplier"></select>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
@@ -170,19 +162,19 @@
                                                     <div class="form-group">
                                                         <label for="alias" class="col-sm-2 control-label">Expiry Date</label>
                                                         <div class="col-sm-6">
-                                                            <input type="date" class="form-control dis" id="expdate" placeholder="">
+                                                            <input type="date" class="form-control dis" id="expdate">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="alias" class="col-sm-2 control-label">Lot Number</label>
                                                         <div class="col-sm-6">
-                                                            <input type="text" class="form-control dis" id="lotno" placeholder="">
+                                                            <input type="text" class="form-control dis" id="lotno">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="alias" class="col-sm-2 control-label">Remarks</label>
                                                         <div class="col-sm-6">
-                                                            <textarea max-length="500" class="form-control dis" id="remarks"></textarea>`
+                                                            <textarea max-length="500" class="form-control dis" id="remarks"></textarea>
                                                         </div>
                                                     </div>
                                                 </div><!-- /.box-body -->
@@ -210,8 +202,8 @@
                                                     <label for="category" class="col-sm-2 control-label">Sales Account</label>
                                                     <div class="col-sm-4">
                                                         <select class="form-control">
-                                                            <option value="sales">Sales</option>
-                                                            <option value="acountname">Account Name</option>
+                                                            <option>Sales</option>
+                                                            <option>Account Name</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -219,8 +211,8 @@
                                                     <label for="category" class="col-sm-2 control-label">Asset Account</label>
                                                     <div class="col-sm-4">
                                                         <select class="form-control">
-                                                            <option value="sales">Sales</option>
-                                                            <option value="accountname">Account Name</option>
+                                                            <option>Sales</option>
+                                                            <option>Account Name</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -309,49 +301,65 @@
                                                 </div>
                                             </div>
                                         </div>
-                                   </div>
-                                            </div>
-                                        </div>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!---End Tab-->
             </section>
         </div><!-- ./wrapper -->
-        <!-- ===================Main Footer============================ -->
-        @Html.Partial("_MainFooter")
-        </div>
-    <!--SUCCESS-WARNING MODAL-->
-    <div class="modal fade" id="loadingModal" tabindex="-1" role="dialog" aria-labelledby="Loading..." aria-hidden="true" data-backdrop="static" data-keyboard="false">
-        <div class=" modal-dialog modal-sm">
-            
-            <div class="modal-content">
-                <div class="modal-body">
-                  <div id="msg-txt">
+        <!--SUCCESS-WARNING MODAL-->
+        <div class="modal fade" id="loadingModal" tabindex="-1" role="dialog" aria-labelledby="Loading..." aria-hidden="true" data-backdrop="static" data-keyboard="false">
+            <div class=" modal-dialog modal-sm">
 
-                  </div>
-                </div>
-                <div id="btn" style="padding:10px">
-                    <button id="msg-btn" class="btn btn-warning">Close</button>
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div id="msg-txt">
+
+                        </div>
+                    </div>
+                    <div id="btn" style="padding:10px">
+                        <button id="msg-btn" class="btn btn-warning">Close</button>
+                    </div>
                 </div>
             </div>
         </div>
+        <!-- END OF SUCCESS-WARNING MODAL -->
+        <!-- ===================Main Footer============================ -->
+        @Html.Partial("_MainFooter")
     </div>
-    <!-- END OF SUCCESS-WARNING MODAL -->
+    <script src="~/Scripts/custom/item.js?1500"></script>
+    <script>
+        $(document).ready(function () {
 
-  
-        <!-- jQuery 2.1.4 -->
-        <script src="../plugins/jQuery/jQuery-2.1.4.min.js"></script>
-        <!-- Bootstrap 3.3.5 -->
-        <script src="../bootstrap/js/bootstrap.min.js"></script>
-        <!-- SlimScroll -->
-        <script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
-        <!-- FastClick -->
-        <script src="../plugins/fastclick/fastclick.min.js"></script>
-        <!-- AdminLTE App -->
-        <script src="../dist/js/app.min.js"></script>
-        <!-- AdminLTE for demo purposes -->
-        <script src="../dist/js/demo.js"></script>
+            loadUnits();
+            loadSupplier();
+            $('.itemdis').prop('disabled', true);
+            $('.dis').prop('disabled', true);
+            $('#itemCode').val(localStorage.getItem("lastId"));
+
+            $('#lock').click(function () {
+                $('.dis').prop('disabled', true);
+                addItem();
+            });
+
+            $('#unlock').click(function () {
+                $('.dis').prop('disabled', false);
+                $('#barCode').focus();
+            });
+
+            $('#close').click(function () {
+                window.location.href = isHost + "/Software/Item";
+            });
+
+            $('#msg-btn').click(function () {
+                window.location.href = isHost + "/Software/Item";
+            });
+        });
+    </script>
+</section>
 
 
 

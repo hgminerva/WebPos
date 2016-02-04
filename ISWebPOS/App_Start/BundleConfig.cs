@@ -13,7 +13,6 @@ namespace ISWebPOS
             // =============
             bundles.Add(new StyleBundle("~/Template/Css").Include(
                 "~/bootstrap/css/bootstrap.min.css",
-                "~/font-awesome/css/font-awesome.css",
                 "~/font-awesome/css/font-awesome.min.css",
                 "~/Content/ionicons.min.css",
                 "~/dist/css/AdminLTE.min.css",
@@ -27,18 +26,13 @@ namespace ISWebPOS
             bundles.Add(new ScriptBundle("~/Template/Js").Include(
                 "~/plugins/jQuery/jQuery-2.1.4.min.js",
                 "~/Scripts/jquery.validate.min.js",
-                "~/Scripts/item-validate.js",
-                "~/Scripts/item.js",
-                "~/Scripts/jquery.cookie.js",
                 "~/bootstrap/js/bootstrap.min.js",
                 "~/plugins/slimScroll/jquery.slimscroll.min.js",
                 "~/plugins/fastclick/fastclick.min.js",
                 "~/plugins/iCheck/icheck.min.js",
                 "~/dist/js/demo.js",
-                "~/Scripts/respond.js",
                 "~/Scripts/respond.min.js",
                 "~/Scripts/html5shiv.min.js",
-                "~/Scripts/toastr.js",
                 "~/Scripts/toastr.min.js",
                 "~/dist/js/app.min.js",
                 "~/dist/js/dashboard.js",
@@ -49,8 +43,8 @@ namespace ISWebPOS
             // Software JS
             // ============
             bundles.Add(new ScriptBundle("~/Software/Js").Include(
-            
-                
+
+
                 ));
 
 
