@@ -2,11 +2,7 @@
 @{
     ViewBag.Title = "AddCustomer";
 }
-@Styles.Render("~/Template/Css")
-@Scripts.Render("~/Template/Js")
-@Scripts.Render("~/Wijmo/Js")
-<!DOCTYPE html>
-<html>
+
 <!-- ADD THE CLASS sidedar-collapse TO HIDE THE SIDEBAR PRIOR TO LOADING THE SITE -->
 <body class="hold-transition skin-blue sidebar-collapse sidebar-mini">
     <!-- Site wrapper -->
@@ -79,7 +75,7 @@
                                 <div class="form-group">
                                     <label for="contactNo" class="col-sm-2 control-label">Contact No</label>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control" id="contactNo" placeholder="NA">
+                                        <input type="text" class="form-control" id="contactNumber" placeholder="NA">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -89,7 +85,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label">Term</label>
+                                    <label class="col-sm-2 control-label" id="term">Term</label>
                                     <div class="col-sm-4">
                                         <select class="form-control">
                                             <option>15 days</option>
@@ -103,13 +99,13 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="tin" class="col-sm-2 control-label">TIN</label>
+                                    <label for="tin" class="col-sm-2 control-label" id="tin">TIN</label>
                                     <div class="col-sm-6">
                                         <input type="text" class="form-control" id="tin" placeholder="NA">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label">AR Account</label>
+                                    <label class="col-sm-2 control-label" id="arAccount">AR Account</label>
                                     <div class="col-sm-4">
                                         <select class="form-control">
                                             <option>Account</option>
@@ -121,25 +117,25 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label">With Reward</label>
+                                    <label class="col-sm-2 control-label" id="reward">With Reward</label>
                                     <div class="col-sm-6">
                                         <input type="checkbox" class="minimal" checked>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="reCardNo" class="col-sm-2 control-label">Reward Card No</label>
+                                    <label for="reCardNo" class="col-sm-2 control-label" id="rewardCardNo">Reward Card No</label>
                                     <div class="col-sm-6">
                                         <input type="text" class="form-control" id="reCardNo" placeholder="">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="rewConversion" class="col-sm-2 control-label">Reward Conversion</label>
+                                    <label for="rewConversion" class="col-sm-2 control-label" id="rewardConversion">Reward Conversion</label>
                                     <div class="col-sm-6">
                                         <input type="text" class="form-control" id="rewConversion" placeholder="0.0">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label">Default Price</label>
+                                    <label class="col-sm-2 control-label" id="defaultPrice">Default Price</label>
                                     <div class="col-sm-4">
                                         <select class="form-control">
                                             <option>CLASS A</option>
@@ -184,20 +180,113 @@
         <!-- ===================Main Footer============================ -->
         @Html.Partial("_MainFooter")
     </div>
+    <script>
+        // ==================
+        // Lock Button
+        // ==================
+        function cmdBranchSaveButton_OnClick() {
+            var obj = new Object();
+            
+            obj.Customer = document.getElementById('customer').value;
+            obj.Address = document.getElementById('address').value;
+            obj.ContactPerson = document.getElementById('contactPerson').value;
+            obj.ContactNumber = document.getElementById('contactNumber').value;
+            obj.CreditLimit = document.getElementById('creditLimit').value;
+            obj.Term = document.getElementById('term').value;
+            obj.Tin = document.getElementById('tin').value;
+            obj.ArAccount = document.getElementById('arAccount').value;
+            obj.Reward = document.getElementById('reward').value;
+            obj.RewardCardNo = document.getElementById('rewardCardNo').value;
+            obj.RewardConversion = document.getElementById('rewardConversion').value;
+            obj.DefaultPrice = document.getElementById('defaultPrice').value;
+            
 
-    <!-- jQuery 2.1.4 -->
-    <script src="../plugins/jQuery/jQuery-2.1.4.min.js"></script>
-    <!-- Bootstrap 3.3.5 -->
-    <script src="../bootstrap/js/bootstrap.min.js"></script>
-    <!-- SlimScroll -->
-    <script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
-    <!-- FastClick -->
-    <script src="../plugins/fastclick/fastclick.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="../dist/js/app.min.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="../dist/js/demo.js"></script>
+            var data = JSON.stringify(obj);
+
+            var isValid = true;
+            $('.requiredBranch').each(function () {
+                if ($.trim($(this).val()) == '') {
+                    isValid = false;
+                    $(this).css({
+                        "border": "2px solid red",
+                        "transition": "border 1s ease 0s"
+                    });
+                }
+                else {
+                    $(this).css({
+                        "border": "",
+                    });
+                }
+            });
+            if (isValid == false) {
+                toastr.error("Invalid Entry");
+                e.preventDefault();
+            }
+            else {
+                $("#cmdSaveBranchButton").prop("disabled", true);
+                $("#cmdBranchDetailCloseButton").prop("disabled", true);
+
+                if (branchId == 0) {
+                    $.ajax({
+                        type: "POST",
+                        url: '/api/customer/addCustomer',
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        data: data,
+                        statusCode: {
+                            200: function () {
+                                $("#cmdSaveBranchButton").prop("disabled", true);
+                                $("#cmdBranchDetailCloseButton").prop("disabled", true);
+                                toastr.success("Successfully Saved");
+                                window.setTimeout(function () {
+                                    location.reload()
+                                }, 1000);
+                            },
+                            404: function () {
+                                toastr.error("Can't Save");
+                                $("#cmdSaveBranchButton").prop("disabled", false);
+                                $("#cmdBranchDetailCloseButton").prop("disabled", false);
+                            },
+                            400: function () {
+                                toastr.error("Bad Request");
+                                $("#cmdSaveBranchButton").prop("disabled", false);
+                                $("#cmdBranchDetailCloseButton").prop("disabled", false);
+                            }
+                        }
+                    });
+                } else {
+                    $.ajax({
+                        type: "PUT",
+                        url: '/api/customer/updateCustomer',
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        data: data,
+                        statusCode: {
+                            200: function () {
+                                $("#cmdSaveBranchButton").prop("disabled", true);
+                                $("#cmdBranchDetailCloseButton").prop("disabled", true);
+                                toastr.success("Successfully Updated");
+                                window.setTimeout(function () {
+                                    location.reload()
+                                }, 1000);
+                            },
+                            404: function () {
+                                toastr.error("Can't Update");
+                                $("#cmdSaveBranchButton").prop("disabled", false);
+                                $("#cmdBranchDetailCloseButton").prop("disabled", false);
+                            },
+                            400: function () {
+                                toastr.error("Bad Request");
+                                $("#cmdSaveBranchButton").prop("disabled", false);
+                                $("#cmdBranchDetailCloseButton").prop("disabled", false);
+                            }
+                        }
+                    });
+                }
+            }
+        }
+
+    </script>
 </body>
-</html>
 
 
