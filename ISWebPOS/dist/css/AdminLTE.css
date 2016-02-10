@@ -733,6 +733,7 @@ a:focus {
   .control-sidebar-open .main-footer {
     margin-right: 230px;
   }
+
 }
 .nav-tabs.control-sidebar-tabs > li:first-of-type > a,
 .nav-tabs.control-sidebar-tabs > li:first-of-type > a:hover,
@@ -1167,6 +1168,9 @@ a:focus {
     margin-top: -8px;
     line-height: 10px;
   }
+    .btn-content{
+        margin-top:500px;
+    }
 }
 /* Add fade animation to dropdown menus by appending
  the class .animated-dropdown-menu to the .dropdown-menu ul (or ol)*/

@@ -2,6 +2,21 @@
 @{
     ViewBag.Title = "PurchaseOrder";
 }
+<style>
+    .btns-wrapper {
+        display: block;
+        position: absolute;
+        top: 45px;
+        left: 0px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .btns {
+        display: block;
+        position: relative;
+    }
+</style>
 <!-- ADD THE CLASS sidedar-collapse TO HIDE THE SIDEBAR PRIOR TO LOADING THE SITE -->
 <body class="hold-transition skin-blue sidebar-collapse sidebar-mini">
     <!-- Site wrapper -->
@@ -15,13 +30,41 @@
 
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
-            <section class="content-header">
-                <h1 class="fa fa-shopping-basket">
-                    Sales List
-                </h1>
-            </section>
-                <section class="container">
-                    <div class="btn-group-horizontal pull-right">
+
+            <div class="content-wrapper">
+                <div class="content-header container-fluid" id="content">
+                    <div class="row" style="">
+                        <div class="col-md-6">
+                            <div class="box" style="margin-top: 60px;">
+                                <div class="box-header">
+                                    <h3 class="box-title">Block</h3>
+                                </div>
+                                <div class="box-body">
+
+                                </div>
+                            </div><!-- /.box -->
+
+                        </div>
+                        <div class="col-md-6">
+                            <div class="box" style="margin-top: 60px;">
+                                <div class="box-header">
+                                    <h3 class="box-title">Block</h3>
+                                </div>
+                                <div class="box-body">
+
+                                </div>
+                            </div><!-- /.box -->
+
+                        </div>
+                    </div>
+                </div>
+                <section class="content-header btns-wrapper" id="">
+                    <section class="content-header pull-left" style="margin-left:20px;">
+                        <h1 class="fa fa-shopping-basket">
+                            Sales List
+                        </h1>
+                    </section>
+                    <div class="btn-group-horizontal pull-right btns" id="">
                         <a class="btn btn-app" href="../Software/Sales">
                             <i class="fa fa-shopping-basket"></i><strong>F2</strong> Sales
                         </a>
@@ -39,36 +82,11 @@
                         </a>
                     </div><!--btn horizontal-->
                 </section>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="box">
-                                <div class="box-header">
-                                    <h3 class="box-title">Block</h3>
-                                </div>
-                                <div class="box-body">
-
-                                </div>
-                            </div><!-- /.box -->
-
-                        </div>
-                        <div class="col-md-6">
-                            <div class="box">
-                                <div class="box-header">
-                                    <h3 class="box-title">Block</h3>
-                                </div>
-                                <div class="box-body">
-
-                                </div>
-                            </div><!-- /.box -->
-
-                        </div>
-                    </div>
-
-                </section>
-        </div><!-- ./wrapper -->
-        <!-- ===================Main Footer============================ -->
-        @Html.Partial("_MainFooter")
-    </div>
+            </div>
+                </div><!-- ./wrapper -->
+                <!-- ===================Main Footer============================ -->
+                @Html.Partial("_MainFooter")
+            </div>
 </body>
 
 

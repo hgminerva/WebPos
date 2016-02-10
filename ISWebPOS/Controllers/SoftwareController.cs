@@ -214,5 +214,9 @@ namespace ISWebPOS.Controllers
         {
             return View();
         }
+        public ActionResult UploadItem()
+        {
+            return View();
+        }
     }
 }

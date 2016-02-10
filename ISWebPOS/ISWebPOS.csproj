@@ -1256,6 +1256,7 @@
     <Content Include="plugins\datatables\extensions\TableTools\Readme.md" />
     <Content Include="plugins\input-mask\phone-codes\phone-be.json" />
     <Content Include="plugins\input-mask\phone-codes\phone-codes.json" />
+    <Content Include="Scripts\btn-fixed.js" />
     <Content Include="Scripts\html5shiv.min.js" />
     <Content Include="Scripts\item-validate.js" />
     <Content Include="Scripts\item.js" />
@@ -1527,6 +1528,7 @@
     <Content Include="Views\Software\DebitCreditMemo.cshtml" />
     <Content Include="Views\Software\AddDebitCreditMemo.cshtml" />
     <Content Include="Views\Software\Utilities.cshtml" />
+    <Content Include="Views\Software\UploadItem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

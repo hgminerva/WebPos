@@ -3,5 +3,322 @@
     ViewBag.Title = "Utilities";
 }
 
-<h2>Utilities</h2>
+@{
+    ViewBag.Title = "SystemTable";
+}
+
+<!-- ADD THE CLASS sidedar-collapse TO HIDE THE SIDEBAR PRIOR TO LOADING THE SITE -->
+<body class="hold-transition skin-blue sidebar-collapse sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+
+        <!-- ===================Main Header============================ -->
+        @Html.Partial("_MainHeader")
+        <!-- ===================Main Sidebar============================ -->
+        @Html.Partial("_MainSidebar")
+        <!-- =============================================== -->
+
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1 class="fa fa-wrench">
+                Utilities
+                </h1>
+                    <!--Buttons-->
+                    <div class="btn-group-horizontal pull-right">
+                        <a class="btn btn-app">
+                            <i class="fa fa-close"></i> Close
+                        </a>
+                    </div><!--btn horizontal-->
+                <!---Menu Tab-->
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <!-- Nav tabs -->
+                            <div class="card">
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li class="tab" id="t1" role="presentation"><a href="#upCustomer" aria-controls="upCustomer" role="tab" data-toggle="tab">Upload Customer</a></li>
+                                    <li class="tab" id="t2" role="presentation"><a href="#upSupplier" aria-controls="upSupplier" role="tab" data-toggle="tab">Upload Supplier</a></li>
+                                    <li class="tab" id="t3" role="presentation"><a href="#upItem" aria-controls="upItem" role="tab" data-toggle="tab">Upload Item</a></li>
+                                    <li class="tab" id="t4" role="presentation"><a href="#saveAndUpdate" aria-controls="saveAndUpdate" role="tab" data-toggle="tab">Save and Update Settings</a></li>
+                                    <li class="tab" id="t5" role="presentation"><a href="#truncate" aria-controls="truncate" role="tab" data-toggle="tab">Truncate Transaction</a></li>
+                                    <li class="tab" id="t6" role="presentation"><a href="#inventoryClosing" aria-controls="inventoryClosing" role="tab" data-toggle="tab">Inventory Closing</a></li>
+                                    <li class="tab" id="t7" role="presentation"><a href="#inventoryUpdate" aria-controls="inventoryUpdate" role="tab" data-toggle="tab">Inventory Update</a></li>
+                                </ul>
+                                        <!-- Tab panes -->
+                                        <div class="tab-content">
+
+                                            <div role="tabpanel" class="tab-pane" id="upCustomer">
+                                                <div class="box box-primary">
+                                                    <form class="form-horizontal">
+                                                        <div class="box-body">
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group">
+                                                                        <label for="filenameAndPath" class="col-sm-4 control-label">Filename and Path</label>
+                                                                        <div class="col-sm-6">
+                                                                            <input type="text" class="form-control" id="filenameAndPath" placeholder="">
+                                                                        </div>
+                                                                        <span class="input-group-btn">
+                                                                            <button class="btn btn-info btn-flat" type="button">OPEN</button>
+                                                                        </span>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="defaultTerm" class="col-sm-4 control-label">Default Term</label>
+                                                                        <div class="col-sm-6">
+                                                                            <input type='text' ... list='listid'>
+                                                                            <datalist id='listid'>
+                                                                                <option label='label1' value='value1'></option>
+                                                                                <option label='label2' value='value2'></option>
+                                                                                    ...
+                                                                            </datalist>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="defaultTerm" class="col-sm-4 control-label">Default Account</label>
+                                                                        <div class="col-sm-6">
+                                                                            <input type='text' ... list='listid'>
+                                                                            <datalist id='listid'>
+                                                                                <option label='label1' value='value1'>
+                                                                                <option label='label2' value='value2'>
+                                                                                    ...
+                                                                            </datalist>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="btn-group-horizontal">
+                                                                        <button type="button" class="btn btn-primary btn-flat">CREATE</button>
+                                                                        <button type="button" class="btn btn-primary btn-flat">UPLOAD</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                    </div>
+                                                </div>
+                                                    <div role="tabpanel" class="tab-pane" id="upSupplier">
+                                                        <div class="box box-primary">
+                                                            <form class="form-horizontal">
+                                                                <div class="box-body">
+                                                                    <div class="row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="filenameAndPath" class="col-sm-4 control-label">Filename and Path</label>
+                                                                                <div class="col-sm-6">
+                                                                                    <input type="text" class="form-control" id="filenameAndPath" placeholder="">
+                                                                                </div>
+                                                                                <span class="input-group-btn">
+                                                                                    <button class="btn btn-info btn-flat" type="button">OPEN</button>
+                                                                                </span>
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <label for="defaultTerm" class="col-sm-4 control-label">Default Term</label>
+                                                                                <div class="col-sm-6">
+                                                                                    <input type='text' ... list='listid'>
+                                                                                    <datalist id='listid'>
+                                                                                        <option label='label1' value='value1'>
+                                                                                        <option label='label2' value='value2'>
+                                                                                            ...
+                                                                                    </datalist>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <label for="defaultTerm" class="col-sm-4 control-label">Default Account</label>
+                                                                                <div class="col-sm-6">
+                                                                                    <input type='text' ... list='listid'>
+                                                                                    <datalist id='listid'>
+                                                                                        <option label='label1' value='value1'>
+                                                                                        <option label='label2' value='value2'>
+                                                                                            ...
+                                                                                    </datalist>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="btn-group-horizontal">
+                                                                                <button type="button" class="btn btn-primary btn-flat">CREATE</button>
+                                                                                <button type="button" class="btn btn-primary btn-flat">UPLOAD</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                    <div role="tabpanel" class="tab-pane" id="upItem">
+                                                        <div class="box box-primary">
+                                                            <form class="form-horizontal">
+                                                                <div class="box-body">
+                                                                    <div class="row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="filenameAndPath" class="col-sm-4 control-label">Filename and Path</label>
+                                                                                <div class="col-sm-6">
+                                                                                    <input type="text" class="form-control" id="filenameAndPath" placeholder="">
+                                                                                </div>
+                                                                                <span class="input-group-btn">
+                                                                                    <button class="btn btn-info btn-flat" type="button">OPEN</button>
+                                                                                </span>
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <label for="defaultTerm" class="col-sm-4 control-label">Default Term</label>
+                                                                                <div class="col-sm-6">
+                                                                                    <input type='text' ... list='listid'>
+                                                                                    <datalist id='listid'>
+                                                                                        <option label='label1' value='value1'>
+                                                                                        <option label='label2' value='value2'>
+                                                                                            ...
+                                                                                    </datalist>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <label for="defaultSalesAcct" class="col-sm-4 control-label">Default Sales Acount</label>
+                                                                                <div class="col-sm-6">
+                                                                                    <input type='text' ... list='listid'>
+                                                                                    <datalist id='listid'>
+                                                                                        <option label='label1' value='value1'>
+                                                                                        <option label='label2' value='value2'>
+                                                                                            ...
+                                                                                    </datalist>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <label for="defaultAssetAcct" class="col-sm-4 control-label">Default Asset Acount</label>
+                                                                                <div class="col-sm-6">
+                                                                                    <input type='text' ... list='listid'>
+                                                                                    <datalist id='listid'>
+                                                                                        <option label='label1' value='value1'>
+                                                                                        <option label='label2' value='value2'>
+                                                                                            ...
+                                                                                    </datalist>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <label for="defaultCostAcct" class="col-sm-4 control-label">Default Cost Acount</label>
+                                                                                <div class="col-sm-6">
+                                                                                    <input type='text' ... list='listid'>
+                                                                                    <datalist id='listid'>
+                                                                                        <option label='label1' value='value1'>
+                                                                                        <option label='label2' value='value2'>
+                                                                                            ...
+                                                                                    </datalist>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <label for="defaultPurchaseVat" class="col-sm-4 control-label">Default Purchase VAT</label>
+                                                                                <div class="col-sm-6">
+                                                                                    <input type='text' ... list='listid'>
+                                                                                    <datalist id='listid'>
+                                                                                        <option label='label1' value='value1'>
+                                                                                        <option label='label2' value='value2'>
+                                                                                            ...
+                                                                                    </datalist>
+                                                                                </div>
+                                                                            </div><div class="form-group">
+                                                                                <label for="defaultSalesVat" class="col-sm-4 control-label">Default Sales VAT</label>
+                                                                                <div class="col-sm-6">
+                                                                                    <input type='text' ... list='listid'>
+                                                                                    <datalist id='listid'>
+                                                                                        <option label='label1' value='value1'>
+                                                                                        <option label='label2' value='value2'>
+                                                                                            ...
+                                                                                    </datalist>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="btn-group-horizontal">
+                                                                                <button type="button" class="btn btn-primary btn-flat">CREATE</button>
+                                                                                <button type="button" class="btn btn-primary btn-flat">UPLOAD</button>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            @Html.Partial("UploadItem")
+                                                                        </div>
+                                                                </div>
+                                                            </div>
+                                                            </form>
+                                                        </div>  
+                                                    </div><!---End of tax tab--->
+                                                    <div role="tabpanel" class="tab-pane" id="saveAndUpdate">
+                                                        <h1>Save and Update Settings</h1>
+                                                    </div><!---End of unit tab--->
+                                                    <div role="tabpanel" class="tab-pane" id="truncate">
+                                                        <h1>Truncate Transaction</h1>
+                                                    </div><!---End of period tab--->
+                                                    <div role="tabpanel" class="tab-pane" id="inventoryClosing">
+                                                        <h1>Inventory Closing</h1>
+                                                    </div><!---End of terminal tab--->
+                                                    <div role="tabpanel" class="tab-pane" id="inventoryUpdate">
+                                                        <h1>Inventory Update</h1>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    </div>
+                    </div>
+                </div>
+                <!---End Tab-->
+            </section>
+        </div><!-- ./wrapper -->
+        <!-- ===================Main Footer============================ -->
+        @Html.Partial("_MainFooter")
+    </div>
+    <script>
+    $(document).ready(function () {
+
+        $("#t1").addClass("active");
+        $("#upCustomer").addClass("active");
+
+
+        $("t1").click(function () {
+            $(".tab").removeClass("active");
+            $(".tab-pane").removeClass("active");
+            $(this).addClass("active");
+            $("#upCustomer").addClass("active");
+            $("#upCustomer").boxRefresh();
+
+        });
+        $("t2").click(function () {
+            $(".tab").removeClass("active");
+            $(".tab-pane").removeClass("active");
+            $(this).addClass("active");
+            $("#upSupplier").addClass("active");
+
+
+        });
+        $("t3").click(function () {
+            $(".tab").removeClass("active");
+            $(".tab-pane").removeClass("active");
+            $(this).addClass("active");
+            $("#upItem").addClass("active");
+
+        });
+        $("t4").click(function () {
+            $(".tab").removeClass("active");
+            $(".tab-pane").removeClass("active");
+            $(this).addClass("active");
+            $("#saveAndUpload").addClass("active");
+        });
+        $("t5").click(function () {
+            $(".tab").removeClass("active");
+            $(".tab-pane").removeClass("active");
+            $(this).addClass("active");
+            $("#truncate").addClass("active");
+        });
+        $("t6").click(function () {
+            $(".tab").removeClass("active");
+            $(".tab-pane").removeClass("active");
+            $(this).addClass("active");
+            $("#inventoryClosing").addClass("active");
+        });
+        $("t7").click(function () {
+            $(".tab").removeClass("active");
+            $(".tab-pane").removeClass("active");
+            $(this).addClass("active");
+            $("#inventoryUpdate").addClass("active");
+        });
+    });
+    </script>
+</body>
+
+
+
+
 
