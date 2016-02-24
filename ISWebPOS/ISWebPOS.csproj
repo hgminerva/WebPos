@@ -414,6 +414,8 @@
     <Content Include="dist\img\credit\visa.png" />
     <Content Include="dist\img\default-50x50.gif" />
     <Content Include="dist\img\icons.png" />
+    <Content Include="dist\img\innosofticon.ico" />
+    <Content Include="dist\img\innosofticon.png" />
     <Content Include="dist\img\photo1.png" />
     <Content Include="dist\img\photo2.png" />
     <Content Include="dist\img\photo3.jpg" />

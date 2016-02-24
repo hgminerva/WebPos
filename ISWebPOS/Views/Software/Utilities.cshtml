@@ -87,7 +87,7 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="btn-group-horizontal">
-                                                                        <button type="button" class="btn btn-primary btn-flat">CREATE</button>
+                                                                        <button type="button" class="btn btn-primary btn-flat">CREATE FILE</button>
                                                                         <button type="button" class="btn btn-primary btn-flat">UPLOAD</button>
                                                                     </div>
                                                                 </div>
@@ -134,7 +134,7 @@
                                                                                 </div>
                                                                             </div>
                                                                             <div class="btn-group-horizontal">
-                                                                                <button type="button" class="btn btn-primary btn-flat">CREATE</button>
+                                                                                <button type="button" class="btn btn-primary btn-flat">CREATE FILE</button>
                                                                                 <button type="button" class="btn btn-primary btn-flat">UPLOAD</button>
                                                                             </div>
                                                                         </div>
@@ -225,7 +225,7 @@
                                                                             </div>
 
                                                                             <div class="btn-group-horizontal">
-                                                                                <button type="button" class="btn btn-primary btn-flat">CREATE</button>
+                                                                                <button type="button" class="btn btn-primary btn-flat">CREATE FILE</button>
                                                                                 <button type="button" class="btn btn-primary btn-flat">UPLOAD</button>
                                                                             </div>
                                                                         </div>
@@ -236,18 +236,68 @@
                                                             </div>
                                                             </form>
                                                         </div>  
-                                                    </div><!---End of tax tab--->
+                                                    </div><!---End of  tab--->
                                                     <div role="tabpanel" class="tab-pane" id="saveAndUpdate">
-                                                        <h1>Save and Update Settings</h1>
-                                                    </div><!---End of unit tab--->
+                                                        <div class="btn-group-horizontal">
+                                                            <button type="button" class="btn btn-primary btn-flat">SAVE</button>
+                                                            <button type="button" class="btn btn-primary btn-flat">UPDATE</button>
+                                                        </div>
+                                                    </div><!---End of save and updates tab--->
                                                     <div role="tabpanel" class="tab-pane" id="truncate">
-                                                        <h1>Truncate Transaction</h1>
-                                                    </div><!---End of period tab--->
-                                                    <div role="tabpanel" class="tab-pane" id="inventoryClosing">
-                                                        <h1>Inventory Closing</h1>
-                                                    </div><!---End of terminal tab--->
+                                                        <div class="btn-group-horizontal">
+                                                            <button type="button" class="btn btn-primary btn-flat">TRUNCATE</button>
+                                                        </div>
+                                                    </div><!---End of truncate tab--->
+                                                 <div role="tabpanel" class="tab-pane" id="inventoryClosing">
+                                                     <div class="row">
+                                                         <div class="col-md-6">
+                                                           <div class="form-group">
+                                                             <label for="closingDate" class="">Closing Date</label>
+                                                                 <div class="input-group margin">
+                                                                     <input type="text" class="form-control">
+                                                                     <span class="input-group-btn">
+                                                                         <button class="btn btn-info btn-flat" type="button">CLOSE INVENTORY</button>
+                                                                     </span>
+                                                                 </div><!-- /input-group -->
+                                                             </div>
+                                                             <div class="form-group">
+                                                                 <label for="inventoryDate" class="col-sm-4 control-label">Inventory Date</label>
+                                                                 <div class="col-sm-6">
+                                                                     <input type='text' ... list='listid'>
+                                                                     <datalist id='listid'>
+                                                                         <option label='label1' value='value1'></option>
+                                                                         <option label='label2' value='value2'></option>
+                                                                         ...
+                                                                     </datalist>
+                                                                 </div>
+                                                             </div>
+                                                         </div>
+                                                     </div>
+                                                    </div><!---End of closing date tab--->
                                                     <div role="tabpanel" class="tab-pane" id="inventoryUpdate">
-                                                        <h1>Inventory Update</h1>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group margin">
+                                                                    <label for="item" class="col-sm-4 control-label">Item</label>
+                                                                    <div class="col-sm-6">
+                                                                        <input type='text' ... list='listid'>
+                                                                        <datalist id='listid'>
+                                                                            <option label='label1' value='value1'></option>
+                                                                            <option label='label2' value='value2'></option>
+                                                                            ...
+                                                                        </datalist>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <div class="input-group margin">
+                                                                        <span class="input-group-btn">
+                                                                            <button class="btn btn-info btn-flat" type="button">UPDATE</button>
+                                                                        </span>
+                                                                        <input type="text" class="form-control">
+                                                                    </div><!-- /input-group -->
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
