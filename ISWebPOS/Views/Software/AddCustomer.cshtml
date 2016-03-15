@@ -2,13 +2,8 @@
 @{
     ViewBag.Title = "AddCustomer";
 }
-@Styles.Render("~/Template/Css")
-@Scripts.Render("~/Template/Js")
-@Scripts.Render("~/Wijmo/Js")
-<!DOCTYPE html>
-<html>
 <!-- ADD THE CLASS sidedar-collapse TO HIDE THE SIDEBAR PRIOR TO LOADING THE SITE -->
-<body class="hold-transition skin-blue sidebar-collapse sidebar-mini">
+<section class="hold-transition skin-blue sidebar-collapse sidebar-mini">
     <!-- Site wrapper -->
     <div class="wrapper">
 
@@ -39,13 +34,13 @@
                                 <section class="container">
                                     <!--Buttons-->
                                     <div class="btn-group-horizontal pull-right">
-                                        <a class="btn btn-app">
+                                        <a class="btn btn-app" id="lock">
                                             <i class="fa fa-lock"></i> Lock
                                         </a>
-                                        <a class="btn  btn-app">
+                                        <a class="btn  btn-app" id="unlock">
                                             <i class="fa fa-unlock"></i> Unlock
                                         </a>
-                                        <a class="btn btn-app">
+                                        <a class="btn btn-app" id="close">
                                             <i class="fa fa-close"></i> Close
                                         </a>
                                     </div><!--btn horizontal-->
@@ -55,98 +50,98 @@
                     </div>
                     <div class="box box-primary">
                         <!-- form start -->
-                        <form class="form-horizontal">
+                        <form class="form-horizontal" action="" method="post" id="cust-form" >
                             <div class="box-body">
 
                                 <div class="form-group">
                                     <label for="customer" class="col-sm-2 control-label">Customer</label>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control" id="customer" placeholder="NA">
+                                        <input type="text" class="form-control dis" id="customer" placeholder="NA">
                                     </div>
+                                    <label id="cust-err" class="col-sm-2 control-label err" style="font-size:smaller;color:orangered;">Required field</label>
                                 </div>
                                 <div class="form-group">
                                     <label for="address" class="col-sm-2 control-label">Address</label>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control" id="address" placeholder="NA">
+                                        <input type="text" class="form-control dis" id="address" placeholder="NA">
                                     </div>
+                                    <label id="add-err" class="col-sm-2 control-label err" style="font-size:smaller;color:orangered;">Required field</label>
                                 </div>
                                 <div class="form-group">
                                     <label for="contactPerson" class="col-sm-2 control-label">Contact Person</label>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control" id="contactPerson" placeholder="NA">
+                                        <input type="text" class="form-control dis" id="contactPerson" placeholder="NA">
                                     </div>
+                                    <label id="contp-err" class="col-sm-2 control-label err" style="font-size:smaller;color:orangered;">Required field</label>
                                 </div>
                                 <div class="form-group">
                                     <label for="contactNo" class="col-sm-2 control-label">Contact No</label>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control" id="contactNo" placeholder="NA">
+                                        <input type="text" class="form-control dis" id="contactNo" placeholder="NA">
                                     </div>
+                                    <label id="contno-err" class="col-sm-2 control-label err" style="font-size:smaller;color:orangered;">Required field</label>
                                 </div>
                                 <div class="form-group">
                                     <label for="creditLimit" class="col-sm-2 control-label">Credit Limit</label>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control" id="creditLimit" placeholder="0.0">
+                                        <input type="text" class="form-control dis" id="creditLimit" placeholder="0.0">
                                     </div>
+                                    <label id="credit-err" class="col-sm-2 control-label err" style="font-size:smaller;color:orangered;">Required field</label>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Term</label>
-                                    <div class="col-sm-4">
-                                        <select class="form-control">
-                                            <option>15 days</option>
-                                            <option>30 days</option>
-                                            <option>60 days</option>
-                                            <option>90 days</option>
-                                            <option>120 days</option>
-                                            <option>COD</option>
-                                            <option>Roll(s)</option>
+                                    <div class="col-sm-6">
+                                        <select class="form-control dis" id="term">
+                                            
                                         </select>
                                     </div>
+                                    <label id="term-err" class="col-sm-2 control-label err" style="font-size:smaller;color:orangered;">Required field</label>
                                 </div>
                                 <div class="form-group">
                                     <label for="tin" class="col-sm-2 control-label">TIN</label>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control" id="tin" placeholder="NA">
+                                        <input type="text" class="form-control dis" id="tin" placeholder="NA">
                                     </div>
+                                    <label id="tin-err" class="col-sm-2 control-label err" style="font-size:smaller;color:orangered;">Required field</label>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">AR Account</label>
-                                    <div class="col-sm-4">
-                                        <select class="form-control">
-                                            <option>Account</option>
-                                            <option>Account Receivable -Others</option>
-                                            <option>Account Receivable -Sales</option>
-                                            <option>Cash On Hand</option>
-                                            <option>Inventory</option>
+                                    <div class="col-sm-6">
+                                        <select class="form-control dis" id="araccount">
+                                         
                                         </select>
                                     </div>
+                                    <label id="ar-err" class="col-sm-2 control-label err" style="font-size:smaller;color:orangered;">Required field</label>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">With Reward</label>
                                     <div class="col-sm-6">
-                                        <input type="checkbox" class="minimal" checked>
+                                        <input type="checkbox" class="minimal dis" id="wreward">
                                     </div>
+                                    <label id="werr" class="col-sm-2 control-label err" style="font-size:smaller;color:orangered;">Required field</label>
                                 </div>
                                 <div class="form-group">
                                     <label for="reCardNo" class="col-sm-2 control-label">Reward Card No</label>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control" id="reCardNo" placeholder="">
+                                        <input type="text" class="form-control" id="reCardNo" placeholder="" disabled>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="rewConversion" class="col-sm-2 control-label">Reward Conversion</label>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control" id="rewConversion" placeholder="0.0">
+                                        <input type="text" class="form-control" id="rewCon" placeholder="0.0" disabled>
                                     </div>
+                                    <label id="rewcon-err" class="col-sm-2 control-label err" style="font-size:smaller;color:orangered;">Required field</label>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Default Price</label>
                                     <div class="col-sm-4">
-                                        <select class="form-control">
-                                            <option>CLASS A</option>
-                                            <option>CLASS B</option>
-                                            <option>CLASS C</option>
-                                            <option>CLASS D</option>
-                                            <option>CLASS X</option>
+                                        <select class="form-control dis" id="dprice">
+                                            <option value="CLASS A">CLASS A</option>
+                                            <option value="CLASS B">CLASS B</option>
+                                            <option value="CLASS C">CLASS C</option>
+                                            <option value="CLASS D">CLASS D</option>
+                                            <option value="CLASS E">CLASS X</option>
                                         </select>
                                     </div>
                                 </div>
@@ -156,7 +151,6 @@
                                         <tr>
                                             <th align="center" colspan="2">Sales History</th>
                                             <th align="center" colspan="5">Amount</th>
-
                                         </tr>
                                         <tr>
                                             <th>Date</th>
@@ -177,27 +171,70 @@
                         </form>
                     </div><!-- /.box -->
                 </div>
-
-                
             </section>
         </div><!-- ./wrapper -->
         <!-- ===================Main Footer============================ -->
         @Html.Partial("_MainFooter")
     </div>
+</section>
+<!--SUCCESS-WARNING MODAL-->
+<div class="modal fade" id="warning" tabindex="-1" role="dialog" aria-labelledby="Loading..." aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class=" modal-dialog modal-sm">
 
-    <!-- jQuery 2.1.4 -->
-    <script src="../plugins/jQuery/jQuery-2.1.4.min.js"></script>
-    <!-- Bootstrap 3.3.5 -->
-    <script src="../bootstrap/js/bootstrap.min.js"></script>
-    <!-- SlimScroll -->
-    <script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
-    <!-- FastClick -->
-    <script src="../plugins/fastclick/fastclick.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="../dist/js/app.min.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="../dist/js/demo.js"></script>
-</body>
-</html>
+        <div class="modal-content">
+            <div class="modal-body">
+                <div id="msg-txt">
+
+                </div>
+            </div>
+            <div id="btn" style="padding:10px">
+                <button id="btn-close" class="btn btn-warning">Close</button>
+            </div>
+        </div>
+    </div> 
+</div>
+<script src="~/Scripts/custom/term-araccount-api.js"></script>
+<script src="~/Scripts/custom/customer.js?2"></script>
+<script>
+    $(document).ready(function () {
+        lockcount = 0;
+        $('.err').hide();
+        $('.dis').prop('disabled', true);
+        loadTerm();
+        loadARAcount();
+
+        $('#lock').click(function () {
+            $('.dis').prop('disabled', true);
+            if (lockcount != 1) {
+                if (confirm("Continue") == true) {
+                    addCustomer();
+                    lockcount = 1;
+                }
+            }
+        });
+        $('#unlock').click(function () {
+            $('.dis').prop('disabled', false);
+            $(':text:first').focus();
+            lockcount = 0;
+        });
+
+        $('#close').click(function () {
+            window.location.href = isHost + "/Software/Customer";
+        });
+
+        $('#wreward').on('change',function() {
+            if ($(this).prop('checked') == true) {
+                $('#reCardNo').prop('disabled', false);
+                $('#rewCon').prop('disabled', false);
+            } else {
+                $('#reCardNo').prop('disabled', true);
+                $('#rewCon').prop('disabled', true);
+            }
+        });
+        $('#btn-close').click(function () {
+            $('#warning').modal('hide');
+        });
+    });
+</script>
 
 

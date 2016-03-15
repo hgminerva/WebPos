@@ -33,16 +33,10 @@ namespace ISWebPOS.Controllers
         {
             try
             {
-                
-
                 Data.MstUnit newUnit = new Data.MstUnit();
-
                 newUnit.Unit = unit.Unit;
-                
-
                 db.MstUnits.InsertOnSubmit(newUnit);
                 db.SubmitChanges();
-
                 return newUnit.Id;
             }
             catch

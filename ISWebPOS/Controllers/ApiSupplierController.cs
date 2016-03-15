@@ -11,6 +11,36 @@ namespace ISWebPOS.Controllers
     {
         private Data.webposDataContext db = new Data.webposDataContext();
 
+
+        //============
+        // GET SUPPLIER
+        //============
+        [Route("api/supplier/search/{id}")]
+        public List<Models.MstSupplier> GetSupper(String id)
+        {
+            var Id = Convert.ToInt32(id);
+            var suppliers = from d in db.MstSuppliers
+                            where d.Id == Id
+                            select new Models.MstSupplier
+                            {
+                                Id = d.Id,
+                                Supplier = d.Supplier,
+                                Address = d.Address,
+                                TelephoneNumber = d.TelephoneNumber,
+                                CellphoneNumber = d.CellphoneNumber,
+                                FaxNumber = d.FaxNumber,
+                                TermId = d.TermId,
+                                TIN = d.TIN,
+                                AccountId = d.AccountId,
+                                EntryUserId = d.EntryUserId,
+                                EntryDateTime = d.EntryDateTime,
+                                UpdateUserId = d.UpdateUserId,
+                                UpdateDateTime = d.UpdateDateTime,
+                                IsLocked = true
+
+                            };
+            return suppliers.ToList();
+        }
         // ===========
         // LIST Supplier
         // ===========
@@ -63,9 +93,9 @@ namespace ISWebPOS.Controllers
                 newSupplier.TermId = supplier.TermId;
                 newSupplier.TIN = supplier.TIN;
                 newSupplier.AccountId = supplier.AccountId;
-                newSupplier.EntryUserId = mstUserId;
+                newSupplier.EntryUserId = 129;//mstUserId;
                 newSupplier.EntryDateTime = date;
-                newSupplier.UpdateUserId = mstUserId;
+                newSupplier.UpdateUserId = 129;// mstUserId;
                 newSupplier.UpdateDateTime = date;
                 newSupplier.IsLocked = isLocked;
 
@@ -92,14 +122,13 @@ namespace ISWebPOS.Controllers
                 var identityUserId = User.Identity.GetUserId();
                 var mstUserId = (from d in db.MstUsers where "" + d.Id == identityUserId select d.Id).SingleOrDefault();
                 var date = DateTime.Now;
-                var supplierId = Convert.ToInt32(id);
-                var suppliers = from d in db.MstSuppliers where d.Id == supplierId select d;
+                var Id = Convert.ToInt32(id);
+                var suppliers = from d in db.MstSuppliers where d.Id == Id select d;
 
                 if (suppliers.Any())
                 {
                     var updateSupplier = suppliers.FirstOrDefault();
 
-                    updateSupplier.Id = supplier.Id;
                     updateSupplier.Supplier = supplier.Supplier;
                     updateSupplier.Address = supplier.Address;
                     updateSupplier.TelephoneNumber = supplier.TelephoneNumber;
@@ -108,9 +137,9 @@ namespace ISWebPOS.Controllers
                     updateSupplier.TermId = supplier.TermId;
                     updateSupplier.TIN = supplier.TIN;
                     updateSupplier.AccountId = supplier.AccountId;
-                    updateSupplier.EntryUserId = mstUserId;
+                    updateSupplier.EntryUserId = 129;// mstUserId;
                     updateSupplier.EntryDateTime = date;
-                    updateSupplier.UpdateUserId = mstUserId;
+                    updateSupplier.UpdateUserId = 129;// mstUserId;
                     updateSupplier.UpdateDateTime = date;
                     updateSupplier.IsLocked = isLocked;
 

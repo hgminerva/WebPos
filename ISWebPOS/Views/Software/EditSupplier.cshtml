@@ -1,5 +1,10 @@
 ﻿
 @{
+    ViewBag.Title = "Edit Supplier";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
     ViewBag.Title = "AddSupplier";
 }
 <!-- ADD THE CLASS sidedar-collapse TO HIDE THE SIDEBAR PRIOR TO LOADING THE SITE -->
@@ -17,7 +22,7 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1 class="fa fa-truck">
-                    Supplier Detail
+                    Edit Supplier Detail
                 </h1>
                 <ol class="breadcrumb">
                     <li><a href="../Software/Dashboard"><i class="fa fa-table"></i> Home</a></li>
@@ -58,7 +63,6 @@
                                     <div class="col-sm-6">
                                         <input type="text" class="form-control dis" id="supplier" placeholder="NA">
                                     </div>
-                                    <label id="sup-err" class="col-sm-2 control-label err" style="font-size:smaller;color:orangered;">Required field</label>
                                 </div>
                                 <div class="form-group">
                                     <label for="address" class="col-sm-2 control-label">Address</label>
@@ -87,9 +91,7 @@
                                 <div class="form-group">
                                     <label for="term" class="col-sm-2 control-label">Term</label>
                                     <div class="col-sm-4">
-                                        <select class="form-control dis" id="term">
-                                           
-                                        </select>
+                                        <select class="form-control dis" id="term"></select>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -101,13 +103,11 @@
                                 <div class="form-group">
                                     <label for="category" class="col-sm-2 control-label">AP Account</label>
                                     <div class="col-sm-4">
-                                        <select class="form-control dis" id="araccount">
-                                          
-                                        </select>
+                                        <select class="form-control dis" id="araccount"></select>
                                     </div>
                                 </div>
-                             </div><!-- /.box-body -->
-                           
+                            </div><!-- /.box-body -->
+
                         </form>
                     </div><!-- /.box -->
                 </div>
@@ -134,28 +134,27 @@
             </div>
         </div>
     </div>
-    <!--END OF SUCCESS WARNING MODAL-->
-    <script src="~/Scripts/custom/term-araccount-api.js"></script>
-    <script src="~/Scripts/custom/supplier.js"></script>
+    <!--CONFIRM DIAG-->
+    <script src="~/Scripts/custom/term-araccount-api.js?1"></script>
+    <script src="~/Scripts/custom/supplier.js?1"></script>
     <script>
         $(document).ready(function () {
-            var lockcount = 0;
+            var id = localStorage.SupId,lockcount = 0;
+            loadSupplier(id);
             $('.dis').prop('disabled', true);
-            $('.err').hide();
             loadARAcount();
             loadTerm();
-            
+
             $('#lock').click(function () {
                 if (lockcount != 1) {
-                    if (confirm("Coninue ?") == true) {
-                        addSupplier();
+                    if (confirm("Continue !!") == true) {
+                        editSupplier(id);
                         lockcount = 1;
                     }
                 }
             });
             $('#unlock').click(function () {
                 $('.dis').prop('disabled', false);
-                $('#lock').prop('disabled', false);
                 lockcount = 0;
             });
             $('#close').click(function () {

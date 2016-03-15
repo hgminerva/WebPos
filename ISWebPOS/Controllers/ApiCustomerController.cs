@@ -13,10 +13,43 @@ namespace ISWebPOS.Controllers
     {
         private Data.webposDataContext db = new Data.webposDataContext();
 
+        //============
+        // GET CUSTOMER
+        //============  
+
+        [Route("api/customer/search/{id}")]
+        public List<Models.MstCustomer> GetCustomer(String id)
+        {
+            var ID = Convert.ToInt32(id);
+            var item = from d in db.MstCustomers
+                       where d.Id == ID
+                       select new Models.MstCustomer
+                       {
+                           Id = d.Id,
+                           Customer = d.Customer,
+                           Address = d.Address,
+                           ContactPerson = d.ContactPerson,
+                           ContactNumber = d.ContactNumber,
+                           CreditLimit = d.CreditLimit,
+                           TermId = d.TermId,
+                           TIN = d.TIN,
+                           WithReward = d.WithReward,
+                           RewardNumber = d.RewardNumber,
+                           RewardConversion = d.RewardConversion,
+                           AccountId = d.AccountId,
+                           DefaultPriceDescription = d.DefaultPriceDescription,
+
+                           EntryUserId = d.EntryUserId,
+                           EntryDateTime = d.EntryDateTime,
+                           UpdateUserId = d.UpdateUserId,
+                           UpdateDateTime = d.UpdateDateTime,
+                           IsLocked = true
+                       };
+            return item.ToList();
+        }
         // ===========
         // LIST Customer
         // ===========
-        
         [Route("api/customer/list")]
         public List<Models.MstCustomer>  Get()
         {
@@ -45,11 +78,9 @@ namespace ISWebPOS.Controllers
                                UpdateDateTime = d.UpdateDateTime,
                                IsLocked = isLocked
                            };
-
-
             return customer.ToList();
         }
-
+       
         // ===========
         // ADD Customer
         // ===========
@@ -78,9 +109,9 @@ namespace ISWebPOS.Controllers
                 newCustomer.AccountId = customer.AccountId;
                 newCustomer.DefaultPriceDescription = customer.DefaultPriceDescription;
 
-                newCustomer.EntryUserId = mstUserId;
+                newCustomer.EntryUserId = 129;//mstUserId;
                 newCustomer.EntryDateTime = date;
-                newCustomer.UpdateUserId = mstUserId;
+                newCustomer.UpdateUserId = 129;//mstUserId;
                 newCustomer.UpdateDateTime = date;
                 newCustomer.IsLocked = isLocked;    
 
@@ -128,7 +159,7 @@ namespace ISWebPOS.Controllers
                     updateCustomer.AccountId = customer.AccountId;
                     updateCustomer.DefaultPriceDescription = customer.DefaultPriceDescription;
 
-                    updateCustomer.UpdateUserId = mstUserId;
+                    updateCustomer.UpdateUserId = 129;//mstUserId;
                     updateCustomer.UpdateDateTime = date;
                     updateCustomer.IsLocked = isLocked;
 

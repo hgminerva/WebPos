@@ -263,9 +263,9 @@
             // ===================
             // Company Edit Button
             // ===================
-            function cmdCompanyEditButton_OnClick() {
-                supplierCollections.edititem(supplierCollections.currentItem);
-
+            function cmdSupplierEditButton_OnClick() {
+                localStorage.SupId = supplierCollections.currentItem.Id;
+                window.location.href = isHost + "/Software/EditSupplier";
             }
 
             // =====================

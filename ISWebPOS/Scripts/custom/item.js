@@ -110,137 +110,126 @@ function updateFields(result) {
 
 function editItem(id) {
 
-    var ITEMDATA = validateFields();
+    var itemdata = validateFields();
     $('.dis').prop('disabled', true);
     $.ajax({
         url: '/api/item/update/' + id,
         type: 'PUT',
         dataType: 'json',
-        data: ITEMDATA,
+        data: itemdata,
         contentType: "application/json;charset=utf-8",
         cache: false,
         statusCode: {
             200: function () {
-                $('#msg-txt').css("color", "#66a3ff");
-                $('#msg-txt').append("<h4>Item edited</h4>");
-                $('#btn-close').text('Ok');
-                $('#close').removeClass('btn btn-warning').addClass('btn btn-success');
-                $('#warning').modal('show');
+                message("Edit success");
             },
             404: function () {
-                $('#msg-txt').css("color", "#66a3ff");
-                $('#msg-txt').append("<h4>Edit Failed</h4>");
-                $('#btn-close').text('Close');
-                $('#close').removeClass('btn btn-warning').addClass('btn btn-success');
-                $('#warning').modal('show');
+                message("Edit failed");
             },
             400: function () {
-                $('#msg-txt').css("color", "#66a3ff");
-                $('#msg-txt').append("<h4>Edit failed");
-                $('#btn-close').text('Close');
-                $('#close').removeClass('btn btn-warning').addClass('btn btn-success');
-                $('#warning').modal('show');
+                message("Edit failed");
             }
         }
     });
 }
-
+function message(msg) {
+    $('#msg-txt').css("color", "#66a3ff");
+    $('#msg-txt').append("<h4>" + msg + "</h4>");
+    $('#btn-close').text('Ok');
+    $('#close').removeClass('btn btn-warning').addClass('btn btn-success');
+    $('#warning').modal('show');
+}
 function addItem() {
 
-    var ITEMDATA = validateFields();
+    var itemdata = validateFields();
 
     $('.dis').prop('disabled', true);
     $.ajax({
         url: '/api/item/add/',
         type: 'POST',
-        data: ITEMDATA,
+        data: itemdata,
         contentType: "application/json;charset=utf-8",
         cache: false,
         success: function (data, status, xhr) {
-            $('#msg-txt').css("color", "#66a3ff");
-            $('#msg-txt').append("<h4>Item successfuly added</h4>");
-            $('#msg-btn').removeClass('btn btn-warning').addClass('btn btn-success');
-            $('#loadingModal').modal('show');
+           message("New item added");
         }
     });
 }
-
+function message(msg) {
+    $('#msg-txt').css("color", "#66a3ff");
+    $('#msg-txt').append("<h4>" + msg + "</h4>");
+    $('#btn-close').text('Ok');
+    $('#close').removeClass('btn btn-warning').addClass('btn btn-success');
+    $('#warning').modal('show');
+}
 function validateFields() {
-    var ITEMDATA = {};
-
+    var itemdata = {};
 
     if ($('#barCode').val() == '' || $('#barCode').val() == undefined) {
-        err += "Barcode is required <br />";
-
+        itemdata.BarCode = "NA"
     } else {
-        ITEMDATA.BarCode = $('#barCode').val();
+        itemdata.BarCode = $('#barCode').val();
     }
     if ($('#itemDescription').val() == "") {
-        err += "Item description is required <br />";
+        itemdata.ItemDescription = "NA";
     } else {
-        ITEMDATA.ItemDescription = $('#itemDescription').val();
+        itemdata.ItemDescription = $('#itemDescription').val();
     }
     if ($('#alias').val() == "") {
-        err += "Alias is required <br />";
+        itemdata.Alias = "NA";
     } else {
-        ITEMDATA.Alias = $('#alias').val();
+        itemdata.Alias = $('#alias').val();
     }
     if ($('#category').val() == "") {
-        err += "Category is required <br />";
+        itemdata.Category = "NA";
     } else {
-        ITEMDATA.Category = $('#category').val();
+        itemdata.Category = $('#category').val();
     }
 
     if ($('#cost').val() == "") {
-        err += "Cost is required <br />";
+        itemdata.Cost = "NA";
     } else {
-        ITEMDATA.Cost = $('#cost').val();
+        itemdata.Cost = $('#cost').val();
     }
     if ($('#markup').val() == "") {
-        err += "Markup is required <br />";
+        itemdata.MarkUp = "NA";
     } else {
-        ITEMDATA.MarkUp = $('#markup').val();
+        itemdata.MarkUp = $('#markup').val();
     }
     if ($('#price').val() == "") {
-        err += "Price is required <br />";
+        itemdata.Price = "NA";
     } else {
-        ITEMDATA.Price = $('#price').val();
+        itemdata.Price = $('#price').val();
     }
     if ($('#onhandqty').val() == "") {
-        err += "On hand quantity is required <br />";
+        itemdata.OnhandQuantity = "NA";
     } else {
-        ITEMDATA.OnhandQuantity = $('#onhandqty').val();
+        itemdata.OnhandQuantity = $('#onhandqty').val();
     }
     if ($('#inventory').prop('checked') == true) {
-        ITEMDATA.IsIventory = 1
+        itemdata.IsIventory = 1
     } else {
-        ITEMDATA.IsInventory = 0;
+        itemdata.IsInventory = 0;
     }
-    ITEMDATA.ExpiryDate = $('#expdate').val();
-    ITEMDATA.ItemCode = $('#itemCode').val();
-    ITEMDATA.GenericName = "Test-Geeneric name";
-    ITEMDATA.SalesAccountId = 159;
-    ITEMDATA.AssetAccountId = 74;
-    ITEMDATA.CostAccountId = 238;
-    ITEMDATA.InTaxId = 4;
-    ITEMDATA.OutTaxId = 4;
-    ITEMDATA.ImagePath = "C:\Sample\Path";
-    ITEMDATA.ReOrderQuantity = 150;
+    itemdata.ExpiryDate = $('#expdate').val();
+    itemdata.ItemCode = $('#itemCode').val();
+    itemdata.GenericName = "Test-Geeneric name";
+    itemdata.SalesAccountId = 159;
+    itemdata.AssetAccountId = 74;
+    itemdata.CostAccountId = 238;
+    itemdata.InTaxId = 4;
+    itemdata.OutTaxId = 4;
+    itemdata.ImagePath = "C:\Sample\Path";
+    itemdata.ReOrderQuantity = 150;
 
-    ITEMDATA.DefaultKitchenReport = "Test-DefaultKitchereport";
+    itemdata.DefaultKitchenReport = "Test-DefaultKitchereport";
     if ($('#package').prop('checked') == true) {
-        ITEMDATA.isPackage = 1;
+        itemdata.isPackage = 1;
     } else {
-        ITEMDATA.isPackage = 0;
+        itemdata.isPackage = 0;
     }
-    ITEMDATA.DefaultSupplierID = 23;
-    ITEMDATA.UnitId = $('#unit').val();
-    return JSON.stringify(ITEMDATA);
-}
+    itemdata.DefaultSupplierID = 23;
+    itemdata.UnitId = $('#unit').val();
 
-function error() {
-    if (err != "") {
-        return err;
-    }
-    return true;
+    return JSON.stringify(itemdata);
 }

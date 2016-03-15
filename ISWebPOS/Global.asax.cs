@@ -18,6 +18,7 @@ namespace ISWebPOS
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            NoCacheAttribute nc = new NoCacheAttribute();
         }
     }
 }
