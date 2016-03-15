@@ -25,26 +25,26 @@
                         </div>
                         <!--table-->
                         <table id="paytypeCollectionGrid" class="grid border-custom"></table>
-
+                        <!--navigation buttons-->
+                        <div class="btn-group pull-right" id="navigationPageGrid">
+                            <button type="button" class="btn btn-default border-custom" id="btnMoveToFirstPageGrid">
+                                <span class="glyphicon glyphicon-fast-backward"></span>
+                            </button>
+                            <button type="button" class="btn btn-default border-custom" id="btnMoveToPreviousPageGrid">
+                                <span class="glyphicon glyphicon-step-backward"></span>
+                            </button>
+                            <button type="button" class="btn btn-default border-custom" disabled style="width: 100px" id="btnCurrentPageGrid1"></button>
+                            <button type="button" class="btn btn-default border-custom" id="btnMoveToNextPageGrid">
+                                <span class="glyphicon glyphicon-step-forward"></span>
+                            </button>
+                            <button type="button" class="btn btn-default border-custom" id="btnMoveToLastPageGrid">
+                                <span class="glyphicon glyphicon-fast-forward"></span>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-            <!--navigation buttons-->
-            <div class="btn-group pull-right" id="navigationPageGrid">
-                <button type="button" class="btn btn-default border-custom" id="btnMoveToFirstPageGrid">
-                    <span class="glyphicon glyphicon-fast-backward"></span>
-                </button>
-                <button type="button" class="btn btn-default border-custom" id="btnMoveToPreviousPageGrid">
-                    <span class="glyphicon glyphicon-step-backward"></span>
-                </button>
-                <button type="button" class="btn btn-default border-custom" disabled style="width: 100px" id="btnCurrentPageGrid"></button>
-                <button type="button" class="btn btn-default border-custom" id="btnMoveToNextPageGrid">
-                    <span class="glyphicon glyphicon-step-forward"></span>
-                </button>
-                <button type="button" class="btn btn-default border-custom" id="btnMoveToLastPageGrid">
-                    <span class="glyphicon glyphicon-fast-forward"></span>
-                </button>
-            </div>
+           
         </section>
     </div><!-- ./wrapper -->
     <!-- PayType Delete -->
@@ -131,20 +131,7 @@
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
-    <!-- Loading Modal -->
-    <div class="modal fade" id="loadingModal" tabindex="-1" role="dialog" aria-labelledby="Loading..." aria-hidden="true" data-backdrop="static" data-keyboard="false">
-        <div class=" modal-dialog modal-sm">
-            Modal content
-            <div class="modal-content">
-                <div class="modal-body">
-                    <h4 style="text-align:center">Loading ...</h4>
-                </div>
-                <div class="modal-footer">
-                    <img class="img-thumbnail img-responsive center-block img-custom" src='~/images/loading/progress_bar.gif'>
-                </div>
-            </div>
-        </div>
-    </div>
+  
 
     <script type="text/javascript">
 
@@ -155,11 +142,11 @@
         var paytypeGrid;
         var editPaytype;
 
-        var btnFirstPageGrid;
-        var btnPreviousPageGrid;
-        var btnNextPageGrid;
-        var btnLastPageGrid;
-        var btnCurrentPageGrid;
+        var btnFirstPageGrid1;
+        var btnPreviousPageGrid1;
+        var btnNextPageGrid1;
+        var btnLastPageGrid1;
+        var btnCurrentPageGrid1;
         var payTypeResult;
 
         // =============================
@@ -187,7 +174,7 @@
                     });
                 }
                 paytypeCollections = new wijmo.collections.CollectionView(PaytypeList);
-                btnCurrentPageGrid.innerHTML = (paytypeCollections.pageIndex + 1) + ' / ' + paytypeCollections.pageCount;
+                btnCurrentPageGrid1.innerHTML = (paytypeCollections.pageIndex + 1) + ' / ' + paytypeCollections.pageCount;
 
                 paytypeCollections.canFilter = true;
                 paytypeCollections.pageSize = 15;
@@ -262,19 +249,19 @@
 
                 updateNavigateButtonsCollectionPaytype();
 
-                btnFirstPageGrid.addEventListener('click', function () {
+                btnFirstPageGrid1.addEventListener('click', function () {
                     paytypeCollections.moveToFirstPage();
                     updateNavigateButtonsCollectionPaytype();
                 });
-                btnPreviousPageGrid.addEventListener('click', function () {
+                btnPreviousPageGrid1.addEventListener('click', function () {
                     paytypeCollections.moveToPreviousPage();
                     updateNavigateButtonsCollectionPaytype();
                 });
-                btnNextPageGrid.addEventListener('click', function () {
+                btnNextPageGrid1.addEventListener('click', function () {
                     paytypeCollections.moveToNextPage();
                     updateNavigateButtonsCollectionPaytype();
                 });
-                btnLastPageGrid.addEventListener('click', function () {
+                btnLastPageGrid1.addEventListener('click', function () {
                     paytypeCollections.moveToLastPage();
                     updateNavigateButtonsCollectionPaytype();
                 });
@@ -376,22 +363,29 @@
             }
             document.getElementById('navigationPageGrid').style.display = 'block';
             if (paytypeCollections.pageIndex === 0) {
-                btnFirstPageGrid.setAttribute('disabled', 'disabled');
-                btnPreviousPageGrid.setAttribute('disabled', 'disabled');
-                btnNextPageGrid.removeAttribute('disabled');
-                btnLastPageGrid.removeAttribute('disabled');
-            } else if (paytypeCollections.pageIndex === (paytypeCollections.pageCount - 1)) {
-                btnFirstPageGrid.removeAttribute('disabled');
-                btnPreviousPageGrid.removeAttribute('disabled');
-                btnLastPageGrid.setAttribute('disabled', 'disabled');
-                btnNextPageGrid.setAttribute('disabled', 'disabled');
-            } else {
-                btnFirstPageGrid.removeAttribute('disabled');
-                btnPreviousPageGrid.removeAttribute('disabled');
-                btnNextPageGrid.removeAttribute('disabled');
-                btnLastPageGrid.removeAttribute('disabled');
+                btnFirstPageGrid1.setAttribute('disabled', 'disabled');
+                btnPreviousPageGrid1.setAttribute('disabled', 'disabled');
+                btnNextPageGrid1.removeAttribute('disabled');
+                btnLastPageGrid1.removeAttribute('disabled');
+            } if (paytypeCollections.pageIndex === 1) {
+                btnFirstPageGrid1.setAttribute('disabled', 'disabled');
+                btnPreviousPageGrid1.setAttribute('disabled', 'disabled');
             }
-            btnCurrentPageGrid.innerHTML = (paytypeCollections.pageIndex + 1) + ' / ' + paytypeCollections.pageCount;
+            if (paytypeCollections.pageCount === 1) {
+                btnLastPageGrid1.setAttribute('disabled', 'disabled');
+                btnNextPageGrid1.setAttribute('disabled', 'disabled');
+            } else if (paytypeCollections.pageIndex === (paytypeCollections.pageCount - 1)) {
+                btnFirstPageGrid1.removeAttribute('disabled');
+                btnPreviousPageGrid1.removeAttribute('disabled');
+                btnLastPageGrid1.setAttribute('disabled', 'disabled');
+                btnNextPageGrid1.setAttribute('disabled', 'disabled');
+            } else {
+                btnFirstPageGrid1.removeAttribute('disabled');
+                btnPreviousPageGrid1.removeAttribute('disabled');
+                btnNextPageGrid1.removeAttribute('disabled');
+                btnLastPageGrid1.removeAttribute('disabled');
+            }
+            btnCurrentPageGrid1.innerHTML = (paytypeCollections.pageIndex + 1) + ' / ' + paytypeCollections.pageCount;
 
         }
 
@@ -402,11 +396,11 @@
         $(document).ready(function () {
 
             // Navigation button
-            btnFirstPageGrid = document.getElementById('btnMoveToFirstPageGrid');
-            btnPreviousPageGrid = document.getElementById('btnMoveToPreviousPageGrid');
-            btnNextPageGrid = document.getElementById('btnMoveToNextPageGrid');
-            btnLastPageGrid = document.getElementById('btnMoveToLastPageGrid');
-            btnCurrentPageGrid = document.getElementById('btnCurrentPageGrid');
+            btnFirstPageGrid1 = document.getElementById('btnMoveToFirstPageGrid');
+            btnPreviousPageGrid1 = document.getElementById('btnMoveToPreviousPageGrid');
+            btnNextPageGrid1 = document.getElementById('btnMoveToNextPageGrid');
+            btnLastPageGrid1 = document.getElementById('btnMoveToLastPageGrid');
+            btnCurrentPageGrid1 = document.getElementById('btnCurrentPageGrid1');
             paytypeGrid = new wijmo.grid.FlexGrid('#paytypeCollectionGrid');
             //Collection View
             getPaytypeMasterList(function(results) {

@@ -25,25 +25,24 @@
                         </div>
                         <!--table-->
                         <table id="unitCollectionGrid" class="grid border-custom"></table>
-
+                        <!--navigation buttons-->
+                        <div class="btn-group pull-right" id="navigationPageGrid">
+                            <button type="button" class="btn btn-default border-custom" id="btnMoveToFirstPageGrid">
+                                <span class="glyphicon glyphicon-fast-backward"></span>
+                            </button>
+                            <button type="button" class="btn btn-default border-custom" id="btnMoveToPreviousPageGrid">
+                                <span class="glyphicon glyphicon-step-backward"></span>
+                            </button>
+                            <button type="button" class="btn btn-default border-custom" disabled style="width: 100px" id="btnCurrentPageGrid3"></button>
+                            <button type="button" class="btn btn-default border-custom" id="btnMoveToNextPageGrid">
+                                <span class="glyphicon glyphicon-step-forward"></span>
+                            </button>
+                            <button type="button" class="btn btn-default border-custom" id="btnMoveToLastPageGrid">
+                                <span class="glyphicon glyphicon-fast-forward"></span>
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <!--navigation buttons-->
-            <div class="btn-group pull-right" id="navigationPageGrid">
-                <button type="button" class="btn btn-default border-custom" id="btnMoveToFirstPageGrid">
-                    <span class="glyphicon glyphicon-fast-backward"></span>
-                </button>
-                <button type="button" class="btn btn-default border-custom" id="btnMoveToPreviousPageGrid">
-                    <span class="glyphicon glyphicon-step-backward"></span>
-                </button>
-                <button type="button" class="btn btn-default border-custom" disabled style="width: 100px" id="btnCurrentPageGrid"></button>
-                <button type="button" class="btn btn-default border-custom" id="btnMoveToNextPageGrid">
-                    <span class="glyphicon glyphicon-step-forward"></span>
-                </button>
-                <button type="button" class="btn btn-default border-custom" id="btnMoveToLastPageGrid">
-                    <span class="glyphicon glyphicon-fast-forward"></span>
-                </button>
             </div>
         </section>
     </div><!-- ./wrapper -->
@@ -114,11 +113,11 @@
 
 
 
-        var btnFirstPageGrid;
-        var btnPreviousPageGrid;
-        var btnNextPageGrid;
-        var btnLastPageGrid;
-        var btnCurrentPageGrid;
+        var btnFirstPageGrid3;
+        var btnPreviousPageGrid3;
+        var btnNextPageGrid3;
+        var btnLastPageGrid3;
+        var btnCurrentPageGrid3;
         //will contain ajax data
         var unitResult;
         // =============================
@@ -140,7 +139,7 @@
                     });
                 }
                 unitCollections = new wijmo.collections.CollectionView(UnitList);
-                btnCurrentPageGrid.innerHTML = (unitCollections.pageIndex + 1) + ' / ' + unitCollections.pageCount;
+                btnCurrentPageGrid3.innerHTML = (unitCollections.pageIndex + 1) + ' / ' + unitCollections.pageCount;
 
                 unitCollections.canFilter = true;
                 unitCollections.pageSize = 15;
@@ -204,19 +203,19 @@
 
                 updateNavigateButtonsCollectionUnit();
 
-                btnFirstPageGrid.addEventListener('click', function () {
+                btnFirstPageGrid3.addEventListener('click', function () {
                     unitCollections.moveToFirstPage();
                     updateNavigateButtonsCollectionUnit();
                 });
-                btnPreviousPageGrid.addEventListener('click', function () {
+                btnPreviousPageGrid3.addEventListener('click', function () {
                     unitCollections.moveToPreviousPage();
                     updateNavigateButtonsCollectionUnit();
                 });
-                btnNextPageGrid.addEventListener('click', function () {
+                btnNextPageGrid3.addEventListener('click', function () {
                     unitCollections.moveToNextPage();
                     updateNavigateButtonsCollectionUnit();
                 });
-                btnLastPageGrid.addEventListener('click', function () {
+                btnLastPageGrid3.addEventListener('click', function () {
                     unitCollections.moveToLastPage();
                     updateNavigateButtonsCollectionUnit();
                 });
@@ -318,22 +317,22 @@
             }
             document.getElementById('navigationPageGrid').style.display = 'block';
             if (unitCollections.pageIndex === 0) {
-                btnFirstPageGrid.setAttribute('disabled', 'disabled');
-                btnPreviousPageGrid.setAttribute('disabled', 'disabled');
-                btnNextPageGrid.removeAttribute('disabled');
-                btnLastPageGrid.removeAttribute('disabled');
+                btnFirstPageGrid3.setAttribute('disabled', 'disabled');
+                btnPreviousPageGrid3.setAttribute('disabled', 'disabled');
+                btnNextPageGrid3.removeAttribute('disabled');
+                btnLastPageGrid3.removeAttribute('disabled');
             } else if (unitCollections.pageIndex === (unitCollections.pageCount - 1)) {
-                btnFirstPageGrid.removeAttribute('disabled');
-                btnPreviousPageGrid.removeAttribute('disabled');
-                btnLastPageGrid.setAttribute('disabled', 'disabled');
-                btnNextPageGrid.setAttribute('disabled', 'disabled');
+                btnFirstPageGrid3.removeAttribute('disabled');
+                btnPreviousPageGrid3.removeAttribute('disabled');
+                btnLastPageGrid3.setAttribute('disabled', 'disabled');
+                btnNextPageGrid3.setAttribute('disabled', 'disabled');
             } else {
-                btnFirstPageGrid.removeAttribute('disabled');
-                btnPreviousPageGrid.removeAttribute('disabled');
-                btnNextPageGrid.removeAttribute('disabled');
-                btnLastPageGrid.removeAttribute('disabled');
+                btnFirstPageGrid3.removeAttribute('disabled');
+                btnPreviousPageGrid3.removeAttribute('disabled');
+                btnNextPageGrid3.removeAttribute('disabled');
+                btnLastPageGrid3.removeAttribute('disabled');
             }
-            btnCurrentPageGrid.innerHTML = (unitCollections.pageIndex + 1) + ' / ' + unitCollections.pageCount;
+            btnCurrentPageGrid3.innerHTML = (unitCollections.pageIndex + 1) + ' / ' + unitCollections.pageCount;
 
         }
 
@@ -344,11 +343,11 @@
         $(document).ready(function () {
 
             // Navigation button
-            btnFirstPageGrid = document.getElementById('btnMoveToFirstPageGrid');
-            btnPreviousPageGrid = document.getElementById('btnMoveToPreviousPageGrid');
-            btnNextPageGrid = document.getElementById('btnMoveToNextPageGrid');
-            btnLastPageGrid = document.getElementById('btnMoveToLastPageGrid');
-            btnCurrentPageGrid = document.getElementById('btnCurrentPageGrid');
+            btnFirstPageGrid3 = document.getElementById('btnMoveToFirstPageGrid');
+            btnPreviousPageGrid3 = document.getElementById('btnMoveToPreviousPageGrid');
+            btnNextPageGrid3 = document.getElementById('btnMoveToNextPageGrid');
+            btnLastPageGrid3 = document.getElementById('btnMoveToLastPageGrid');
+            btnCurrentPageGrid3 = document.getElementById('btnCurrentPageGrid3');
 
             //Collection View
             getUnitMasterList(function(results) {

@@ -25,25 +25,24 @@
                         </div>
                         <!--table-->
                         <table id="taxCollectionGrid" class="grid border-custom"></table>
-
+                        <!--navigation buttons-->
+                        <div class="btn-group pull-right" id="navigationPageGrid">
+                            <button type="button" class="btn btn-default border-custom" id="btnMoveToFirstPageGrid">
+                                <span class="glyphicon glyphicon-fast-backward"></span>
+                            </button>
+                            <button type="button" class="btn btn-default border-custom" id="btnMoveToPreviousPageGrid">
+                                <span class="glyphicon glyphicon-step-backward"></span>
+                            </button>
+                            <button type="button" class="btn btn-default border-custom" disabled style="width: 100px" id="btnCurrentPageGrid2"></button>
+                            <button type="button" class="btn btn-default border-custom" id="btnMoveToNextPageGrid">
+                                <span class="glyphicon glyphicon-step-forward"></span>
+                            </button>
+                            <button type="button" class="btn btn-default border-custom" id="btnMoveToLastPageGrid">
+                                <span class="glyphicon glyphicon-fast-forward"></span>
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <!--navigation buttons-->
-            <div class="btn-group pull-right" id="navigationPageGrid">
-                <button type="button" class="btn btn-default border-custom" id="btnMoveToFirstPageGrid">
-                    <span class="glyphicon glyphicon-fast-backward"></span>
-                </button>
-                <button type="button" class="btn btn-default border-custom" id="btnMoveToPreviousPageGrid">
-                    <span class="glyphicon glyphicon-step-backward"></span>
-                </button>
-                <button type="button" class="btn btn-default border-custom" disabled style="width: 100px" id="btnCurrentPageGrid"></button>
-                <button type="button" class="btn btn-default border-custom" id="btnMoveToNextPageGrid">
-                    <span class="glyphicon glyphicon-step-forward"></span>
-                </button>
-                <button type="button" class="btn btn-default border-custom" id="btnMoveToLastPageGrid">
-                    <span class="glyphicon glyphicon-fast-forward"></span>
-                </button>
             </div>
         </section>
     </div><!-- ./wrapper -->
@@ -138,11 +137,11 @@
         var taxGrid;
         var editTax;
 
-        var btnFirstPageGrid;
-        var btnPreviousPageGrid;
-        var btnNextPageGrid;
-        var btnLastPageGrid;
-        var btnCurrentPageGrid;
+        var btnFirstPageGrid2;
+        var btnPreviousPageGrid2;
+        var btnNextPageGrid2;
+        var btnLastPageGrid2;
+        var btnCurrentPageGrid2;
         var taxResult;
 
         // =============================
@@ -166,7 +165,7 @@
                     });
                 }
                 taxCollections = new wijmo.collections.CollectionView(TaxList);
-                btnCurrentPageGrid.innerHTML = (taxCollections.pageIndex + 1) + ' / ' + taxCollections.pageCount;
+                btnCurrentPageGrid2.innerHTML = (taxCollections.pageIndex + 1) + ' / ' + taxCollections.pageCount;
 
                 taxCollections.canFilter = true;
                 taxCollections.pageSize = 15;
@@ -253,19 +252,19 @@
 
                 updateNavigateButtonsCollectionTax();
 
-                btnFirstPageGrid.addEventListener('click', function () {
+                btnFirstPageGrid2.addEventListener('click', function () {
                     taxCollections.moveToFirstPage();
                     updateNavigateButtonsCollectionTax();
                 });
-                btnPreviousPageGrid.addEventListener('click', function () {
+                btnPreviousPageGrid2.addEventListener('click', function () {
                     taxCollections.moveToPreviousPage();
                     updateNavigateButtonsCollectionTax();
                 });
-                btnNextPageGrid.addEventListener('click', function () {
+                btnNextPageGrid2.addEventListener('click', function () {
                     taxCollections.moveToNextPage();
                     updateNavigateButtonsCollectionTax();
                 });
-                btnLastPageGrid.addEventListener('click', function () {
+                btnLastPageGrid2.addEventListener('click', function () {
                     taxCollections.moveToLastPage();
                     updateNavigateButtonsCollectionTax();
                 });
@@ -368,22 +367,22 @@
             }
             document.getElementById('navigationPageGrid').style.display = 'block';
             if (taxCollections.pageIndex === 0) {
-                btnFirstPageGrid.setAttribute('disabled', 'disabled');
-                btnPreviousPageGrid.setAttribute('disabled', 'disabled');
-                btnNextPageGrid.removeAttribute('disabled');
-                btnLastPageGrid.removeAttribute('disabled');
+                btnFirstPageGrid2.setAttribute('disabled', 'disabled');
+                btnPreviousPageGrid2.setAttribute('disabled', 'disabled');
+                btnNextPageGrid2.removeAttribute('disabled');
+                btnLastPageGrid2.removeAttribute('disabled');
             } else if (taxCollections.pageIndex === (taxCollections.pageCount - 1)) {
-                btnFirstPageGrid.removeAttribute('disabled');
-                btnPreviousPageGrid.removeAttribute('disabled');
-                btnLastPageGrid.setAttribute('disabled', 'disabled');
-                btnNextPageGrid.setAttribute('disabled', 'disabled');
+                btnFirstPageGrid2.removeAttribute('disabled');
+                btnPreviousPageGrid2.removeAttribute('disabled');
+                btnLastPageGrid2.setAttribute('disabled', 'disabled');
+                btnNextPageGrid2.setAttribute('disabled', 'disabled');
             } else {
-                btnFirstPageGrid.removeAttribute('disabled');
-                btnPreviousPageGrid.removeAttribute('disabled');
-                btnNextPageGrid.removeAttribute('disabled');
-                btnLastPageGrid.removeAttribute('disabled');
+                btnFirstPageGrid2.removeAttribute('disabled');
+                btnPreviousPageGrid2.removeAttribute('disabled');
+                btnNextPageGrid2.removeAttribute('disabled');
+                btnLastPageGrid2.removeAttribute('disabled');
             }
-            btnCurrentPageGrid.innerHTML = (taxCollections.pageIndex + 1) + ' / ' + taxCollections.pageCount;
+            btnCurrentPageGrid2.innerHTML = (taxCollections.pageIndex + 1) + ' / ' + taxCollections.pageCount;
 
         }
 
@@ -394,11 +393,11 @@
         $(document).ready(function () {
 
             // Navigation button
-            btnFirstPageGrid = document.getElementById('btnMoveToFirstPageGrid');
-            btnPreviousPageGrid = document.getElementById('btnMoveToPreviousPageGrid');
-            btnNextPageGrid = document.getElementById('btnMoveToNextPageGrid');
-            btnLastPageGrid = document.getElementById('btnMoveToLastPageGrid');
-            btnCurrentPageGrid = document.getElementById('btnCurrentPageGrid');
+            btnFirstPageGrid2 = document.getElementById('btnMoveToFirstPageGrid');
+            btnPreviousPageGrid2 = document.getElementById('btnMoveToPreviousPageGrid');
+            btnNextPageGrid2 = document.getElementById('btnMoveToNextPageGrid');
+            btnLastPageGrid2 = document.getElementById('btnMoveToLastPageGrid');
+            btnCurrentPageGrid2 = document.getElementById('btnCurrentPageGrid2');
 
             //Collection View
             getTaxMasterList(function(results) {
