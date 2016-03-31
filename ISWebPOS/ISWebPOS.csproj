@@ -1534,9 +1534,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\ApiStockIn\" />
-    <Folder Include="Views\ApiStockOut\" />
-    <Folder Include="Views\PurchaseOrderLine\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

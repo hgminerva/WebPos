@@ -5,87 +5,61 @@
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
         <!-- Sidebar user panel -->
-        <div class="user-panel">
+        @*<div class="user-panel">
             <div class="pull-left image">
                 <img src="../../dist/img/avatar5.png" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
                 <p>Administrator</p>
             </div>
-        </div>
+        </div>*@
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
             <li class="header">MAIN NAVIGATION</li>
+
+
+            <li><a href="../Software/Dashboard"><i class=" fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+
+            <!--SETUP GROUP (Mst Tables)-->
             <li class="treeview">
-                <a href="../Software/Dashboard">
-                    <i class=" fa fa-dashboard">
-                    </i> <span>Dashboard</span>
+                <a href="#">
+                    <i class="fa fa-table"></i>
+                    <span>Setup</span>
+                    <i class="fa fa-angle-left pull-right"></i>
                 </a>
+                <ul class="treeview-menu">
+                    <li><a href="../Software/Item"><i class=" fa fa-table"></i> <span>Item</span></a></li>
+                    <li><a href="../Software/Discount"><i class="fa fa-percent"></i><span>Discount</span></a></li>
+                    <li><a href="../Software/Customer"><i class="fa fa-users"></i><span>Customer</span></a></li>
+                    <li><a href="../Software/Supplier"><i class="fa fa-truck"></i><span>Supplier</span></a></li>
+                    <li><a href="../Software/SystemTable"><i class="fa fa-list"></i><span>System Tables</span></a></li>
+                    <li><a href="../Software/User"><i class="fa fa-user"></i> <span>User</span></a></li>
+                    <li><a href="../Software/ItemGroup"><i class="fa fa-object-group"></i> <span>Item Group</span></a></li>
+                    <li><a href="../Software/ItemComponent"><i class="fa fa-contao"></i> <span>Item Component</span></a></li>
+                    <li><a href="../Software/Table"><i class="fa fa-cutlery"></i> <span>Table</span></a></li>
+                </ul>
             </li>
+
+            <!--TRANSACTION GROUP (Trn Tables)-->
             <li class="treeview">
-                <a href="../Software/Item">
-                    <i class=" fa fa-table">
-                    </i> <span>Item</span>
+                <a href="#">
+                    <i class="fa fa-shopping-basket"></i>
+                    <span>Transaction</span>
+                    <i class="fa fa-angle-left pull-right"></i>
                 </a>
+                <ul class="treeview-menu">
+                    <li><a href="../Software/PurchaseOrder"><i class="fa fa-shopping-basket"></i> <span>POS</span></a></li>
+                    <li><a href="../Software/StockIn"><i class="fa fa-arrow-circle-o-down"></i> <span>Stock In</span></a></li>
+                    <li><a href="../Software/StockOut"><i class="fa fa-arrow-circle-o-up"></i> <span>Stock Out</span></a></li>
+                    <li><a href="../Software/Collection"><i class="fa fa-product-hunt"></i> <span>Collection</span></a></li>
+                    <li><a href="../Software/Purchase"><i class="fa fa-shopping-bag"></i> <span>Purchase</span></a></li>
+                    <li><a href="../Software/Disbursement"><i class="fa fa-money"></i> <span>Disbursement</span></a></li>
+                    <li><a href="../Software/StockCount"><i class="fa fa-dropbox"></i> <span>Stock Count</span></a></li>
+                    <li><a href="../Software/DebitCreditMemo"><i class="fa fa-edit"></i> <span>Debit/Credit Memo</span></a></li>
+                </ul>
             </li>
-            <li class="treeview">
-                <a href="../Software/Discount">
-                    <i class="fa fa-percent"></i>
-                    <span>Discount</span>
-                </a>
-            </li>
-            <li class="treeview">
-                <a href="../Software/Customer">
-                    <i class="fa fa-users"></i>
-                    <span>Customer</span>
-                </a>
-            </li>
-            <li class="treeview">
-                <a href="../Software/Supplier">
-                    <i class="fa fa-truck"></i>
-                    <span>Supplier</span>
-                </a>
-            </li>
-            <li class="treeview">
-                <a href="../Software/SystemTable">
-                    <i class="fa fa-list"></i>
-                    <span>System Tables</span>
-                </a>
-            </li>
-            <li class="treeview">
-                <a href="../Software/User">
-                    <i class="fa fa-user"></i> <span>User</span>
-                </a>
-            </li>
-            <li class="treeview">
-                <a href="../Software/PurchaseOrder">
-                    <i class="fa fa-shopping-basket"></i> <span>POS</span>
-                </a>
-            </li>
-            <li>
-                <a href="../Software/Collection">
-                    <i class="fa fa-product-hunt"></i> <span>Collection</span>
-                </a>
-            </li>
-            <li>
-                <a href="../Software/Purchase">
-                    <i class="fa fa-shopping-bag"></i> <span>Purchase</span>
-                </a>
-            </li>
-            <li class="treeview">
-                <a href="../Software/Disbursement">
-                    <i class="fa fa-money"></i> <span>Disbursement</span>
-                </a>
-            </li>
-            <li class="treeview">
-                <a href="../Software/StockIn">
-                    <i class="fa fa-arrow-circle-o-down"></i> <span>Stock In</span>
-                </a>
-            </li>
-            <li><a href="../Software/StockOut"><i class="fa fa-arrow-circle-o-up"></i> <span>Stock Out</span></a></li>
-            <li><a href="../Software/ItemGroup"><i class="fa fa-object-group"></i> <span>Item Group</span></a></li>
-            <li><a href="../Software/ItemComponent"><i class="fa fa-contao"></i> <span>Item Component</span></a></li>
-            <li><a href="../Software/Table"><i class="fa fa-cutlery"></i> <span>Table</span></a></li>
+
+            <!--REPORTS GROUP -->
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-file"></i>
@@ -103,11 +77,20 @@
                     <li><a href="#"><i class="fa fa-file"></i> <span>80mm Report</span></a></li>
                 </ul>
             </li>
-            <li><a href="../Software/StockCount"><i class="fa fa-dropbox"></i> <span>Stock Count</span></a></li>
-            <li><a href="../Software/DebitCreditMemo"><i class="fa fa-edit"></i> <span>Debit/Credit Memo</span></a></li>
-            <li><a href="../Software/Utilities"><i class="fa fa-wrench"></i> <span>Utilities</span></a></li>
-            <li><a href="#"><i class="fa fa-gears"></i> <span>Settings</span></a></li>
-            <li><a href="#"><i class="fa fa-sign-out"></i> <span>Logout</span></a></li>
+
+            <!--SETTINGS (OTHERS)-->
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-gears"></i>
+                    <span>Settings</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="../Software/Utilities"><i class="fa fa-wrench"></i> <span>Utilities</span></a></li>
+                    <li><a href="#"><i class="fa fa-gears"></i> <span>Settings</span></a></li>
+                    <li><a href="#"><i class="fa fa-sign-out"></i> <span>Logout</span></a></li>
+                </ul>
+            </li>
         </ul>
     </section>
     <!-- /.sidebar -->
