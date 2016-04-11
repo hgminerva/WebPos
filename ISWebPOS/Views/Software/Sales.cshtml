@@ -42,6 +42,8 @@
         border:none;
    }
 </style>
+
+
 <!-- ADD THE CLASS sidedar-collapse TO HIDE THE SIDEBAR PRIOR TO LOADING THE SITE -->
 <body class="hold-transition skin-blue sidebar-collapse sidebar-mini">
     <!-- Site wrapper -->
@@ -59,7 +61,8 @@
                     <div class="col-md-12">
                         <div class="box box-primary" style="background-color:rgba(60,141,188,.6); margin-top:50px;">
                             <div class="box-body">
-                                <p class="pull-right" style="color:#ffffff;font-size:6em;"> &#8369; 0.00</p>
+                                <div class="pull-right" style="color:#ffffff;font-size:6em;" id="totalCost"> 0.00</div>
+                                <p class="pull-right" style="color:#ffffff;font-size:6em;">&#8369; </p>
                                 <div class="form-group pull-left ">
                                     <label for="invoiceNo" class="col-sm-5 control-label">Invoice No</label>
                                     <div class="col-sm-6">
@@ -82,14 +85,15 @@
                             <div class="input-group-btn">
                                 <button type="button" class="btn btn-primary"><i class='fa fa-barcode'></i>F11 BARCODE</button>
                             </div><!-- /btn-group -->
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" id="tbBarcode">
                             <span class="input-group-btn">
-                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="modal" onclick='initTableSalesList()' data-target="#itemSearch"><i class='fa fa-search'></i>F1 SEARCH</button>
+                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="modal" onclick='initSearchList()' data-target="#itemSearch"><i class='fa fa-search'></i>F1 SEARCH</button>
                                 <button type="button" class="btn btn-primary"><i class='fa fa-download'></i> DOWNLOAD</button>
                             </span>
                         </div><!-- /input-group -->
                     </div>
                 </div>
+                
                 <!--Modal Search-->
                 <div class="modal " id="itemSearch" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-lg">
@@ -108,7 +112,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <table id="periodCollectionGrid" class="grid border-custom"></table>
+                                <div id="searchGrid" class="grid border-custom"></div>
                                 <div class="btn-group pull-right" id="navigationPageGrid">
                                     <button type="button" class="btn btn-default border-custom" id="btnMoveToFirstPageGrid">
                                         <span class="glyphicon glyphicon-fast-backward"></span>
@@ -130,7 +134,7 @@
                         </div><!-- /.modal-content -->
                     </div><!-- /.modal-dialog -->
                 </div><!-- /.modal -->
-                <!--another modal-->
+                
                 <!--Modal Sales New Item-->
                 <div class="modal " id="pickItem" tabindex="-1" role="dialog" aria-hidden="true">
 
@@ -227,6 +231,7 @@
                         </div><!-- /.modal-content -->
                     </div><!-- /.modal-dialog -->
                 </div><!-- /.modal -->
+                
                 <!--Modal Sales Invoice Charge-->
                 <div class="modal modal-primary" id="invoiceCharge" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog">
@@ -297,6 +302,7 @@
                         </div><!-- /.modal-content -->
                     </div><!-- /.modal-dialog -->
                 </div><!-- /.modal -->
+                
                 <!--Modal Sales Invoice Discount-->
                 <div class="modal modal-primary" id="salesInvoiceDiscount" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog">
@@ -341,6 +347,7 @@
                         </div><!-- /.modal-content -->
                     </div><!-- /.modal-dialog -->
                 </div><!-- /.modal -->
+                
                 <!--Modal Override-->
                 <div class="modal modal-primary" id="override" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog">
@@ -377,6 +384,7 @@
                         </div><!-- /.modal-content -->
                     </div><!-- /.modal-dialog -->
                 </div><!-- /.modal -->
+
                 <!--Modal KeyPad-->
                 <div class="modal modal-primary" id="keypad" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog">
@@ -433,7 +441,7 @@
                                             <td><a href="#">J</a></td>
                                             <td><a href="#">K</a></td>
                                             <td><a href="#">L</a></td>
-                                            <td><a href="#">.</a></td>
+                                            <td><a href="#">.</a></td>  
                                             <td><a href="#">-</a></td>
                                         </tr>
                                         <tr class="tdbg">
@@ -460,411 +468,456 @@
                             </div><!-- /.modal-content -->
                         </div><!-- /.modal-dialog -->
                     </div><!-- /.modal -->
-                    <!--  <div class="modal fade" id="loadingModal" tabindex="-1" role="dialog" aria-labelledby="Loading..." aria-hidden="true" data-backdrop="static" data-keyboard="false">
-            <div class=" modal-dialog modal-sm">
-                Modal content
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <h4 style="text-align:center">Loading ...</h4>
-                    </div>
-                    <div class="modal-footer">
-                        <img class="img-thumbnail img-responsive center-block img-custom" src='~/images/loading/progress_bar.gif'>
-                    </div>
-                </div>
-            </div>
-        </div>-->
 
-                    <div class="box-body table-responsive no-padding">
-                        <table class="table table-bordered">
-                            <tr style="width:100%;background-color:#42A5F5; color:#fff;">
-                                <th rowspan="2" style="width:25%; text-align:center; vertical-align:middle;">Item</th>
-                                <th rowspan="2">Unit</th>
-                                <th rowspan="2">Price</th>
-                                <th colspan="2" style=" text-align: center; vertical-align: middle;">Discount</th>
-                                <th rowspan="2">Net Price</th>
-                                <th rowspan="2">Quantity</th>
-                                <th rowspan="2">Net Amount</th>
-                                <th colspan="2" style=" text-align: center; vertical-align: middle;">Vat</th>
-                            </tr>
-                            <tr style="background-color:#42A5F5; color:#fff;">
-                                <td>Rate(%)</td>
-                                <td>Amount</td>
-                                <td>Rate(%)</td>
-                                <td>Amount</td>
-                            </tr>
-                        </table>
-                    </div><!-- /.box-body -->
-
-                </div>
-                                <section class="content-header btns-wrapper" id="">
-                                    <section class="content-header pull-left" style="margin-left:20px;">
-                                        <h1 class="fa fa-shopping-basket">
-                                            Sales Detail
-                                        </h1>
-                                    </section>
-                                    <div class="btn-group-horizontal pull-right btns" id="">
-                                        <a class="btn btn-app" data-toggle="modal" data-target="#invoiceCharge">
-                                            <i class="fa fa-lock"></i><strong>F2</strong> Lock
-                                        </a>
-                                        <a class="btn btn-app">
-                                            <i class="fa fa-unlock"></i><strong>F3</strong> UnLock
-                                        </a>
-                                        <a class="btn btn-app">
-                                            <i class="fa fa-eye"></i><strong>F4</strong> Preview
-                                        </a>
-                                        <a class="btn  btn-app">
-                                            <i class="fa fa-print"></i><strong>F5</strong>Print
-                                        </a>
-                                        <a class="btn  btn-app">
-                                            <i class="fa">&#8369;</i><strong>F6</strong> Tender
-                                        </a>
-                                        <a class="btn  btn-app" data-toggle="modal" data-target="#salesInvoiceDiscount">
-                                            <i class="fa fa-percent"></i><strong>F7</strong>Discount
-                                        </a>
-                                        <a class="btn  btn-app" data-toggle="modal" data-target="#override">
-                                            <i class="fa fa-user-secret"></i><strong>F8</strong> Override
-                                        </a>
-                                        <a class="btn  btn-app">
-                                            <i class="fa fa-reply"></i><strong>F9</strong> Return
-                                        </a>
-                                        <a class="btn btn-app" href="../Software/PurchaseOrder">
-                                            <i class="fa fa-close"></i><strong>F12</strong> Close
-                                        </a>
-                                    </div><!--btn horizontal-->
-                                </section>
-                                <div class="col-md-12">
-                                    <div class="input-group pull" style="position: absolute; top: 780px; width: 100%;">
-                                        <div class="input-group-btn">
-                                            <button type="button" class="btn btn-primary"><i class='fa fa-user'></i>F10 &nbsp; SALES</button>
-                                        </div><!-- /btn-group -->
-                                        <input type='text' ... list='listid' class="form-control">
-                                        <datalist id='listid'>
-                                            <option label='label1' value='value1'></option>
-                                            <option label='label2' value='value2'></option>
-                                            ...
-                                        </datalist>
-                                    </div><!-- /input-group -->
-                                </div>
-                            </div><!-- ./wrapper -->
-                            <!-- ===================Main Footer============================ -->
-                            @Html.Partial("_MainFooter")
+                <!--Loading Modal-->
+                @*<div class="modal fade" id="loadingModal" tabindex="-1" role="dialog" aria-labelledby="Loading..." aria-hidden="true" data-backdrop="static" data-keyboard="false">
+                    <div class=" modal-dialog modal-sm">
+                        Modal content
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <h4 style="text-align:center">Loading ...</h4>
+                            </div>
+                            <div class="modal-footer">
+                                <img class="img-thumbnail img-responsive center-block img-custom" src='~/images/loading/progress_bar.gif'>
+                            </div>
                         </div>
-                        <script type="text/javascript">
+                    </div>
+                </div>*@
 
-                            //================
-                            // Global variables
-                            // ================
-                            var salesCollections;
-                            var salesGrid;
-                            var editSales;
 
-                            var btnFirstPageGrid5;
-                            var btnPreviousPageGrid5;
-                            var btnNextPageGrid5;
-                            var btnLastPageGrid5;
-                            var btnCurrentPageGrid;
+                <!--NOT WIJMO DAMMIT DELETE AND CHANGE-->
+                @*<div class="box-body table-responsive no-padding">
+                    <table class="table table-bordered">
+                        <tr style="width:100%;background-color:#42A5F5; color:#fff;">
+                            <th rowspan="2" style="width:25%; text-align:center; vertical-align:middle;">Item</th>
+                            <th rowspan="2">Unit</th>
+                            <th rowspan="2">Price</th>
+                            <th colspan="2" style=" text-align: center; vertical-align: middle;">Discount</th>
+                            <th rowspan="2">Net Price</th>
+                            <th rowspan="2">Quantity</th>
+                            <th rowspan="2">Net Amount</th>
+                            <th colspan="2" style=" text-align: center; vertical-align: middle;">Vat</th>
+                        </tr>
+                        <tr style="background-color:#42A5F5; color:#fff;">
+                            <td>Rate(%)</td>
+                            <td>Amount</td>
+                            <td>Rate(%)</td>
+                            <td>Amount</td>
+                        </tr>
+                    </table>
+                </div>*@
+                <div id="salesGrid" class="grid border-custom"></div>
+                <!-- /.box-body -->
 
-                            var periodListResult;
+            </div>
 
-                            // =============================
-                            // Get PeriodMasterList Data
-                            // =============================
+            <section class="content-header btns-wrapper" id="">
+                <section class="content-header pull-left" style="margin-left:20px;">
+                    <h1 class="fa fa-shopping-basket">
+                        Sales Detail
+                    </h1>
+                </section>
+                <div class="btn-group-horizontal pull-right btns" id="">
+                    <a class="btn btn-app" data-toggle="modal" data-target="#invoiceCharge">
+                        <i class="fa fa-lock"></i><strong>F2</strong> Lock
+                    </a>
+                    <a class="btn btn-app">
+                        <i class="fa fa-unlock"></i><strong>F3</strong> UnLock
+                    </a>
+                    <a class="btn btn-app">
+                        <i class="fa fa-eye"></i><strong>F4</strong> Preview
+                    </a>
+                    <a class="btn  btn-app">
+                        <i class="fa fa-print"></i><strong>F5</strong>Print
+                    </a>
+                    <a class="btn  btn-app">
+                        <i class="fa">&#8369;</i><strong>F6</strong> Tender
+                    </a>
+                    <a class="btn  btn-app" data-toggle="modal" data-target="#salesInvoiceDiscount">
+                        <i class="fa fa-percent"></i><strong>F7</strong>Discount
+                    </a>
+                    <a class="btn  btn-app" data-toggle="modal" data-target="#override">
+                        <i class="fa fa-user-secret"></i><strong>F8</strong> Override
+                    </a>
+                    <a class="btn  btn-app">
+                        <i class="fa fa-reply"></i><strong>F9</strong> Return
+                    </a>
+                    <a class="btn btn-app" href="../Software/PurchaseOrder">
+                        <i class="fa fa-close"></i><strong>F12</strong> Close
+                    </a>
+                </div><!--btn horizontal-->
+            </section>
+            
+            <div class="col-md-12">
+                <div class="input-group pull" style="position: absolute; top: 780px; width: 100%;">
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-primary"><i class='fa fa-user'></i>F10 &nbsp; SALES</button>
+                    </div><!-- /btn-group -->
+                    <input type='text' ... list='listid' class="form-control">
+                    <datalist id='listid'>
+                        <option label='label1' value='value1'></option>
+                        <option label='label2' value='value2'></option>
+                        ...
+                    </datalist>
+                </div><!-- /input-group -->
+            </div>
+        </div><!-- ./wrapper -->
+        <!-- ===================Main Footer============================ -->
+        @Html.Partial("_MainFooter")
+    </div>
 
-                            // CALLED SECOND
-                            function getPeriodMasterList(callback) {
-                                // var PeriodList = new wijmo.collections.ObservableArray();
-                                $("#loadingModal").modal("show");
-                                $.ajax({
-                                    url: '/api/item/list',
-                                    cache: false,
-                                    type: 'GET',
-                                    contentType: 'application/json; charset=utf-8',
-                                    data: {},
-                                    success: function(results) {
-                                        callback(results)
-                                    }
-                                    // function (results) {
-                                    //
-                                    // }
+    <script type="text/javascript">
+
+        //================
+        // Global variables
+        // ================
+        var searchCollection;
+        var searchGrid;
+        var editSales;
+
+        var salesList;
+        var salesCollection;
+        var salesGrid;
+
+        var btnFirstPageGrid5;
+        var btnPreviousPageGrid5;
+        var btnNextPageGrid5;
+        var btnLastPageGrid5;
+        var btnCurrentPageGrid;
+
+        var totalCost = 0;
+        var searchListResult;
+
+        // =============================
+        // Get PeriodMasterList Data
+        // =============================
+
+        // CALLED SECOND
+        function getSearchList(callback) {
+            $("#loadingModal").modal("show");
+            $.ajax({
+                url: '/api/item/list',
+                cache: false,
+                type: 'GET',
+                contentType: 'application/json; charset=utf-8',
+                data: {},
+                success: function(results) {
+                    callback(results)
+                }
+            });
+        }
+
+        //======================
+        //Pick Modal
+        //======================\
+        function pickItem_onClick() {
+            var id = searchCollection.currentItem.Id;
+            $('#pickItem').modal({
+                show: true,
+                backdrop: 'static'
+            });
+        }
+ 
+
+        // ==================
+        // Navigation Buttons
+        // ==================
+        function updateNavigateButtonsCollectionPeriod() {
+            if (searchCollection.pageSize <= 0) {
+                document.getElementById('navigationPageGrid').style.display = 'none';
+                return;
+            }
+            document.getElementById('navigationPageGrid').style.display = 'block';
+            if (searchCollection.pageIndex === 0) {
+                btnFirstPageGrid5.setAttribute('disabled', 'disabled');
+                btnPreviousPageGrid5.setAttribute('disabled', 'disabled');
+                btnNextPageGrid5.removeAttribute('disabled');
+                btnLastPageGrid5.removeAttribute('disabled');
+            } else if (searchCollection.pageIndex === (searchCollection.pageCount - 1)) {
+                btnFirstPageGrid5.removeAttribute('disabled');
+                btnPreviousPageGrid5.removeAttribute('disabled');
+                btnLastPageGrid5.setAttribute('disabled', 'disabled');
+                btnNextPageGrid5.setAttribute('disabled', 'disabled');
+            } else {
+                btnFirstPageGrid5.removeAttribute('disabled');
+                btnPreviousPageGrid5.removeAttribute('disabled');
+                btnNextPageGrid5.removeAttribute('disabled');
+                btnLastPageGrid5.removeAttribute('disabled');
+            }
+            btnCurrentPageGrid.innerHTML = (searchCollection.pageIndex + 1) + ' / ' + searchCollection.pageCount;
+
+        }
+
+
+        //============
+        // On Page Load
+        // ============
+
+        // CALLED WHEN MODAL IS CLICKED
+        // CALLED THIRD
+        function initSearchList() {
+            var results = searchListResult;
+            var searchList = new wijmo.collections.ObservableArray();
+            $("#loadingModal").modal("hide");
+            /* var results = JSON.parse(result); */
+            if (results && results.length > 0) {
+                for (i = 0; i < results.length; i++) {
+                    searchList.push({
+                        BarCode: results[i]["BarCode"],
+                        ItemDescription: results[i]["ItemDescription"],
+                        GenericName: results[i]["GenericName"],
+                        Price: results[i]["Price"],
+                        OnhandQuantity: results[i]["OnhandQuantity"],
+                        IsInventory: results[i]["IsInventory"],
+                        PickId: "<button class='btn btn-primary btn-flat btn-xs btn-block' id='pickButton' onclick='pickItem_onClick()'><i class='fa fa-hand-o-right'></i>Pick</button>",
+                    });
+                }
+                searchCollection = new wijmo.collections.CollectionView(searchList);
+                btnCurrentPageGrid.innerHTML = (searchCollection.pageIndex + 1) + ' / ' + searchCollection.pageCount;
+
+                searchCollection.canFilter = true;
+                searchCollection.pageSize = 15;
+
+                //Filter
+                var filterText = '';
+                $('#InputFilter').keydown(function () {
+                    filterText = this.value.toLowerCase();
+                    searchCollection.refresh();
+                });
+                searchCollection.filter = function (period) {
+                    return !filterText || (period.Period.toLowerCase().indexOf(filterText) > -1);
+                }
+                searchCollection.collectionChanged.addHandler(function (sender, args) {
+                    updateNavigateButtonsCollectionPeriod();
+
+                });
+                searchCollection.currentChanged.addHandler(function (sender, args) {
+                    updateNavigateButtonsCollectionPeriod();
+                });
+
+
+                //Flex Grid
+
+                searchGrid = new wijmo.grid.FlexGrid('#searchGrid');
+                searchGrid.initialize({
+                    columns: [
+                            {
+                                "header": "Barcode",
+                                "binding": "BarCode",
+                                "width": 60,
+                                "align": "center",
+                                "isContentHtml": true
+                            },
+                            {
+                                "header": "Item",
+                                "binding": "ItemDescription",
+                                "width": 70,
+                                "align": "center",
+                                "isContentHtml": true
+
+                            },
+                            {
+                                "header": "Generic Name",
+                                "binding": "GenericName",
+                                "align": "center",
+                                "allowSorting": true,
+                                "isContentHtml": true,
+                                "width": "2*"
+                            },
+                            {
+                                "header": "Price",
+                                "binding": "Price",
+                                "align": "center",
+                                "allowSorting": true,
+                                "isContentHtml": true,
+                                "width": "2*"
+                            },
+                            {
+                                "header": "On Hand Qty",
+                                "binding": "OnhandQuantity",
+                                "align": "center",
+                                "allowSorting": true,
+                                "isContentHtml": true,
+                                "width": "2*"
+                            },
+                            {
+                                "header": "I",
+                                "binding": "IsInventory",
+                                "align": "center",
+                                "allowSorting": true,
+                                "isContentHtml": true,
+                                "width": "2*"
+                            },
+                            {
+                                "header": " ",
+                                "binding": "PickId",
+                                "align": "center",
+                                "allowSorting": true,
+                                "isContentHtml": true,
+                                "width": "2*"
+                            }],
+                    autoGenerateColumns: false,
+                    itemsSource: searchCollection,
+                    isReadOnly: true,
+                    autoSizeMode: wijmo.grid.AutoSizeMode.Both,
+                    allowDragging: wijmo.grid.AllowDragging.None,
+                    selectionMode: wijmo.grid.SelectionMode.Row
+                });
+
+
+                searchGrid.trackChanges = true;
+
+                updateNavigateButtonsCollectionPeriod();
+
+                btnFirstPageGrid5.addEventListener('click', function () {
+                    searchCollection.moveToFirstPage();
+                    updateNavigateButtonsCollectionPeriod();
+                });
+                btnPreviousPageGrid5.addEventListener('click', function () {
+                    searchCollection.moveToPreviousPage();
+                    updateNavigateButtonsCollectionPeriod();
+                });
+                btnNextPageGrid5.addEventListener('click', function () {
+                    searchCollection.moveToNextPage();
+                    updateNavigateButtonsCollectionPeriod();
+                });
+                btnLastPageGrid5.addEventListener('click', function () {
+                    searchCollection.moveToLastPage();
+                    updateNavigateButtonsCollectionPeriod();
+                });
+            } else {
+                /*   alert("No data."); */
+            }
+        }
+
+        function updateSalesList() {
+            salesList = new wijmo.collections.ObservableArray();
+            salesCollection = new wijmo.collections.CollectionView(salesList);
+            salesCollection.pageSize = 50;
+
+            salesGrid = new wijmo.grid.FlexGrid('#salesGrid');
+            salesGrid.initialize({
+                columns: [
+                        {
+                            "header": "Item",
+                            "binding": "Item",
+                            "width": "2*",
+                            "align": "center",
+                            "isContentHtml": true
+                        },
+                        {
+                            "header": "Unit",
+                            "binding": "Unit",
+                            "width": ".5*",
+                            "align": "center",
+                            "isContentHtml": true
+
+                        },
+                        {
+                            "header": "Price",
+                            "binding": "Price",
+                            "align": "center",
+                            "allowSorting": true,
+                            "isContentHtml": true,
+                            "width": "1*"
+                        },
+                        {
+                            "header": "Net Price",
+                            "binding": "NetPrice",
+                            "align": "center",
+                            "allowSorting": true,
+                            "isContentHtml": true,
+                            "width": "1*"
+                        },
+                        {
+                            "header": "Quantity",
+                            "binding": "Quantity",
+                            "align": "center",
+                            "allowSorting": true,
+                            "isContentHtml": true,
+                            "width": "1*"
+                        },
+                        {
+                            "header": "Net Amount",
+                            "binding": "NetAmount",
+                            "align": "center",
+                            "allowSorting": true,
+                            "isContentHtml": true,
+                            "width": "1*"
+                        }],
+                headersVisibility: "Column",
+                autoGenerateColumns: false,
+                itemsSource: salesCollection,
+                isReadOnly: true,
+                autoSizeMode: wijmo.grid.AutoSizeMode.Both,
+                allowDragging: wijmo.grid.AllowDragging.None,
+                selectionMode: wijmo.grid.SelectionMode.Row
+            });
+
+
+            salesGrid.trackChanges = true;
+        }
+
+        $(document).ready(function () {
+
+            // Navigation button
+            btnFirstPageGrid5 = document.getElementById('btnMoveToFirstPageGrid');
+            btnPreviousPageGrid5 = document.getElementById('btnMoveToPreviousPageGrid');
+            btnNextPageGrid5 = document.getElementById('btnMoveToNextPageGrid');
+            btnLastPageGrid5 = document.getElementById('btnMoveToLastPageGrid');
+            btnCurrentPageGrid = document.getElementById('btnCurrentPageGrid');
+
+            //Collection View
+            // CALLED AJAX REEQUEST RETURNED RESULTS WHEN AJAX IS SUCCESS
+            // CALLED FIRST
+            getSearchList(function(results) {
+                if (results && results.length > 0) {
+                    searchListResult = results
+                }
+            });
+
+            updateSalesList();
+
+            document.getElementById('tbBarcode').onkeypress = function (e) {
+                var event = e || window.event;
+                var charCode = event.which || event.keyCode;
+
+                if (charCode == '13') {
+                    //alert(document.getElementById('tbBarcode').value);
+                    $.ajax({
+                        url: '/api/item/barcode/' + document.getElementById('tbBarcode').value,
+                        cache: false,
+                        type: 'GET',
+                        contentType: 'application/json; charset=utf-8',
+                        data: {},
+                        success: function (results) {
+                            if (results && results.length > 0) {
+                                barcodedItem = results;
+                                salesList.push({
+                                    Item: results[0]["Alias"],
+                                    Price: parseFloat(results[0]["Price"]).toFixed(2),
+                                    NetPrice: parseFloat(results[0]["Price"]).toFixed(2),
+                                    Quantity: "1",
+                                    NetAmount: parseFloat(results[0]["Price"]).toFixed(2),
+                                    Unit: "Pc(s)"
                                 });
+
+                                document.getElementById('totalCost').innerHTML = parseFloat(totalCost += results[0]["Price"]).toFixed(2);
+                            } else {
+                                alert("Invalid Barcode");
                             }
+                        }
+                    });
+                    return false;
+                }
+            }
+                                
 
-                            // ===================
-                            // Period Edit Button
-                            // ===================
-                            function cmdPeriodEditButton_OnClick() {
-                                salesCollections.editSales(salesCollections.currentItem);
+        });
+        //modal cancel
+        $('#btnCancel').click(function () {
+            $('#salesItem').modal('toggle');
+        });
 
-                            }
-
-                            // =====================
-                            // Period delete Button
-                            // =====================
-                            function cmdPeriodDeleteButton_OnClick() {
-                                var id = salesCollections.currentItem.Id;
-
-                                console.log(typeof id + id);
-
-                                $('#deletePeriodConfirm').modal({
-                                    show: true,
-                                    backdrop: 'static'
-                                });
-                                $("#cmdConfirmDeletePeriod").prop("disabled", false);
-                                $("#cmdConfirmDeleteCloseButton").prop("disabled", false);
-                            }
-                            //======================
-                            //Pick Modal
-                            //======================\
-                            function pickItem_onClick() {
-                                var id = salesCollections.currentItem.Id;
-                                $('#pickItem').modal({
-                                    show: true,
-                                    backdrop: 'static'
-                                });
-                            }
-                            // =====================
-                            // Add Account Button
-                            // =====================
-                            function cmdaddPeriodButton_OnClick() {
-                                $('#addPeriod').modal({
-                                    show: true,
-                                    backdrop: 'static'
-                                });
-                            }
-                            // Period Confirm Delete Button
-                            function cmdPeriodConfirmDeleteButton_OnClick() {
-                                $("#cmdConfirmDeletePeriod").prop("disabled", true);
-                                $("#cmdConfirmDeleteCloseButton").prop("disabled", true);
-
-                                //====================
-                                var id = salesCollections.currentItem.Id;
-
-                                $.ajax({
-                                    url: '/api/period/delete/' + id,
-                                    type: "DELETE",
-                                    contentType: "application/json; charset=utf-8",
-                                    dataType: "json",
-                                    statusCode: {
-                                        200: function () {
-                                            $("#cmdConfirmDeletePeriod").prop("disabled", true);
-                                            $("#cmdConfirmDeleteCloseButton").prop("disabled", true);
-                                            toastr.success("Successfully Deleted");
-                                            window.setTimeout(function () {
-                                                location.reload()
-                                            }, 1000);
-                                        },
-                                        404: function () {
-                                            toastr.error("Request Not Found");
-                                            $('#deletePeriodConfirm').modal('hide');
-                                            $("#cmdConfirmDeletePeriod").prop("disabled", false);
-                                            $("#cmdConfirmDeleteCloseButton").prop("disabled", false);
-                                        },
-                                        400: function () {
-                                            toastr.error("Can't be deleted");
-                                            $('#deletePeriodConfirm').modal('hide');
-                                            $("#cmdConfirmDeletePeriod").prop("disabled", false);
-                                            $("#cmdConfirmDeleteCloseButton").prop("disabled", false);
-                                        }
-                                    }
-                                });
-                            }
-
-                            // ==================
-                            // Navigation Buttons
-                            // ==================
-                            function updateNavigateButtonsCollectionPeriod() {
-                                if (salesCollections.pageSize <= 0) {
-                                    document.getElementById('navigationPageGrid').style.display = 'none';
-                                    return;
-                                }
-                                document.getElementById('navigationPageGrid').style.display = 'block';
-                                if (salesCollections.pageIndex === 0) {
-                                    btnFirstPageGrid5.setAttribute('disabled', 'disabled');
-                                    btnPreviousPageGrid5.setAttribute('disabled', 'disabled');
-                                    btnNextPageGrid5.removeAttribute('disabled');
-                                    btnLastPageGrid5.removeAttribute('disabled');
-                                } else if (salesCollections.pageIndex === (salesCollections.pageCount - 1)) {
-                                    btnFirstPageGrid5.removeAttribute('disabled');
-                                    btnPreviousPageGrid5.removeAttribute('disabled');
-                                    btnLastPageGrid5.setAttribute('disabled', 'disabled');
-                                    btnNextPageGrid5.setAttribute('disabled', 'disabled');
-                                } else {
-                                    btnFirstPageGrid5.removeAttribute('disabled');
-                                    btnPreviousPageGrid5.removeAttribute('disabled');
-                                    btnNextPageGrid5.removeAttribute('disabled');
-                                    btnLastPageGrid5.removeAttribute('disabled');
-                                }
-                                btnCurrentPageGrid.innerHTML = (salesCollections.pageIndex + 1) + ' / ' + salesCollections.pageCount;
-
-                            }
-
-
-                            //============
-                            // On Page Load
-                            // ============
-
-                            // CALLED WHEN MODAL IS CLICKED
-                            // CALLED THIRD
-                            function initTableSalesList() {
-                                var results = periodListResult;
-                                var PeriodList = new wijmo.collections.ObservableArray();
-                                $("#loadingModal").modal("hide");
-                                /* var results = JSON.parse(result); */
-                                if (results && results.length > 0) {
-                                    for (i = 0; i < results.length; i++) {
-                                        PeriodList.push({
-                                            BarCode: results[i]["BarCode"],
-                                            ItemDescription: results[i]["ItemDescription"],
-                                            GenericName: results[i]["GenericName"],
-                                            Price: results[i]["Price"],
-                                            OnhandQuantity: results[i]["OnhandQuantity"],
-                                            IsInventory: results[i]["IsInventory"],
-                                            PickId: "<button class='btn btn-primary btn-flat btn-xs btn-block' id='pickButton' onclick='pickItem_onClick()'><i class='fa fa-hand-o-right'></i>Pick</button>",
-                                        });
-                                    }
-                                    salesCollections = new wijmo.collections.CollectionView(PeriodList);
-                                    btnCurrentPageGrid.innerHTML = (salesCollections.pageIndex + 1) + ' / ' + salesCollections.pageCount;
-
-                                    salesCollections.canFilter = true;
-                                    salesCollections.pageSize = 15;
-
-                                    //Filter
-                                    var filterText = '';
-                                    $('#InputFilter').keydown(function () {
-                                        filterText = this.value.toLowerCase();
-                                        salesCollections.refresh();
-                                    });
-                                    salesCollections.filter = function (period) {
-                                        return !filterText || (period.Period.toLowerCase().indexOf(filterText) > -1);
-                                    }
-                                    salesCollections.collectionChanged.addHandler(function (sender, args) {
-                                        updateNavigateButtonsCollectionPeriod();
-
-                                    });
-                                    salesCollections.currentChanged.addHandler(function (sender, args) {
-                                        updateNavigateButtonsCollectionPeriod();
-                                    });
-
-
-                                    //Flex Grid
-
-                                    salesGrid = new wijmo.grid.FlexGrid('#periodCollectionGrid');
-                                    salesGrid.initialize({
-                                        columns: [
-                                             {
-                                                 "header": "Barcode",
-                                                 "binding": "BarCode",
-                                                 "width": 60,
-                                                 "align": "center",
-                                                 "isContentHtml": true
-                                             },
-                                             {
-                                                 "header": "Item",
-                                                 "binding": "ItemDescription",
-                                                 "width": 70,
-                                                 "align": "center",
-                                                 "isContentHtml": true
-
-                                             },
-                                            {
-                                                "header": "Generic Name",
-                                                "binding": "GenericName",
-                                                "align": "center",
-                                                "allowSorting": true,
-                                                "isContentHtml": true,
-                                                "width": "2*"
-                                            },
-                                            {
-                                                "header": "Price",
-                                                "binding": "Price",
-                                                "align": "center",
-                                                "allowSorting": true,
-                                                "isContentHtml": true,
-                                                "width": "2*"
-                                            },
-                                             {
-                                                 "header": "On Hand Qty",
-                                                 "binding": "OnhandQuantity",
-                                                 "align": "center",
-                                                 "allowSorting": true,
-                                                 "isContentHtml": true,
-                                                 "width": "2*"
-                                             },
-                                             {
-                                                 "header": "I",
-                                                 "binding": "IsInventory",
-                                                 "align": "center",
-                                                 "allowSorting": true,
-                                                 "isContentHtml": true,
-                                                 "width": "2*"
-                                             },
-                                              {
-                                                  "header": " ",
-                                                  "binding": "PickId",
-                                                  "align": "center",
-                                                  "allowSorting": true,
-                                                  "isContentHtml": true,
-                                                  "width": "2*"
-                                              }],
-                                        autoGenerateColumns: false,
-                                        itemsSource: salesCollections,
-                                        isReadOnly: true,
-                                        autoSizeMode: wijmo.grid.AutoSizeMode.Both,
-                                        allowDragging: wijmo.grid.AllowDragging.None,
-                                        selectionMode: wijmo.grid.SelectionMode.Row
-                                    });
-
-
-                                    salesGrid.trackChanges = true;
-
-                                    updateNavigateButtonsCollectionPeriod();
-
-                                    btnFirstPageGrid5.addEventListener('click', function () {
-                                        salesCollections.moveToFirstPage();
-                                        updateNavigateButtonsCollectionPeriod();
-                                    });
-                                    btnPreviousPageGrid5.addEventListener('click', function () {
-                                        salesCollections.moveToPreviousPage();
-                                        updateNavigateButtonsCollectionPeriod();
-                                    });
-                                    btnNextPageGrid5.addEventListener('click', function () {
-                                        salesCollections.moveToNextPage();
-                                        updateNavigateButtonsCollectionPeriod();
-                                    });
-                                    btnLastPageGrid5.addEventListener('click', function () {
-                                        salesCollections.moveToLastPage();
-                                        updateNavigateButtonsCollectionPeriod();
-                                    });
-                                } else {
-                                    /*   alert("No data."); */
-                                }
-                            }
-
-                            $(document).ready(function () {
-
-                                // Navigation button
-                                btnFirstPageGrid5 = document.getElementById('btnMoveToFirstPageGrid');
-                                btnPreviousPageGrid5 = document.getElementById('btnMoveToPreviousPageGrid');
-                                btnNextPageGrid5 = document.getElementById('btnMoveToNextPageGrid');
-                                btnLastPageGrid5 = document.getElementById('btnMoveToLastPageGrid');
-                                btnCurrentPageGrid = document.getElementById('btnCurrentPageGrid');
-
-                                //Collection View
-                                // CALLED AJAX REEQUEST RETURNED RESULTS WHEN AJAX IS SUCCESS
-                                // CALLED FIRST
-                                getPeriodMasterList(function(results) {
-                                    console.log('--- data ', results)
-                                    if (results && results.length > 0) {
-                                        periodListResult = results
-                                    }
-                                });
-
-                            });
-                            //modal cancel
-                            $('#btnCancel').click(function () {
-                                $('#salesItem').modal('toggle');
-                            });
-
-
-                        </script>
+    </script>
 </body>

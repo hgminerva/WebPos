@@ -4,7 +4,7 @@
 
 
 <!-- ADD THE CLASS sidedar-collapse TO HIDE THE SIDEBAR PRIOR TO LOADING THE SITE -->
-<body class="hold-transition skin-blue sidebar-collapse sidebar-mini">
+<section class="hold-transition skin-blue sidebar-collapse sidebar-mini">
 
     <!-- Site wrapper -->
     <div class="wrapper">
@@ -269,8 +269,9 @@
             // Customer Edit Button
             // ===================
             function cmdCustomerEditButton_OnClick() {
-                customerCollections.editItem(customerCollections.currentItem);
-
+                var id = customerCollections.currentItem.Id;
+                localStorage.customerId = id;
+                window.location.href = isHost + "/Software/EditCustomer";
             }
 
             // =====================
@@ -378,7 +379,7 @@
         @Html.Partial("_MainFooter")
     </div>
 
-</body>
+</section>
 
 
 

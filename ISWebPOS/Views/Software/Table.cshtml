@@ -343,33 +343,7 @@
                     }
                     btnCurrentPageGrid.innerHTML = (tableCollections.pageIndex + 1) + ' / ' + tableCollections.pageCount;
 
-                }
+}
 
-
-                //============
-                // On Page Load
-                // ============
-                $(document).ready(function () {
-
-                    // Navigation button
-                    btnFirstPageGrid = document.getElementById('btnMoveToFirstPageGrid');
-                    btnPreviousPageGrid = document.getElementById('btnMoveToPreviousPageGrid');
-                    btnNextPageGrid = document.getElementById('btnMoveToNextPageGrid');
-                    btnLastPageGrid = document.getElementById('btnMoveToLastPageGrid');
-                    btnCurrentPageGrid = document.getElementById('btnCurrentPageGrid');
-
-                    //Collection View
-                    getTableMasterList();
-
-                });
-        </script>
-        <!-- ===================Main Footer============================ -->
-        @Html.Partial("_MainFooter")
-    </div>
-</body>
-
-
-
-
-
+<h2>Table</h2>
 

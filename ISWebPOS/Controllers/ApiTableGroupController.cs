@@ -29,6 +29,7 @@ namespace ISWebPOS.Controllers
                                  UpdateUserId = d.UpdateUserId,
                                  UpdateDateTime = Convert.ToString(d.UpdateDateTime),
                                  IsLocked = isLocked
+
                              };
             return TableGroup.ToList();
         }

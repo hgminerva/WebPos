@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace ISWebPOS.Controllers
 {
+    [NoCache]
     public class SoftwareController : Controller
     {
         // GET: Software
@@ -49,8 +50,17 @@ namespace ISWebPOS.Controllers
         {
             return View();
         }
+        //Edit Customer
+        public ActionResult EditCustomer()
+        {
+            return View();
+        }
         //SupplierView
         public ActionResult Supplier() 
+        {
+            return View();
+        }
+        public ActionResult EditSupplier()
         {
             return View();
         }

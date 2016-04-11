@@ -13,7 +13,6 @@ namespace ISWebPOS
             // =============
             bundles.Add(new StyleBundle("~/Template/Css").Include(
                 "~/bootstrap/css/bootstrap.min.css",
-                "~/font-awesome/css/font-awesome.css",
                 "~/font-awesome/css/font-awesome.min.css",
                 "~/Content/toastr.min.css",
                 "~/Content/ionicons.min.css",
@@ -36,10 +35,8 @@ namespace ISWebPOS
                 "~/plugins/fastclick/fastclick.min.js",
                 "~/plugins/iCheck/icheck.min.js",
                 "~/dist/js/demo.js",
-                "~/Scripts/respond.js",
                 "~/Scripts/respond.min.js",
                 "~/Scripts/html5shiv.min.js",
-                "~/Scripts/toastr.js",
                 "~/Scripts/toastr.min.js",
                 "~/dist/js/app.min.js",
                 "~/dist/js/dashboard.js",
@@ -63,17 +60,6 @@ namespace ISWebPOS
                 "~/wijmo/controls/wijmo.input.min.js",
                 "~/wijmo/controls/wijmo.grid.min.js",
                 "~/wijmo/controls/wijmo.chart.min.js"));
-
-
-            //=======
-            //ADDITEM JS
-            //=======
-
-            bundles.Add(new ScriptBundle("~/AddItem/Js").Include(
-                "~/Scripts/item-validate.js"));
-
-            bundles.Add(new ScriptBundle("~/Scripts/ItemComponent-AJAX").Include(
-                "~/Scripts/itemComponent-ajax.js"));
         }
     }
 }
