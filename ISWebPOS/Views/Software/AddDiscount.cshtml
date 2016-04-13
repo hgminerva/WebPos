@@ -36,7 +36,7 @@
                                     <!--Buttons-->
                                     <div class="btn-group-horizontal pull-right">
                                         <a class="btn btn-app">
-                                            <i class="fa fa-lock"></i> Lock
+                                            <i class="fa fa-lock" onClick="test()"></i> Lock
                                         </a>
                                         <a class="btn  btn-app">
                                             <i class="fa fa-unlock"></i> Unlock
@@ -57,7 +57,7 @@
                                 <div class="form-group">
                                     <label for="discount" class="col-sm-2 control-label">Discount</label>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control" id="dicount" placeholder="NA">
+                                        <input type="text" class="form-control" id="discount" placeholder="NA">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -111,14 +111,8 @@
                                         </tr>
                                     </table>
                                     <div class="box-body table-responsive no-padding">
-                                        <table class="table table-bordered" style="background-color:#dbe2ea">
-                                            <tr>
-                                                <th></th>
-                                                <th style="text-align:center">Item</th>
-                                                <th></th>
-                                            </tr>
-                                            <tr>
-                                         </table>
+                                        <!--table-->
+                                        <table id="tableDiscount" class="grid border-custom" style="height:300px"></table>
                                     </div>
                                     </div><!-- /.box-body -->
 
@@ -129,12 +123,170 @@
                     </div><!-- /.box -->
                 </div>
 
-
             </section>
         </div><!-- ./wrapper -->
         <!-- ===================Main Footer============================ -->
         @Html.Partial("_MainFooter")
     </div>
+    <script type="text/javascript">
+        //================
+        // Global variables
+        // ================
+        var discountCollections;
+        var discountRow;
+        var discountColumns;
+
+        var combobox = 'Korea, Germany, US, UK'.split(',');
+
+        function test() {
+            alert(discountRow.itemsSource);
+        }
+
+        function loadItems() {
+            $.ajax({
+                url: '/api/item/list',
+                type: 'GET',
+                contentType: "application/json;charset=utf-8",
+                cache: false,
+                success: function (result, status, xhr) {
+                    updateItems(result);
+                },
+            });
+        }
+
+        function updateItems(data) {
+            var items;
+            if (data != null || data != undefined) {
+                $.each(data, function (index, value) {
+                    items += data[index]["ItemDescription"] + ',';
+                });
+                combobox = items.split(',');
+            }
+        }
+
+        function addRow() {
+            discountColumns.push({
+                DeleteId: "<button class='btn btn-danger btn-xs btn-block' id='itemDeleteButton' onclick='cmdItemDeleteButton_OnClick()'><i class='fa fa-trash'></i> Delete</button>",
+                AId: "<input type='checkbox' onclick='addRow()' value='on'></input>",
+                EmptyId: ""
+            });
+        }
+
+        function createItemList() {
+            discountColumns = new wijmo.collections.ObservableArray();
+            addRow();
+         
+            discountCollections = new wijmo.collections.CollectionView(discountColumns);
+
+            //Flex Grid
+            discountRow = new wijmo.grid.FlexGrid('#tableDiscount');
+            discountRow.initialize({
+                columns: [
+
+                {
+                    "header": "Delete",
+                    "binding": "DeleteId",
+                    "width": 70,
+                    "align": "center",
+                    "isContentHtml": true,
+                    "isReadOnly": true,
+                    "allowSorting": false
+                },
+                {
+                    "header": "Item",
+                    "binding": "ItemId",
+                    "width": 500,
+                    "align": "center",
+                    "dataMap": combobox
+                },
+                {
+                    "header": "A",
+                    "binding": "AId",
+                    "align": "center",
+                    "isContentHtml": true,
+                    //"dataType": "Boolean",
+                    "isReadOnly": true
+                    //"cellFormatter": function (args) {
+                    //  if(args.row.type & $.)
+                    //}
+                },
+                {
+                    "header": " ",
+                    "binding": "EmptyId",
+                    "align": "center",
+                    "allowSorting": false,
+                    "width": "2*",
+                    "isReadOnly": true
+                }],
+                autoGenerateColumns: false,
+                itemsSource: discountCollections,
+                autoSizeMode: wijmo.grid.AutoSizeMode.Both,
+                allowDragging: wijmo.grid.AllowDragging.None,
+                selectionMode: wijmo.grid.SelectionMode.Row        
+            });
+        } 
+        
+        // =====================
+        // Item delete Button
+        // =====================
+        function cmdItemDeleteButton_OnClick() {
+            var id = itemCollections.currentItem.Id;
+
+            console.log(typeof id + id);
+
+            $('#deleteItemConfirm').modal({
+                show: true,
+                backdrop: 'static'
+            });
+            $("#cmdConfirmDeleteItem").prop("disabled", false);
+            $("#cmdConfirmDeleteCloseButton").prop("disabled", false);
+        }
+        // Company Confirm Delete Button
+        function cmdItemConfirmDeleteButton_OnClick() {
+            $("#cmdConfirmDeleteItem").prop("disabled", true);
+            $("#cmdConfirmDeleteCloseButton").prop("disabled", true);
+
+            //====================
+            var id = itemCollections.currentItem.Id;
+
+            $.ajax({
+                url: '/api/item/delete/' + id,
+                type: "DELETE",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                statusCode: {
+                    200: function () {
+                        $("#cmdConfirmDeleteItem").prop("disabled", true);
+                        $("#cmdConfirmDeleteCloseButton").prop("disabled", true);
+                        toastr.success("Successfully Deleted");
+                        window.setTimeout(function () {
+                            location.reload()
+                        }, 1000);
+                    },
+                    404: function () {
+                        toastr.error("Request Not Found");
+                        $('#deleteItemConfirm').modal('hide');
+                        $("#cmdConfirmDeleteItem").prop("disabled", false);
+                        $("#cmdConfirmDeleteCloseButton").prop("disabled", false);
+                    },
+                    400: function () {
+                        toastr.error("Can't be deleted");
+                        $('#deleteItemConfirm').modal('hide');
+                        $("#cmdConfirmDeleteItem").prop("disabled", false);
+                        $("#cmdConfirmDeleteCloseButton").prop("disabled", false);
+                    }
+                }
+            });
+        }
+
+        //============
+        // On Page Load
+        // ============
+        $(document).ready(function () {
+            loadItems();
+            createItemList();
+        });
+    </script>
 
 </body>
 
