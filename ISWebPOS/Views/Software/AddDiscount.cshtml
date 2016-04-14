@@ -2,7 +2,6 @@
 @{
     ViewBag.Title = "AddDiscount";
 }
-
 <!-- ADD THE CLASS sidedar-collapse TO HIDE THE SIDEBAR PRIOR TO LOADING THE SITE -->
 <body class="hold-transition skin-blue sidebar-collapse sidebar-mini">
     <!-- Site wrapper -->
@@ -36,7 +35,7 @@
                                     <!--Buttons-->
                                     <div class="btn-group-horizontal pull-right">
                                         <a class="btn btn-app">
-                                            <i class="fa fa-lock" onClick="test()"></i> Lock
+                                            <i class="fa fa-lock" onclick="test()"></i> Lock
                                         </a>
                                         <a class="btn  btn-app">
                                             <i class="fa fa-unlock"></i> Unlock
@@ -112,11 +111,11 @@
                                     </table>
                                     <div class="box-body table-responsive no-padding">
                                         <!--table-->
-                                        <table id="tableDiscount" class="grid border-custom" style="height:300px"></table>
-                                    </div>
-                                    </div><!-- /.box-body -->
-
+                                        <div id="tableDiscount" class="grid border-custom" style="height:300px"></div>
+                                        <!--/.table-->
                                 </div><!-- /.box-body -->
+
+                            </div><!-- /.box-body -->
                             <div class="box-footer">
                             </div><!-- /.box-footer -->
                         </form>
@@ -138,10 +137,6 @@
 
         var combobox = 'Korea, Germany, US, UK'.split(',');
 
-        function test() {
-            alert(discountRow.itemsSource);
-        }
-
         function loadItems() {
             $.ajax({
                 url: '/api/item/list',
@@ -155,31 +150,20 @@
         }
 
         function updateItems(data) {
-            var items;
+            var items = [];
             if (data != null || data != undefined) {
                 $.each(data, function (index, value) {
-                    items += data[index]["ItemDescription"] + ',';
+                    items[index] = data[index]["ItemDescription"];
                 });
-                combobox = items.split(',');
             }
         }
 
-        function addRow() {
-            discountColumns.push({
-                DeleteId: "<button class='btn btn-danger btn-xs btn-block' id='itemDeleteButton' onclick='cmdItemDeleteButton_OnClick()'><i class='fa fa-trash'></i> Delete</button>",
-                AId: "<input type='checkbox' onclick='addRow()' value='on'></input>",
-                EmptyId: ""
-            });
-        }
-
-        function createItemList() {
+        function init() {
             discountColumns = new wijmo.collections.ObservableArray();
-            addRow();
-         
             discountCollections = new wijmo.collections.CollectionView(discountColumns);
-
-            //Flex Grid
             discountRow = new wijmo.grid.FlexGrid('#tableDiscount');
+
+            //Flex grid
             discountRow.initialize({
                 columns: [
 
@@ -197,18 +181,17 @@
                     "binding": "ItemId",
                     "width": 500,
                     "align": "center",
-                    "dataMap": combobox
+                    "dataMap": combobox,
+                    "isContentHtml": true,
+                    "dataType": "String"
                 },
                 {
                     "header": "A",
                     "binding": "AId",
+                    "width": 50,
                     "align": "center",
                     "isContentHtml": true,
-                    //"dataType": "Boolean",
-                    "isReadOnly": true
-                    //"cellFormatter": function (args) {
-                    //  if(args.row.type & $.)
-                    //}
+                    "dataType": "Boolean"
                 },
                 {
                     "header": " ",
@@ -222,10 +205,21 @@
                 itemsSource: discountCollections,
                 autoSizeMode: wijmo.grid.AutoSizeMode.Both,
                 allowDragging: wijmo.grid.AllowDragging.None,
-                selectionMode: wijmo.grid.SelectionMode.Row        
+                selectionMode: wijmo.grid.SelectionMode.Row,
+                cellFormatter: function (args) {
+
+                }
             });
-        } 
-        
+        }
+
+        function addRow() {
+            discountColumns.push({
+                DeleteId: "<button class='btn btn-danger btn-xs btn-block' id='itemDeleteButton'><i class='fa fa-trash'></i>Delete</button>",
+                AId:false,
+                EmptyId: ""
+            });
+        }
+
         // =====================
         // Item delete Button
         // =====================
@@ -284,10 +278,12 @@
         // ============
         $(document).ready(function () {
             loadItems();
-            createItemList();
+            init();
+            addRow();
         });
     </script>
-
 </body>
+
+
 
 
