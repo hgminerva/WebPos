@@ -163,38 +163,11 @@
                                     </div>
                                 </div>
                                 <div class="box-body table-responsive no-padding">
-                                    <table class="table table-bordered">
-                                        <tr style="width:100%;background-color:#42A5F5; color:#fff;">
-                                            <th></th>
-                                            <th align="center">Item</th>
-                                            <th align="center">Unit</th>
-                                            <th align="center">Cost</th>
-                                            <th align="center">Quantity</th>
-                                            <th align="center">Amount</th>
-                                            <th align="center">Expiry Date</th>
-                                            <th align="center">Lot Number</th>
-                                            <th align="center">Asset Account</th>
-                                            <th></th>
-                                            <th align="center"><button class="btn btn-info btn-flat" type="button">IMPORT XLS</button></th>
-                                            <th align="center"><button class="btn btn-info btn-flat" type="button">EXPORT XLS</button></th>
-                                        </tr>
-
-                                        <tr style="width:100%;background-color:#BBDEFB;">
-                                            <td><button class='btn btn-danger btn-xs btn-block'><i class='fa fa-trash'></i> Delete</button></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-
-                                        </tr>
-                                    </table>
+                                <div>
+                                    <!--table-->
+                                    <div class="table table-bordered" id="tableStockin"></div>
+                                    <!--/.table-->
+                                </div>
                                 </div><!-- /.box-body -->
 
                             </div><!-- /.box-body -->
@@ -210,6 +183,150 @@
         <!-- ===================Main Footer============================ -->
         @Html.Partial("_MainFooter")
     </div>
+    <script>
+        //================
+        // Global variables
+        // ================
+        var stockinCollections;
+        var stockinColumns;
+        var stockinTable;
+
+        var itemList = [];
+        var itemIdList = [];
+        var unitList = [];
+        var assetAccountList = [];
+
+        //constructor
+        function init() {
+            //datamp
+            unitList[0] = 'Pc(s)';
+            assetAccountList[0] = 'Inventory';
+
+            //table
+            stockinColumns = new wijmo.collections.ObservableArray();
+            stockinCollections = new wijmo.collections.CollectionView(stockinColumns);
+            stockinTable = new wijmo.grid.FlexGrid('#tableStockin');
+            itemList = new wijmo.collections.ObservableArray();
+            $.ajax({ 
+                url: '/api/item/list',
+                cache: false,
+                type: 'GET',
+                contentType: 'application/json; charset=utf-8',
+                data: {},
+                success: function (results) {
+
+                    if (results != null || results != undefined) {
+                        itemList = new Array(results.length);
+                        $.each(results, function (index, value) {
+                            itemList[index] = results[index]["ItemCode"];
+                        })
+
+                        stockinTable.initialize({
+
+                            columns: [
+                            {
+                                "header": " ",
+                                "binding": "DeleteId",
+                                "align": "center",
+                                "width": 70,
+                                "isReadOnly": true,
+                                "allowSorting": false
+                            },
+                            {
+                                "header": "Item",
+                                "binding": "ItemId",
+                                "align": "center",
+                                "width": 300,
+                                "dataMap": new wijmo.grid.DataMap(results, 'ItemCode', 'ItemDescription')
+                            },
+                            {
+                                "header": "Unit",
+                                "binding": "UnitId",
+                                "align": "center",
+                                "width": 75,
+                                "dataMap": unitList,
+                                "isReadOnly": true,
+                                "showDropDown": false
+                            },
+                            {
+                                "header": "Cost",
+                                "binding": "CostId",
+                                "align": "center",
+                                "width": 75,
+                                "isReadOnly": true,
+                                "allowSorting": false
+                            },
+                            {
+                                "header": "Quanity",
+                                "binding": "QuantiyId",
+                                "align": "center",
+                                "width": 70
+                            },
+                            {
+                                "header": "Amount",
+                                "binding": "AmountId",
+                                "align": "center",
+                                "width": 75,
+                                "isReadOnly": true
+                            },
+                            {
+                                "header": "Expiry Date",
+                                "binding": "ExpiryDateId",
+                                "align": "center",
+                                "width": 170
+                            },
+                            {
+                                "header": "Lot Number",
+                                "binding": "LotNumberId",
+                                "align": "center",
+                                "width": 95
+                            },
+                            {
+                                "header": "AssetAccount",
+                                "binding": "AssetAccountId",
+                                "align": "center",
+                                "width": 110,
+                                "dataMap": assetAccountList,
+                                "isReadOnly": true
+                            },
+                            {
+                                "header": " ",
+                                "width": "*",
+                                "isReadOnly": true
+                            }],
+                            autoGenerateColumns: false,
+                            itemsSource: stockinCollections,
+                            autoSizeMode: wijmo.grid.AutoSizeMode.Both,
+                            allowDragging: wijmo.grid.AllowDragging.None,
+                            selectionMode: wijmo.grid.SelectionMode.Cell,
+                            allowAddNew: true,
+                            itemFormatter: function (panel, r, c, cell) {
+                                var col = panel.columns[c];
+                                var row = stockinTable.rows;
+                                if (col.binding == 'ItemId') {
+                                }
+
+                                if (col.binding == 'DeleteId') {
+                                    if (cell.innerHTML != " ")
+                                        cell.innerHTML = "<button class='btn btn-danger btn-xs btn-block' id='itemDeleteButton'><i class='fa fa-trash'></i>Delete</button>";
+                                }
+
+                                if (col.binding == 'ExpiryDateId') {
+                                    if (cell.innerHTML != " ")
+                                        cell.innerHTML = "<button class='btn btn-danger btn-xs btn-block' id='itemDeleteButton'><i class='fa fa-trash'></i>Delete</button>";
+                                }
+                                
+                            }
+                        })
+                    }                
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            init();
+        });
+    </script>
 </body>
 
 

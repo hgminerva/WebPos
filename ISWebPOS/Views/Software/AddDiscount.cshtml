@@ -132,91 +132,85 @@
         // Global variables
         // ================
         var discountCollections;
-        var discountRow;
+        var discountTable;
         var discountColumns;
 
-        var combobox = 'Korea, Germany, US, UK'.split(',');
-
-        function loadItems() {
-            $.ajax({
-                url: '/api/item/list',
-                type: 'GET',
-                contentType: "application/json;charset=utf-8",
-                cache: false,
-                success: function (result, status, xhr) {
-                    updateItems(result);
-                },
-            });
-        }
-
-        function updateItems(data) {
-            var items = [];
-            if (data != null || data != undefined) {
-                $.each(data, function (index, value) {
-                    items[index] = data[index]["ItemDescription"];
-                });
-            }
-        }
+        var itemList = [];
 
         function init() {
+            //table
             discountColumns = new wijmo.collections.ObservableArray();
             discountCollections = new wijmo.collections.CollectionView(discountColumns);
-            discountRow = new wijmo.grid.FlexGrid('#tableDiscount');
+            discountTable = new wijmo.grid.FlexGrid('#tableDiscount');
+            
+            $.ajax({
+                url: '/api/item/list',
+                cache: false,
+                type: 'GET',
+                contentType: 'application/json; charset=utf-8',
+                data: {},
+                success: function (results) {
+                    if (results != null || results != undefined) {
+                        itemList = new Array(results.length);
+                        $.each(results, function (index, value) {
+                            itemList[index] = results[index]["ItemDescription"];
+                        });
 
-            //Flex grid
-            discountRow.initialize({
-                columns: [
+                        discountColumns.push({
+                            DeleteId: "<button class='btn btn-danger btn-xs btn-block' id='itemDeleteButton'><i class='fa fa-trash'></i>Delete</button>",
+                            AId: false
+                        });
+                            discountTable.initialize({
+                                columns: [
 
-                {
-                    "header": "Delete",
-                    "binding": "DeleteId",
-                    "width": 70,
-                    "align": "center",
-                    "isContentHtml": true,
-                    "isReadOnly": true,
-                    "allowSorting": false
-                },
-                {
-                    "header": "Item",
-                    "binding": "ItemId",
-                    "width": 500,
-                    "align": "center",
-                    "dataMap": combobox,
-                    "isContentHtml": true,
-                    "dataType": "String"
-                },
-                {
-                    "header": "A",
-                    "binding": "AId",
-                    "width": 50,
-                    "align": "center",
-                    "isContentHtml": true,
-                    "dataType": "Boolean"
-                },
-                {
-                    "header": " ",
-                    "binding": "EmptyId",
-                    "align": "center",
-                    "allowSorting": false,
-                    "width": "2*",
-                    "isReadOnly": true
-                }],
-                autoGenerateColumns: false,
-                itemsSource: discountCollections,
-                autoSizeMode: wijmo.grid.AutoSizeMode.Both,
-                allowDragging: wijmo.grid.AllowDragging.None,
-                selectionMode: wijmo.grid.SelectionMode.Row,
-                //cellFormatter: function (args) {
-
-               // }
-            });
+                                {
+                                    "header": "Delete",
+                                    "binding": "DeleteId",
+                                    "width": 70,
+                                    "align": "center",
+                                    "isContentHtml": true,
+                                    "isReadOnly": true,
+                                    "allowSorting": false
+                                },
+                                {
+                                    "header": "Item",
+                                    "binding": "ItemId",
+                                    "width": 500,
+                                    "align": "center",
+                                    "dataMap": itemList,
+                                },
+                                {
+                                    "header": "A",
+                                    "binding": "AId",
+                                    "width": 50,
+                                    "align": "center",
+                                    "dataType": "Boolean"
+                                },
+                                {
+                                    "header": " ",
+                                    "binding": "EmptyId",
+                                    "align": "center",
+                                    "allowSorting": false,
+                                    "width": "2*",
+                                    "isReadOnly": true
+                                }],
+                                autoGenerateColumns: false,
+                                itemsSource: discountCollections,
+                                autoSizeMode: wijmo.grid.AutoSizeMode.Both,
+                                allowDragging: wijmo.grid.AllowDragging.None,
+                                selectionMode: wijmo.grid.SelectionMode.Row,
+                                allowAddNew: true
+                            })
+                        }
+                    }
+                });
+ 
         }
 
         function addRow() {
             discountColumns.push({
                 DeleteId: "<button class='btn btn-danger btn-xs btn-block' id='itemDeleteButton'><i class='fa fa-trash'></i>Delete</button>",
-                AId:false,
-                EmptyId: ""
+                AId: false
             });
         }
 
@@ -277,9 +271,7 @@
         // On Page Load
         // ============
         $(document).ready(function () {
-            loadItems();
             init();
-            addRow();
         });
     </script>
 </body>

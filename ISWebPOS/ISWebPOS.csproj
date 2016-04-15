@@ -191,6 +191,7 @@
     <Compile Include="Controllers\ApiSalesReleasedController.cs" />
     <Compile Include="Controllers\ApiStockCountController.cs" />
     <Compile Include="Controllers\ApiStockInController.cs" />
+    <Compile Include="Controllers\ApiStockInLineController.cs" />
     <Compile Include="Controllers\ApiStockOutController.cs" />
     <Compile Include="Controllers\ApiTerminalController.cs" />
     <Compile Include="Controllers\ApiUnitController.cs" />
