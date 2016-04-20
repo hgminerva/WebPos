@@ -136,6 +136,7 @@
         var discountColumns;
 
         var itemList = [];
+        var cmbItems;
 
         function init() {
             //table
@@ -153,54 +154,61 @@
                     if (results != null || results != undefined) {
                         itemList = new Array(results.length);
                         $.each(results, function (index, value) {
-                            itemList[index] = results[index]["ItemDescription"];
+                            itemList[index] = results[index]["ItemCode"];
                         });
 
-                        discountColumns.push({
-                            DeleteId: "<button class='btn btn-danger btn-xs btn-block' id='itemDeleteButton'><i class='fa fa-trash'></i>Delete</button>",
-                            AId: false
-                        });
-                            discountTable.initialize({
-                                columns: [
+                        cmbItems = new wijmo.grid.DataMap(results, 'ItemCode', 'ItemDescription');
 
-                                {
-                                    "header": "Delete",
-                                    "binding": "DeleteId",
-                                    "width": 70,
-                                    "align": "center",
-                                    "isContentHtml": true,
-                                    "isReadOnly": true,
-                                    "allowSorting": false
-                                },
-                                {
-                                    "header": "Item",
-                                    "binding": "ItemId",
-                                    "width": 500,
-                                    "align": "center",
-                                    "dataMap": itemList,
-                                },
-                                {
-                                    "header": "A",
-                                    "binding": "AId",
-                                    "width": 50,
-                                    "align": "center",
-                                    "dataType": "Boolean"
-                                },
-                                {
-                                    "header": " ",
-                                    "binding": "EmptyId",
-                                    "align": "center",
-                                    "allowSorting": false,
-                                    "width": "2*",
-                                    "isReadOnly": true
-                                }],
-                                autoGenerateColumns: false,
-                                itemsSource: discountCollections,
-                                autoSizeMode: wijmo.grid.AutoSizeMode.Both,
-                                allowDragging: wijmo.grid.AllowDragging.None,
-                                selectionMode: wijmo.grid.SelectionMode.Row,
-                                allowAddNew: true
-                            })
+                        discountTable.initialize({
+                            columns: [
+
+                            {
+                                "header": "Delete",
+                                "binding": "DeleteId",
+                                "width": 70,
+                                "align": "center",
+                                "isContentHtml": true,
+                                "isReadOnly": true,
+                                "allowSorting": false
+                            },
+                            {
+                                "header": "Item",
+                                "binding": "ItemId",
+                                "width": 500,
+                                "align": "center",
+                                "dataMap": cmbItems
+                            },
+                            {
+                                "header": "A",
+                                "binding": "AId",
+                                "width": 50,
+                                "align": "center",
+                                "dataType": "Boolean"
+                            },
+                            {
+                                "header": " ",
+                                "binding": "EmptyId",
+                                "align": "center",
+                                "allowSorting": false,
+                                "width": "2*",
+                                "isReadOnly": true
+                            }],
+                            autoGenerateColumns: false,
+                            itemsSource: discountCollections,
+                            autoSizeMode: wijmo.grid.AutoSizeMode.Both,
+                            allowDragging: wijmo.grid.AllowDragging.None,
+                            selectionMode: wijmo.grid.SelectionMode.Row,
+                            allowAddNew: true,
+                            itemFormatter: function (panel, r, c, cell) {
+                                var columns = panel.columns[c];
+
+                                if (columns.header == 'Item') {
+                                    addEventListener('click', function (e) {
+                                        alert(discountCollections.items[0]);
+                                    });
+                                }
+                            }
+                        });
                         }
                     }
                 });
@@ -209,11 +217,11 @@
 
         function addRow() {
             discountColumns.push({
-                DeleteId: "<button class='btn btn-danger btn-xs btn-block' id='itemDeleteButton'><i class='fa fa-trash'></i>Delete</button>",
-                AId: false
+                DeleteId: "<button class='btn btn-danger btn-xs btn-block' id=''><i class='fa fa-trash'></i> Delete</button>",
+                AId: false,
+                EmptyId: ""
             });
         }
-
         // =====================
         // Item delete Button
         // =====================

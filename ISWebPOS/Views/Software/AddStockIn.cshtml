@@ -196,6 +196,8 @@
         var unitList = [];
         var assetAccountList = [];
 
+        var cmbItems;
+
         //constructor
         function init() {
             //datamp
@@ -221,6 +223,8 @@
                             itemList[index] = results[index]["ItemCode"];
                         })
 
+                        cmbItems = new wijmo.grid.DataMap(results, 'ItemCode', 'ItemDescription');
+
                         stockinTable.initialize({
 
                             columns: [
@@ -237,7 +241,7 @@
                                 "binding": "ItemId",
                                 "align": "center",
                                 "width": 300,
-                                "dataMap": new wijmo.grid.DataMap(results, 'ItemCode', 'ItemDescription')
+                                "dataMap": cmbItems
                             },
                             {
                                 "header": "Unit",
@@ -302,8 +306,9 @@
                             allowAddNew: true,
                             itemFormatter: function (panel, r, c, cell) {
                                 var col = panel.columns[c];
-                                var row = stockinTable.rows;
+
                                 if (col.binding == 'ItemId') {
+                                   
                                 }
 
                                 if (col.binding == 'DeleteId') {
@@ -312,8 +317,9 @@
                                 }
 
                                 if (col.binding == 'ExpiryDateId') {
-                                    if (cell.innerHTML != " ")
-                                        cell.innerHTML = "<button class='btn btn-danger btn-xs btn-block' id='itemDeleteButton'><i class='fa fa-trash'></i>Delete</button>";
+                                    if (cell.innerHTML != "Expiry Date") {
+                                       
+                                    }                                       
                                 }
                                 
                             }
