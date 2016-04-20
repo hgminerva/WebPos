@@ -121,7 +121,7 @@
                         </form>
                     </div><!-- /.box -->
                 </div>
-
+                <div id="combobox"></div>
             </section>
         </div><!-- ./wrapper -->
         <!-- ===================Main Footer============================ -->
@@ -152,7 +152,6 @@
                 data: {},
                 success: function (results) {
                     if (results != null || results != undefined) {
-                        itemList = new Array(results.length);
                         $.each(results, function (index, value) {
                             itemList[index] = results[index]["ItemCode"];
                         });
@@ -198,30 +197,27 @@
                             autoSizeMode: wijmo.grid.AutoSizeMode.Both,
                             allowDragging: wijmo.grid.AllowDragging.None,
                             selectionMode: wijmo.grid.SelectionMode.Row,
-                            allowAddNew: true,
-                            itemFormatter: function (panel, r, c, cell) {
-                                var columns = panel.columns[c];
-
-                                if (columns.header == 'Item') {
-                                    addEventListener('click', function (e) {
-                                        alert(discountCollections.items[0]);
-                                    });
-                                }
-                            }
+                            allowAddNew: true
                         });
                         }
                     }
                 });
- 
+            discountTable.cellEditEnding.addHandler(setColumns, discountTable.columns[1]);
+           
+        }
+
+        function setColumns() {
+            alert();
         }
 
         function addRow() {
             discountColumns.push({
-                DeleteId: "<button class='btn btn-danger btn-xs btn-block' id=''><i class='fa fa-trash'></i> Delete</button>",
-                AId: false,
-                EmptyId: ""
+                DeleteId: "<button class='btn btn-danger btn-xs btn-block' id='itemDeleteButton'><i class='fa fa-trash'></i>Delete</button>",
+                AId: false
             });
+            alert("new row");
         }
+
         // =====================
         // Item delete Button
         // =====================
